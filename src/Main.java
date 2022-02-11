@@ -18,7 +18,7 @@ public class Main extends PApplet{
     public void setup(){
         processing = this;
         surface.setTitle("Processing on IntellijIDEA");
-
+        System.out.println("L'image est affichée");
         colorMode(HSB,255,255,255);
     }
 
