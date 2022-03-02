@@ -1517,6 +1517,7 @@ config.status:691: creating pcre.h
 config.status:691: creating pcre_stringpiece.h
 config.status:691: creating pcrecpparg.h
 config.status:691: creating config.h
+config.status:938: config.h is unchanged
 config.status:985: executing depfiles commands
 config.status:985: executing script-chmod commands
 config.status:985: executing delete-old-chartables commands
