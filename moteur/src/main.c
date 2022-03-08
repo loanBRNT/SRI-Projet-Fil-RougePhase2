@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "../include/admin.h"
 #include "../include/pwd.h"
 #include "../include/interface.h"
@@ -13,7 +14,54 @@
 #include "../include/recherche.h"
 #include "../include/comparaison.h"
 
+#include "../include/pcre.h"
 
+#include "../include/ivy.h"
+#include "../include/ivyloop.h"
+
+void EcouteCallback (IvyClientPtr app, void *data, int argc, char **argv)
+{
+	printf("\nType de recherche : %s", argv[0]);
+	printf("\nElement source : %s", argv[1]);
+	printf("\nType du fichier : %s", argv[2]);
+
+	char chaine[1000];
+	lanceRechercheViaMotCle(argv[1],chaine);
+
+	IvySendMsg("yo patate");
+}
+
+/* callback associated to "Bye" messages */
+void StopCallback (IvyClientPtr app, void *data, int argc, char **argv)
+{
+	// On termine le traitement 
+	IvyStop ();
+}
+
+
+int main(int argc, char const *argv[])
+{
+	/* initialisation */
+	IvyInit("Moteur", "Le moteur est sur le reseau", 0, 0, 0, 0);
+
+	/* On Eoute et on traite les messages qui commencent par n'importe quoi */
+	IvyBindMsg(EcouteCallback, 0, "^Interface message=(.*) source=(.*) type=(.*)");
+
+	/* On Eoute et on traite les messages 'Bye' */
+	IvyBindMsg(StopCallback, 0, "^Stop$");
+
+	IvyStart("127.255.255.255:2010"); // On lance l'agent sur le bus ivy
+
+	/* main loop */
+	IvyMainLoop();
+	return 0;
+}
+
+
+
+
+
+/*
 int main(int argc, char const *argv[])
 {
 
@@ -55,7 +103,7 @@ int main(int argc, char const *argv[])
 
 
 	return 0;
-}
+}*/
 
 /*
 int main(int argc, char *argv[])

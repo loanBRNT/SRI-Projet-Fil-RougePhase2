@@ -14,7 +14,6 @@
  *	Please refer to file version.h for the
  *	copyright notice regarding this software
  */
-
 #ifndef IVY_H
 #define IVY_H
 

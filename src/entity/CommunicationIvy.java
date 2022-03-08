@@ -1,9 +1,9 @@
+package entity;
+
 import fr.dgac.ivy.Ivy;
 import fr.dgac.ivy.IvyClient;
 import fr.dgac.ivy.IvyException;
 import fr.dgac.ivy.IvyMessageListener;
-
-import java.util.Scanner;
 
 public class CommunicationIvy {
     private Ivy bus = new Ivy("interface", " interface_processing is ready", null);;

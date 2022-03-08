@@ -1,9 +1,7 @@
-import fr.dgac.ivy.*;
-
-import java.util.Scanner;
+import boundary.Clavier;
+import entity.CommunicationIvy;
 
 public class Main{
-    private static Scanner scanner = new Scanner(System.in);
     //Attributs
 
     //Constructeur
@@ -16,14 +14,14 @@ public class Main{
 
         int choix=1;
         while(choix != 0){
-            if(communicationIvy.envoieMessage("Interface message=YO nombre=2")){
+            if(communicationIvy.envoieMessage("Interface message=rechercheMotCle source=banane type=texte")){
                 System.out.println("mess envoyé");
             } else {
                 System.out.println("echec envoie");
             }
-            choix = scanner.nextInt();
+            choix = Clavier.entrerClavierInt();
         }
-
-    communicationIvy.fermerCommunication();
+        communicationIvy.envoieMessage("Stop");
+        communicationIvy.fermerCommunication();
     }
 }
