@@ -6,18 +6,29 @@ import fr.dgac.ivy.IvyException;
 import fr.dgac.ivy.IvyMessageListener;
 
 public class CommunicationIvy {
-    private Ivy bus = new Ivy("interface", " interface_processing is ready", null);;
+    private Ivy bus = new Ivy("interface", " interface_processing is ready", null);
+
+    private CommunicationIvy() {}
+
+    private class CommunicationIvyHolder {
+        private static final CommunicationIvy instance = new CommunicationIvy();
+    }
+
+    public static CommunicationIvy getInstance() {
+        return CommunicationIvyHolder.instance;
+    }
 
     public boolean lancerCommunication(){
         try
         {
             bus.start("127.255.255.255:2010");
 
-            bus.bindMsg("^Interface=ok", new IvyMessageListener()
+            bus.bindMsg("^Moteur message=(.*)", new IvyMessageListener()
             {
                 public void receive(IvyClient client, String[] args)
                 {
-                    System.out.println("message sent successfully!");
+                    String message = args[0];
+                    System.out.println(message);
                 }
             });
 

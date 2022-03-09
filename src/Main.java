@@ -1,4 +1,5 @@
 import boundary.Clavier;
+import control.ControlCommunicationIvy;
 import entity.CommunicationIvy;
 
 public class Main{
@@ -8,20 +9,20 @@ public class Main{
 
     //Méthodes
     public static void main(String[] args) {
-        CommunicationIvy communicationIvy = new CommunicationIvy();
+        ControlCommunicationIvy communicationIvy = new ControlCommunicationIvy();
 
         communicationIvy.lancerCommunication();
 
         int choix=1;
         while(choix != 0){
-            if(communicationIvy.envoieMessage("Interface message=rechercheMotCle source=banane type=texte")){
+            if(communicationIvy.envoyerMessage("Interface message=rechercheMotCle source=monde type=texte")){
                 System.out.println("mess envoyé");
             } else {
                 System.out.println("echec envoie");
             }
             choix = Clavier.entrerClavierInt();
         }
-        communicationIvy.envoieMessage("Stop");
-        communicationIvy.fermerCommunication();
+        communicationIvy.envoyerMessage("Stop");
+        communicationIvy.stopperCommunication();
     }
 }

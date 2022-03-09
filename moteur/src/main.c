@@ -27,8 +27,11 @@ void EcouteCallback (IvyClientPtr app, void *data, int argc, char **argv)
 
 	char chaine[1000];
 	lanceRechercheViaMotCle(argv[1],chaine);
+	char chaine_envoie[1100];
+	strcpy(chaine_envoie,"Moteur message=");
+	strcat(chaine_envoie,chaine);
 
-	IvySendMsg("yo patate");
+	IvySendMsg(chaine_envoie);
 }
 
 /* callback associated to "Bye" messages */
