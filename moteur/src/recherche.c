@@ -13,6 +13,9 @@
 #include "../include/recherche.h"
 #include "../include/comparaison.h"
 
+#include "../include/ivy.h"
+#include "../include/ivyloop.h"
+
 /* 
  ----------------------- Signature -------------------------
 |															|
@@ -219,7 +222,8 @@ int lanceRechercheViaNom(char* nom_fichier_cible,char* chaine_resultat){
 
     int t = getTypeDuFichierEtChangeLextension(nom_fichier_cible);
 
-    strcpy(chaine_resultat,"La recherche n'a donne aucun resultat");
+    strcpy(chaine_resultat,"erreur=La recherche n'a donne aucun resultat");
+
 
     if (t == 1){
 
@@ -232,7 +236,7 @@ int lanceRechercheViaNom(char* nom_fichier_cible,char* chaine_resultat){
         descFic = getDescripteurTexteViaPile(nom_fichier_cible);
 
         if (descFic.ID == 0){
-            strcpy(chaine_resultat,"ERREUR : LA RECHERCHE N'A PU ABOUTIR\nVERIFIEZ QUE LE PROGRAMME DISPOSE DE L'ENSEMBLE DES DROITS AUX FICHIERS NECESSAIRES\n");
+            strcpy(chaine_resultat,"erreur=LA RECHERCHE N'A PU ABOUTIR, VERIFIEZ QUE LE PROGRAMME DISPOSE DE L'ENSEMBLE DES DROITS AUX FICHIERS NECESSAIRES");
             return 2;
         }
     
@@ -254,7 +258,7 @@ int lanceRechercheViaNom(char* nom_fichier_cible,char* chaine_resultat){
         descFic = getDescripteurImageViaPile(nom_fichier_cible);
 
         if (descFic.ID == 0){
-            strcpy(chaine_resultat,"ERREUR : LA RECHERCHE N'A PU ABOUTIR\nVERIFIEZ QUE LE PROGRAMME DISPOSE DE L'ENSEMBLE DES DROITS AUX FICHIERS NECESSAIRES\n");
+            strcpy(chaine_resultat,"erreur=LA RECHERCHE N'A PU ABOUTIR, VERIFIEZ QUE LE PROGRAMME DISPOSE DE L'ENSEMBLE DES DROITS AUX FICHIERS NECESSAIRES");
             return 2;
         }
 
@@ -276,22 +280,24 @@ int lanceRechercheViaNom(char* nom_fichier_cible,char* chaine_resultat){
 
 
         if (descFic.identifiant == 0){
-            strcpy(chaine_resultat,"ERREUR : LA RECHERCHE N'A PU ABOUTIR\nVERIFIEZ QUE LE PROGRAMME DISPOSE DE L'ENSEMBLE DES DROITS AUX FICHIERS NECESSAIRES\n");
+            strcpy(chaine_resultat,"erreur=LA RECHERCHE N'A PU ABOUTIR, VERIFIEZ QUE LE PROGRAMME DISPOSE DE L'ENSEMBLE DES DROITS AUX FICHIERS NECESSAIRES");
             return 2;
         }
 
         rechercheJingle(&descFic, chaine_resultat);
 
     } else {
-        strcpy(chaine_resultat, "Erreur de lecture du fichier :\nType non reconnu\n");
+        strcpy(chaine_resultat, "erreur=Erreur de lecture du fichier : Type non reconnu");
         return 1;
     }
     return 0;
 }
 
 int lanceRechercheViaMotCle(char* mot, char* chaine_resultat){
-    char commande[100], numChar[5], nom[50], nomSauv[50];
-    int numLigne=0, id, numMax=0, num;
+    char commande[100], numChar[5], nom[50];
+    int numLigne=0, id, num;
+
+    //char message[100];
 
     strcpy(commande, "grep ^");
     strcat(commande, mot);  
@@ -301,14 +307,14 @@ int lanceRechercheViaMotCle(char* mot, char* chaine_resultat){
 
     FILE* fTit = fopen("./fic_temp","r");
     if (fTit == NULL){
-        strcpy(chaine_resultat,"Votre recherche n'a pas aboutit");
+        strcpy(chaine_resultat,"erreur=Votre recherche n'a pas aboutit");
         return 0;
     }
     
     fscanf(fTit,"%d",&numLigne);
 
     if (numLigne == 0){
-        strcpy(chaine_resultat,"Votre recherche n'a donne aucun resultat\n");
+        strcpy(chaine_resultat,"erreur=Votre recherche n'a donne aucun resultat");
         return 0;
     }
 
@@ -327,34 +333,39 @@ int lanceRechercheViaMotCle(char* mot, char* chaine_resultat){
 
     FILE* f = fopen("./fic","r");
     if (f == NULL){
-        strcpy(chaine_resultat,"Votre recherche n'a pas aboutit");
+        strcpy(chaine_resultat,"erreur=Votre recherche n'a pas aboutit");
         return 0;
     }
 
+    /* PHASE 1
     strcpy(chaine_resultat,"Voici les resultats pour votre recherche [");
     strcat(chaine_resultat, mot);
     strcat(chaine_resultat, "]:\n");
+    */
+
+    strcpy(chaine_resultat,"liste=");
 
     while (!feof(f)){
         fscanf(f,"%d %d ",&id,&num);
         sprintf(numChar,"%d",num);
         recupNomDUFic(id,1,nom);
-        strcat(chaine_resultat, "-");
-        strcat(chaine_resultat,nom);
-        strcat(chaine_resultat, " : Apparait ");
-        strcat(chaine_resultat,numChar);
-        strcat(chaine_resultat, " fois\n");
-        if (num > numMax){
-            numMax = num;
-            strcpy(nomSauv, nom);
-        }
-    }
 
+
+        //strcat(chaine_resultat, " nom=");
+        strcat(chaine_resultat,nom);
+        //strcat(chaine_resultat, " nombre=");
+        //strcat(chaine_resultat,numChar);
+        if (!feof(f)) strcat(chaine_resultat, ",");
+
+    }
+    
+    /* PHASE 1
     if (numMax > 0){
         if (!ouvertureFichier(nomSauv)){
             printf("Ouverture du fichier impossible. Verifier que xdg est correctement installe (sudo apt install xdg-utils)");
         }
     }
+    */
 
     return 0;
 
@@ -376,7 +387,7 @@ PILE_DESCRIPTEUR_IMAGE rechercheImageParDescripteur(DESCRIPTEUR_IMAGE* ptr_descF
     int tabOcc[200];
 
     if (pile == NULL){
-        printf("ERREUR : ECHEC CHARGEMENT DE LA PILE DES IMAGES\n");
+        printf("erreur=ECHEC CHARGEMENT DE LA PILE DES IMAGES");
         return pileSim;
     }
 
@@ -390,7 +401,7 @@ PILE_DESCRIPTEUR_IMAGE rechercheImageParDescripteur(DESCRIPTEUR_IMAGE* ptr_descF
                 tabOcc[cpt]=tauxAct;
                 cpt++;
                 if (cpt == 199){
-                    printf("DEPASSEMENT CAPACITE : VEUILLEZ AUGMENTER LE SEUIL DE SIMILARITE\n");
+                    printf("erreur=DEPASSEMENT CAPACITE : VEUILLEZ AUGMENTER LE SEUIL DE SIMILARITE");
                 }
             }
         }
@@ -479,7 +490,7 @@ PILE_DESCRIPTEUR_TEXTE rechercheTexteParDescripteur(DESCRIPTEUR_TEXTE* ptr_descF
     int tauwSim = recupTauxSimmilaritudeDuConfig()-20, tauxAct;
 
     if (pile == NULL){
-        printf("ERREUR : ECHEC CHARGEMENT DE LA PILE DES IMAGES\n");
+        printf("erreur=ECHEC CHARGEMENT DE LA PILE DES IMAGES");
         return pileSim;
     }
 
@@ -502,77 +513,90 @@ PILE_DESCRIPTEUR_TEXTE rechercheTexteParDescripteur(DESCRIPTEUR_TEXTE* ptr_descF
 
 
 int generationChaineCaracViaPileIMAGE(PILE_DESCRIPTEUR_IMAGE pile, DESCRIPTEUR_IMAGE* ptr_descFic,char* chaine, int type){
-    char chaine_nom[50], chaine_nomSauv[50];
+    char chaine_nom[50];
 
-    recupNomDUFic(ptr_descFic->ID,type,chaine_nom);
+    //recupNomDUFic(ptr_descFic->ID,type,chaine_nom);
 
+    /* PHASE 1
     strcpy(chaine,"Voici les resultats suite a votre recherche : [");
     strcat(chaine, chaine_nom);
     strcat(chaine,"]\n");
+    */
 
     CelluleI* sauv;
 
     if (pile == NULL) return 1;
 
     recupNomDUFic(pile->Di.ID,type,chaine_nom);
-    strcpy(chaine_nomSauv,chaine_nom);
+    strcpy(chaine,"liste=");
 
     while (pile != NULL){
-        strcat(chaine,"- ");
+        //strcat(chaine,"- ");
         strcat(chaine,chaine_nom);
-        strcat(chaine,"\n");
+        //strcat(chaine,"\n");
+
         sauv = pile;
         pile = pile->next;
         dePILE_Img_Sans_Sauvegarde(sauv);
-        if (pile == NULL) continue;;
-        recupNomDUFic(pile->Di.ID,type,chaine_nom);
+        if (pile != NULL){
+            recupNomDUFic(pile->Di.ID,type,chaine_nom);
+            strcat(chaine,",");
+        }
+
+        
     }
 
+    /* PHASE 1
     if (!ouvertureFichier(chaine_nomSauv)){
         printf("Ouverture du fichier impossible. Verifier que xdg est correctement installe (sudo apt install xdg-utils)");
     }
-
+    */
     return 0;
 }
 
 int generationChaineCaracViaPileTexte(PILE_DESCRIPTEUR_TEXTE pile, DESCRIPTEUR_TEXTE* ptr_descFic,char* chaine){
-    char chaine_nom[50], chaine_occ[3], chaine_nomSauv[50];
-    int nbOcc, occMax = 0;
+    char chaine_nom[50];
 
-    recupNomDUFic(ptr_descFic->ID,1,chaine_nom);
+    //recupNomDUFic(ptr_descFic->ID,1,chaine_nom);
 
+    /* PHASE 1
     strcpy(chaine,"Voici les resultats suite a votre recherche : [");
     strcat(chaine, chaine_nom);
     strcat(chaine,"]\n");
+    */
+
+    strcpy(chaine,"liste=");
 
     CelluleT* sauv;
 
     while (pile != NULL){
         recupNomDUFic(pile->Dt.ID,1,chaine_nom);
-        strcat(chaine,"- ");
+        //strcat(chaine,"- ");
         strcat(chaine,chaine_nom);
-        strcat(chaine, " : mots cle en commun : ");
-        nbOcc = nbMotCmmunFichierTexte(ptr_descFic, &(pile->Dt));
-        sprintf(chaine_occ,"%d",nbOcc);
-        strcat(chaine, chaine_occ);
-        strcat(chaine,"\n");
+        //strcat(chaine, " : mots cle en commun : ");
+        //nbOcc = nbMotCmmunFichierTexte(ptr_descFic, &(pile->Dt));
+        //sprintf(chaine_occ,"%d",nbOcc);
+        //strcat(chaine, chaine_occ);
 
+        /*
         if (nbOcc > occMax){
             occMax = nbOcc;
             strcpy(chaine_nomSauv,chaine_nom);
-        }
+        }*/
 
         sauv = pile;
         pile = pile->next;
         dePILE_Texte_Sans_Sauvegarde(sauv);
+        if (pile != NULL) strcat(chaine,",");
     }
+
+    /* PHASE 1
     if ((occMax > 0)){
         if (!ouvertureFichier(chaine_nomSauv)){
         printf("Ouverture du fichier impossible. Verifier que xdg est correctement installe (sudo apt install xdg-utils)");
     }
     }
-   
-
+    */
     return 0;
 }
 
@@ -690,24 +714,28 @@ DESCRIPTEUR_TEXTE getDescripteurTexteViaPile(char* nom_fichier){
 // -----------------------------------------------------------------------------------------
 
 int rechercheJingle(DESCRIPTEUR_AUDIO* descFic, char* chaine_resultat){
-    char chaine_nom[50], chaine_nomSauv[50];
-    int pres, presMax=0;
+    char chaine_nom[50];
+    int pres, nbAud=0;
 
+    /* PHASE 1
     recupNomDUFic(descFic->identifiant,3,chaine_nom);
     strcpy(chaine_resultat,"Voici les resultats suite a votre recherche : [");
     strcat(chaine_resultat, chaine_nom);
     strcat(chaine_resultat,"]\n");
+    */
 
     PILE_DESCRIPTEUR_AUDIO pile = Charger_Pile_DescripteurAudio(init_PILE_Audio());
     if (pile == NULL){
-        strcpy(chaine_resultat, "ERREUR : chargement de la PILE impossible");
+        strcpy(chaine_resultat, "erreur=chargement de la PILE impossible");
         return 1;
     }
 
     Cellule* sauv;
+    strcpy(chaine_resultat, "liste=");
 
     while (pile != NULL){
         if (pile->Da->identifiant != descFic->identifiant) {
+            /* PHASE 1
             recupNomDUFic(pile->Da->identifiant,3,chaine_nom);
             strcat(chaine_resultat, chaine_nom);
             strcat(chaine_resultat, " : ");
@@ -720,16 +748,29 @@ int rechercheJingle(DESCRIPTEUR_AUDIO* descFic, char* chaine_resultat){
                 strcat(chaine_resultat, "aucune corespondance");
             }
             strcat(chaine_resultat,"\n");
+            */
+            recupNomDUFic(pile->Da->identifiant,3,chaine_nom);
+            pres = comparaisonFichiersAudio(descFic,pile->Da,chaine_resultat);
+            
+            if (pres > 0){
+                if (nbAud != 0) strcat(chaine_resultat,",");
+                strcat(chaine_resultat, chaine_nom);
+                nbAud++;
+            }
+        
         }
         sauv = pile;
         pile = pile->next;
         dePILE_Audio_Sans_Sauvegarde(sauv);
-    } 
+    }
+
+    if (nbAud == 0) strcpy(chaine_resultat,"erreur=La recherche n'a donne aucun resultat");
+    /* PHASE 1
     if (presMax > 0){
         if (!ouvertureFichier(chaine_nomSauv)){
             printf("Ouverture du fichier impossible. Verifier que xdg est correctement installe (sudo apt install xdg-utils)");
         }
-    }
+    }*/
     return 0;
 }
 

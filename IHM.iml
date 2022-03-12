@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="core" level="project" />
     <orderEntry type="library" name="processing" level="project" />
+    <orderEntry type="library" name="ivy-java-1.2.18" level="project" />
   </component>
 </module>
