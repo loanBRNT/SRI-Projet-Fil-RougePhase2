@@ -23,19 +23,21 @@ public class CommunicationIvy {
         {
             bus.start("127.255.255.255:2010");
 
-            bus.bindMsg("^Moteur message=(.*)", new IvyMessageListener()
-            {
-                public void receive(IvyClient client, String[] args)
-                {
-                    String message = args[0];
-                    System.out.println(message);
-                }
+            bus.bindMsg("^Moteur liste=(.*)", (client, args) -> {
+                String message = args[0];
+                System.out.println(message);
+            });
+
+            bus.bindMsg("^Moteur erreur=(.*)", (client, args) -> {
+                String message = args[0];
+                System.out.println(message);
             });
 
         }
         catch (IvyException ie)
         {
             ie.printStackTrace();
+            fermerCommunication();
             return false;
         }
         return true;
