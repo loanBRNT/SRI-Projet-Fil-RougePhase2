@@ -1,6 +1,6 @@
-package vueTextuelle;
+package boundary;
 
-import controleur.ControlRechercheMotCle;
+import control.ControlRechercheMotCle;
 
 import java.util.ArrayList;
 import java.util.List;

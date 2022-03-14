@@ -1,4 +1,4 @@
-package vueTextuelle;
+package boundary;
 
 public class BoundaryMenuClient {
 

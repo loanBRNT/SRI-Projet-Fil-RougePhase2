@@ -1,6 +1,6 @@
-package controleur;
+package control;
 
-import modele.Config;
+import entity.Config;
 
 import java.io.IOException;
 import java.util.List;

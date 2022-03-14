@@ -1,4 +1,4 @@
-package controleur;
+package control;
 
 public class ControlMenuAdmin {
     private ControlIndexation controlIndexation;

@@ -1,4 +1,4 @@
-package vueTextuelle;
+package boundary;
 
 
 import java.util.Scanner;

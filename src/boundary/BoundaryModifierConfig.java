@@ -1,7 +1,7 @@
-package vueTextuelle;
+package boundary;
 
-import controleur.ControlModifierConfig;
-import modele.Config;
+import control.ControlModifierConfig;
+import entity.Config;
 
 import java.io.IOException;
 import java.util.ArrayList;

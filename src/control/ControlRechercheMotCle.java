@@ -1,4 +1,4 @@
-package controleur;
+package control;
 
 import java.util.List;
 

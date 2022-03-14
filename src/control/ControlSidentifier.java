@@ -1,14 +1,13 @@
-package controleur;
+package control;
 
 import java.io.*;
-import java.util.Scanner;
 
 public class ControlSidentifier {
     public boolean verifieridentite(String loginSaisi, String mdpSaisi) throws IOException {
         String login;
         String mdp;
         boolean verifok;
-        FileReader flux = new FileReader("./c/mdp/admin.txt");
+        FileReader flux = new FileReader("./moteur/mdp/admin.txt");
         BufferedReader buffer = new BufferedReader(flux);
 
         login= buffer.readLine();

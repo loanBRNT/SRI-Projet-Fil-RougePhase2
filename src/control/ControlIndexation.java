@@ -1,4 +1,4 @@
-package controleur;
+package control;
 
 public class ControlIndexation {
     public void indexation() {

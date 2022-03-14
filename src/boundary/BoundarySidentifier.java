@@ -1,6 +1,6 @@
-package vueTextuelle;
+package boundary;
 
-import controleur.ControlSidentifier;
+import control.ControlSidentifier;
 
 import java.io.IOException;
 

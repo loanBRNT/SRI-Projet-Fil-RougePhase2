@@ -1,47 +1,43 @@
-package vueTextuelle;
+package boundary;
 
-import controleur.ControlMenuAdmin;
+import control.ControlIndexation;
+import control.ControlMenuAdmin;
+import control.ControlModifierConfig;
+import control.ControlSidentifier;
 
 import java.io.IOException;
-import java.util.Scanner;
 
-public class BoundaryMenuAdmin {
-    private ControlMenuAdmin controlMenuAdmin;
-    private BoundaryModifierConfig boundaryModifierConfig;
+public class MainTextuelle {
+    //Attributs
 
-    public BoundaryMenuAdmin(ControlMenuAdmin controlMenuAdmin,BoundaryModifierConfig boundaryModifierConfig){
-        this.controlMenuAdmin=controlMenuAdmin;
-        this.boundaryModifierConfig=boundaryModifierConfig;
-    }
+    //Constructeur
 
-
-
-    public int menu() throws IOException {
+    //Méthodes
+    public static void main(String[] args) throws IOException {
         boolean isRunning =true;
         boolean saisie=false;
         int choix=0;
-        int res=0;
+        int res;
+        BoundaryMenuAdmin menuAdmin = new BoundaryMenuAdmin(new ControlMenuAdmin(new ControlIndexation()),new BoundaryModifierConfig(new ControlModifierConfig()));
+        BoundaryMenuClient menuClient= new BoundaryMenuClient();
+        BoundarySidentifier boundarySidentifier=new BoundarySidentifier(new ControlSidentifier());
 
         while(isRunning){
             System.out.println("###########################################\n"+
                     "#                                         #\n"+
-                    "#  Bienvenue sur le MODE ADMINISTRATEUR   #\n"+
+                    "#            MENU PRINCIPAL               #\n"+
                     "#                                         #\n"+
                     "###########################################\n"+
                     "#                                         #\n"+
-                    "#         1: OUVRIR PANNEAU CONFIG        #\n"+
+                    "#            1:ADMINISTRATEUR             #\n"+
                     "#                                         #\n"+
-                    "#         2: LANCER INDEXATION            #\n"+
+                    "#            2:UTILISATEUR                #\n"+
                     "#                                         #\n"+
-                    "#         3: RETOUR MENU PRINCIPAL        #\n"+
+                    "#            3:QUITTER                    #\n"+
                     "#                                         #\n"+
-                    "#         4: QUITTER                      #\n"+
-                    "#                                         #\n"+
-                    "#        << choisissez un menu >>         #\n"+
+                    "#       !! choisissez le Mode !!          #\n"+
                     "#                                         #\n"+
                     "###########################################\n");
-
-
             do{
                 try{
                     choix=Clavier.entrerClavierInt();
@@ -53,25 +49,30 @@ public class BoundaryMenuAdmin {
             }while (!saisie);
             saisie=false;
 
+
             switch(choix){
                 case 1 :
-                    this.boundaryModifierConfig.afficheConfig();
+                    if(boundarySidentifier.verifierIdentite()){
+                        res=menuAdmin.menu();
+                    }
+                    else
+                        res=0;
+                    if(res==1)
+                        isRunning=false;
                     break;
                 case 2 :
-                    System.out.println("indexation en cours");
-                    this.controlMenuAdmin.indexation();
+                    System.out.println("acces menu user");
                     break;
                 case 3:
                     isRunning=false;
                     break;
-                case 4 :
-                    isRunning=false;
-                    res=1;
                 default:
                     System.out.println("Saisi incorrecte");
 
             }
         }
-        return res;
+        System.out.println("bye bye");
+
+
     }
 }
