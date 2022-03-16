@@ -55,6 +55,9 @@ void StopCallback (IvyClientPtr app, void *data, int argc, char **argv)
 	IvyStop ();
 }
 
+void recep (IvyClientPtr app, void *data, int argc, char **argv){
+	printf("reçu : %s", argv[0]);
+}
 
 int main(int argc, char const *argv[]){
 	
@@ -66,6 +69,8 @@ int main(int argc, char const *argv[]){
 
 	/* On Eoute et on traite les messages 'Bye' */
 	IvyBindMsg(StopCallback, 0, "^Stop$");
+
+	IvyBindMsg(recep, 0, "^(.*)");
 
 	IvyStart("127.255.255.255:2010"); // On lance l'agent sur le bus ivy
 

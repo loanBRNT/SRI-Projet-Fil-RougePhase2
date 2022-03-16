@@ -13,4 +13,6 @@ public class Clavier {
         return scanner.next();
     }
 
+    public static String nextLine() { return scanner.nextLine();};
+
 }
