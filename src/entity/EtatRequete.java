@@ -1,5 +1,5 @@
 package entity;
 
 public enum EtatRequete {
-    RUNNABLE, TERMINATED, WAITING, ERROR
+    RUNNABLE, TERMINATED, WAITING_FOR_INIT, READY_FOR_START, ERROR
 }

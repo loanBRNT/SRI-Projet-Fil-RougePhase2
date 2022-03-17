@@ -20,8 +20,21 @@ public class Main{
         liste.add("momo");
         liste.add("christophe");
         liste.add("jeanjean");
+        liste.add("jean");
+        liste.add("chris");
+        liste.add("mon");
+        liste.add("moti");
+        liste.add("lala");
+        liste.add("jeanjean");
+
 
         ArrayList<Integer> listePolarite = new ArrayList<>();
+        listePolarite.add(1);
+        listePolarite.add(1);
+        listePolarite.add(1);
+        listePolarite.add(1);
+        listePolarite.add(1);
+        listePolarite.add(1);
         listePolarite.add(1);
         listePolarite.add(1);
         listePolarite.add(1);
@@ -29,26 +42,5 @@ public class Main{
         ControlRechercheMotCle controlRechercheMotCle = new ControlRechercheMotCle();
 
         controlRechercheMotCle.rechercheMotCle(liste, listePolarite);
-
-        /* MAIN IVY
-        String motTape = "";
-        Requete requete;
-        List<Requete> listeRequeteEnCours = new ArrayList<>();
-
-        CommunicationIvy bus = CommunicationIvy.getInstance();
-
-        bus.lancerCommunication();
-
-        while(!motTape.equals("Stop")){
-            motTape = Clavier.entrerClavierString();
-            requete = new Requete(motTape);
-            requete.start();
-
-            listeRequeteEnCours.add(requete);
-
-
-        }
-        bus.fermerCommunication();
-        //*/
     }
 }

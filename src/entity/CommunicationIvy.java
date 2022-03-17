@@ -1,16 +1,14 @@
 package entity;
 
 import fr.dgac.ivy.Ivy;
-import fr.dgac.ivy.IvyClient;
 import fr.dgac.ivy.IvyException;
-import fr.dgac.ivy.IvyMessageListener;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class CommunicationIvy {
-    public Ivy bus = new Ivy("interface", " interface_processing is ready", null);
-    public PropertyChangeSupport support = new PropertyChangeSupport(this);
+    private Ivy bus = new Ivy("interface", " interface is ready", null);
+    private PropertyChangeSupport support = new PropertyChangeSupport(this);
     private String resultat = "";
 
     private CommunicationIvy() {}
@@ -23,7 +21,6 @@ public class CommunicationIvy {
         return CommunicationIvyHolder.instance;
     }
 
-
     public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener){
         support.addPropertyChangeListener(propertyName,listener);
     }
@@ -32,7 +29,6 @@ public class CommunicationIvy {
         try
         {
             bus.start("127.255.255.255:2010");
-
         }
         catch (IvyException ie)
         {
@@ -41,8 +37,16 @@ public class CommunicationIvy {
         }
     }
 
-    public void envoieMessage(String mess) throws IvyException{
-        bus.sendMsg(mess);
+    public void definirBind(String mot) throws IvyException {
+        bus.bindMsg("^Moteur mot=" + mot + " liste=(.*)",(client, args) -> {
+            String message = mot + "," + args[0];
+            support.firePropertyChange(RequeteName.RECHERCHE.toString(),resultat,message);
+            resultat = "";
+        });
+    }
+
+    public int envoieMessage(String mess) throws IvyException{
+        return bus.sendMsg(mess);
     }
 
     public void fermerCommunication(){

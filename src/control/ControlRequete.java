@@ -3,6 +3,7 @@ package control;
 import entity.CommunicationIvy;
 import entity.Requete;
 import entity.RequeteName;
+import fr.dgac.ivy.IvyException;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -10,35 +11,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControlRequete implements PropertyChangeListener{
-    private CommunicationIvy bus = CommunicationIvy.getInstance();
+    private CommunicationIvy communicationIvy = CommunicationIvy.getInstance();
     private List<Requete> listeRequete = new ArrayList<>();
     private List<String> listeResultat = new ArrayList<>();
     private int nbRequeteFinit = 0;
 
     public ControlRequete(){
-        bus.addPropertyChangeListener(RequeteName.RECHERCHE.toString(),this);
+        communicationIvy.addPropertyChangeListener(RequeteName.RECHERCHE.toString(),this);
     }
 
     public void lancerCommunicationBus(){
-        bus.lancerCommunication();
+        communicationIvy.lancerCommunication();
     }
 
     public void fermerCommunicationBus(){
-        bus.fermerCommunication();
+        communicationIvy.fermerCommunication();
     }
 
-    public void creerETenvoyerRequete(String mot){
+    public void creerRequete(String mot){
         Requete requete = new Requete(mot);
-        requete.start();
+        requete.init();
         listeRequete.add(requete);
+    }
+
+    public void envoyerRequete(Requete requete){
+        requete.start();
     }
 
     public boolean touteRequeteFinit(){
         return nbRequeteFinit == listeRequete.size();
-    }
-
-    public void touteRequeteTermine(){
-        nbRequeteFinit++;
     }
 
     public int nombreRequeteFinit(){
@@ -56,16 +57,15 @@ public class ControlRequete implements PropertyChangeListener{
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         String message = (String) evt.getNewValue();
-        System.out.println(message);
-        /*
-        if (!listeResultat.contains(message)){
-            listeResultat.add(message);
-            this.nbRequeteFinit++;
-        }
-
-         */
         listeResultat.add(message);
         this.nbRequeteFinit++;
-        System.out.println(nbRequeteFinit);
+    }
+
+    public void test(){
+        try {
+            System.out.println("test : " + communicationIvy.envoieMessage("test")); //Ne marche pas si k'affiche pas le nb de personne a qui j'envoie
+        } catch (IvyException e) {
+            e.printStackTrace();
+        }
     }
 }

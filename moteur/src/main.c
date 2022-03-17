@@ -24,7 +24,7 @@ void ivyEnvoie(char* chaine_resultat, char* mot){
 	char chaine_envoie[1100];
 	strcpy(chaine_envoie,"Moteur mot=");
 	strcat(chaine_envoie,mot);
-	strcat(chaine_envoie," ");
+	strcat(chaine_envoie," liste=");
 	strcat(chaine_envoie,chaine_resultat);
 
 	printf("\n%ld : %s|\n",strlen(chaine_envoie), chaine_envoie);
@@ -57,6 +57,10 @@ void StopCallback (IvyClientPtr app, void *data, int argc, char **argv)
 	IvyStop ();
 }
 
+void ect(IvyClientPtr app, void *data, int argc, char **argv){
+	printf("reçu");
+}
+
 int main(int argc, char const *argv[]){
 	
 	/* initialisation */
@@ -67,6 +71,8 @@ int main(int argc, char const *argv[]){
 
 	/* On Eoute et on traite les messages 'Bye' */
 	IvyBindMsg(StopCallback, 0, "^Stop$");
+
+	IvyBindMsg(ect, 0, "^(.*)");
 
 	IvyStart("127.255.255.255:2010"); // On lance l'agent sur le bus ivy
 

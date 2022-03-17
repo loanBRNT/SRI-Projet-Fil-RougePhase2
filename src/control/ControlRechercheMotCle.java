@@ -13,41 +13,27 @@ public class ControlRechercheMotCle{
     private int pourcentgeFinit = 0;
 
     public void rechercheMotCle(List<String> motCle, List<Integer> polarite) {
-        String mot = "";
-        Requete requete;
         ControlRequete controlRequete = new ControlRequete();
 
         //LANCER LA COM
-       controlRequete.lancerCommunicationBus();
-
-
-       System.out.println("start");
+        controlRequete.lancerCommunicationBus();
 
         for (String s : motCle) {
-            controlRequete.creerETenvoyerRequete(s);
+            controlRequete.creerRequete(s);
+        }
+
+        controlRequete.test();
+
+        for (Requete requete : controlRequete.getListeRequete()) {
+            controlRequete.envoyerRequete(requete);
         }
 
         while (!controlRequete.touteRequeteFinit()){
             pourcentgeFinit = controlRequete.nombreRequeteFinit();
-            //System.out.println(pourcentgeFinit);
+            System.out.println(pourcentgeFinit); //ne marche pas si je l'affiche pas
         }
 
         System.out.println(controlRequete.getListeResultat());
-
-        /*
-        List<Requete> listeRequete = new ArrayList<>();
-        int i = 0;
-        while(i != motCle.size()) {
-            Clavier.entrerClavierString();
-            controlRequete.creerETenvoyerRequete(motCle.get(i));
-            i++;
-        }
-
-        while (listeRequete.size() != pourcentgeFinit){
-            pourcentgeFinit = controlRequete.nombreRequeteFinit();
-        }
-
-         */
 
 
         //STOPPER LA COM
