@@ -6,33 +6,32 @@ import entity.Requete;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControlRechercheMotCle{
-    private ControlRequete controlRequete;
-
-    public ControlRechercheMotCle(ControlRequete controlRequete){
-        this.controlRequete = controlRequete;
-    }
+    private int pourcentgeFinit = 0;
 
     public void rechercheMotCle(List<String> motCle, List<Integer> polarite) {
         String mot = "";
+        Requete requete;
+        ControlRequete controlRequete = new ControlRequete();
 
         //LANCER LA COM
        controlRequete.lancerCommunicationBus();
 
-        while(!mot.equals("Stop")) {
-            mot = Clavier.entrerClavierString();
-            controlRequete.envoyerRequete(new Requete(mot));
-        }
-        /*
-        for (int i = 0 ; i < motCle.size() ; i++){
-            mot = motCle.get(i);
-            requete = new Requete(mot);
-            requete.start();
-        }
-*/
+       System.out.println("start");
 
+        for (String s : motCle) {
+            controlRequete.creerETenvoyerRequete(s);
+        }
+
+        while (!controlRequete.touteRequeteFinit()){
+            pourcentgeFinit += controlRequete.nombreRequeteFinit();
+            System.out.println(pourcentgeFinit);
+        }
+
+        System.out.println("fin");
 
         //STOPPER LA COM
         controlRequete.fermerCommunicationBus();

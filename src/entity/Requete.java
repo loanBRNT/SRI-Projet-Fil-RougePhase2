@@ -9,7 +9,7 @@ import java.beans.PropertyChangeListener;
 public class Requete extends Thread{
     private CommunicationIvy communicationIvy= CommunicationIvy.getInstance();
     private String mot;
-    private EtatRequete etatRequete = EtatRequete.RUNNABLE;
+    private boolean messageRecu = false;
     private String resultat="";
 
     public Requete(String mot){
@@ -18,36 +18,37 @@ public class Requete extends Thread{
     }
 
     public void run(){
-
         try {
-            communicationIvy.bus.bindMsgOnce("^Moteur liste=(.*)", new EcouteIvy(this));
+
+            communicationIvy.bus.bindMsgOnce("^Moteur liste=(.*)",(client, args) -> {
+                communicationIvy.support.firePropertyChange(RequeteName.RECHERCHE.toString(),resultat,args[0]);
+                resultat = "";
+                setMessageRecu(true);
+            });
+
             communicationIvy.bus.bindMsgOnce("^Moteur erreur=(.*)", (client, args) -> {
                 communicationIvy.support.firePropertyChange(RequeteName.RECHERCHE.toString(),resultat,args[0]);
                 resultat = "";
-                setEtatRequete(EtatRequete.TERMINATED);
+                setMessageRecu(true);
             });
+
             communicationIvy.envoieMessage("Interface message=rechercheMotCle source=" + mot);
         } catch (IvyException e) {
             e.printStackTrace();
-            setEtatRequete(EtatRequete.ERROR);
+            setMessageRecu(true);
         }
-        while (toujoursEnCours());
-        System.out.println("ok");
+        while (!messageRecu){
+            try {
+                sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        communicationIvy.bus.unBindMsg("^Moteur liste=(.*)");
+        communicationIvy.bus.unBindMsg("^Moteur erreur=(.*)");
     }
 
-    public boolean toujoursEnCours(){
-        return etatRequete == EtatRequete.RUNNABLE;
-    }
-
-    public EtatRequete getEtatRequete() {
-        return etatRequete;
-    }
-
-    public void setEtatRequete(EtatRequete etatRequete) {
-        this.etatRequete = etatRequete;
-    }
-
-    public void setListener(String nomDeLaPropriete, PropertyChangeListener listener){
-        communicationIvy.addPropertyChangeListener(nomDeLaPropriete,listener);
+    public void setMessageRecu(boolean messageRecu) {
+        this.messageRecu = messageRecu;
     }
 }

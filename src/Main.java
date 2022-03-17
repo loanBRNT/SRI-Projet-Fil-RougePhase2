@@ -26,7 +26,7 @@ public class Main{
         listePolarite.add(1);
         listePolarite.add(1);
 
-        ControlRechercheMotCle controlRechercheMotCle = new ControlRechercheMotCle(new ControlRequete());
+        ControlRechercheMotCle controlRechercheMotCle = new ControlRechercheMotCle();
 
         controlRechercheMotCle.rechercheMotCle(liste, listePolarite);
 
