@@ -18,20 +18,24 @@ public class Requete extends Thread{
     }
 
     public void run(){
+        int securite = 0;
         try {
 
-            communicationIvy.bus.bindMsgOnce("^Moteur liste=(.*)",(client, args) -> {
-                communicationIvy.support.firePropertyChange(RequeteName.RECHERCHE.toString(),resultat,args[0]);
+            communicationIvy.bus.bindMsgOnce("^Moteur mot=" + mot + " liste=(.*)",(client, args) -> {
+                String message = mot + "," + args[0];
+                System.out.println(message);
+                communicationIvy.support.firePropertyChange(RequeteName.RECHERCHE.toString(),resultat,message);
                 resultat = "";
                 setMessageRecu(true);
             });
 
-            communicationIvy.bus.bindMsgOnce("^Moteur erreur=(.*)", (client, args) -> {
-                communicationIvy.support.firePropertyChange(RequeteName.RECHERCHE.toString(),resultat,args[0]);
+            communicationIvy.bus.bindMsgOnce("^Moteur mot=" + mot + " erreur=(.*)", (client, args) -> {
+                String message = mot + "," + args[0];
+                System.out.println(message);
+                communicationIvy.support.firePropertyChange(RequeteName.RECHERCHE.toString(),resultat,message);
                 resultat = "";
                 setMessageRecu(true);
             });
-
             communicationIvy.envoieMessage("Interface message=rechercheMotCle source=" + mot);
         } catch (IvyException e) {
             e.printStackTrace();
@@ -39,13 +43,19 @@ public class Requete extends Thread{
         }
         while (!messageRecu){
             try {
-                sleep(100);
+                sleep(3000);
+                securite++;
+                if (securite > 1){ //si securite depasse les 1 c'est qu'il n'a pas trouvé donc on s'arrette
+                    communicationIvy.support.firePropertyChange(RequeteName.RECHERCHE.toString(),resultat,"erreur recherche");
+                    break;
+                }
+                System.out.println(this.getName() + " :" + securite);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        communicationIvy.bus.unBindMsg("^Moteur liste=(.*)");
-        communicationIvy.bus.unBindMsg("^Moteur erreur=(.*)");
+        communicationIvy.bus.unBindMsg("^Moteur mot=" + mot + " liste=(.*)");
+        communicationIvy.bus.unBindMsg("^Moteur mot=" + mot + " erreur=(.*)");
     }
 
     public void setMessageRecu(boolean messageRecu) {
