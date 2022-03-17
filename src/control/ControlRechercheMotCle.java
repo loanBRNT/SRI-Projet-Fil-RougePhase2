@@ -20,6 +20,7 @@ public class ControlRechercheMotCle{
         //LANCER LA COM
        controlRequete.lancerCommunicationBus();
 
+       /*
        System.out.println("start");
 
         for (String s : motCle) {
@@ -32,6 +33,21 @@ public class ControlRechercheMotCle{
         }
 
         System.out.println("fin");
+
+        */
+        List<Requete> listeRequete = new ArrayList<>();
+
+        while(!mot.equals("stop")) {
+            mot = Clavier.entrerClavierString();
+            requete = new Requete(mot);
+            requete.start();
+            listeRequete.add(requete);
+        }
+
+        while (listeRequete.size() != pourcentgeFinit){
+            pourcentgeFinit = controlRequete.nombreRequeteFinit();
+        }
+
 
         //STOPPER LA COM
         controlRequete.fermerCommunicationBus();
