@@ -25,9 +25,10 @@ public class Requete{
         }
     }
 
-    public void start() {
+    public void start(TypeRequete requete) {
         try {
-            communicationIvy.envoieMessage("Interface message=rechercheMotCle source=" + mot);
+            int i = communicationIvy.envoieMessage("Interface message=" + requete.toString() + " source=" + mot);
+            System.out.println("Interface message=" + requete.toString() + " source=" + mot);
             etatRequete = EtatRequete.RUNNABLE;
         } catch (IvyException e) {
             e.printStackTrace();

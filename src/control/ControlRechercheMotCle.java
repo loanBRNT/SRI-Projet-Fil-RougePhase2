@@ -3,6 +3,7 @@ package control;
 import boundary.Clavier;
 import entity.CommunicationIvy;
 import entity.Requete;
+import entity.TypeRequete;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -13,7 +14,7 @@ public class ControlRechercheMotCle{
     private int pourcentgeFinit = 0;
 
     public void rechercheMotCle(List<String> motCle, List<Integer> polarite) {
-        ControlRequete controlRequete = new ControlRequete();
+        ControlRequete controlRequete = new ControlRequete(TypeRequete.RECHERCHE_MOT_CLE);
 
         //LANCER LA COM
         controlRequete.lancerCommunicationBus();
