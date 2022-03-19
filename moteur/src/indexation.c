@@ -21,6 +21,54 @@
  ----------------------------------------------------------- 
 */
 
+void changementNom(char* nom){ //à finir de modifier
+	char nom_modif[100];
+	char commande[1000];
+	char carac=32;
+	char CHEMIN_TEXTE [100] =  "./Database/Texte/";
+	int i = 0,j=0;
+
+	carac = nom[0];
+	while(carac != '\0'){
+		if(carac == 130 || carac == 136 || carac == 137 || carac == 138 || carac == -87 || carac == -88 || carac == -86){
+			nom_modif[j]=101; //le e
+		}
+		else if(carac == 131 || carac == 132 || carac==133 || carac == -94 || carac == -96 || carac == -95){
+			nom_modif[j]=97; //le a
+		}
+		else if (carac == -89){
+			nom_modif[j]=99; //le c
+		}
+		else if(carac == 150 || carac == 151 || carac == -69 || carac == -68 || carac == -71 || carac == -70){
+			nom_modif[j]=117; //le u
+		}
+		else if(carac == 147 || carac == 148 || carac==149){
+			nom_modif[j]=111;
+		} else if (carac == -61) { //marque le debut de chaque carac inconnu
+			j--;
+		} else if (carac == -84 || carac == -83 || carac == -82 || carac == -81 || carac == -85) {
+			nom_modif[j] = 105; //le i
+		}
+		else {
+			nom_modif[j] = carac;
+		}
+		i++;
+		j++;
+		carac = nom[i];
+	}
+
+	strcpy(commande,"mv ");
+	strcat(commande,CHEMIN_TEXTE);
+	strcat(commande,nom);
+	strcat(commande," ");
+	strcat(commande,CHEMIN_TEXTE);
+	strcat(commande,nom_modif);
+	fflush(stdout);
+	system(commande);
+
+	strcpy(nom,nom_modif);
+}
+
 /* VerificationTraitee(char* nom_fic) verifie si le fichier nom_fic à déjà été indexé 
 return 1 si traité 0 sinon*/
 int VerificationTraitee(char* nom_fic){
@@ -138,6 +186,8 @@ void Indexation(){
 	    fscanf(ptr_fic, "%*s %*s %*s %*s %*s %*s %*s %*s %s", nom_fic);  // %*s INGNORE LA CHAINE LUE //
 	    // tant qu'on est pas a la fin du fichier on traite la donnee recuperer
  	    while ( !feof(ptr_fic) ){
+ 	    	//enleve les caractere accentue
+ 	    	changementNom(nom_fic);
  	    	// verifie si nom-fic a deja ete indexé ou pas
  	    	if(VerificationTraitee(nom_fic)){
  	    		//affichage de verification lors du developpement ( non necessaire lors de l'utilisation par le client)
