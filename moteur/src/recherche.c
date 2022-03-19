@@ -222,7 +222,7 @@ int lanceRechercheViaNom(char* nom_fichier_cible,char* chaine_resultat){
 
     int t = getTypeDuFichierEtChangeLextension(nom_fichier_cible);
 
-    strcpy(chaine_resultat," ");
+    strcpy(chaine_resultat,"erreur=La recherche n'a donne aucun resultat");
 
 
     if (t == 1){
@@ -236,7 +236,7 @@ int lanceRechercheViaNom(char* nom_fichier_cible,char* chaine_resultat){
         descFic = getDescripteurTexteViaPile(nom_fichier_cible);
 
         if (descFic.ID == 0){
-            strcpy(chaine_resultat," ");
+            strcpy(chaine_resultat,"erreur=LA RECHERCHE N'A PU ABOUTIR, VERIFIEZ QUE LE PROGRAMME DISPOSE DE L'ENSEMBLE DES DROITS AUX FICHIERS NECESSAIRES");
             return 2;
         }
     
@@ -258,7 +258,7 @@ int lanceRechercheViaNom(char* nom_fichier_cible,char* chaine_resultat){
         descFic = getDescripteurImageViaPile(nom_fichier_cible);
 
         if (descFic.ID == 0){
-            strcpy(chaine_resultat," ");
+            strcpy(chaine_resultat,"erreur=LA RECHERCHE N'A PU ABOUTIR, VERIFIEZ QUE LE PROGRAMME DISPOSE DE L'ENSEMBLE DES DROITS AUX FICHIERS NECESSAIRES");
             return 2;
         }
 
@@ -280,14 +280,14 @@ int lanceRechercheViaNom(char* nom_fichier_cible,char* chaine_resultat){
 
 
         if (descFic.identifiant == 0){
-            strcpy(chaine_resultat," ");
+            strcpy(chaine_resultat,"erreur=LA RECHERCHE N'A PU ABOUTIR, VERIFIEZ QUE LE PROGRAMME DISPOSE DE L'ENSEMBLE DES DROITS AUX FICHIERS NECESSAIRES");
             return 2;
         }
 
         rechercheJingle(&descFic, chaine_resultat);
 
     } else {
-        strcpy(chaine_resultat, " ");
+        strcpy(chaine_resultat, "erreur=Erreur de lecture du fichier : Type non reconnu");
         return 1;
     }
     return 0;
@@ -307,14 +307,14 @@ int lanceRechercheViaMotCle(char* mot, char* chaine_resultat){
 
     FILE* fTit = fopen("./fic_temp","r");
     if (fTit == NULL){
-        strcpy(chaine_resultat," t");
+        strcpy(chaine_resultat,"erreur=Votre recherche n'a pas aboutit");
         return 0;
     }
     
     fscanf(fTit,"%d",&numLigne);
 
     if (numLigne == 0){
-        strcpy(chaine_resultat," ");
+        strcpy(chaine_resultat,"erreur=Votre recherche n'a donne aucun resultat");
         return 0;
     }
 
@@ -333,7 +333,7 @@ int lanceRechercheViaMotCle(char* mot, char* chaine_resultat){
 
     FILE* f = fopen("./fic","r");
     if (f == NULL){
-        strcpy(chaine_resultat," ");
+        strcpy(chaine_resultat,"erreur=Votre recherche n'a pas aboutit");
         return 0;
     }
 
@@ -343,7 +343,7 @@ int lanceRechercheViaMotCle(char* mot, char* chaine_resultat){
     strcat(chaine_resultat, "]:\n");
     */
 
-    strcpy(chaine_resultat," ");
+    strcpy(chaine_resultat,"liste=");
 
     while (!feof(f)){
         fscanf(f,"%d %d ",&id,&num);
@@ -528,7 +528,7 @@ int generationChaineCaracViaPileIMAGE(PILE_DESCRIPTEUR_IMAGE pile, DESCRIPTEUR_I
     if (pile == NULL) return 1;
 
     recupNomDUFic(pile->Di.ID,type,chaine_nom);
-    strcpy(chaine," ");
+    strcpy(chaine,"liste=");
 
     while (pile != NULL){
         //strcat(chaine,"- ");
@@ -565,7 +565,7 @@ int generationChaineCaracViaPileTexte(PILE_DESCRIPTEUR_TEXTE pile, DESCRIPTEUR_T
     strcat(chaine,"]\n");
     */
 
-    strcpy(chaine," ");
+    strcpy(chaine,"liste=");
 
     CelluleT* sauv;
 
@@ -726,12 +726,12 @@ int rechercheJingle(DESCRIPTEUR_AUDIO* descFic, char* chaine_resultat){
 
     PILE_DESCRIPTEUR_AUDIO pile = Charger_Pile_DescripteurAudio(init_PILE_Audio());
     if (pile == NULL){
-        strcpy(chaine_resultat, " ");
+        strcpy(chaine_resultat, "erreur=chargement de la PILE impossible");
         return 1;
     }
 
     Cellule* sauv;
-    strcpy(chaine_resultat, " ");
+    strcpy(chaine_resultat, "liste=");
 
     while (pile != NULL){
         if (pile->Da->identifiant != descFic->identifiant) {
@@ -764,7 +764,7 @@ int rechercheJingle(DESCRIPTEUR_AUDIO* descFic, char* chaine_resultat){
         dePILE_Audio_Sans_Sauvegarde(sauv);
     }
 
-    if (nbAud == 0) strcpy(chaine_resultat," ");
+    if (nbAud == 0) strcpy(chaine_resultat,"erreur=La recherche n'a donne aucun resultat");
     /* PHASE 1
     if (presMax > 0){
         if (!ouvertureFichier(chaine_nomSauv)){
