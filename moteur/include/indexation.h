@@ -9,9 +9,9 @@
 |       Date de derniere MAJ : 17/12/22                     |
 |                                                           |
  ----------------------------------------------------------- 
- */
+ */;
 
-
+void changementNom(char* nom);
 int VerificationTraitee(char*);
 void Indexation();
 

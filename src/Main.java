@@ -22,10 +22,10 @@ public class Main{
         liste.add("jeanjean");
         liste.add("jean");
         liste.add("chris");
-        liste.add("mon");
-        liste.add("moti");
+        liste.add("monde");
+        liste.add("foot");
         liste.add("lala");
-        liste.add("jeanjean");
+        liste.add("ans");
 
 
         ArrayList<Integer> listePolarite = new ArrayList<>();
