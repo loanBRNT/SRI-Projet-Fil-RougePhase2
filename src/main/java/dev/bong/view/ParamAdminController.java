@@ -1,5 +1,6 @@
 package dev.bong.view;
 
+import dev.bong.entity.Config;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ParamAdminController implements Initializable {
+    Config config = Config.getInstance();
 
     @FXML
     private Label panneauAdminText;
@@ -59,12 +61,12 @@ public class ParamAdminController implements Initializable {
 
     //Spinner Value Factory
     final int initialValue = 1; //permet d'initialisé la valeur dans la case par ex: ancienne valeur
-    SpinnerValueFactory<Integer> svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100,initialValue);
-    SpinnerValueFactory<Integer> svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200,initialValue);
-    SpinnerValueFactory<Integer> svf3 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200,initialValue);
-    SpinnerValueFactory<Integer> svf4 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200,initialValue);
-    SpinnerValueFactory<Integer> svf5 = new SpinnerValueFactory.IntegerSpinnerValueFactory(2,1024,2,2);
-    SpinnerValueFactory<Integer> bite = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,8);
+    SpinnerValueFactory<Integer> svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100,config.getTauxSim());
+    SpinnerValueFactory<Integer> svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200,config.getNbrIntervalleAudio());
+    SpinnerValueFactory<Integer> svf3 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200,config.getSeuilOccMot());
+    SpinnerValueFactory<Integer> svf4 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200,config.getNbMaxMotParTexte());
+    SpinnerValueFactory<Integer> svf5 = new SpinnerValueFactory.IntegerSpinnerValueFactory(2,2048,config.getNbrPointsAudio());
+    SpinnerValueFactory<Integer> bite = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,8,config.getBitQuantification());
     @FXML
     private TextArea taSummary;
 
@@ -83,11 +85,17 @@ public class ParamAdminController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        spTauxSimi.setEditable(true);
         spTauxSimi.setValueFactory(svf1);
+        spIntervalle.setEditable(true);
         spIntervalle.setValueFactory(svf2);
+        spOccu.setEditable(true);
         spOccu.setValueFactory(svf3);
+        spNbMotTexte.setEditable(true);
         spNbMotTexte.setValueFactory(svf4);
+        spNbPointFen.setEditable(true);
         spNbPointFen.setValueFactory(svf5);
+        spNbBitQuant.setEditable(true);
         spNbBitQuant.setValueFactory(bite);
 
     }
