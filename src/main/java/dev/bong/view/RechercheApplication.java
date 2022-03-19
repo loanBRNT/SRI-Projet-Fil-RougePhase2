@@ -1,5 +1,6 @@
 package dev.bong.view;
 
+import dev.bong.control.ControlRechercheMotCle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,6 +8,8 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RechercheApplication extends Application {
     @Override
@@ -32,6 +35,17 @@ public class RechercheApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+
+        //launch();
+
+        ControlRechercheMotCle controlRechercheMotCle = new ControlRechercheMotCle();
+
+        List<String> list = new ArrayList<>();
+        list.add("christophe");
+        list.add("momo");
+        list.add("nana");
+        list.add("jean");
+
+        controlRechercheMotCle.rechercheMotCle(list,null);
     }
 }

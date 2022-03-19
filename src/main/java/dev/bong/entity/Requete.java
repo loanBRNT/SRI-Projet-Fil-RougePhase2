@@ -27,8 +27,7 @@ public class Requete{
 
     public void start(dev.bong.entity.TypeRequete requete) {
         try {
-            int i = communicationIvy.envoieMessage("Interface message=" + requete.toString() + " source=" + mot);
-            System.out.println("Interface message=" + requete.toString() + " source=" + mot);
+            communicationIvy.envoieMessage("Interface message=" + requete.toString() + " source=" + mot);
             etatRequete = EtatRequete.RUNNABLE;
         } catch (IvyException e) {
             e.printStackTrace();
