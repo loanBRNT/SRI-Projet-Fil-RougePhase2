@@ -40,9 +40,16 @@ public class CommunicationIvy {
     public void definirBind(String mot) throws IvyException {
         bus.bindMsg("^Moteur mot=" + mot + " liste=(.*)",(client, args) -> {
             String message = mot + "," + args[0];
-            support.firePropertyChange(RequeteName.RECHERCHE.toString(),resultat,message);
+            support.firePropertyChange(ListenerPropriete.RESULTAT.toString(),resultat,message);
             resultat = "";
         });
+    }
+
+    public void definirBind() throws IvyException {
+        bus.bindMsg("^Moteur message=(.*)", ((ivyClient, args) -> {
+            support.firePropertyChange(ListenerPropriete.RESULTAT.toString(),resultat,args[0]);
+            resultat = "";
+        }));
     }
 
     public int envoieMessage(String mess) throws IvyException{

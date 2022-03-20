@@ -39,15 +39,20 @@ void RechercheCallback (IvyClientPtr app, void *data, int argc, char **argv)
 
 	if (!strcmp(argv[0],"rechercheMotCle")){
 		lanceRechercheViaMotCle(argv[1],chaine);
+		ivyEnvoie(chaine, argv[1]);
 	} else if (!strcmp(argv[0],"rechercheFichier")){
 		lanceRechercheViaNom(argv[1],chaine);
+		ivyEnvoie(chaine, argv[1]);
 	} else if (!strcmp(argv[0],"rechercheCouleur")){
 		printf("recherche a coder");
-	} else {
+		//ivyEnvoie(chaine, argv[1]);
+	} else if (!strcmp(argv[0], "indexation")){
+		Indexation();
+		IvySendMsg("Moteur message=indexation ok");
+	}
+	else {
 		strcpy(chaine,"Requete non conforme");
 	}
-
-	ivyEnvoie(chaine, argv[1]);
 }
 
 /* callback associated to "Bye" messages */

@@ -1,5 +1,6 @@
 package dev.bong.view;
 
+import dev.bong.control.ControlIndexation;
 import dev.bong.control.ControlRechercheMotCle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -37,7 +38,6 @@ public class RechercheApplication extends Application {
     public static void main(String[] args) {
 
         //launch();
-
         ControlRechercheMotCle controlRechercheMotCle = new ControlRechercheMotCle();
 
         List<String> list = new ArrayList<>();
@@ -47,5 +47,12 @@ public class RechercheApplication extends Application {
         list.add("jean");
 
         controlRechercheMotCle.rechercheMotCle(list,null);
+
+    /*
+        ControlIndexation controlIndexation = new ControlIndexation();
+
+        controlIndexation.indexation();
+
+     */
     }
 }

@@ -57,6 +57,8 @@ void changementNom(char* nom){ //à finir de modifier
 		carac = nom[i];
 	}
 
+	nom_modif[j] = '\0';
+
 	strcpy(commande,"mv ");
 	strcat(commande,CHEMIN_TEXTE);
 	strcat(commande,nom);

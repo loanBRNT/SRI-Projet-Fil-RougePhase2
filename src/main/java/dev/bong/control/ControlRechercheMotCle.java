@@ -14,15 +14,7 @@ public class ControlRechercheMotCle {
         //LANCER LA COM
         controlRequete.lancerCommunicationBus();
 
-        for (String s : motCle) {
-            controlRequete.creerRequete(s);
-        }
-
-        controlRequete.test();
-
-        for (Requete requete : controlRequete.getListeRequete()) {
-            controlRequete.envoyerRequete(requete);
-        }
+        controlRequete.creerEtenvoyerListeRequete(motCle);
 
         while (!controlRequete.touteRequeteFinit()){
             pourcentgeFinit = controlRequete.nombreRequeteFinit();

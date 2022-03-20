@@ -13,7 +13,11 @@ public class Requete{
         this.mot = mot;
     }
 
-    public void init(){
+    public Requete(){
+        this.mot = "";
+    }
+
+    public void initRecherche(){
         try {
 
             communicationIvy.definirBind(mot);
@@ -25,9 +29,22 @@ public class Requete{
         }
     }
 
+    public void initIndexation(){
+        try {
+
+            communicationIvy.definirBind();
+
+            etatRequete = EtatRequete.READY_FOR_START;
+
+        } catch (IvyException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void start(dev.bong.entity.TypeRequete requete) {
         try {
-            communicationIvy.envoieMessage("Interface message=" + requete.toString() + " source=" + mot);
+            int i = communicationIvy.envoieMessage("Interface message=" + requete.toString() + " source=" + mot);
+            System.out.println("Interface message=" + requete.toString() + " source=" + mot + " | " + i);
             etatRequete = EtatRequete.RUNNABLE;
         } catch (IvyException e) {
             e.printStackTrace();
