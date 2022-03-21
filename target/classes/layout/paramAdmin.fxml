@@ -16,8 +16,9 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="677.0" layoutY="396.0" mnemonicParsing="false" onAction="#onApplyParamAdmin" prefHeight="28.0" prefWidth="96.0" text="Appliquer" />
-      <Label fx:id="lbNbMotTexte" layoutX="26.0" layoutY="243.0" text="Nombre de mots par texte">
+      <Button layoutX="627.0" layoutY="340.0" mnemonicParsing="false" onAction="#onApplyParamAdmin" prefHeight="28.0" prefWidth="100.0" text="Appliquer" />
+      <Button layoutX="627.0" layoutY="396.0" mnemonicParsing="false" onAction="#onBack" prefHeight="28.0" prefWidth="100.0" text="Retour" />
+      <Label fx:id="lbNbMotTexte" layoutX="25.0" layoutY="101.0" text="Nombre de mots par texte">
          <font>
             <Font size="15.0" />
          </font>
@@ -27,7 +28,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lblIntervalle" layoutX="25.0" layoutY="101.0" text="Nombre d'intervalle">
+      <Label fx:id="lbIntervalle" layoutX="26.0" layoutY="243.0" text="Nombre d'intervalle audio">
          <font>
             <Font size="15.0" />
          </font>
@@ -37,9 +38,9 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Spinner fx:id="spIntervalle" layoutX="259.0" layoutY="99.0" />
+      <Spinner fx:id="spIntervalle" layoutX="260.0" layoutY="241.0" />
       <Spinner fx:id="spOccu" layoutX="259.0" layoutY="167.0" />
-      <Spinner fx:id="spNbMotTexte" layoutX="260.0" layoutY="241.0" />
+      <Spinner fx:id="spNbMotTexte" layoutX="259.0" layoutY="99.0" />
       <Spinner fx:id="spNbBitQuant" layoutX="261.0" layoutY="385.0" />
       <Label layoutX="427.0" layoutY="36.0" text="Valeur entre 1 et 100" />
       <Label layoutX="424.0" layoutY="103.0" text="Supérieur à 0" />
