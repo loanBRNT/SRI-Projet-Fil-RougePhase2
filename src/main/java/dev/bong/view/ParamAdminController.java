@@ -1,5 +1,6 @@
 package dev.bong.view;
 
+import dev.bong.control.ControlModifierConfig;
 import dev.bong.entity.Config;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,24 +13,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ParamAdminController implements Initializable {
+    private ControlModifierConfig controlModifierConfig= new ControlModifierConfig();
     Config config = Config.getInstance();
 
     @FXML
     private Label panneauAdminText;
 
-    @FXML
-    protected void onApplyParamAdmin() throws IOException {
-        Parent param = FXMLLoader.load(ParamAdminController.class.getResource("/layout/parametre.fxml"));
-        Scene scene = new Scene(param);
-        Stage thisStage = (Stage) panneauAdminText.getScene().getWindow();
-        thisStage.setTitle("Paramètres");
-        thisStage.setScene(scene);
-        thisStage.show();
-        System.out.println("Boutton appliqué appuyé");
-    }
+
     @FXML
     private Button btnAffiche;
 
@@ -71,14 +66,33 @@ public class ParamAdminController implements Initializable {
     private TextArea taSummary;
 
 
+    @FXML
+    protected void onApplyParamAdmin() throws IOException {
+        ArrayList<Integer> listeValeur = recupererValeur() ;
+        controlModifierConfig.modifConfig(listeValeur);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Confirmation changement");
+        alert.setHeaderText("modification du .config effectuée avec succès");
+        alert.showAndWait();
 
+    }
+    @FXML
+    protected void onBack() throws IOException {
+        Parent param = FXMLLoader.load(ParamAdminController.class.getResource("/layout/admin.fxml"));
+        Scene scene = new Scene(param);
+        Stage thisStage = (Stage) lbIntervalle.getScene().getWindow();
+        thisStage.setTitle("Connexion administrateur");
+        thisStage.setScene(scene);
+        thisStage.show();
+        System.out.println("Boutton admin appuyé");
+    }
     @FXML
     public void HandleBtnAfficheAction(ActionEvent actionEvent) {
         taSummary.clear();
         taSummary.appendText(String.valueOf("Taux de similarité : " + spTauxSimi.getValue()) + "\n");
-        taSummary.appendText(String.valueOf("Nombre d'Intervalle : " + spIntervalle.getValue()) + "\n");
-        taSummary.appendText(String.valueOf("Seuil Occurence : " + spOccu.getValue()) + "\n");
         taSummary.appendText(String.valueOf("Nombre de mot par texte : " + spNbMotTexte.getValue()) + "\n");
+        taSummary.appendText(String.valueOf("Seuil Occurence : " + spOccu.getValue()) + "\n");
+        taSummary.appendText(String.valueOf("Nombre d'Intervalle audio : " + spIntervalle.getValue()) + "\n");
         taSummary.appendText(String.valueOf("Nombre de Point par fenêtre : " + spNbPointFen.getValue()) + "\n");
         taSummary.appendText(String.valueOf("Nombre bit Quantification : " + spNbBitQuant.getValue()) + "\n");
     }
@@ -99,4 +113,17 @@ public class ParamAdminController implements Initializable {
         spNbBitQuant.setValueFactory(bite);
 
     }
+
+    public ArrayList<Integer> recupererValeur(){
+        ArrayList<Integer> listeValeur = new ArrayList<>();
+        listeValeur.add(spTauxSimi.getValue());
+        listeValeur.add(spNbMotTexte.getValue());
+        listeValeur.add( spOccu.getValue());
+        listeValeur.add(spIntervalle.getValue());
+        listeValeur.add(spNbPointFen.getValue());
+        listeValeur.add(spNbBitQuant.getValue());
+        return listeValeur;
+    }
+
+
 }

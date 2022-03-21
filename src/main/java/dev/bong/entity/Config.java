@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Config {
+public class  Config {
 
     //attributs
     private List<String> listeDesConfig = new ArrayList<>();
