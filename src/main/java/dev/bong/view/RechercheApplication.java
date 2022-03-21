@@ -37,7 +37,8 @@ public class RechercheApplication extends Application {
 
     public static void main(String[] args) {
 
-        //launch();
+        launch();
+        /*
         ControlRechercheMotCle controlRechercheMotCle = new ControlRechercheMotCle();
 
         List<String> list = new ArrayList<>();

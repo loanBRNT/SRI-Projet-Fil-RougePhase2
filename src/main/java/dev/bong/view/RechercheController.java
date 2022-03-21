@@ -1,21 +1,31 @@
 package dev.bong.view;
 
+import dev.bong.control.ControlRechercheMotCle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class RechercheController {
 
+    public TextField barreRecherche;
+    public TextField barreBanWord;
     @FXML
     private Label welcomeText;
 
     @FXML
     protected void onClickSearch() throws IOException {
+        ControlRechercheMotCle controlRechercheMotCle = new ControlRechercheMotCle();
+        String motcle=barreRecherche.getText();
+        String banWord=barreBanWord.getText();
+        controlRechercheMotCle.rechercheMultiple(List.of(motcle.split("/")),List.of(banWord.split("/")));
+        
         Parent param = FXMLLoader.load(RechercheController.class.getResource("/layout/loading.fxml"));
         Scene scene = new Scene(param);
         Stage thisStage = (Stage) welcomeText.getScene().getWindow();
@@ -23,6 +33,7 @@ public class RechercheController {
         thisStage.setScene(scene);
         thisStage.show();
         System.out.println("Boutton recherche appuyé");
+
     }
     @FXML
     protected void onClickParam() throws IOException {
