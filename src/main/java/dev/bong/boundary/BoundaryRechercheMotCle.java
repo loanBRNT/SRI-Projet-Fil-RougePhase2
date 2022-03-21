@@ -38,7 +38,7 @@ public class BoundaryRechercheMotCle {
             }
         }
 
-        this.controlRechercheMotCle.rechercheMotCle(motCle,polarite);
+        this.controlRechercheMotCle.rechercheMotCle(motCle);
 
     }
 

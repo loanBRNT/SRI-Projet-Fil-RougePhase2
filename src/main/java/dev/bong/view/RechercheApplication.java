@@ -46,7 +46,7 @@ public class RechercheApplication extends Application {
         list.add("nana");
         list.add("jean");
 
-        controlRechercheMotCle.rechercheMotCle(list,null);
+        controlRechercheMotCle.rechercheMotCle(list);
 
     /*
         ControlIndexation controlIndexation = new ControlIndexation();

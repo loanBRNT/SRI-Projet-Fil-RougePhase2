@@ -38,6 +38,7 @@ public class Main {
 
         ControlRechercheMotCle controlRechercheMotCle = new ControlRechercheMotCle();
 
-        controlRechercheMotCle.rechercheMotCle(liste, listePolarite);
+        //controlRechercheMotCle.rechercheMotCle(liste);
+        controlRechercheMotCle.rechercheMultiple(liste,null);
     }
 }
