@@ -2,7 +2,7 @@ package dev.bong.control;
 
 import dev.bong.entity.CommunicationIvy;
 import dev.bong.entity.Requete;
-import dev.bong.entity.RequeteName;
+import dev.bong.entity.ListenerPropriete;
 import dev.bong.entity.TypeRequete;
 import fr.dgac.ivy.IvyException;
 
@@ -22,7 +22,7 @@ public class ControlRequete implements PropertyChangeListener{
 
     public ControlRequete(TypeRequete typeRequete){
         this.typeRequete = typeRequete;
-        communicationIvy.addPropertyChangeListener(RequeteName.RECHERCHE.toString(),this);
+        communicationIvy.addPropertyChangeListener(ListenerPropriete.RESULTAT.toString(),this);
     }
 
     public void lancerCommunicationBus(){
@@ -33,10 +33,28 @@ public class ControlRequete implements PropertyChangeListener{
         communicationIvy.fermerCommunication();
     }
 
-    public void creerRequete(String mot){
+    public void creerRequeteRecherche(String mot){
         Requete requete = new Requete(mot);
-        requete.init();
+        requete.initRecherche();
         listeRequete.add(requete);
+    }
+
+    public void creerRequeteIndexation(){
+        Requete requete = new Requete();
+        requete.initIndexation();
+        listeRequete.add(requete);
+    }
+
+    public void creerEtenvoyerListeRequete(List<String> motCle){
+        for (String s : motCle) {
+            creerRequeteRecherche(s);
+        }
+
+       test();
+
+        for (Requete requete : listeRequete) {
+            envoyerRequete(requete);
+        }
     }
 
     public void envoyerRequete(Requete requete){
