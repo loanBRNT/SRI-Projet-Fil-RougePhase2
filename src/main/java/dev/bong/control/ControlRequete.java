@@ -94,7 +94,11 @@ public class ControlRequete implements PropertyChangeListener{
         String message = (String) evt.getNewValue();
         listeResultat.add(message);
         this.nbRequeteFinit++;
-        System.out.println(nbRequeteFinit + " / " + listeRequete.size());
+        System.out.println(this + " -> " + nbRequeteFinit + " / " + listeRequete.size());
+    }
+
+    public void removePropertyChangeListener(){
+        communicationIvy.removePropertyChangeListener(ListenerPropriete.RESULTAT.toString(),this);
     }
 
     public void test(){
@@ -104,4 +108,5 @@ public class ControlRequete implements PropertyChangeListener{
             e.printStackTrace();
         }
     }
+
 }

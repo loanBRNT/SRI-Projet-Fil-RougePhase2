@@ -25,6 +25,10 @@ public class CommunicationIvy {
         support.addPropertyChangeListener(propertyName,listener);
     }
 
+    public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener){
+        support.removePropertyChangeListener(propertyName,listener);
+    }
+
     public void lancerCommunication() throws IvyException {
         bus.start("127.255.255.255:2010");
     }

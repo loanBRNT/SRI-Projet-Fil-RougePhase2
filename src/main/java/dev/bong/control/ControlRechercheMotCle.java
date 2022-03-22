@@ -25,11 +25,13 @@ public class ControlRechercheMotCle extends Thread {
         if (motcle == null || motBan == null){
             this.interrupt();
         }
+
         // creation des set servant a recuperer les resultats des recherches
         Set<String> resMotCle = new HashSet<>();
         Set<String> resMotBan = new HashSet<>();
         Set<String> resTotal = new HashSet<>();
 
+        //Laisse le temps à la communication de s'établir entre tous les agents
         try {
             sleep(2000);
         } catch (InterruptedException e) {
@@ -40,7 +42,7 @@ public class ControlRechercheMotCle extends Thread {
         if (!motcle.toString().equals("[]")) resMotCle=rechercheMotCle(motcle);
         if (!motBan.toString().equals("[]")) resMotBan=rechercheMotCle(motBan);
 
-        System.out.println("mot cle : " + resMotCle + "\nmot ban : " + resMotBan);
+        //System.out.println("mot cle : " + resMotCle + "\nmot ban : " + resMotBan);
 
         // ajout des recherches a polarité positives et suppression des polarité négatives
         resTotal.addAll(resMotCle);
@@ -51,7 +53,8 @@ public class ControlRechercheMotCle extends Thread {
 
         //envoie resultats
 
-
+        //delier l'OBSERVER
+        controlRequete.removePropertyChangeListener();
         //STOPPER LA COM
         controlRequete.fermerCommunicationBus();
 

@@ -35,7 +35,6 @@ public class RechercheController {
         String banWord=barreBanWord.getText();
         controlRechercheMotCle.initRecherche(List.of(motcle.split("/")),List.of(banWord.split("/")));
         controlRechercheMotCle.start();
-
     }
 
     @FXML
