@@ -8,19 +8,39 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ControlRechercheMotCle {
-    private int pourcentgeFinit = 0;
+public class ControlRechercheMotCle extends Thread {
+    private ControlRequete controlRequete = new ControlRequete(TypeRequete.RECHERCHE_MOT_CLE);
+    private List<String> motcle;
+    private List<String> motBan;
 
-    public void rechercheMultiple(List<String> motcle, List<String> motBan) {
+    public void initRecherche(List<String> motcle, List<String> motBan){
+        //LANCER LA COM
+        controlRequete.lancerCommunicationBus();
+
+        this.motBan = motBan;
+        this.motcle = motcle;
+    }
+
+    public void run(){
+        if (motcle == null || motBan == null){
+            this.interrupt();
+        }
         // creation des set servant a recuperer les resultats des recherches
-        Set<String> resMotCle;
-        Set<String> resMotBan;
+        Set<String> resMotCle = new HashSet<>();
+        Set<String> resMotBan = new HashSet<>();
         Set<String> resTotal = new HashSet<>();
 
-        // appel des fonctions de recherches
-        resMotCle=rechercheMotCle(motcle);
-        resMotBan=rechercheMotCle(motBan);
+        try {
+            sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+        // appel des fonctions de recherches
+        if (!motcle.toString().equals("[]")) resMotCle=rechercheMotCle(motcle);
+        if (!motBan.toString().equals("[]")) resMotBan=rechercheMotCle(motBan);
+
+        System.out.println("mot cle : " + resMotCle + "\nmot ban : " + resMotBan);
 
         // ajout des recherches a polarité positives et suppression des polarité négatives
         resTotal.addAll(resMotCle);
@@ -32,52 +52,36 @@ public class ControlRechercheMotCle {
         //envoie resultats
 
 
+        //STOPPER LA COM
+        controlRequete.fermerCommunicationBus();
+
+
     }
 
     public Set<String> rechercheMotCle(List<String> motCle) {
-        ControlRequete controlRequete = new ControlRequete(TypeRequete.RECHERCHE_MOT_CLE);
-        List<String> res = new ArrayList<>();
+        List<String> res;
         Set<String> resTotal = new HashSet<>();
-
-
-        //LANCER LA COM
-        controlRequete.lancerCommunicationBus();
+        boolean requeteFinit = false;
 
         controlRequete.creerEtenvoyerListeRequete(motCle);
 
-        while (!controlRequete.touteRequeteFinit()){
-            pourcentgeFinit = controlRequete.nombreRequeteFinit();
-            System.out.println(pourcentgeFinit); //ne marche pas si je l'affiche pas
+        while (!requeteFinit){
+            try {
+                requeteFinit = controlRequete.touteRequeteFinit();
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-        System.out.println(controlRequete.getListeResultat());
 
         res=controlRequete.getListeResultat();
-        /* test en attedant ivy ok
-        String resultatIvy="momo, ; christophe, TestJean.xml,05-Jean-Christophe_Bette_a_dû_attendre.xml; jeanjean, ;\n" +
-                "         jeanjean, ; jean, TestJean.xml,12-Jean-Marie_Sevestre_libraire_et_PDG.xml,05-Jean-Christophe_Bette_a_dû_attendre.xml;\n" +
-                "          chris, ; mon, ; moti, ; lala, ";
-        res=List.of(resultatIvy.split(";"));
 
-         */
         for (String resultatRecherche : res) {
             ArrayList<String> fichiersTrouvee = new ArrayList<>(List.of(resultatRecherche.split(",")));
             fichiersTrouvee.remove(0);
             resTotal.addAll(fichiersTrouvee);
         }
 
-        //STOPPER LA COM
-        controlRequete.fermerCommunicationBus();
-
-        for (String titre : resTotal) {
-            System.out.println(titre);
-        }
-
-        /* exemple reception
-        [momo, ; christophe, TestJean.xml,05-Jean-Christophe_Bette_a_dû_attendre.xml; jeanjean, ;
-         jeanjean, ; jean, TestJean.xml,12-Jean-Marie_Sevestre_libraire_et_PDG.xml,05-Jean-Christophe_Bette_a_dû_attendre.xml;
-          chris, ; mon, ; moti, ; lala, ]
-
-         */
         return resTotal;
     }
 

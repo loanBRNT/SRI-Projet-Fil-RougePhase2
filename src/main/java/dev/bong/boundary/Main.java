@@ -1,3 +1,4 @@
+/*
 package dev.bong.boundary;
 
 import dev.bong.control.ControlRechercheMotCle;
@@ -39,6 +40,7 @@ public class Main {
         ControlRechercheMotCle controlRechercheMotCle = new ControlRechercheMotCle();
 
         //controlRechercheMotCle.rechercheMotCle(liste);
-        controlRechercheMotCle.rechercheMultiple(liste,null);
+        controlRechercheMotCle.initRecherche()(liste,null);
     }
 }
+*/

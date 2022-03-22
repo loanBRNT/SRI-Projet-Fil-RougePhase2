@@ -36,24 +36,6 @@ public class RechercheApplication extends Application {
     }
 
     public static void main(String[] args) {
-
         launch();
-        /*
-        ControlRechercheMotCle controlRechercheMotCle = new ControlRechercheMotCle();
-
-        List<String> list = new ArrayList<>();
-        list.add("christophe");
-        list.add("momo");
-        list.add("nana");
-        list.add("jean");
-
-        controlRechercheMotCle.rechercheMotCle(list);
-
-    /*
-        ControlIndexation controlIndexation = new ControlIndexation();
-
-        controlIndexation.indexation();
-
-     */
     }
 }

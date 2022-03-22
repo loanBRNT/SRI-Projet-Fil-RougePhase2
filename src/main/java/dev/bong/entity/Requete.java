@@ -26,6 +26,7 @@ public class Requete{
 
         } catch (IvyException e) {
             e.printStackTrace();
+            setEtatRequete(EtatRequete.ERROR);
         }
     }
 
@@ -38,17 +39,30 @@ public class Requete{
 
         } catch (IvyException e) {
             e.printStackTrace();
+            setEtatRequete(EtatRequete.ERROR);
         }
     }
 
     public void start(dev.bong.entity.TypeRequete requete) {
+        int nbAgentReceveur;
         try {
-            int i = communicationIvy.envoieMessage("Interface message=" + requete.toString() + " source=" + mot);
-            System.out.println("Interface message=" + requete.toString() + " source=" + mot + " | " + i);
-            etatRequete = EtatRequete.RUNNABLE;
+            nbAgentReceveur = communicationIvy.envoieMessage("Interface message=" + requete.toString() + " source=" + mot);
+            if (nbAgentReceveur > 0){
+                System.out.println(mot + " envoyé à " + nbAgentReceveur + " agents");
+                setEtatRequete(EtatRequete.RUNNABLE);
+            }
+            else {
+                System.out.println("Impossible d'envoyer le mot : " + mot);
+                setEtatRequete(EtatRequete.ERROR);
+            }
         } catch (IvyException e) {
             e.printStackTrace();
-        }
+            setEtatRequete(EtatRequete.ERROR);
+       }
+    }
+
+    public void setEtatRequete(EtatRequete etatRequete) {
+        this.etatRequete = etatRequete;
     }
 
     public EtatRequete getEtatRequete() {

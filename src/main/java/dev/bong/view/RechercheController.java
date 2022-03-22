@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 public class RechercheController {
 
@@ -21,12 +22,7 @@ public class RechercheController {
 
     @FXML
     protected void onClickSearch() throws IOException {
-        ControlRechercheMotCle controlRechercheMotCle = new ControlRechercheMotCle();
-        String motcle=barreRecherche.getText();
-        String banWord=barreBanWord.getText();
-        controlRechercheMotCle.rechercheMultiple(List.of(motcle.split("/")),List.of(banWord.split("/")));
-        
-        Parent param = FXMLLoader.load(RechercheController.class.getResource("/layout/loading.fxml"));
+        Parent param = FXMLLoader.load(Objects.requireNonNull(RechercheController.class.getResource("/layout/loading.fxml")));
         Scene scene = new Scene(param);
         Stage thisStage = (Stage) welcomeText.getScene().getWindow();
         thisStage.setTitle("Chargement des résultats");
@@ -34,7 +30,14 @@ public class RechercheController {
         thisStage.show();
         System.out.println("Boutton recherche appuyé");
 
+        ControlRechercheMotCle controlRechercheMotCle = new ControlRechercheMotCle();
+        String motcle=barreRecherche.getText();
+        String banWord=barreBanWord.getText();
+        controlRechercheMotCle.initRecherche(List.of(motcle.split("/")),List.of(banWord.split("/")));
+        controlRechercheMotCle.start();
+
     }
+
     @FXML
     protected void onClickParam() throws IOException {
         Parent param = FXMLLoader.load(RechercheController.class.getResource("/layout/parametre.fxml"));

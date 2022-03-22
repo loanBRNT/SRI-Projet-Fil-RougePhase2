@@ -17,13 +17,13 @@
          </font>
       </Label>
       <Button layoutX="709.0" layoutY="186.0" onAction="#onClickSearch" text="Search" />
-      <TextField layoutX="70.0" layoutY="186.0" prefHeight="26.0" prefWidth="605.0" />
+      <TextField fx:id="barreRecherche" layoutX="70.0" layoutY="186.0" prefHeight="26.0" prefWidth="605.0" />
       <ImageView fitHeight="50.0" fitWidth="68.0" layoutX="24.0" layoutY="373.0" onMouseClicked="#onClickParam" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/icone-parametres-android.png" />
          </image>
       </ImageView>
       <ToggleButton layoutX="70.0" layoutY="225.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" text="+ Ban Words" />
-      <TextField layoutX="174.0" layoutY="225.0" prefHeight="26.0" prefWidth="501.0" />
+      <TextField  fx:id="barreBanWord" layoutX="174.0" layoutY="225.0" prefHeight="26.0" prefWidth="501.0" />
    </children>
 </Pane>

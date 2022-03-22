@@ -1,9 +1,7 @@
 package dev.bong.control;
 
-import dev.bong.entity.CommunicationIvy;
-import dev.bong.entity.Requete;
-import dev.bong.entity.ListenerPropriete;
-import dev.bong.entity.TypeRequete;
+import dev.bong.boundary.Clavier;
+import dev.bong.entity.*;
 import fr.dgac.ivy.IvyException;
 
 import java.beans.PropertyChangeEvent;
@@ -25,8 +23,14 @@ public class ControlRequete implements PropertyChangeListener{
         communicationIvy.addPropertyChangeListener(ListenerPropriete.RESULTAT.toString(),this);
     }
 
-    public void lancerCommunicationBus(){
-        communicationIvy.lancerCommunication();
+    public boolean lancerCommunicationBus(){
+        try {
+            communicationIvy.lancerCommunication();
+        } catch (IvyException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     public void fermerCommunicationBus(){
@@ -45,7 +49,15 @@ public class ControlRequete implements PropertyChangeListener{
         listeRequete.add(requete);
     }
 
+    public void initRequete(){
+        listeRequete.clear();
+        listeResultat.clear();
+        nbRequeteFinit=0;
+    }
+
     public void creerEtenvoyerListeRequete(List<String> motCle){
+        initRequete();
+
         for (String s : motCle) {
             creerRequeteRecherche(s);
         }
@@ -82,6 +94,7 @@ public class ControlRequete implements PropertyChangeListener{
         String message = (String) evt.getNewValue();
         listeResultat.add(message);
         this.nbRequeteFinit++;
+        System.out.println(nbRequeteFinit + " / " + listeRequete.size());
     }
 
     public void test(){

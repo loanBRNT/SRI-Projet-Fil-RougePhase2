@@ -25,20 +25,12 @@ public class CommunicationIvy {
         support.addPropertyChangeListener(propertyName,listener);
     }
 
-    public void lancerCommunication(){
-        try
-        {
-            bus.start("127.255.255.255:2010");
-        }
-        catch (IvyException ie)
-        {
-            ie.printStackTrace();
-            fermerCommunication();
-        }
+    public void lancerCommunication() throws IvyException {
+        bus.start("127.255.255.255:2010");
     }
 
     public void definirBind(String mot) throws IvyException {
-        bus.bindMsg("^Moteur mot=" + mot + " liste=(.*)",(client, args) -> {
+        bus.bindMsgOnce("^Moteur mot=" + mot + " liste=(.*)",(client, args) -> {
             String message = mot + "," + args[0];
             support.firePropertyChange(ListenerPropriete.RESULTAT.toString(),resultat,message);
             resultat = "";
