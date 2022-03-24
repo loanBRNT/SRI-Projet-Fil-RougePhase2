@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.ResultatsController">
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.ResultatsController">
     <children>
         <Label fx:id="bongResultats" layoutX="366.0" layoutY="135.0" prefHeight="34.0" prefWidth="69.0" text="Bong">
             <font>
@@ -15,4 +16,4 @@
       <Label layoutX="296.0" layoutY="262.0" text="Resultats" />
       <Button layoutX="629.0" layoutY="394.0" mnemonicParsing="false" onAction="#onRelancerRecherche" text="Relancer une recherche" />
     </children>
-</Pane>
+</AnchorPane>

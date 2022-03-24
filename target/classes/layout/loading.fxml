@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.LoadingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.LoadingController">
     <children>
         <Label fx:id="bongLoading" layoutX="350.0" layoutY="137.0" prefHeight="34.0" prefWidth="69.0" text="Bong">
             <font>
@@ -28,4 +28,4 @@
     <cursor>
         <Cursor fx:constant="DEFAULT" />
     </cursor>
-</Pane>
+</AnchorPane>

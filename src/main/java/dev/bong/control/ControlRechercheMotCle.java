@@ -56,11 +56,11 @@ public class ControlRechercheMotCle extends Thread {
 
         //envoie resultats
 
+
         //delier l'OBSERVER
         controlRequete.removePropertyChangeListener();
         //STOPPER LA COM
         controlRequete.fermerCommunicationBus();
-
 
     }
 
