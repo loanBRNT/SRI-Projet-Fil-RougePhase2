@@ -9,6 +9,7 @@ public class Requete{
     private EtatRequete etatRequete = EtatRequete.WAITING_FOR_INIT;
     private String resultat="";
 
+
     public Requete(String mot){
         this.mot = mot;
     }

@@ -3,12 +3,11 @@ package dev.bong.control;
 import dev.bong.entity.Requete;
 import dev.bong.entity.TypeRequete;
 
-public class ControlIndexation {
+public class ControlIndexation extends Thread {
+    private ControlRequete controlRequete = new ControlRequete(TypeRequete.INDEXATION);
 
-    public void indexation() {
-        ControlRequete controlRequete = new ControlRequete(TypeRequete.INDEXATION);
-
-        int pourcentgeFinit;
+    public void run() {
+        boolean requeteFinit = false;
 
         //Lancer la com
         controlRequete.lancerCommunicationBus();
@@ -23,11 +22,13 @@ public class ControlIndexation {
             controlRequete.envoyerRequete(requete);
         }
 
-
-
-        while (!controlRequete.touteRequeteFinit()){
-            pourcentgeFinit = controlRequete.nombreRequeteFinit();
-            System.out.println(pourcentgeFinit); //ne marche pas si je l'affiche pas
+        while (!requeteFinit){
+            try {
+                requeteFinit = controlRequete.touteRequeteFinit();
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         System.out.println(controlRequete.getListeResultat());

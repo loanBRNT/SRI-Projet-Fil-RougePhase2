@@ -7,6 +7,6 @@ public class ControlMenuAdmin {
         this.controlIndexation=controlIndexation;
     }
     public void indexation() {
-        this.controlIndexation.indexation();
+        this.controlIndexation.start(); //Lancement du thread
     }
 }

@@ -1,6 +1,5 @@
 package dev.bong.control;
 
-import dev.bong.entity.Requete;
 import dev.bong.entity.TypeRequete;
 
 import java.util.ArrayList;
@@ -9,11 +8,15 @@ import java.util.List;
 import java.util.Set;
 
 public class ControlRechercheMotCle extends Thread {
+    //Création d'un controlleur associé à la recherche.
     private ControlRequete controlRequete = new ControlRequete(TypeRequete.RECHERCHE_MOT_CLE);
+
+    //liste de mot clé
     private List<String> motcle;
     private List<String> motBan;
 
-    public void initRecherche(List<String> motcle, List<String> motBan){
+    //Permet d'initialiser la com + les listes de mots clés
+    public ControlRechercheMotCle(List<String> motcle, List<String> motBan){
         //LANCER LA COM
         controlRequete.lancerCommunicationBus();
 
@@ -21,10 +24,8 @@ public class ControlRechercheMotCle extends Thread {
         this.motcle = motcle;
     }
 
+    //se lance avec .start() (Tread)
     public void run(){
-        if (motcle == null || motBan == null){
-            this.interrupt();
-        }
 
         // creation des set servant a recuperer les resultats des recherches
         Set<String> resMotCle = new HashSet<>();
@@ -53,6 +54,7 @@ public class ControlRechercheMotCle extends Thread {
 
         //envoie resultats
 
+
         //delier l'OBSERVER
         controlRequete.removePropertyChangeListener();
         //STOPPER LA COM
@@ -61,11 +63,14 @@ public class ControlRechercheMotCle extends Thread {
 
     }
 
+    //A partir de la liste de mot clé, Créé une liste de requête (une requête par mot) et l'envoie au moteur
+    //Récupère une String des résultats que l'on split en une liste de String (un élément pour un fichier)
     public Set<String> rechercheMotCle(List<String> motCle) {
         List<String> res;
         Set<String> resTotal = new HashSet<>();
         boolean requeteFinit = false;
 
+        //Envoie de la liste au controlleur, qui envoie ensuite au moteur
         controlRequete.creerEtenvoyerListeRequete(motCle);
 
         while (!requeteFinit){

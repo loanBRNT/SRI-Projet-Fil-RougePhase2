@@ -10,19 +10,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControlRequete implements PropertyChangeListener{
+    //Lien vers le singleton de communication Ivy
     private CommunicationIvy communicationIvy = CommunicationIvy.getInstance();
+
+    //Type de requête associé à ce controlleur
     private TypeRequete typeRequete;
 
+    //Liste de données
     private List<Requete> listeRequete = new ArrayList<>();
     private List<String> listeResultat = new ArrayList<>();
 
+    //Compteur de retour
     private int nbRequeteFinit = 0;
+
 
     public ControlRequete(TypeRequete typeRequete){
         this.typeRequete = typeRequete;
+
+        //Abonnement du controlleur à l'écoute de l'arrivée de message sur le bus Ivy {PATTERN OBSERVER}
         communicationIvy.addPropertyChangeListener(ListenerPropriete.RESULTAT.toString(),this);
     }
 
+    /* ------------------- FONCTIONS GENERALES ------------------ */
+
+    //Connexion de notre Agent (Communication ivy)
     public boolean lancerCommunicationBus(){
         try {
             communicationIvy.lancerCommunication();
@@ -33,8 +44,24 @@ public class ControlRequete implements PropertyChangeListener{
         return true;
     }
 
+    //Déconnexion de l'agent
     public void fermerCommunicationBus(){
         communicationIvy.fermerCommunication();
+    }
+
+    //A partir de la liste en param,
+    public void creerEtenvoyerListeRequete(List<String> motCle){
+        initRequete();
+
+        for (String s : motCle) {
+            creerRequeteRecherche(s);
+        }
+
+        test();
+
+        for (Requete requete : listeRequete) {
+            envoyerRequete(requete);
+        }
     }
 
     public void creerRequeteRecherche(String mot){
@@ -53,20 +80,6 @@ public class ControlRequete implements PropertyChangeListener{
         listeRequete.clear();
         listeResultat.clear();
         nbRequeteFinit=0;
-    }
-
-    public void creerEtenvoyerListeRequete(List<String> motCle){
-        initRequete();
-
-        for (String s : motCle) {
-            creerRequeteRecherche(s);
-        }
-
-       test();
-
-        for (Requete requete : listeRequete) {
-            envoyerRequete(requete);
-        }
     }
 
     public void envoyerRequete(Requete requete){

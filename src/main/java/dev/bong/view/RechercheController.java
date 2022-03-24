@@ -30,10 +30,10 @@ public class RechercheController {
         thisStage.show();
         System.out.println("Boutton recherche appuyé");
 
-        ControlRechercheMotCle controlRechercheMotCle = new ControlRechercheMotCle();
         String motcle=barreRecherche.getText();
         String banWord=barreBanWord.getText();
-        controlRechercheMotCle.initRecherche(List.of(motcle.split("/")),List.of(banWord.split("/")));
+
+        ControlRechercheMotCle controlRechercheMotCle = new ControlRechercheMotCle(List.of(motcle.split("/")),List.of(banWord.split("/")));
         controlRechercheMotCle.start();
     }
 
