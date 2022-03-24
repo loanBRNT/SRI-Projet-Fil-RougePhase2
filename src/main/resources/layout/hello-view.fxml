@@ -25,7 +25,13 @@
          <menus>
             <Menu mnemonicParsing="false" text="Type de recherche">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#onTypeText" text="Texte" />
+                  <Menu mnemonicParsing="false" text="Texte">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#onTypeText" text="Par nom" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#onTypeText" text="Par mots-clés" />
+                    </items>
+                  </Menu>
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#onTypeAudio" text="Audio" />
                   <SeparatorMenuItem mnemonicParsing="false" />

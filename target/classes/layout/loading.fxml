@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.LoadingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.LoadingController">
     <children>
         <Label fx:id="bongLoading" layoutX="350.0" layoutY="137.0" prefHeight="34.0" prefWidth="69.0" text="Bong">
             <font>
@@ -24,6 +24,7 @@
                 <Font size="15.0" />
             </font>
         </Label>
+      <Button layoutX="627.0" layoutY="203.0" mnemonicParsing="false" onAction="#onLoadingFailled" prefHeight="25.0" prefWidth="120.0" text="Echec Recherche" />
     </children>
     <cursor>
         <Cursor fx:constant="DEFAULT" />
