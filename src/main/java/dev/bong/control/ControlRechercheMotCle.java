@@ -1,7 +1,9 @@
 package dev.bong.control;
 
 import dev.bong.entity.TypeRequete;
+import dev.bong.view.LoadingController;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -53,7 +55,6 @@ public class ControlRechercheMotCle extends Thread {
         System.out.println("resultat final : \n"+resTotal);
 
         //envoie resultats
-
 
         //delier l'OBSERVER
         controlRequete.removePropertyChangeListener();

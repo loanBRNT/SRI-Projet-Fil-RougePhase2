@@ -57,12 +57,20 @@ public class ControlRequete implements PropertyChangeListener{
             creerRequeteRecherche(s);
         }
 
-        test();
-
         for (Requete requete : listeRequete) {
             envoyerRequete(requete);
         }
     }
+
+    public void envoyerRequete(Requete requete){
+        requete.start(typeRequete);
+    }
+
+    public boolean touteRequeteFinit(){
+        return nbRequeteFinit == listeRequete.size();
+    }
+
+    /* ------------------- FONCTIONS SPECIFIQUES ------------------ */
 
     public void creerRequeteRecherche(String mot){
         Requete requete = new Requete(mot);
@@ -82,17 +90,7 @@ public class ControlRequete implements PropertyChangeListener{
         nbRequeteFinit=0;
     }
 
-    public void envoyerRequete(Requete requete){
-        requete.start(typeRequete);
-    }
-
-    public boolean touteRequeteFinit(){
-        return nbRequeteFinit == listeRequete.size();
-    }
-
-    public int nombreRequeteFinit(){
-        return nbRequeteFinit;
-    }
+    /* ------------------- FONCTIONS accesseurs ------------------ */
 
     public List<Requete> getListeRequete() {
         return listeRequete;
@@ -101,6 +99,8 @@ public class ControlRequete implements PropertyChangeListener{
     public List<String> getListeResultat() {
         return listeResultat;
     }
+
+    /* ------------------- FONCTIONS du listener ------------------ */
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
@@ -112,14 +112,6 @@ public class ControlRequete implements PropertyChangeListener{
 
     public void removePropertyChangeListener(){
         communicationIvy.removePropertyChangeListener(ListenerPropriete.RESULTAT.toString(),this);
-    }
-
-    public void test(){
-        try {
-            System.out.println("test : " + communicationIvy.envoieMessage("test")); //Ne marche pas si k'affiche pas le nb de personne a qui j'envoie
-        } catch (IvyException e) {
-            e.printStackTrace();
-        }
     }
 
 }

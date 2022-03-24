@@ -16,8 +16,6 @@ public class ControlIndexation extends Thread {
 
         controlRequete.creerRequeteIndexation();
 
-        controlRequete.test();
-
         for (Requete requete : controlRequete.getListeRequete()){
             controlRequete.envoyerRequete(requete);
         }

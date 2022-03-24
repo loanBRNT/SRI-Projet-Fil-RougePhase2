@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.LoadingController">
+    <children>
+        <Label fx:id="bongLoading" layoutX="350.0" layoutY="137.0" prefHeight="34.0" prefWidth="69.0" text="Bong">
+            <font>
+                <Font size="29.0" />
+            </font>
+        </Label>
+        <ProgressBar accessibleRole="NODE" layoutX="174.0" layoutY="205.0" onMouseClicked="#onLoadingAchieve" prefHeight="21.0" prefWidth="417.0">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </ProgressBar>
+        <ProgressIndicator layoutX="435.0" layoutY="241.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="33.0" />
+        <Label layoutX="329.0" layoutY="245.0" text="In Progress . . .">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+    </children>
+    <cursor>
+        <Cursor fx:constant="DEFAULT" />
+    </cursor>
+</Pane>

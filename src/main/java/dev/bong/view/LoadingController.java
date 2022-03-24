@@ -10,19 +10,22 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoadingController {
-
-
+    
     @FXML
     private Label bongLoading;
 
     @FXML
     protected void onLoadingAchieve() throws IOException {
+        changementVersResultat();
+        System.out.println("Recherche terminée");
+    }
+
+    public void changementVersResultat() throws IOException {
         Parent param = FXMLLoader.load(LoadingController.class.getResource("/layout/resultats.fxml"));
         Scene scene = new Scene(param);
         Stage thisStage = (Stage) bongLoading.getScene().getWindow();
         thisStage.setTitle("Résultats");
         thisStage.setScene(scene);
         thisStage.show();
-        System.out.println("Recherche terminée");
     }
 }
