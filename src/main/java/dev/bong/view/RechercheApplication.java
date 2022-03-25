@@ -1,6 +1,7 @@
 package dev.bong.view;
 
 import dev.bong.control.ControlIndexation;
+import dev.bong.control.ControlRechercheFichier;
 import dev.bong.control.ControlRechercheMotCle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +37,19 @@ public class RechercheApplication extends Application {
     }
 
     public static void main(String[] args) {
+
         launch();
+
+        /* TEST RECHERCHE FICHIER
+        ArrayList<String> l = new ArrayList<>();
+        ArrayList<String> li = new ArrayList<>();
+
+        l.add("jingle_m6.wav");
+
+
+        ControlRechercheFichier controlRechercheFichier = new ControlRechercheFichier(l,li);
+        controlRechercheFichier.start();
+
+         */
     }
 }
