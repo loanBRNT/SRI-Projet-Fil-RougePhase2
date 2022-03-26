@@ -21,54 +21,61 @@
  ----------------------------------------------------------- 
 */
 
-void changementNom(char* nom){ //à finir de modifier
-	char nom_modif[100];
-	char commande[1000];
-	char carac=32;
-	char CHEMIN_TEXTE [100] =  "./Database/Texte/";
-	int i = 0,j=0;
+void changementNom(char* nom){ 
+    char nom_modif[100];
+    char commande[1000];
+    char carac=32;
+    char CHEMIN_TEXTE [100] =  "./Database/Texte/";
+    int i = 0,j=0;
 
-	carac = nom[0];
-	while(carac != '\0'){
-		if(carac == 130 || carac == 136 || carac == 137 || carac == 138 || carac == -87 || carac == -88 || carac == -86){
-			nom_modif[j]=101; //le e
-		}
-		else if(carac == 131 || carac == 132 || carac==133 || carac == -94 || carac == -96 || carac == -95){
-			nom_modif[j]=97; //le a
-		}
-		else if (carac == -89){
-			nom_modif[j]=99; //le c
-		}
-		else if(carac == 150 || carac == 151 || carac == -69 || carac == -68 || carac == -71 || carac == -70){
-			nom_modif[j]=117; //le u
-		}
-		else if(carac == 147 || carac == 148 || carac==149){
-			nom_modif[j]=111;
-		} else if (carac == -61) { //marque le debut de chaque carac inconnu
-			j--;
-		} else if (carac == -84 || carac == -83 || carac == -82 || carac == -81 || carac == -85) {
-			nom_modif[j] = 105; //le i
-		}
-		else {
-			nom_modif[j] = carac;
-		}
-		i++;
-		j++;
-		carac = nom[i];
-	}
+    carac = nom[0];
+    while(carac != '\0'){
+        if(carac == 130 || carac == 136 || carac == 137 || carac == 138 || carac == -87 || carac == -88 || carac == -86 || carac==-120 || carac==-119 || carac == -118 || carac==-117){
+            nom_modif[j]=101; //le e
+        }
+        else if(carac == 131 || carac == 132 || carac==133 || carac == -94 || carac == -96 || carac == -95 || carac==-128 || carac==-127 || carac==-126 || carac==-125 || carac==-124){
+            nom_modif[j]=97; //le a
+        }
+        else if (carac == -89){
+            nom_modif[j]=99; //le c
+        }
+        else if(carac == 150 || carac == 151 || carac == -69 || carac == -68 || carac == -71 || carac == -70 || carac == -103 || carac == -102 || carac == -101 || carac == -100){
+            nom_modif[j]=117; //le u
+        }
+        else if(carac == 147 || carac == 148 || carac==149){
+            nom_modif[j]=111;
+        } else if (carac == -61) { //marque le debut de chaque carac inconnu
+            j--;
+        } else if (carac == -84 || carac == -83 || carac == -82 || carac == -81 || carac == -85 || carac==-116 || carac==-115 || carac==-114 || carac==-113) {
+            nom_modif[j] = 105; //le i
+        } else if(carac == -76 || carac == -74 || carac== -77 || carac ==-106 || carac ==-107 || carac ==-108 || carac ==-109 || carac == -110){
+        	nom_modif[j] = 111; // le o
+        } else if(carac == 44 || carac==59){
+        	j--;
+        }
+        else {
+            nom_modif[j] = carac;
+        }
+        i++;
+        j++;
+        carac = nom[i];
+    }
 
-	nom_modif[j] = '\0';
+    nom_modif[j] = '\0';
 
-	strcpy(commande,"mv ");
-	strcat(commande,CHEMIN_TEXTE);
-	strcat(commande,nom);
-	strcat(commande," ");
-	strcat(commande,CHEMIN_TEXTE);
-	strcat(commande,nom_modif);
-	fflush(stdout);
-	system(commande);
+    
+    strcpy(commande,"mv ");
+    strcat(commande,CHEMIN_TEXTE);
+    strcat(commande,nom);
+    strcat(commande," ");
+    strcat(commande,CHEMIN_TEXTE);
+    strcat(commande,nom_modif);
+    fflush(stdout);
+    system(commande);
 
-	strcpy(nom,nom_modif);
+    strcpy(nom,nom_modif);
+    
+	
 }
 
 /* VerificationTraitee(char* nom_fic) verifie si le fichier nom_fic à déjà été indexé 
@@ -145,6 +152,8 @@ void Indexation(){
 	PILE_Audio pA =init_PILE_Audio();
 	PILE_Img pI=init_PILE_Img();
 	PILE_Texte pT=init_PILE_Texte();
+
+	system("chmod 777 ./.config");
 
 	// recuperation des valeurs du .config
 	int NbMot=recupNbMotParTexteDuConfig();

@@ -1,6 +1,7 @@
 package dev.bong.view;
 
 import dev.bong.control.ControlIndexation;
+import dev.bong.control.ControlRechercheFichier;
 import dev.bong.control.ControlRechercheMotCle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +37,23 @@ public class RechercheApplication extends Application {
     }
 
     public static void main(String[] args) {
+
         launch();
+
+        /* TEST INDEXATION
+        ControlIndexation controlIndexation = new ControlIndexation();
+        controlIndexation.run();
+
+         */
+
+        /* TEST FICHIER + MODE
+        ArrayList<String> l = new ArrayList<>();
+        ArrayList<String> li = new ArrayList<>();
+
+        l.add("26-Lyon_prend_ses_aises_en.xml");
+
+        ControlRechercheFichier controlRechercheFichier = new ControlRechercheFichier(l,li,true);
+        controlRechercheFichier.start();
+        */
     }
 }

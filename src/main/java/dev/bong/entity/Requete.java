@@ -14,10 +14,6 @@ public class Requete{
         this.mot = mot;
     }
 
-    public Requete(){
-        this.mot = "";
-    }
-
     public void initRecherche(){
         try {
 

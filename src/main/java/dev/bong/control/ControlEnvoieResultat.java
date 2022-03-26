@@ -1,10 +1,11 @@
 package dev.bong.control;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.HashSet;
 import java.util.Set;
 
 public class ControlEnvoieResultat {
-    private Set<String> resTotal;
 
     private ControlEnvoieResultat(){}
 
@@ -17,9 +18,8 @@ public class ControlEnvoieResultat {
     }
 
     public void receptionResultat(Set<String> resultat){
-        this.resTotal = resultat;
-    }
 
+    }
 
 
 }

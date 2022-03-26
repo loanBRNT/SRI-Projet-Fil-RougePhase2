@@ -36,17 +36,27 @@ void RechercheCallback (IvyClientPtr app, void *data, int argc, char **argv)
 {
 
 	char chaine[1000];
+	char sauvNom[100];
+	strcpy(sauvNom,argv[1]);
 
 	if (!strcmp(argv[0],"rechercheMotCle")){
 		lanceRechercheViaMotCle(argv[1],chaine);
-		ivyEnvoie(chaine, argv[1]);
+		ivyEnvoie(chaine, sauvNom);
 	} else if (!strcmp(argv[0],"rechercheFichier")){
 		lanceRechercheViaNom(argv[1],chaine);
-		ivyEnvoie(chaine, argv[1]);
+		ivyEnvoie(chaine, sauvNom);
 	} else if (!strcmp(argv[0],"rechercheCouleur")){
 		printf("recherche a coder");
 		//ivyEnvoie(chaine, argv[1]);
 	} else if (!strcmp(argv[0], "indexation")){
+		if (!strcmp(argv[1],"reset")){
+			system("echo ' ' > ./Database/Descripteur/liste_base_image.txt");
+			system("echo ' ' > ./Database/Descripteur/dI.txt");
+			system("echo ' ' > ./Database/Descripteur/liste_base_audio.txt");
+			system("echo ' ' > ./Database/Descripteur/dA.txt");
+			system("echo ' ' > ./Database/Descripteur/liste_base_texte.txt");
+			system("echo ' ' > ./Database/Descripteur/dT.txt");
+		}
 		Indexation();
 		IvySendMsg("Moteur message=indexation ok");
 	}
@@ -62,10 +72,6 @@ void StopCallback (IvyClientPtr app, void *data, int argc, char **argv)
 	IvyStop ();
 }
 
-void ect(IvyClientPtr app, void *data, int argc, char **argv){
-	printf("reçu");
-}
-
 int main(int argc, char const *argv[]){
 	
 	/* initialisation */
@@ -76,8 +82,6 @@ int main(int argc, char const *argv[]){
 
 	/* On Eoute et on traite les messages 'Bye' */
 	IvyBindMsg(StopCallback, 0, "^Stop$");
-
-	IvyBindMsg(ect, 0, "^(.*)");
 
 	IvyStart("127.255.255.255:2010"); // On lance l'agent sur le bus ivy
 

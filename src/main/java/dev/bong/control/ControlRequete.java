@@ -78,8 +78,14 @@ public class ControlRequete implements PropertyChangeListener{
         listeRequete.add(requete);
     }
 
-    public void creerRequeteIndexation(){
-        Requete requete = new Requete();
+    public void creerRequeteIndexation(boolean forcee){
+        initRequete();
+        Requete requete;
+        if (forcee){
+            requete = new Requete("reset");
+        } else {
+            requete = new Requete("");
+        }
         requete.initIndexation();
         listeRequete.add(requete);
     }

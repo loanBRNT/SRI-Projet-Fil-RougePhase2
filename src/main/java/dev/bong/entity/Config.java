@@ -1,8 +1,11 @@
 package dev.bong.entity;
 
+import dev.bong.control.ControlIndexation;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class  Config {
 
@@ -15,9 +18,11 @@ public class  Config {
     private int nbrPointsAudio;
     private int bitQuantification;
 
+    private boolean maj = false;
+
     private Config(){
         //ajout des config des differents moteur de recherche
-        listeDesConfig.add("./moteur/phase2.config");
+        listeDesConfig.add("./moteur/.config");
         try {
             chargementConfig();
         } catch (IOException e) {
@@ -48,54 +53,59 @@ public class  Config {
 
                 //Ecrire dans le fichier
                 fw = new FileWriter(f, true);
-                fw.write(this.tauxSim+"\n" +
-                        this.nbMaxMotParTexte + "\n" +
-                        this.seuilOccMot+ "\n" +
-                        this.nbrIntervalleAudio + "\n" +
-                        this.nbrPointsAudio + "\n" +
-                        this.bitQuantification+ "\n"
+                fw.write("tauxSim " + this.tauxSim+"\n" +
+                        "nbMaxMotParTexte " + this.nbMaxMotParTexte + "\n" +
+                        "seuilOccurenceMot " + this.seuilOccMot+ "\n" +
+                        "nombreIntervalleAudio " + this.nbrIntervalleAudio + "\n" +
+                        "nombrePointsAudio " + this.nbrPointsAudio + "\n" +
+                        "nombreBitsQuantification " + this.bitQuantification+ "\n"
                 );
                 fw.flush();
                 fw.close();
+
+                if (maj){
+                    ControlIndexation controlIndexation = new ControlIndexation(true);
+                    controlIndexation.start();
+                }
             }
 
         } catch (IOException ex) {
             ex.printStackTrace();
         }
 
-
-
     }
 
     public void chargementConfig() throws IOException {
-        FileReader flux = new FileReader("./moteur/phase2.config");
+        FileReader flux = new FileReader("./moteur/.config");
         BufferedReader buffer = new BufferedReader(flux);
-        String line;
-        int i=0;
+        List<String> listeLigne;
+        String line,val,nom;
         while((line= buffer.readLine())!= null){
-            switch (i){
-                case 0:
-                    this.tauxSim=Integer.parseInt(line);
+            listeLigne = List.of(line.split(" "));
+            nom = listeLigne.get(0);
+            val = listeLigne.get(1);
+            switch (nom){
+                case "tauxSim":
+                    this.tauxSim=Integer.parseInt(val);
                     break;
-                case 1 :
-                    this.nbMaxMotParTexte=Integer.parseInt(line);
+                case "nbMaxMotParTexte" :
+                    this.nbMaxMotParTexte=Integer.parseInt(val);
                     break;
-                case 2 :
-                    this.seuilOccMot=Integer.parseInt(line);
+                case "seuilOccurenceMot" :
+                    this.seuilOccMot=Integer.parseInt(val);
                     break;
-                case 3 :
-                    this.nbrIntervalleAudio=Integer.parseInt(line);
+                case "nombreIntervalleAudio" :
+                    this.nbrIntervalleAudio=Integer.parseInt(val);
                     break;
-                case 4 :
-                    this.nbrPointsAudio=Integer.parseInt(line);
+                case "nombrePointsAudio" :
+                    this.nbrPointsAudio=Integer.parseInt(val);
                     break;
-                case 5 :
-                    this.bitQuantification=Integer.parseInt(line);
+                case "nombreBitsQuantification" :
+                    this.bitQuantification=Integer.parseInt(val);
                     break;
                 default:
                     break;
             }
-            i++;
         }
 
     }
@@ -105,7 +115,10 @@ public class  Config {
     }
 
     public void setTauxSim(int tauxSim) {
-        this.tauxSim = tauxSim;
+        if (this.tauxSim != tauxSim){
+            maj = true;
+            this.tauxSim = tauxSim;
+        }
     }
 
     public int getNbMaxMotParTexte() {
@@ -113,7 +126,10 @@ public class  Config {
     }
 
     public void setNbMaxMotParTexte(int nbMaxMotParTexte) {
-        this.nbMaxMotParTexte = nbMaxMotParTexte;
+        if (this.nbMaxMotParTexte != nbMaxMotParTexte){
+            maj = true;
+            this.nbMaxMotParTexte = nbMaxMotParTexte;
+        }
     }
 
     public int getSeuilOccMot() {
@@ -121,7 +137,10 @@ public class  Config {
     }
 
     public void setSeuilOccMot(int seuilOccMot) {
-        this.seuilOccMot = seuilOccMot;
+        if (this.seuilOccMot != seuilOccMot){
+            maj = true;
+            this.seuilOccMot = seuilOccMot;
+        }
     }
 
     public int getNbrIntervalleAudio() {
@@ -129,7 +148,10 @@ public class  Config {
     }
 
     public void setNbrIntervalleAudio(int nbrIntervalleAudio) {
-        this.nbrIntervalleAudio = nbrIntervalleAudio;
+        if (this.nbrIntervalleAudio != nbrIntervalleAudio){
+            maj = true;
+            this.nbrIntervalleAudio = nbrIntervalleAudio;;
+        }
     }
 
     public int getNbrPointsAudio() {
@@ -137,7 +159,10 @@ public class  Config {
     }
 
     public void setNbrPointsAudio(int nbrPointsAudio) {
-        this.nbrPointsAudio = nbrPointsAudio;
+        if (this.nbrPointsAudio != nbrPointsAudio){
+            maj = true;
+            this.nbrPointsAudio = nbrPointsAudio;
+        }
     }
 
     public int getBitQuantification() {
@@ -145,7 +170,10 @@ public class  Config {
     }
 
     public void setBitQuantification(int bitQuantification) {
-        this.bitQuantification = bitQuantification;
+        if (this.bitQuantification != bitQuantification){
+            maj = true;
+            this.bitQuantification = bitQuantification;
+        }
     }
 
     public String toString(){
