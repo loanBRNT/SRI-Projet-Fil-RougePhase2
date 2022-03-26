@@ -6,6 +6,12 @@ import dev.bong.entity.TypeRequete;
 public class ControlIndexation extends Thread {
     private static ControlRequete controlRequete = new ControlRequete(TypeRequete.INDEXATION);
 
+    private boolean requeteForcee;
+
+    public ControlIndexation(boolean requeteForcee){
+        this.requeteForcee = requeteForcee;
+    }
+
     public void run() {
         boolean requeteFinit = false;
 
@@ -20,7 +26,7 @@ public class ControlIndexation extends Thread {
 
         //Utilisation particulière de controlRequete, car on ne soumet ici qu'une seule requête spécifique à l'indexation
 
-        controlRequete.creerRequeteIndexation();
+        controlRequete.creerRequeteIndexation(requeteForcee);
 
         for (Requete requete : controlRequete.getListeRequete()){
             controlRequete.envoyerRequete(requete);
@@ -40,10 +46,13 @@ public class ControlIndexation extends Thread {
 
         //STOPPER LA COM
         controlRequete.fermerCommunicationBus();
+
+        //delier
+        controlRequete.removePropertyChangeListener();
     }
 
     public static void IndexationDuModeOuvert(){
-        controlRequete.creerRequeteIndexation();
+        controlRequete.creerRequeteIndexation(false);
 
         for (Requete requete : controlRequete.getListeRequete()){
             controlRequete.envoyerRequete(requete);

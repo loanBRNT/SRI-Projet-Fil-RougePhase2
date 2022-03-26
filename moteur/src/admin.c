@@ -39,6 +39,8 @@ PTR_CONFIG ouvrirPanneauDeConfiguration(){
 	int valeur;
 	PTR_CONFIG config = (PTR_CONFIG) malloc(sizeof(struct s_config));
 
+	system("ls -al");
+
 	FILE * ptr_fic = fopen("./.config","r");
 	if (ptr_fic == NULL){
 		fprintf(stderr, "ERREUR : probleme d'acces a .config\n");

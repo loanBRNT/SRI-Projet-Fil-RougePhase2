@@ -153,6 +153,8 @@ void Indexation(){
 	PILE_Img pI=init_PILE_Img();
 	PILE_Texte pT=init_PILE_Texte();
 
+	system("chmod 777 ./.config");
+
 	// recuperation des valeurs du .config
 	int NbMot=recupNbMotParTexteDuConfig();
 	int OccMot=recupSeuilOccurenceMotDuConfig();
