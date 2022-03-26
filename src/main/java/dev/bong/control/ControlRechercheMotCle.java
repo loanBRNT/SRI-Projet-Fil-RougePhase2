@@ -1,5 +1,6 @@
 package dev.bong.control;
 
+import dev.bong.entity.Historique;
 import dev.bong.entity.TypeRequete;
 import dev.bong.view.LoadingController;
 
@@ -12,6 +13,8 @@ import java.util.Set;
 public class ControlRechercheMotCle extends Thread {
     //Création d'un controlleur associé à la recherche.
     private ControlRequete controlRequete = new ControlRequete(TypeRequete.RECHERCHE_MOT_CLE);
+
+    private ControlEnvoieResultat controlEnvoieResultat = ControlEnvoieResultat.getInstance();
 
     //liste de mot clé
     private List<String> motcle;
@@ -55,7 +58,10 @@ public class ControlRechercheMotCle extends Thread {
         System.out.println("resultat final : \n"+resTotal);
 
         //envoie resultats
+        controlEnvoieResultat.receptionResultat(resTotal);
 
+        //appel de l'historique
+        Historique.ecrire(TypeRequete.RECHERCHE_MOT_CLE,"motCle:" + motcle + ",motBan:" + motBan + "resultats:" + resTotal);
 
         //delier l'OBSERVER
         controlRequete.removePropertyChangeListener();

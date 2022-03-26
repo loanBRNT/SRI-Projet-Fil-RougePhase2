@@ -40,16 +40,20 @@ public class RechercheApplication extends Application {
 
         launch();
 
-        /* TEST RECHERCHE FICHIER
+        /* TEST INDEXATION
+        ControlIndexation controlIndexation = new ControlIndexation();
+        controlIndexation.run();
+
+         */
+
+        /* TEST FICHIER + MODE
         ArrayList<String> l = new ArrayList<>();
         ArrayList<String> li = new ArrayList<>();
 
-        l.add("jingle_m6.wav");
+        l.add("26-Lyon_prend_ses_aises_en.xml");
 
-
-        ControlRechercheFichier controlRechercheFichier = new ControlRechercheFichier(l,li);
+        ControlRechercheFichier controlRechercheFichier = new ControlRechercheFichier(l,li,true);
         controlRechercheFichier.start();
-
-         */
+        */
     }
 }

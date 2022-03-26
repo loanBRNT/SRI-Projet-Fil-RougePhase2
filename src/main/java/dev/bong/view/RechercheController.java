@@ -1,5 +1,6 @@
 package dev.bong.view;
 
+import dev.bong.control.ControlEnvoieResultat;
 import dev.bong.control.ControlRechercheMotCle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,8 @@ import java.util.Objects;
 public class RechercheController {
 
     private boolean banWordsButtonActivate = false;
+
+
     @FXML
     private Label welcomeText;
 

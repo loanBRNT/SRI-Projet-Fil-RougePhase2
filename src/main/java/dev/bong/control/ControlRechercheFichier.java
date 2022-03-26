@@ -11,19 +11,24 @@ import java.util.Set;
 public class ControlRechercheFichier extends Thread {
 
     //Création d'un controlleur associé à la recherche.
-    private ControlRequete controlRequete = new ControlRequete(TypeRequete.RECHERCHE_FICHIER);
+    private static ControlRequete controlRequete = new ControlRequete(TypeRequete.RECHERCHE_FICHIER);
 
     //liste de mot clé
     private List<String> nomFicRecherche;
     private List<String> nomFicBan;
 
+    //Mode pour la recherche
+    private boolean modeOuvert;
+
     //Permet d'initialiser la com + les listes de mots clés
-    public ControlRechercheFichier(List<String> nomFicRecherche, List<String> nomFicBan){
+    public ControlRechercheFichier(List<String> nomFicRecherche, List<String> nomFicBan, boolean modeOuvert){
         //LANCER LA COM
         controlRequete.lancerCommunicationBus();
 
         this.nomFicBan = nomFicBan;
         this.nomFicRecherche = nomFicRecherche;
+
+        this.modeOuvert = modeOuvert;
     }
 
     //se lance avec .start() (Tread)
@@ -34,11 +39,16 @@ public class ControlRechercheFichier extends Thread {
         Set<String> resMotBan = new HashSet<>();
         Set<String> resTotal = new HashSet<>();
 
+
         //Laisse le temps à la communication de s'établir entre tous les agents
         try {
             sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+
+        if (modeOuvert){
+            ControlIndexation.IndexationDuModeOuvert();
         }
 
         // appel des fonctions de recherches
