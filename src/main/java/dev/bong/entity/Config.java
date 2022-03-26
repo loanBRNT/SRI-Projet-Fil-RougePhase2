@@ -18,6 +18,8 @@ public class  Config {
     private int nbrPointsAudio;
     private int bitQuantification;
 
+    private boolean mode=false;   // false pour fermer et true pour ouvert
+    private boolean multiMoteur = false;
     private boolean maj = false;
 
     private Config(){
@@ -175,6 +177,16 @@ public class  Config {
             this.bitQuantification = bitQuantification;
         }
     }
+
+    public boolean getMode(){return mode;}
+
+    public void setModeOuvert(){this.mode=true;}
+    public void setModeFerme(){this.mode=false;}
+
+    public boolean getMultiMoteur(){return multiMoteur;}
+    public void setMultiMoteurOn(){this.multiMoteur=true;}
+    public void setMultiMoteurOff(){this.multiMoteur=false;}
+
 
     public String toString(){
         String s= "taux sim ="+tauxSim +
