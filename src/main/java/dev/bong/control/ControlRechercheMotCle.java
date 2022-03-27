@@ -2,9 +2,8 @@ package dev.bong.control;
 
 import dev.bong.entity.Historique;
 import dev.bong.entity.TypeRequete;
-import dev.bong.view.LoadingController;
+import dev.bong.view.RechercheApplication;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -58,7 +57,8 @@ public class ControlRechercheMotCle extends Thread {
         System.out.println("resultat final : \n"+resTotal);
 
         //envoie resultats
-        controlEnvoieResultat.receptionResultat(resTotal);
+        //controlEnvoieResultat.receptionResultat(resTotal);
+        //RechercheApplication.stage.show();
 
         //appel de l'historique
         Historique.ecrire(TypeRequete.RECHERCHE_MOT_CLE,"motCle:" + motcle + ",motBan:" + motBan + "resultats:" + resTotal);

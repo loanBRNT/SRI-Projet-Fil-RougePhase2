@@ -1,6 +1,8 @@
 package dev.bong.view;
 
 import dev.bong.control.ControlEnvoieResultat;
+import javafx.application.Preloader;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,10 +15,22 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Optional;
 
-public class LoadingController{
+public class LoadingController {
     @FXML
     private Label bongLoading;
     private ControlEnvoieResultat controlEnvoieResultat = ControlEnvoieResultat.getInstance();
+
+    private Scene sceneRes;
+
+    public LoadingController(){
+        super();
+        FXMLLoader fxmlLoader = new FXMLLoader(RechercheApplication.class.getResource("/layout/resultats.fxml"));
+        try {
+            this.sceneRes = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     protected void onLoadingAchieve() throws IOException {

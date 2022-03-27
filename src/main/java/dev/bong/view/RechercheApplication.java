@@ -15,13 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RechercheApplication extends Application {
-    private static Stage stage;
+    public static Stage stage;
 
     public static void changerScene(String view) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RechercheApplication.class.getResource("/layout/" + view));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
-
     }
 
     @Override
