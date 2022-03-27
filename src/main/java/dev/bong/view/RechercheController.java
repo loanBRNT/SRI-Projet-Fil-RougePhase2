@@ -35,12 +35,7 @@ public class RechercheController {
 
     @FXML
     protected void onClickSearch() throws IOException {
-        Parent param = FXMLLoader.load(Objects.requireNonNull(RechercheController.class.getResource("/layout/loading.fxml")));
-        Scene scene = new Scene(param);
-        Stage thisStage = (Stage) welcomeText.getScene().getWindow();
-        thisStage.setTitle("Chargement des résultats");
-        thisStage.setScene(scene);
-        thisStage.show();
+        RechercheApplication.changerScene("loading.fxml");
         System.out.println("Boutton recherche appuyé");
 
         String motcle=barreRecherche.getText();
@@ -52,12 +47,7 @@ public class RechercheController {
 
     @FXML
     protected void onClickParam() throws IOException {
-        Parent param = FXMLLoader.load(RechercheController.class.getResource("/layout/parametre.fxml"));
-        Scene scene = new Scene(param);
-        Stage thisStage = (Stage) welcomeText.getScene().getWindow();
-        thisStage.setTitle("Paramètres");
-        thisStage.setScene(scene);
-        thisStage.show();
+        RechercheApplication.changerScene("parametre.fxml");
         System.out.println("Boutton paramètre appuyé");
     }
     @FXML
@@ -75,41 +65,21 @@ public class RechercheController {
 
     @FXML
     protected void onTypeText() throws IOException {
-        Parent param = FXMLLoader.load(ParamController.class.getResource("/layout/hello-view.fxml"));
-        Scene scene = new Scene(param);
-        Stage thisStage = (Stage) welcomeText.getScene().getWindow();
-        thisStage.setTitle("Rechercher");
-        thisStage.setScene(scene);
-        thisStage.show();
+        RechercheApplication.changerScene("hello-view.fxml");
     }
 
     @FXML
     protected void onTypeImageRef() throws IOException {
-        Parent param = FXMLLoader.load(ParamController.class.getResource("/layout/hello-view.fxml"));
-        Scene scene = new Scene(param);
-        Stage thisStage = (Stage) welcomeText.getScene().getWindow();
-        thisStage.setTitle("Rechercher");
-        thisStage.setScene(scene);
-        thisStage.show();
+        RechercheApplication.changerScene("hello-view.fxml");
     }
 
     @FXML
     protected void onTypeImagePalette() throws IOException {
-        Parent param = FXMLLoader.load(ParamController.class.getResource("/layout/paletteCouleur.fxml"));
-        Scene scene = new Scene(param);
-        Stage thisStage = (Stage) welcomeText.getScene().getWindow();
-        thisStage.setTitle("Rechercher");
-        thisStage.setScene(scene);
-        thisStage.show();
+        RechercheApplication.changerScene("paletteCouleur.fxml");
     }
 
     @FXML
     protected void onTypeAudio() throws IOException {
-        Parent param = FXMLLoader.load(ParamController.class.getResource("/layout/hello-view.fxml"));
-        Scene scene = new Scene(param);
-        Stage thisStage = (Stage) welcomeText.getScene().getWindow();
-        thisStage.setTitle("Rechercher");
-        thisStage.setScene(scene);
-        thisStage.show();
+        RechercheApplication.changerScene("hello-view.fxml");
     }
 }

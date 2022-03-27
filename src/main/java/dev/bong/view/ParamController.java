@@ -36,27 +36,14 @@ public class ParamController {
     }
 
 
-
-
-
     @FXML
     protected void onBack() throws IOException {
-        Parent param = FXMLLoader.load(ParamController.class.getResource("/layout/hello-view.fxml"));
-        Scene scene = new Scene(param);
-        Stage thisStage = (Stage) paramText.getScene().getWindow();
-        thisStage.setTitle("Rechercher");
-        thisStage.setScene(scene);
-        thisStage.show();
+        RechercheApplication.changerScene("hello-view.fxml");
         System.out.println("Boutton retour appuyé");
     }
     @FXML
     protected void onConnexionAdmin() throws IOException {
-        Parent param = FXMLLoader.load(ParamAdminController.class.getResource("/layout/admin.fxml"));
-        Scene scene = new Scene(param);
-        Stage thisStage = (Stage) paramText.getScene().getWindow();
-        thisStage.setTitle("Connexion administrateur");
-        thisStage.setScene(scene);
-        thisStage.show();
+        RechercheApplication.changerScene("admin.fxml");
         System.out.println("Boutton admin appuyé");
     }
 

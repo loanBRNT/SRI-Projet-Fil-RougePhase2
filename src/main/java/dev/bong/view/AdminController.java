@@ -27,12 +27,7 @@ public class AdminController{
     @FXML
     protected void onBackParam() throws IOException {
         essai=3;
-        Parent param = FXMLLoader.load(AdminController.class.getResource("/layout/parametre.fxml"));
-        Scene scene = new Scene(param);
-        Stage thisStage = (Stage) connexionAdministrateur.getScene().getWindow();
-        thisStage.setTitle("Paramètres");
-        thisStage.setScene(scene);
-        thisStage.show();
+        RechercheApplication.changerScene("parametre.fxml");
         System.out.println("Boutton retour appuyé");
     }
 
@@ -41,12 +36,7 @@ public class AdminController{
         String id = inputPseudo.getText();
         String pwd = inputPwd.getText();
         if(controlSidentifier.verifieridentite(id,pwd)){
-            Parent param = FXMLLoader.load(AdminController.class.getResource("/layout/paramAdmin.fxml"));
-            Scene scene = new Scene(param);
-            Stage thisStage = (Stage) connexionAdministrateur.getScene().getWindow();
-            thisStage.setTitle("Panneau de configuration");
-            thisStage.setScene(scene);
-            thisStage.show();
+            RechercheApplication.changerScene("paramAdmin.fxml");
             System.out.println("Connexion autorisée");
         }
         else{

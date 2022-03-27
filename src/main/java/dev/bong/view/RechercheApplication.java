@@ -9,27 +9,29 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import javax.swing.text.View;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RechercheApplication extends Application {
+    private static Stage stage;
+
+    public static void changerScene(String view) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RechercheApplication.class.getResource("/layout/" + view));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RechercheApplication.class.getResource("/layout/hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 450);
 
-         /*StackPane root = new StackPane();
-        Image img = new Image("fil:lodo.png");
-        BackgroundImage bImg = new BackgroundImage(img,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                BackgroundSize.DEFAULT);
-        Background bGround = new Background(bImg);
-        fxmlLoader.load().setBackground(bGround);*/
+        RechercheApplication.stage = stage;
 
-        stage.setTitle("Bienvenue");
+        stage.setTitle("Bong - By DESQL");
         stage.getIcons().add(new Image(RechercheApplication.class.getResource("/images/1f50d.png").toExternalForm()));
         stage.setResizable(false);
         stage.setScene(scene);

@@ -20,12 +20,7 @@ public class LoadingController{
 
     @FXML
     protected void onLoadingAchieve() throws IOException {
-        Parent param = FXMLLoader.load(LoadingController.class.getResource("/layout/resultats.fxml"));
-        Scene scene = new Scene(param);
-        Stage thisStage = (Stage) bongLoading.getScene().getWindow();
-        thisStage.setTitle("Résultats");
-        thisStage.setScene(scene);
-        thisStage.show();
+        RechercheApplication.changerScene("resultats.fxml");
         System.out.println("Recherche terminée");
     }
 
@@ -44,12 +39,7 @@ public class LoadingController{
             //Mettre l'appel a nouveau de la fonction recherche
         }
         else if(result.isPresent() && result.get() == ButtonType.NO){
-            Parent param = FXMLLoader.load(AdminController.class.getResource("/layout/hello-view.fxml"));
-            Scene scene = new Scene(param);
-            Stage thisStage = (Stage) bongLoading.getScene().getWindow();
-            thisStage.setTitle("Rechercher");
-            thisStage.setScene(scene);
-            thisStage.show();
+            RechercheApplication.changerScene("hello-view.fxml");
             System.out.println("NON");
         }
     }

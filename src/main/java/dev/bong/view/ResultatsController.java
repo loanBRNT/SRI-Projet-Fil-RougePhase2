@@ -15,12 +15,7 @@ public class ResultatsController {
 
     @FXML
     protected void onRelancerRecherche() throws IOException {
-        Parent param = FXMLLoader.load(ResultatsController.class.getResource("/layout/hello-view.fxml"));
-        Scene scene = new Scene(param);
-        Stage thisStage = (Stage) bongResultats.getScene().getWindow();
-        thisStage.setTitle("Rechercher");
-        thisStage.setScene(scene);
-        thisStage.show();
+        RechercheApplication.changerScene("hello-view.fxml");
         System.out.println("Bouton relancé appuyé");
     }
 }
