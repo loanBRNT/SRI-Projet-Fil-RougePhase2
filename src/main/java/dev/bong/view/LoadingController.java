@@ -1,7 +1,6 @@
 package dev.bong.view;
 
 import dev.bong.control.ControlEnvoieResultat;
-import dev.bong.control.ControlRechercheMotCle;
 import javafx.application.Preloader;
 import javafx.event.EventType;
 import javafx.fxml.FXML;

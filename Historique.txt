@@ -2,4 +2,3 @@ rechercheMotCle : motCle:[ans, monde],motBan:[christophe]resultats:[05-L_apneist
 rechercheMotCle : motCle:[ninon],motBan:[]resultats:[ ]
 rechercheMotCle : motCle:[christophe],motBan:[]resultats:[05-Jean-Christophe_Bette_a_du_attendre.xml,  TestJean.xml]
 rechercheMotCle : motCle:[monde],motBan:[]resultats:[05-L_apneiste_francais_Guillaume_Nery_plonge.xml, 06-Les_mauvais_comptes_d_une_elimination.xml, 21-La_France_se_reveille_pour.xml, 05-Jean-Christophe_Bette_a_du_attendre.xml,  TestJean.xml]
-rechercheMotCle : motCle:[monde],motBan:[]resultats:[05-L_apneiste_francais_Guillaume_Nery_plonge.xml, 06-Les_mauvais_comptes_d_une_elimination.xml, 21-La_France_se_reveille_pour.xml, 05-Jean-Christophe_Bette_a_du_attendre.xml,  TestJean.xml]
