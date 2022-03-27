@@ -9,11 +9,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ControlRechercheMotCle extends Thread {
+public class ControlRechercheMotCle implements Runnable{
     //Création d'un controlleur associé à la recherche.
-    private ControlRequete controlRequete = new ControlRequete(TypeRequete.RECHERCHE_MOT_CLE);
+    private final ControlRequete controlRequete = new ControlRequete(TypeRequete.RECHERCHE_MOT_CLE);
 
-    private ControlEnvoieResultat controlEnvoieResultat = ControlEnvoieResultat.getInstance();
+    private final ControlEnvoieResultat controlEnvoieResultat = ControlEnvoieResultat.getInstance();
 
     //liste de mot clé
     private List<String> motcle;
@@ -29,6 +29,7 @@ public class ControlRechercheMotCle extends Thread {
     }
 
     //se lance avec .start() (Tread)
+    @Override
     public void run(){
 
         // creation des set servant a recuperer les resultats des recherches
@@ -38,7 +39,7 @@ public class ControlRechercheMotCle extends Thread {
 
         //Laisse le temps à la communication de s'établir entre tous les agents
         try {
-            sleep(2000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

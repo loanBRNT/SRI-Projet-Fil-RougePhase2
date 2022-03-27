@@ -11,7 +11,7 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <ToggleButton id="Button1" layoutX="357.0" layoutY="84.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Ouvert">
+      <ToggleButton fx:id="ButtonOuvert" layoutX="357.0" layoutY="84.0" mnemonicParsing="false" onAction="#ChoixmodeOuvert" prefHeight="26.0" prefWidth="76.0" text="Ouvert" toggleGroup="$Mode">
          <toggleGroup>
             <ToggleGroup fx:id="Mode" />
          </toggleGroup></ToggleButton>
@@ -25,7 +25,7 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <ToggleButton id="Button2" layoutX="356.0" layoutY="160.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="76.0" text="Oui">
+      <ToggleButton fx:id="ButtonMultiModeOn" layoutX="356.0" layoutY="160.0" mnemonicParsing="false" onAction="#ChoixMoteurOn" prefHeight="26.0" prefWidth="76.0" text="Oui" toggleGroup="$Multimoteur">
          <toggleGroup>
             <ToggleGroup fx:id="Multimoteur" />
          </toggleGroup></ToggleButton>
@@ -37,7 +37,7 @@
             <MenuItem mnemonicParsing="false" text="Moteur 2" />
          </items>
       </SplitMenuButton>
-      <ToggleButton layoutX="452.0" layoutY="85.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="Fermé" toggleGroup="$Mode" />
-      <ToggleButton layoutX="452.0" layoutY="161.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="Non" toggleGroup="$Multimoteur" />
+      <ToggleButton  fx:id="ButtonFerme" layoutX="452.0" layoutY="85.0" mnemonicParsing="false" onAction="#ChoixmodeFerme" prefHeight="25.0" prefWidth="76.0" text="Fermé" toggleGroup="$Mode" />
+      <ToggleButton fx:id="ButtonMultiModeOff" layoutX="452.0" layoutY="161.0" mnemonicParsing="false" onAction="#ChoixMoteurOff" prefHeight="25.0" prefWidth="76.0" text="Non" toggleGroup="$Multimoteur" />
    </children>
 </AnchorPane>
