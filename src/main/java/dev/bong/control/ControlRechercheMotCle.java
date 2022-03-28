@@ -3,24 +3,39 @@ package dev.bong.control;
 import dev.bong.entity.Historique;
 import dev.bong.entity.TypeRequete;
 import dev.bong.view.RechercheApplication;
+import dev.bong.view.RechercheController;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ControlRechercheMotCle extends Thread {
+//Loading screen runnable class
+public class ControlRechercheMotCle implements Runnable {
+
+    ProgressIndicator progressIndicator;
+    Label loadingText;
+    ProgressBar progressBar;
+    RechercheController rechercheController;
+
     //Création d'un controlleur associé à la recherche.
     private ControlRequete controlRequete = new ControlRequete(TypeRequete.RECHERCHE_MOT_CLE);
-
     private ControlEnvoieResultat controlEnvoieResultat = ControlEnvoieResultat.getInstance();
 
     //liste de mot clé
     private List<String> motcle;
     private List<String> motBan;
 
-    //Permet d'initialiser la com + les listes de mots clés
-    public ControlRechercheMotCle(List<String> motcle, List<String> motBan){
+
+    public ControlRechercheMotCle(ProgressIndicator progressIndicator, ProgressBar progressBar, Label loadingText, List<String> motcle, List<String> motBan, RechercheController rc) {
+        this.progressIndicator = progressIndicator;
+        this.progressBar = progressBar;
+        this.loadingText = loadingText;
+        this.rechercheController = rc;
+
         //LANCER LA COM
         controlRequete.lancerCommunicationBus();
 
@@ -29,6 +44,7 @@ public class ControlRechercheMotCle extends Thread {
     }
 
     //se lance avec .start() (Tread)
+    @Override
     public void run(){
 
         // creation des set servant a recuperer les resultats des recherches
@@ -38,14 +54,25 @@ public class ControlRechercheMotCle extends Thread {
 
         //Laisse le temps à la communication de s'établir entre tous les agents
         try {
-            sleep(2000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
+        progressBar.setProgress(progressBar.getProgress() + 0.2);
+        progressIndicator.setProgress(progressIndicator.getProgress() + 0.2);
+
         // appel des fonctions de recherches
         if (!motcle.toString().equals("[]")) resMotCle=rechercheMotCle(motcle);
+        else {
+            progressBar.setProgress(progressBar.getProgress() + 0.3);
+            progressIndicator.setProgress(progressIndicator.getProgress() + 0.3);
+        }
         if (!motBan.toString().equals("[]")) resMotBan=rechercheMotCle(motBan);
+        else {
+            progressBar.setProgress(progressBar.getProgress() + 0.3);
+            progressIndicator.setProgress(progressIndicator.getProgress() + 0.3);
+        }
 
         //System.out.println("mot cle : " + resMotCle + "\nmot ban : " + resMotBan);
 
@@ -56,9 +83,11 @@ public class ControlRechercheMotCle extends Thread {
         // affichage du resultat total
         System.out.println("resultat final : \n"+resTotal);
 
+        progressBar.setProgress(progressBar.getProgress() + 0.1);
+        progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
+
         //envoie resultats
-        //controlEnvoieResultat.receptionResultat(resTotal);
-        //RechercheApplication.stage.show();
+        controlEnvoieResultat.receptionResultat(resTotal);
 
         //appel de l'historique
         Historique.ecrire(TypeRequete.RECHERCHE_MOT_CLE,"motCle:" + motcle + ",motBan:" + motBan + "resultats:" + resTotal);
@@ -67,6 +96,11 @@ public class ControlRechercheMotCle extends Thread {
         controlRequete.removePropertyChangeListener();
         //STOPPER LA COM
         controlRequete.fermerCommunicationBus();
+
+        progressBar.setProgress(progressBar.getProgress() + 0.1);
+        progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
+
+        rechercheController.afficherResultat();
 
     }
 
@@ -80,14 +114,20 @@ public class ControlRechercheMotCle extends Thread {
         //Envoie de la liste au controlleur, qui envoie ensuite au moteur
         controlRequete.creerEtenvoyerListeRequete(motCle);
 
+        progressBar.setProgress(progressBar.getProgress() + 0.1);
+        progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
+
         while (!requeteFinit){
             try {
                 requeteFinit = controlRequete.touteRequeteFinit();
-                sleep(1000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+
+        progressBar.setProgress(progressBar.getProgress() + 0.1);
+        progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
 
         res=controlRequete.getListeResultat();
 
@@ -97,8 +137,9 @@ public class ControlRechercheMotCle extends Thread {
             resTotal.addAll(fichiersTrouvee);
         }
 
+        progressBar.setProgress(progressBar.getProgress() + 0.1);
+        progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
+
         return resTotal;
     }
-
-
 }
