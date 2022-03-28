@@ -39,12 +39,10 @@ public class ParamController {
     @FXML
     protected void onBack() throws IOException {
         RechercheApplication.changerScene("hello-view.fxml");
-        System.out.println("Boutton retour appuyé");
     }
     @FXML
     protected void onConnexionAdmin() throws IOException {
         RechercheApplication.changerScene("admin.fxml");
-        System.out.println("Boutton admin appuyé");
     }
 
 

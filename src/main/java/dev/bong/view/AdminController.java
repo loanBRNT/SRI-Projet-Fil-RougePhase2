@@ -28,7 +28,6 @@ public class AdminController{
     protected void onBackParam() throws IOException {
         essai=3;
         RechercheApplication.changerScene("parametre.fxml");
-        System.out.println("Boutton retour appuyé");
     }
 
     @FXML
@@ -37,7 +36,6 @@ public class AdminController{
         String pwd = inputPwd.getText();
         if(controlSidentifier.verifieridentite(id,pwd)){
             RechercheApplication.changerScene("paramAdmin.fxml");
-            System.out.println("Connexion autorisée");
         }
         else{
             essai--;
