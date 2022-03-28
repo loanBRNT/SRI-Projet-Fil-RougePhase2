@@ -2,9 +2,7 @@ package dev.bong.control;
 
 import dev.bong.entity.Historique;
 import dev.bong.entity.TypeRequete;
-import dev.bong.view.RechercheApplication;
 import dev.bong.view.RechercheController;
-import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 
@@ -17,7 +15,6 @@ import java.util.Set;
 public class ControlRechercheMotCle implements Runnable {
 
     ProgressIndicator progressIndicator;
-    Label loadingText;
     ProgressBar progressBar;
     RechercheController rechercheController;
 
@@ -30,10 +27,9 @@ public class ControlRechercheMotCle implements Runnable {
     private List<String> motBan;
 
 
-    public ControlRechercheMotCle(ProgressIndicator progressIndicator, ProgressBar progressBar, Label loadingText, List<String> motcle, List<String> motBan, RechercheController rc) {
+    public ControlRechercheMotCle(ProgressIndicator progressIndicator, ProgressBar progressBar,List<String> motcle, List<String> motBan, RechercheController rc) {
         this.progressIndicator = progressIndicator;
         this.progressBar = progressBar;
-        this.loadingText = loadingText;
         this.rechercheController = rc;
 
         //LANCER LA COM
@@ -109,25 +105,26 @@ public class ControlRechercheMotCle implements Runnable {
     public Set<String> rechercheMotCle(List<String> motCle) {
         List<String> res;
         Set<String> resTotal = new HashSet<>();
+
         boolean requeteFinit = false;
+        int nbRequete = motCle.size(), nbRequeteFinit=0;
+        double pourcentage = 0.0;
 
         //Envoie de la liste au controlleur, qui envoie ensuite au moteur
         controlRequete.creerEtenvoyerListeRequete(motCle);
 
-        progressBar.setProgress(progressBar.getProgress() + 0.1);
-        progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
-
         while (!requeteFinit){
             try {
+                pourcentage = nbRequeteFinit * 0.2 / nbRequete;
+                progressBar.setProgress(progressBar.getProgress() + pourcentage);
+                progressIndicator.setProgress(progressIndicator.getProgress() + pourcentage);
+                nbRequeteFinit = controlRequete.getNbRequeteFinit();
                 requeteFinit = controlRequete.touteRequeteFinit();
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-
-        progressBar.setProgress(progressBar.getProgress() + 0.1);
-        progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
 
         res=controlRequete.getListeResultat();
 

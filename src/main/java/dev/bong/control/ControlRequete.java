@@ -1,6 +1,5 @@
 package dev.bong.control;
 
-import dev.bong.boundary.Clavier;
 import dev.bong.entity.*;
 import fr.dgac.ivy.IvyException;
 
@@ -105,6 +104,9 @@ public class ControlRequete implements PropertyChangeListener{
     public List<String> getListeResultat() {
         return listeResultat;
     }
+
+
+    public int getNbRequeteFinit(){return nbRequeteFinit;}
 
     /* ------------------- FONCTIONS du listener ------------------ */
 

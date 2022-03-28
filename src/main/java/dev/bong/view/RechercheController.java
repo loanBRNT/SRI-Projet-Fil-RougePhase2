@@ -1,23 +1,10 @@
 package dev.bong.view;
 
 import dev.bong.control.ControlRechercheMotCle;
-import dev.bong.control.ControlRequete;
-import dev.bong.entity.Historique;
-import dev.bong.entity.TypeRequete;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
-
-import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.net.URL;
 import java.util.*;
 
 public class RechercheController {
@@ -61,7 +48,7 @@ public class RechercheController {
 
         String motcle=textFieldSearch.getText();
         String banWord=textFieldBanWords.getText();
-        loadingScreen = new ControlRechercheMotCle(progressIndicator,progressBar, labelInProgress,List.of(motcle.split("/")),List.of(banWord.split("/")),this);
+        loadingScreen = new ControlRechercheMotCle(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),this);
 
         Thread thread = new Thread(loadingScreen);
         thread.setDaemon(true);
