@@ -44,3 +44,6 @@ rechercheMotCle : motCle:[christophe, jean, ans],motBan:[]resultats:[26-Tom_Boon
 28/03/2022 19:44:32 - rechercheMotCle : motCle:[],motBan:[]resultats:[]
 28/03/2022 19:45:03 - rechercheMotCle : motCle:[],motBan:[]resultats:[]
 >>>>>>> dee92b8c5120c56d508cc3f5571e93a8aa16c37e
+29/03/2022 08:11:34 - rechercheMotCle : motCle:[quentin, enfant],motBan:[]resultats:[ ]
+29/03/2022 08:11:50 - rechercheMotCle : motCle:[christophe, jean],motBan:[]resultats:[05-Jean-Christophe_Bette_a_du_attendre.xml, 12-Jean-Marie_Sevestre_libraire_et_PDG.xml,  TestJean.xml]
+29/03/2022 08:12:32 - rechercheMotCle : motCle:[jean],motBan:[christophe]resultats:[12-Jean-Marie_Sevestre_libraire_et_PDG.xml]
