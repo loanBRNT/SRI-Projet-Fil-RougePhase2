@@ -1,6 +1,6 @@
 package dev.bong.control;
 
-import dev.bong.entity.GestionErreurs;
+import dev.bong.entity.GestionAlerte;
 import dev.bong.entity.Historique;
 import dev.bong.entity.TestCommunication;
 import dev.bong.entity.TypeRequete;
@@ -94,7 +94,7 @@ public class ControlRechercheMotCle implements Runnable {
         controlEnvoieResultat.receptionResultat(resTotal);
 
         //appel de l'historique
-        Historique.ecrire(TypeRequete.RECHERCHE_MOT_CLE,"motCle:" + motcle + ",motBan:" + motBan + "resultats:" + resTotal);
+        Historique.ecrire(TypeRequete.RECHERCHE_MOT_CLE,"motCle : " + motcle + ",motBan : " + motBan + ";" + resTotal);
 
         //delier l'OBSERVER
         controlRequete.removePropertyChangeListener();

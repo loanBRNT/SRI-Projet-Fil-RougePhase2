@@ -2,7 +2,7 @@ package dev.bong.view;
 
 import dev.bong.control.ControlModifierConfig;
 import dev.bong.entity.Config;
-import dev.bong.entity.GestionErreurs;
+import dev.bong.entity.GestionAlerte;
 import fr.dgac.ivy.IvyException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -80,7 +80,7 @@ public class ParamAdminController implements Initializable {
             alert.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();
-            GestionErreurs.genererWarning("Ivy ERREUR","Echec de l'indexation automatique");
+            GestionAlerte.genererErreur("Ivy ERREUR","Echec de l'indexation automatique");
         }
     }
     @FXML

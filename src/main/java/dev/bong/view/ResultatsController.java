@@ -1,6 +1,7 @@
 package dev.bong.view;
 
 import dev.bong.control.ControlEnvoieResultat;
+import dev.bong.entity.Historique;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,8 +10,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ResultatsController implements Initializable {

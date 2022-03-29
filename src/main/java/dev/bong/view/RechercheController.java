@@ -1,7 +1,7 @@
 package dev.bong.view;
 
 import dev.bong.control.ControlRechercheMotCle;
-import dev.bong.entity.GestionErreurs;
+import dev.bong.entity.GestionAlerte;
 import fr.dgac.ivy.IvyException;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -57,10 +57,10 @@ public class RechercheController {
             thread.start();
         } catch (IvyException e) {
             e.printStackTrace();
-            GestionErreurs.genererWarning("Ivy Erreur","La connexion au bus a échouée");
+            GestionAlerte.genererErreur("Ivy Erreur","La connexion au bus a échouée");
         } catch (Exception e){
             e.printStackTrace();
-            GestionErreurs.genererWarning("Ivy Erreur","Communication avec le(s) moteur(s) impossible");
+            GestionAlerte.genererErreur("Ivy Erreur","Communication avec le(s) moteur(s) impossible");
         }
     }
 
