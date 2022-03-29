@@ -11,6 +11,7 @@ public class CommunicationIvy {
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
     private String resultat = "";
 
+    //SINGLETON
     private CommunicationIvy() {}
 
     private class CommunicationIvyHolder {
@@ -21,6 +22,8 @@ public class CommunicationIvy {
         return CommunicationIvyHolder.instance;
     }
 
+    //LISTENER
+
     public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener){
         support.addPropertyChangeListener(propertyName,listener);
     }
@@ -29,6 +32,8 @@ public class CommunicationIvy {
         support.removePropertyChangeListener(propertyName,listener);
     }
 
+
+    //IVY
     public void lancerCommunication() throws IvyException {
         bus.start("127.255.255.255:2010");
     }
@@ -41,9 +46,9 @@ public class CommunicationIvy {
         });
     }
 
-    public void definirBind() throws IvyException {
+    public void definirBind(ListenerPropriete listenerPropriete) throws IvyException {
         bus.bindMsg("^Moteur message=(.*)", ((ivyClient, args) -> {
-            support.firePropertyChange(ListenerPropriete.RESULTAT.toString(),resultat,args[0]);
+            support.firePropertyChange(listenerPropriete.toString(),resultat,args[0]);
             resultat = "";
         }));
     }

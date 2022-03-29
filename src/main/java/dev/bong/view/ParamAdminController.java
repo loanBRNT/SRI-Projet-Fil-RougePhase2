@@ -2,6 +2,8 @@ package dev.bong.view;
 
 import dev.bong.control.ControlModifierConfig;
 import dev.bong.entity.Config;
+import dev.bong.entity.GestionErreurs;
+import fr.dgac.ivy.IvyException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
@@ -69,12 +71,17 @@ public class ParamAdminController implements Initializable {
     @FXML
     protected void onApplyParamAdmin() throws IOException {
         ArrayList<Integer> listeValeur = recupererValeur() ;
-        ControlModifierConfig.modifConfig(listeValeur);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Confirmation changement");
-        alert.setHeaderText("modification du .config effectuée avec succès");
-        alert.showAndWait();
 
+        try {
+            ControlModifierConfig.modifConfig(listeValeur);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Confirmation changement");
+            alert.setHeaderText("modification du .config effectuée avec succès");
+            alert.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+            GestionErreurs.genererWarning("Ivy ERREUR","Echec de l'indexation automatique");
+        }
     }
     @FXML
     protected void onBack() throws IOException {
@@ -84,12 +91,12 @@ public class ParamAdminController implements Initializable {
     @FXML
     public void HandleBtnAfficheAction(ActionEvent actionEvent) {
         taSummary.clear();
-        taSummary.appendText(String.valueOf("Taux de similarité : " + spTauxSimi.getValue()) + "\n");
-        taSummary.appendText(String.valueOf("Nombre de mot par texte : " + spNbMotTexte.getValue()) + "\n");
-        taSummary.appendText(String.valueOf("Seuil Occurence : " + spOccu.getValue()) + "\n");
-        taSummary.appendText(String.valueOf("Nombre d'Intervalle audio : " + spIntervalle.getValue()) + "\n");
-        taSummary.appendText(String.valueOf("Nombre de Point par fenêtre : " + spNbPointFen.getValue()) + "\n");
-        taSummary.appendText(String.valueOf("Nombre bit Quantification : " + spNbBitQuant.getValue()) + "\n");
+        taSummary.appendText(String.valueOf("Taux de similarité : " + config.getTauxSim()) + "\n");
+        taSummary.appendText(String.valueOf("Nombre de mot par texte : " + config.getNbMaxMotParTexte()) + "\n");
+        taSummary.appendText(String.valueOf("Seuil Occurence : " + config.getSeuilOccMot()) + "\n");
+        taSummary.appendText(String.valueOf("Nombre d'Intervalle audio : " + config.getNbrIntervalleAudio()) + "\n");
+        taSummary.appendText(String.valueOf("Nombre de Point par fenêtre : " + config.getNbrPointsAudio()) + "\n");
+        taSummary.appendText(String.valueOf("Nombre bit Quantification : " + config.getBitQuantification() ) + "\n");
     }
 
     @Override
@@ -107,6 +114,11 @@ public class ParamAdminController implements Initializable {
         spNbBitQuant.setEditable(true);
         spNbBitQuant.setValueFactory(bite);
 
+        try {
+            config.chargementConfig();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public ArrayList<Integer> recupererValeur(){

@@ -1,6 +1,8 @@
 package dev.bong.view;
 
 import dev.bong.control.ControlRechercheMotCle;
+import dev.bong.entity.GestionErreurs;
+import fr.dgac.ivy.IvyException;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -38,6 +40,7 @@ public class RechercheController {
         progressIndicator.setVisible(true);
         labelInProgress.setVisible(true);
         buttonAgain.setVisible(true);
+
         textFieldBanWords.setVisible(false);
         banButton.setVisible(false);
         textFieldSearch.setVisible(false);
@@ -48,17 +51,29 @@ public class RechercheController {
 
         String motcle=textFieldSearch.getText();
         String banWord=textFieldBanWords.getText();
-        loadingScreen = new ControlRechercheMotCle(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),this);
 
-        Thread thread = new Thread(loadingScreen);
-        thread.setDaemon(true);
-        thread.start();
+        try {
+            loadingScreen = new ControlRechercheMotCle(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),this);
+            Thread thread = new Thread(loadingScreen);
+            thread.setDaemon(true);
+            thread.start();
+        } catch (IvyException e) {
+            e.printStackTrace();
+            GestionErreurs.genererWarning("Ivy Erreur","La connexion au bus a échouée");
+        } catch (Exception e){
+            e.printStackTrace();
+            GestionErreurs.genererWarning("Ivy Erreur","Communication avec le(s) moteur(s) impossible");
+        }
     }
+
+
     @FXML
     protected void onClickParam() throws IOException {
         RechercheApplication.changerScene("parametre.fxml");
         System.out.println("Boutton paramètre appuyé");
     }
+
+
     @FXML
     protected void onBanWords(){
         if (!this.banWordsButtonActivate) {
@@ -99,7 +114,7 @@ public class RechercheController {
     }
 
     @FXML
-    protected void onLoadingFailled() throws IOException {
+    public void onLoadingFailled() throws IOException {
         ButtonType okBtn = ButtonType.YES;
         ButtonType cancelBtn = ButtonType.NO;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"",okBtn,cancelBtn);

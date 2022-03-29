@@ -11,6 +11,8 @@ module dev.bong {
     opens dev.bong.control to javafx.fxml;
     exports dev.bong.view;
     opens dev.bong.view to javafx.fxml;
+    exports dev.bong.entity;
+    opens dev.bong.entity to javafx.fxml;
 
 
 }

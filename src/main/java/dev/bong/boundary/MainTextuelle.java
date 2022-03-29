@@ -18,7 +18,7 @@ public class MainTextuelle {
         boolean saisie=false;
         int choix=0;
         int res;
-        BoundaryMenuAdmin menuAdmin = new BoundaryMenuAdmin(new ControlMenuAdmin(new ControlIndexation(false)),new BoundaryModifierConfig(new ControlModifierConfig()));
+        BoundaryMenuAdmin menuAdmin = new BoundaryMenuAdmin(new ControlMenuAdmin(new ControlIndexation()),new BoundaryModifierConfig(new ControlModifierConfig()));
         BoundaryMenuClient menuClient= new BoundaryMenuClient();
         BoundarySidentifier boundarySidentifier=new BoundarySidentifier(new ControlSidentifier());
 

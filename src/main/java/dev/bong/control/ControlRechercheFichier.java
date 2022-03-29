@@ -2,6 +2,7 @@ package dev.bong.control;
 
 
 import dev.bong.entity.TypeRequete;
+import fr.dgac.ivy.IvyException;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -21,7 +22,7 @@ public class ControlRechercheFichier extends Thread {
     private boolean modeOuvert;
 
     //Permet d'initialiser la com + les listes de mots clés
-    public ControlRechercheFichier(List<String> nomFicRecherche, List<String> nomFicBan, boolean modeOuvert){
+    public ControlRechercheFichier(List<String> nomFicRecherche, List<String> nomFicBan, boolean modeOuvert) throws IvyException {
         //LANCER LA COM
         controlRequete.lancerCommunicationBus();
 

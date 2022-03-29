@@ -3,6 +3,7 @@ package dev.bong.boundary;
 
 import dev.bong.control.ControlModifierConfig;
 import dev.bong.entity.Config;
+import fr.dgac.ivy.IvyException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -105,7 +106,15 @@ public class BoundaryModifierConfig {
 
             i++;
         }
-        ControlModifierConfig.modifConfig(listeValeur);
+        try {
+            ControlModifierConfig.modifConfig(listeValeur);
+        } catch (IvyException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

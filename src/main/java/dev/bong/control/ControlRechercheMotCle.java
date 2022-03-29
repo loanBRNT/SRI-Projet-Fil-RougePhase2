@@ -1,11 +1,16 @@
 package dev.bong.control;
 
+import dev.bong.entity.GestionErreurs;
 import dev.bong.entity.Historique;
+import dev.bong.entity.TestCommunication;
 import dev.bong.entity.TypeRequete;
 import dev.bong.view.RechercheController;
+import fr.dgac.ivy.IvyException;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -21,19 +26,29 @@ public class ControlRechercheMotCle implements Runnable {
     //Création d'un controlleur associé à la recherche.
     private ControlRequete controlRequete = new ControlRequete(TypeRequete.RECHERCHE_MOT_CLE);
     private ControlEnvoieResultat controlEnvoieResultat = ControlEnvoieResultat.getInstance();
+    private TestCommunication testCommunication = TestCommunication.getInstance();
 
     //liste de mot clé
     private List<String> motcle;
     private List<String> motBan;
 
 
-    public ControlRechercheMotCle(ProgressIndicator progressIndicator, ProgressBar progressBar,List<String> motcle, List<String> motBan, RechercheController rc) {
+    public ControlRechercheMotCle(ProgressIndicator progressIndicator, ProgressBar progressBar,List<String> motcle, List<String> motBan, RechercheController rc) throws Exception {
         this.progressIndicator = progressIndicator;
         this.progressBar = progressBar;
         this.rechercheController = rc;
 
         //LANCER LA COM
         controlRequete.lancerCommunicationBus();
+
+        //Laisse le temps à la communication de s'établir entre tous les agents
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        testCommunication.testerCommunication();
 
         this.motBan = motBan;
         this.motcle = motcle;
@@ -47,13 +62,6 @@ public class ControlRechercheMotCle implements Runnable {
         Set<String> resMotCle = new HashSet<>();
         Set<String> resMotBan = new HashSet<>();
         Set<String> resTotal = new HashSet<>();
-
-        //Laisse le temps à la communication de s'établir entre tous les agents
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         progressBar.setProgress(progressBar.getProgress() + 0.2);
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.2);
@@ -108,7 +116,7 @@ public class ControlRechercheMotCle implements Runnable {
 
         boolean requeteFinit = false;
         int nbRequete = motCle.size(), nbRequeteFinit=0;
-        double pourcentage = 0.0;
+        double pourcentage;
 
         //Envoie de la liste au controlleur, qui envoie ensuite au moteur
         controlRequete.creerEtenvoyerListeRequete(motCle);

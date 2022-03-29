@@ -30,7 +30,7 @@ public class Requete{
     public void initIndexation(){
         try {
 
-            communicationIvy.definirBind();
+            communicationIvy.definirBind(ListenerPropriete.RESULTAT);
 
             etatRequete = EtatRequete.READY_FOR_START;
 

@@ -65,6 +65,14 @@ void RechercheCallback (IvyClientPtr app, void *data, int argc, char **argv)
 	}
 }
 
+void TestCallback (IvyClientPtr app, void *data, int argc, char **argv)
+{
+	if (!strcmp(argv[0],"test")){
+		printf("Moteur message=testOk");
+		IvySendMsg("Moteur message=testOk");
+	}
+}
+
 /* callback associated to "Bye" messages */
 void StopCallback (IvyClientPtr app, void *data, int argc, char **argv)
 {
@@ -79,6 +87,9 @@ int main(int argc, char const *argv[]){
 
 	/* On Eoute et on traite les messages qui commencent par n'importe quoi */
 	IvyBindMsg(RechercheCallback, 0, "^Interface message=(.*) source=(.*)");
+
+	/* On Eoute et on traite les messages qui commencent par n'importe quoi */
+	IvyBindMsg(TestCallback, 0, "^Interface message=(.*)");
 
 	/* On Eoute et on traite les messages 'Bye' */
 	IvyBindMsg(StopCallback, 0, "^Stop$");

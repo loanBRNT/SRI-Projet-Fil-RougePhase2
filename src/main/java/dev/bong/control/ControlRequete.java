@@ -33,14 +33,8 @@ public class ControlRequete implements PropertyChangeListener{
     /* ------------------- FONCTIONS GENERALES ------------------ */
 
     //Connexion de notre Agent (Communication ivy)
-    public boolean lancerCommunicationBus(){
-        try {
-            communicationIvy.lancerCommunication();
-        } catch (IvyException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
+    public void lancerCommunicationBus() throws IvyException {
+        communicationIvy.lancerCommunication();
     }
 
     //Déconnexion de l'agent

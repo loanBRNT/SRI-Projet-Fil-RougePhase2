@@ -1,7 +1,7 @@
 package dev.bong.entity;
 
 public enum TypeRequete {
-    RECHERCHE_MOT_CLE, RECHERCHE_FICHIER, RECHERCHE_COULEUR, INDEXATION;
+    RECHERCHE_MOT_CLE, RECHERCHE_FICHIER, RECHERCHE_COULEUR, INDEXATION, TEST_COMMUNICATION;
 
    public String toString(){
        switch(this){
@@ -16,6 +16,9 @@ public enum TypeRequete {
            }
            case INDEXATION -> {
                return "indexation";
+           }
+           case TEST_COMMUNICATION -> {
+               return "testCommunication";
            }
            default -> {
                return "erreur";

@@ -2,6 +2,7 @@ package dev.bong.boundary;
 
 
 import dev.bong.control.ControlMenuAdmin;
+import fr.dgac.ivy.IvyException;
 
 import java.io.IOException;
 
@@ -59,7 +60,13 @@ public class BoundaryMenuAdmin {
                     break;
                 case 2 :
                     System.out.println("indexation en cours");
-                    this.controlMenuAdmin.indexation();
+                    try {
+                        this.controlMenuAdmin.indexation();
+                    } catch (IvyException | InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case 3:
                     isRunning=false;

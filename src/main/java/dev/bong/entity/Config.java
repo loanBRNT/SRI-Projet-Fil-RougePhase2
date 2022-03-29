@@ -1,6 +1,7 @@
 package dev.bong.entity;
 
 import dev.bong.control.ControlIndexation;
+import fr.dgac.ivy.IvyException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -40,9 +41,8 @@ public class  Config {
         return  ConfigHolder.instance;
     }
 
-    public void majConfig()  {
-        try {
-            for (String config : listeDesConfig) {
+    public void majConfig() throws Exception {
+        for (String config : listeDesConfig) {
                 File f = new File(config);
                 f.createNewFile();
 
@@ -66,15 +66,9 @@ public class  Config {
                 fw.close();
 
                 if (maj){
-                    ControlIndexation controlIndexation = new ControlIndexation(true);
-                    controlIndexation.start();
+                    ControlIndexation.indexationForcee();
                 }
             }
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
     }
 
     public void chargementConfig() throws IOException {
