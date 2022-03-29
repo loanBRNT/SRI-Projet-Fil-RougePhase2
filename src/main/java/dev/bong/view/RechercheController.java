@@ -2,6 +2,7 @@ package dev.bong.view;
 
 import dev.bong.control.ControlRechercheMotCle;
 import dev.bong.entity.GestionAlerte;
+import dev.bong.entity.Historique;
 import fr.dgac.ivy.IvyException;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -71,6 +72,8 @@ public class RechercheController {
     }
 
 
+
+
     @FXML
     protected void onBanWords(){
         if (!this.banWordsButtonActivate) {
@@ -102,6 +105,12 @@ public class RechercheController {
     @FXML
     protected void onLoadingAchieve() throws IOException {
         RechercheApplication.changerScene("resultats.fxml");
+    }
+
+    @FXML
+    protected void onClean() throws IOException {
+        Historique.effacer();
+        GestionAlerte.genererInfos("Historique","L'historique a bien été nettoyé");
     }
 
     @FXML
