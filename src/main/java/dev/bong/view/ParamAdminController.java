@@ -63,7 +63,7 @@ public class ParamAdminController implements Initializable {
     SpinnerValueFactory<Integer> svf3 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200,config.getSeuilOccMot());
     SpinnerValueFactory<Integer> svf4 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200,config.getNbMaxMotParTexte());
     SpinnerValueFactory<Integer> svf5 = new SpinnerValueFactory.IntegerSpinnerValueFactory(2,2048,config.getNbrPointsAudio());
-    SpinnerValueFactory<Integer> bite = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,8,config.getBitQuantification());
+    SpinnerValueFactory<Integer> svf6 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,4,config.getBitQuantification());
     @FXML
     private TextArea taSummary;
 
@@ -86,7 +86,6 @@ public class ParamAdminController implements Initializable {
     @FXML
     protected void onBack() throws IOException {
         RechercheApplication.changerScene("hello-view.fxml");
-        System.out.println("Boutton admin appuyé");
     }
     @FXML
     public void HandleBtnAfficheAction(ActionEvent actionEvent) {
@@ -112,7 +111,7 @@ public class ParamAdminController implements Initializable {
         spNbPointFen.setEditable(true);
         spNbPointFen.setValueFactory(svf5);
         spNbBitQuant.setEditable(true);
-        spNbBitQuant.setValueFactory(bite);
+        spNbBitQuant.setValueFactory(svf6);
 
         try {
             config.chargementConfig();

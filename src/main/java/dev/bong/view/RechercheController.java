@@ -24,8 +24,6 @@ public class RechercheController {
     public Button buttonAgain;
     public ProgressBar progressBar;
     @FXML
-    private Label welcomeText;
-    @FXML
     private ToggleButton banButton;
     @FXML
     private TextField textFieldBanWords;
@@ -70,7 +68,6 @@ public class RechercheController {
     @FXML
     protected void onClickParam() throws IOException {
         RechercheApplication.changerScene("parametre.fxml");
-        System.out.println("Boutton paramètre appuyé");
     }
 
 
@@ -88,13 +85,13 @@ public class RechercheController {
     }
 
     @FXML
-    protected void onTypeText() throws IOException {
+    protected void onTypeMotCle() throws IOException {
         RechercheApplication.changerScene("hello-view.fxml");
     }
 
     @FXML
-    protected void onTypeImageRef() throws IOException {
-        RechercheApplication.changerScene("hello-view.fxml");
+    protected void onTypeFichier() throws IOException {
+        RechercheApplication.changerScene("rechercheFichier.fxml");
     }
 
     @FXML
@@ -103,14 +100,8 @@ public class RechercheController {
     }
 
     @FXML
-    protected void onTypeAudio() throws IOException {
-        RechercheApplication.changerScene("hello-view.fxml");
-    }
-
-    @FXML
     protected void onLoadingAchieve() throws IOException {
         RechercheApplication.changerScene("resultats.fxml");
-        System.out.println("Recherche terminée");
     }
 
     @FXML
@@ -124,8 +115,6 @@ public class RechercheController {
         alert.setResizable(false);
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.YES) {
-            System.out.println("OUI");
-            //Mettre l'appel a nouveau de la fonction recherche
             restart();
             Thread thread = new Thread(loadingScreen);
             thread.setDaemon(true);
@@ -133,7 +122,6 @@ public class RechercheController {
         }
         else if(result.isPresent() && result.get() == ButtonType.NO){
             RechercheApplication.changerScene("hello-view.fxml");
-            System.out.println("NON");
         }
     }
 
@@ -151,4 +139,10 @@ public class RechercheController {
 
         afficheResultat.setVisible(true);
     }
+
+    @FXML
+    protected void onAffichHistorique() throws IOException {
+        RechercheApplication.changerScene("historique.fxml");
+    }
 }
+

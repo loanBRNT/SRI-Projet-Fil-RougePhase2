@@ -42,6 +42,7 @@ public class  Config {
     }
 
     public void majConfig() throws Exception {
+        TestCommunication.fermerCommunication();
         for (String config : listeDesConfig) {
                 File f = new File(config);
                 f.createNewFile();

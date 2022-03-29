@@ -24,7 +24,7 @@ public class TestCommunication implements PropertyChangeListener {
         return TestCommunicationHolder.instance;
     }
 
-    public void fermerCommunication(){
+    public static void fermerCommunication(){
         communicationIvy.fermerCommunication();
     }
 
