@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.RechercheController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.RechercheController">
    <children>
       <Button fx:id="buttonSearch" layoutX="692.0" layoutY="268.0" onAction="#onClickSearch" prefHeight="26.0" prefWidth="77.0" text="Search" />
       <TextField fx:id="textFieldSearch" layoutX="70.0" layoutY="268.0" prefHeight="26.0" prefWidth="605.0" promptText="Que souhaitez-vous rechercher ?" />
@@ -33,7 +33,7 @@
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#onAffichHistorique" text="Afficher l'historique" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Effacer l'historique" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClean" text="Effacer l'historique" />
                </items>
             </Menu>
          </menus>

@@ -19,7 +19,7 @@ public class  Config {
     private int nbrPointsAudio;
     private int bitQuantification;
 
-    private boolean mode=false;   // false pour fermer et true pour ouvert
+    public static boolean mode=false;   // false pour fermer et true pour ouvert
     private boolean multiMoteur = false;
     private boolean maj = false;
 
