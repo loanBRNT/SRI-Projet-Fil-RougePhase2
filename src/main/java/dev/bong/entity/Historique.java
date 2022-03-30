@@ -26,7 +26,6 @@ public class Historique {
             fw.write(recherche);
             fw.flush();
             fw.close();
-
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -43,7 +42,6 @@ public class Historique {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
     }
 
     public static void lire() throws FileNotFoundException {
@@ -51,8 +49,7 @@ public class Historique {
         ArrayList<String> resultats = new ArrayList<>();
         File f = new File("./Historique.txt");
         Scanner sc = new Scanner(f);
-        recherches.clear();
-        resultats.clear();
+        listeDeListe.clear();
         while (sc.hasNext()){
             String ligne = sc.nextLine();
             ArrayList<String> decoupe = new ArrayList<>(List.of(ligne.split(";")));

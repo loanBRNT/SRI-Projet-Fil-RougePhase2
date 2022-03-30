@@ -32,6 +32,7 @@ public class HistoriqueController implements Initializable {
 
     @FXML
     protected void onClean() throws IOException {
+        Historique.lire();
         if (Historique.getRecherches().isEmpty() && Historique.getResultats().isEmpty()){
             GestionAlerte.genererInfos("Historique", "L'historique est déja vide");
         }else{
@@ -65,11 +66,12 @@ public class HistoriqueController implements Initializable {
             listViewHisto.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                    int index = listViewHisto.getSelectionModel().getSelectedIndex();
-                    GestionAlerte.genererInfos("Résultats de la recherche", Historique.getResultats().get(index));
+                    if(listViewHisto.getSelectionModel().getSelectedItem()!=null) {
+                        int index = listViewHisto.getSelectionModel().getSelectedIndex();
+                        GestionAlerte.genererInfos("Résultats de la recherche", Historique.getResultats().get(index));
+                    }
                 }
             });
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
