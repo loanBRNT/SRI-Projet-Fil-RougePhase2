@@ -12,9 +12,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Historique {
-    public static ArrayList<String> recherches = new ArrayList<>();
-    public static ArrayList<String> resultats = new ArrayList<>();
-    public static ArrayList<ArrayList<String>> setListe = new ArrayList<>();
+
+    public static ArrayList<ArrayList<String>> listeDeListe = new ArrayList<>();
 
     public static void ecrire(TypeRequete type, String texte) {
         try {
@@ -41,7 +40,6 @@ public class Historique {
             fw.write("");
             fw.flush();
             fw.close();
-
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -49,6 +47,8 @@ public class Historique {
     }
 
     public static void lire() throws FileNotFoundException {
+        ArrayList<String> recherches = new ArrayList<>();
+        ArrayList<String> resultats = new ArrayList<>();
         File f = new File("./Historique.txt");
         Scanner sc = new Scanner(f);
         recherches.clear();
@@ -60,20 +60,20 @@ public class Historique {
             recherches.add(decoupe.get(0));
             resultats.add(decoupe.get(1));
         }
-        setListe.add(recherches);
-        setListe.add(resultats);
+        listeDeListe.add(recherches);
+        listeDeListe.add(resultats);
     }
 
     public static ArrayList<String> getRecherches(){
-        return recherches;
+        return getListeDeListe().get(0);
     }
 
     public static ArrayList<String> getResultats(){
-        return resultats;
+        return getListeDeListe().get(1);
     }
 
-    public static ArrayList<ArrayList<String>> getListeDeListe(){
-        return setListe;
+    public static ArrayList<ArrayList<String>> getListeDeListe() {
+        return listeDeListe;
     }
 
 }

@@ -1,15 +1,11 @@
 package dev.bong.view;
 
 import dev.bong.entity.Config;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.stage.Stage;
+
 
 import java.io.IOException;
 
@@ -44,7 +40,6 @@ public class ParamController {
     protected void onConnexionAdmin() throws IOException {
         RechercheApplication.changerScene("admin.fxml");
     }
-
 
     public void ChoixmodeFerme() {
         ButtonFerme.setSelected(true);

@@ -4,16 +4,24 @@ import dev.bong.control.ControlRechercheMotCle;
 import dev.bong.entity.GestionAlerte;
 import dev.bong.entity.Historique;
 import fr.dgac.ivy.IvyException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import java.io.IOException;
-import java.util.*;
+import java.net.URL;
+import java.util.List;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class RechercheController {
+
+public class RechercheController implements Initializable {
 
     private boolean ResultatTrouvé = false;
     private boolean banWordsButtonActivate = false;
+    private boolean banNomsButtonActivate = false;
     ControlRechercheMotCle loadingScreen;
 
     @FXML
@@ -25,13 +33,21 @@ public class RechercheController {
     public Button buttonAgain;
     public ProgressBar progressBar;
     @FXML
-    private ToggleButton banButton;
+    private ToggleButton banWordsButton;
+    @FXML
+    private ToggleButton banNomsButton;
     @FXML
     private TextField textFieldBanWords;
+    @FXML
+    private TextField textFieldBanNoms;
     @FXML
     private ProgressIndicator progressIndicator;
     @FXML
     private Button afficheResultat;
+    @FXML
+    public ChoiceBox choiceType = new ChoiceBox();
+
+
 
     @FXML
     protected void onClickSearch(){
@@ -41,7 +57,7 @@ public class RechercheController {
         buttonAgain.setVisible(true);
 
         textFieldBanWords.setVisible(false);
-        banButton.setVisible(false);
+        banWordsButton.setVisible(false);
         textFieldSearch.setVisible(false);
         menuBar.setVisible(false);
         param.setVisible(false);
@@ -58,10 +74,10 @@ public class RechercheController {
             thread.start();
         } catch (IvyException e) {
             e.printStackTrace();
-            GestionAlerte.genererErreur("Ivy Erreur","La connexion au bus a échouée");
+           // GestionAlerte.genererErreur("Ivy Erreur","La connexion au bus a échouée");
         } catch (Exception e){
             e.printStackTrace();
-            GestionAlerte.genererErreur("Ivy Erreur","Communication avec le(s) moteur(s) impossible");
+           // GestionAlerte.genererErreur("Ivy Erreur","Communication avec le(s) moteur(s) impossible");
         }
     }
 
@@ -71,19 +87,29 @@ public class RechercheController {
         RechercheApplication.changerScene("parametre.fxml");
     }
 
-
-
-
     @FXML
     protected void onBanWords(){
         if (!this.banWordsButtonActivate) {
             textFieldBanWords.setVisible(true);
             this.banWordsButtonActivate=true;
-            this.banButton.setText("- Ban words");
+            this.banWordsButton.setText("- Ban words");
         }else{
             textFieldBanWords.setVisible(false);
             this.banWordsButtonActivate=false;
-            this.banButton.setText("+ Ban words");
+            this.banWordsButton.setText("+ Ban words");
+        }
+    }
+
+    @FXML
+    protected void onBanNoms(){
+        if (!this.banNomsButtonActivate) {
+            textFieldBanNoms.setVisible(true);
+            this.banNomsButtonActivate=true;
+            this.banNomsButton.setText("- Ban noms");
+        }else{
+            textFieldBanNoms.setVisible(false);
+            this.banNomsButtonActivate=false;
+            this.banNomsButton.setText("+ Ban noms");
         }
     }
 
@@ -109,9 +135,16 @@ public class RechercheController {
 
     @FXML
     protected void onClean() throws IOException {
-        Historique.effacer();
-        GestionAlerte.genererInfos("Historique","L'historique a bien été nettoyé");
+        Historique.lire();
+        if (Historique.getRecherches().isEmpty() && Historique.getResultats().isEmpty()){
+            GestionAlerte.genererInfos("Historique", "L'historique est déja vide");
+        }else {
+            Historique.effacer();
+            Historique.lire();
+            GestionAlerte.genererInfos("Historique", "L'historique a bien été nettoyé");
+        }
     }
+
 
     @FXML
     public void onLoadingFailled() throws IOException {
@@ -152,6 +185,14 @@ public class RechercheController {
     @FXML
     protected void onAffichHistorique() throws IOException {
         RechercheApplication.changerScene("historique.fxml");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        choiceType.getItems().add(".xml");
+        choiceType.getItems().add(".jpeg");
+        choiceType.getItems().add(".wav");
+        choiceType.setValue(".xml");
     }
 }
 
