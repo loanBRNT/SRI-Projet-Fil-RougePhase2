@@ -37,11 +37,7 @@ public class RechercheController implements Initializable {
     @FXML
     private ToggleButton banWordsButton;
     @FXML
-    private ToggleButton banNomsButton;
-    @FXML
     private TextField textFieldBanWords;
-    @FXML
-    private TextField textFieldBanNoms;
     @FXML
     private ProgressIndicator progressIndicator;
     @FXML
@@ -50,8 +46,7 @@ public class RechercheController implements Initializable {
     public ChoiceBox choiceType = new ChoiceBox();
 
 
-    @FXML
-    protected void onClickSearch(){
+    private void affichageLancerRecherche(){
         progressBar.setVisible(true);
         progressIndicator.setVisible(true);
         labelInProgress.setVisible(true);
@@ -64,6 +59,16 @@ public class RechercheController implements Initializable {
         param.setVisible(false);
         buttonSearch.setVisible(false);
         afficheResultat.setVisible(false);
+
+        try {
+            choiceType.setVisible(false);
+        } catch (Exception e){}
+
+    }
+
+    @FXML
+    protected void onClickSearch(){
+        affichageLancerRecherche();
 
         String motcle=textFieldSearch.getText();
         String banWord=textFieldBanWords.getText();
@@ -84,18 +89,7 @@ public class RechercheController implements Initializable {
 
     @FXML
     protected void onClickFicSearch(){
-        progressBar.setVisible(true);
-        progressIndicator.setVisible(true);
-        labelInProgress.setVisible(true);
-        buttonAgain.setVisible(true);
-
-        textFieldBanWords.setVisible(false);
-        banWordsButton.setVisible(false);
-        textFieldSearch.setVisible(false);
-        menuBar.setVisible(false);
-        param.setVisible(false);
-        buttonSearch.setVisible(false);
-        afficheResultat.setVisible(false);
+        affichageLancerRecherche();
 
         String motcle=textFieldSearch.getText();
         String banWord=textFieldBanWords.getText();
@@ -130,19 +124,6 @@ public class RechercheController implements Initializable {
             textFieldBanWords.setVisible(false);
             this.banWordsButtonActivate=false;
             this.banWordsButton.setText("+ Ban words");
-        }
-    }
-
-    @FXML
-    protected void onBanNoms(){
-        if (!this.banNomsButtonActivate) {
-            textFieldBanNoms.setVisible(true);
-            this.banNomsButtonActivate=true;
-            this.banNomsButton.setText("- Ban noms");
-        }else{
-            textFieldBanNoms.setVisible(false);
-            this.banNomsButtonActivate=false;
-            this.banNomsButton.setText("+ Ban noms");
         }
     }
 
@@ -227,7 +208,8 @@ public class RechercheController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choiceType.getItems().add(".xml");
-        choiceType.getItems().add(".jpeg");
+        choiceType.getItems().add(".jpg");
+        choiceType.getItems().add(".bmp");
         choiceType.getItems().add(".wav");
         choiceType.setValue(".xml");
     }
