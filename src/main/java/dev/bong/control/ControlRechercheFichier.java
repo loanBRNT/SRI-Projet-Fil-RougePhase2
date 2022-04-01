@@ -17,14 +17,14 @@ import java.util.Set;
 public class ControlRechercheFichier extends ControlRecherche implements Runnable {
 
     //liste de mot clé
-    private List<String> nomFicRecherche;
-    private List<String> nomFicBan;
+    private List<String> nomFicRecherche = new ArrayList<>();
+    private List<String> nomFicBan = new ArrayList<>();
 
     //Mode pour la recherche
     private boolean modeOuvert;
 
     //Permet d'initialiser la com + les listes de mots clés
-    public ControlRechercheFichier(ProgressIndicator progressIndicator, ProgressBar progressBar,List<String> nomFicRecherche, List<String> nomFicBan, boolean modeOuvert, RechercheController rechercheController) throws Exception {
+    public ControlRechercheFichier(ProgressIndicator progressIndicator, ProgressBar progressBar,List<String> nomFicRecherche, List<String> nomFicBan, String extension, boolean modeOuvert, RechercheController rechercheController) throws Exception {
         super(new ControlRequete(TypeRequete.RECHERCHE_FICHIER),progressIndicator,progressBar,rechercheController);
 
         //LANCER LA COM
@@ -39,8 +39,7 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
 
         testCommunication.testerCommunication();
 
-        this.nomFicBan = nomFicBan;
-        this.nomFicRecherche = nomFicRecherche;
+        this.ajoutExtension(extension,nomFicRecherche,nomFicBan);
 
         this.modeOuvert = modeOuvert;
     }
@@ -109,4 +108,18 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
         rechercheController.afficherResultat();
 
     }
+
+    public void ajoutExtension(String extension, List<String> listeMc, List<String> listeBan){
+        System.out.println(extension);
+
+        for (String mot : listeMc){
+            this.nomFicRecherche.add(mot + extension);
+        }
+
+        for (String mot : listeBan){
+            this.nomFicBan.add(mot+extension);
+        }
+        System.out.println(nomFicRecherche);
+    }
+
 }

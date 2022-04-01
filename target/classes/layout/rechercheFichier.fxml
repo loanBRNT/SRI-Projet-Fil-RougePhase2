@@ -38,7 +38,7 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <ProgressBar fx:id="progressBar" accessibleRole="NODE" layoutX="164.0" layoutY="271.0" onMouseClicked="#onLoadingAchieve" prefHeight="21.0" prefWidth="471.0" progress="0.0" visible="false">
+        <ProgressBar fx:id="progressBar" accessibleRole="NODE" layoutX="164.0" layoutY="271.0" prefHeight="21.0" prefWidth="471.0" progress="0.0" visible="false">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>

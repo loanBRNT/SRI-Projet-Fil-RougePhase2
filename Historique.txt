@@ -14,3 +14,8 @@
 01/04/2022 11:11:32 - rechercheFichier : motCle : [51.bmp, 52.bmp, 53.bmp],motBan : [54.bmp, 56.bmp];[52.bmp,  53.bmp, 51.bmp,  52.bmp]
 01/04/2022 11:12:23 - rechercheFichier : motCle : [53.bmp],motBan : [56.bmp];[51.bmp,  52.bmp]
 01/04/2022 11:12:42 - rechercheFichier : motCle : [jingle_fi.wav],motBan : [];[ 29.256969s corpus_fi.wav]
+01/04/2022 15:13:15 - rechercheFichier : motCle : [51],motBan : [];[ ]
+01/04/2022 15:13:52 - rechercheFichier : motCle : [51value],motBan : [value];[]
+01/04/2022 15:14:29 - rechercheFichier : motCle : [51null],motBan : [null];[]
+01/04/2022 15:18:06 - rechercheFichier : motCle : [51.bmp],motBan : [.bmp];[52.bmp,  53.bmp]
+01/04/2022 15:18:30 - rechercheFichier : motCle : [51.bmp, 53.bmp],motBan : [52.bmp];[52.bmp,  52.bmp]
