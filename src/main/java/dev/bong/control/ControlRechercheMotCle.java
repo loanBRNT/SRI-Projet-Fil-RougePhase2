@@ -17,16 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 //Loading screen runnable class
-public class ControlRechercheMotCle implements Runnable {
-
-    ProgressIndicator progressIndicator;
-    ProgressBar progressBar;
-    RechercheController rechercheController;
-
-    //Création d'un controlleur associé à la recherche.
-    private ControlRequete controlRequete = new ControlRequete(TypeRequete.RECHERCHE_MOT_CLE);
-    private ControlEnvoieResultat controlEnvoieResultat = ControlEnvoieResultat.getInstance();
-    private TestCommunication testCommunication = TestCommunication.getInstance();
+public class ControlRechercheMotCle extends ControlRecherche implements Runnable {
 
     //liste de mot clé
     private List<String> motcle;
@@ -34,9 +25,7 @@ public class ControlRechercheMotCle implements Runnable {
 
 
     public ControlRechercheMotCle(ProgressIndicator progressIndicator, ProgressBar progressBar,List<String> motcle, List<String> motBan, RechercheController rc) throws Exception {
-        this.progressIndicator = progressIndicator;
-        this.progressBar = progressBar;
-        this.rechercheController = rc;
+        super(new ControlRequete(TypeRequete.RECHERCHE_MOT_CLE),progressIndicator,progressBar,rc);
 
         //LANCER LA COM
         controlRequete.lancerCommunicationBus();
@@ -67,12 +56,12 @@ public class ControlRechercheMotCle implements Runnable {
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.2);
 
         // appel des fonctions de recherches
-        if (!motcle.toString().equals("[]")) resMotCle=rechercheMotCle(motcle);
+        if (!motcle.toString().equals("[]")) resMotCle=recherche(motcle);
         else {
             progressBar.setProgress(progressBar.getProgress() + 0.3);
             progressIndicator.setProgress(progressIndicator.getProgress() + 0.3);
         }
-        if (!motBan.toString().equals("[]")) resMotBan=rechercheMotCle(motBan);
+        if (!motBan.toString().equals("[]")) resMotBan=recherche(motBan);
         else {
             progressBar.setProgress(progressBar.getProgress() + 0.3);
             progressIndicator.setProgress(progressIndicator.getProgress() + 0.3);
@@ -108,43 +97,4 @@ public class ControlRechercheMotCle implements Runnable {
 
     }
 
-    //A partir de la liste de mot clé, Créé une liste de requête (une requête par mot) et l'envoie au moteur
-    //Récupère une String des résultats que l'on split en une liste de String (un élément pour un fichier)
-    public Set<String> rechercheMotCle(List<String> motCle) {
-        List<String> res;
-        Set<String> resTotal = new HashSet<>();
-
-        boolean requeteFinit = false;
-        int nbRequete = motCle.size(), nbRequeteFinit=0;
-        double pourcentage;
-
-        //Envoie de la liste au controlleur, qui envoie ensuite au moteur
-        controlRequete.creerEtenvoyerListeRequete(motCle);
-
-        while (!requeteFinit){
-            try {
-                pourcentage = nbRequeteFinit * 0.2 / nbRequete;
-                progressBar.setProgress(progressBar.getProgress() + pourcentage);
-                progressIndicator.setProgress(progressIndicator.getProgress() + pourcentage);
-                nbRequeteFinit = controlRequete.getNbRequeteFinit();
-                requeteFinit = controlRequete.touteRequeteFinit();
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        res=controlRequete.getListeResultat();
-
-        for (String resultatRecherche : res) {
-            ArrayList<String> fichiersTrouvee = new ArrayList<>(List.of(resultatRecherche.split(",")));
-            fichiersTrouvee.remove(0);
-            resTotal.addAll(fichiersTrouvee);
-        }
-
-        progressBar.setProgress(progressBar.getProgress() + 0.1);
-        progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
-
-        return resTotal;
-    }
 }

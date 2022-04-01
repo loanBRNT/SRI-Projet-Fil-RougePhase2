@@ -1,18 +1,20 @@
 package dev.bong.control;
 
 
+import dev.bong.entity.Historique;
+import dev.bong.entity.TestCommunication;
 import dev.bong.entity.TypeRequete;
+import dev.bong.view.RechercheController;
 import fr.dgac.ivy.IvyException;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ControlRechercheFichier extends Thread {
-
-    //Création d'un controlleur associé à la recherche.
-    private static ControlRequete controlRequete = new ControlRequete(TypeRequete.RECHERCHE_FICHIER);
+public class ControlRechercheFichier extends ControlRecherche implements Runnable {
 
     //liste de mot clé
     private List<String> nomFicRecherche;
@@ -22,9 +24,20 @@ public class ControlRechercheFichier extends Thread {
     private boolean modeOuvert;
 
     //Permet d'initialiser la com + les listes de mots clés
-    public ControlRechercheFichier(List<String> nomFicRecherche, List<String> nomFicBan, boolean modeOuvert) throws IvyException {
+    public ControlRechercheFichier(ProgressIndicator progressIndicator, ProgressBar progressBar,List<String> nomFicRecherche, List<String> nomFicBan, boolean modeOuvert, RechercheController rechercheController) throws Exception {
+        super(new ControlRequete(TypeRequete.RECHERCHE_FICHIER),progressIndicator,progressBar,rechercheController);
+
         //LANCER LA COM
         controlRequete.lancerCommunicationBus();
+
+        //Laisse le temps à la communication de s'établir entre tous les agents
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        testCommunication.testerCommunication();
 
         this.nomFicBan = nomFicBan;
         this.nomFicRecherche = nomFicRecherche;
@@ -40,21 +53,27 @@ public class ControlRechercheFichier extends Thread {
         Set<String> resMotBan = new HashSet<>();
         Set<String> resTotal = new HashSet<>();
 
-
-        //Laisse le temps à la communication de s'établir entre tous les agents
-        try {
-            sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        progressBar.setProgress(progressBar.getProgress() + 0.1);
+        progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
 
         if (modeOuvert){
             ControlIndexation.IndexationDuModeOuvert();
         }
 
+        progressBar.setProgress(progressBar.getProgress() + 0.1);
+        progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
+
         // appel des fonctions de recherches
-        if (!nomFicRecherche.toString().equals("[]")) resMotCle=rechercheMotCle(nomFicRecherche);
-        if (!nomFicBan.toString().equals("[]")) resMotBan=rechercheMotCle(nomFicBan);
+        if (!nomFicRecherche.toString().equals("[]")) resMotCle=recherche(nomFicRecherche);
+        else {
+            progressBar.setProgress(progressBar.getProgress() + 0.3);
+            progressIndicator.setProgress(progressIndicator.getProgress() + 0.3);
+        }
+        if (!nomFicBan.toString().equals("[]")) resMotBan=recherche(nomFicBan);
+        else {
+            progressBar.setProgress(progressBar.getProgress() + 0.3);
+            progressIndicator.setProgress(progressIndicator.getProgress() + 0.3);
+        }
 
         // ajout des recherches a polarité positives et suppression des polarité négatives
         if (nomFicRecherche.toString().equals("[]")){
@@ -66,12 +85,17 @@ public class ControlRechercheFichier extends Thread {
             resTotal.removeAll(resMotBan);
         }
 
-
+        progressBar.setProgress(progressBar.getProgress() + 0.1);
+        progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
 
         // affichage du resultat total
         System.out.println("resultat final : \n"+resTotal);
 
         //envoie resultats
+        controlEnvoieResultat.receptionResultat(resTotal);
+
+        //appel de l'historique
+        Historique.ecrire(TypeRequete.RECHERCHE_FICHIER,"motCle : " + nomFicRecherche + ",motBan : " + nomFicBan + ";" + resTotal);
 
 
         //delier l'OBSERVER
@@ -79,35 +103,10 @@ public class ControlRechercheFichier extends Thread {
         //STOPPER LA COM
         controlRequete.fermerCommunicationBus();
 
-    }
+        progressBar.setProgress(progressBar.getProgress() + 0.1);
+        progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
 
-    //A partir de la liste de mot clé, Créé une liste de requête (une requête par mot) et l'envoie au moteur
-    //Récupère une String des résultats que l'on split en une liste de String (un élément pour un fichier)
-    public Set<String> rechercheMotCle(List<String> motCle) {
-        List<String> res;
-        Set<String> resTotal = new HashSet<>();
-        boolean requeteFinit = false;
+        rechercheController.afficherResultat();
 
-        //Envoie de la liste au controlleur, qui envoie ensuite au moteur
-        controlRequete.creerEtenvoyerListeRequete(motCle);
-
-        while (!requeteFinit){
-            try {
-                requeteFinit = controlRequete.touteRequeteFinit();
-                sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        res=controlRequete.getListeResultat();
-
-        for (String resultatRecherche : res) {
-            ArrayList<String> fichiersTrouvee = new ArrayList<>(List.of(resultatRecherche.split(",")));
-            fichiersTrouvee.remove(0);
-            resTotal.addAll(fichiersTrouvee);
-        }
-
-        return resTotal;
     }
 }

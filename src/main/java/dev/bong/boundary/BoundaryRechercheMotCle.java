@@ -38,7 +38,7 @@ public class BoundaryRechercheMotCle {
             }
         }
 
-        this.controlRechercheMotCle.rechercheMotCle(motCle);
+        //this.controlRechercheMotCle.run(motCle);
 
     }
 

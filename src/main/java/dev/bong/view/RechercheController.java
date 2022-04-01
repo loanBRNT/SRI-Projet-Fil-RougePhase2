@@ -24,15 +24,23 @@ public class RechercheController implements Initializable {
     private boolean ResultatTrouvé = false;
     private boolean banWordsButtonActivate = false;
     private boolean banNomsButtonActivate = false;
-    ControlRechercheMotCle loadingScreen;
+
+    ControlRechercheMotCle loadingScreenMc;
+    ControlRechercheFichier loadingScreenFic;
 
     @FXML
     public Button buttonSearch;
+    @FXML
     public TextField textFieldSearch;
+    @FXML
     public MenuBar menuBar;
+    @FXML
     public ImageView param;
+    @FXML
     public Label labelInProgress;
+    @FXML
     public Button buttonAgain;
+    @FXML
     public ProgressBar progressBar;
     @FXML
     private ToggleButton banWordsButton;
@@ -74,8 +82,8 @@ public class RechercheController implements Initializable {
         String banWord=textFieldBanWords.getText();
 
         try {
-            loadingScreen = new ControlRechercheMotCle(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),this);
-            Thread thread = new Thread(loadingScreen);
+            loadingScreenMc = new ControlRechercheMotCle(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),this);
+            Thread thread = new Thread(loadingScreenMc);
             thread.setDaemon(true);
             thread.start();
         } catch (IvyException e) {
@@ -95,8 +103,8 @@ public class RechercheController implements Initializable {
         String banWord=textFieldBanWords.getText();
 
         try {
-            ControlRechercheFichier loadingScreen = new ControlRechercheFichier(/*progressIndicator,progressBar,*/List.of(motcle.split("/")),List.of(banWord.split("/")), Config.getInstance().getMode());
-            Thread thread = new Thread(loadingScreen);
+            loadingScreenFic = new ControlRechercheFichier(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")), Config.getInstance().getMode(),this);
+            Thread thread = new Thread(loadingScreenFic);
             thread.setDaemon(true);
             thread.start();
         } catch (IvyException e) {
