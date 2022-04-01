@@ -24,7 +24,6 @@ public class RechercheController implements Initializable {
     private boolean ResultatTrouvé = false;
     private boolean banWordsButtonActivate = false;
     private boolean banNomsButtonActivate = false;
-
     ControlRechercheMotCle loadingScreen;
 
     @FXML
@@ -76,10 +75,10 @@ public class RechercheController implements Initializable {
             thread.start();
         } catch (IvyException e) {
             e.printStackTrace();
-            GestionAlerte.genererErreur("Ivy Erreur","La connexion au bus a échouée");
+           GestionAlerte.genererErreur("Ivy Erreur","La connexion au bus a échouée");
         } catch (Exception e){
             e.printStackTrace();
-            GestionAlerte.genererErreur("Ivy Erreur","Communication avec le(s) moteur(s) impossible");
+           GestionAlerte.genererErreur("Ivy Erreur","Communication avec le(s) moteur(s) impossible");
         }
     }
 
