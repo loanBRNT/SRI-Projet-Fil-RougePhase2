@@ -104,7 +104,6 @@ public class  Config {
                     break;
             }
         }
-
     }
 
     public int getTauxSim() {

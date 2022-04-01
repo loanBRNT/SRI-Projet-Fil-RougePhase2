@@ -7,10 +7,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.RechercheController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.RechercheController">
     <children>
-        <Button fx:id="buttonSearch" layoutX="692.0" layoutY="268.0" onAction="#onClickSearch" prefHeight="26.0" prefWidth="77.0" text="Search" />
+        <Button fx:id="buttonSearch" layoutX="692.0" layoutY="268.0" onAction="#onClickFicSearch" prefHeight="26.0" prefWidth="77.0" text="Search" />
         <TextField fx:id="textFieldSearch" layoutX="70.0" layoutY="268.0" prefHeight="26.0" prefWidth="605.0" promptText="Que souhaitez-vous rechercher ?" />
+        <ToggleButton fx:id="banNomsButton" layoutX="70.0" layoutY="306.0" mnemonicParsing="false" onAction="#onBanNoms" prefHeight="26.0" prefWidth="85.0" text="+ Ban noms" />
+        <TextField fx:id="textFieldBanNoms" layoutX="170.0" layoutY="306.0" prefHeight="26.0" prefWidth="505.0" promptText="Saisir les noms a enlever" visible="false" />
         <ImageView fx:id="param" fitHeight="50.0" fitWidth="68.0" layoutX="24.0" layoutY="373.0" onMouseClicked="#onClickParam" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/icone-parametres-android.png" />
@@ -36,20 +38,20 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <ProgressBar fx:id="progressBar" accessibleRole="NODE" layoutX="70.0" layoutY="189.0" onMouseClicked="#onLoadingAchieve" prefHeight="21.0" prefWidth="605.0" progress="0.0" visible="false">
+        <ProgressBar fx:id="progressBar" accessibleRole="NODE" layoutX="164.0" layoutY="271.0" onMouseClicked="#onLoadingAchieve" prefHeight="21.0" prefWidth="471.0" progress="0.0" visible="false">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
         </ProgressBar>
-        <ProgressIndicator fx:id="progressIndicator" layoutX="436.0" layoutY="221.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="50.0" progress="0.0" visible="false" />
-        <Label fx:id="labelInProgress" layoutX="325.0" layoutY="241.0" text="In Progress . . ." visible="false">
+        <ProgressIndicator fx:id="progressIndicator" layoutX="444.0" layoutY="313.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="50.0" progress="0.0" visible="false" />
+        <Label fx:id="labelInProgress" layoutX="329.0" layoutY="323.0" text="In Progress . . ." visible="false">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <Button fx:id="buttonAgain" layoutX="675.0" layoutY="229.0" mnemonicParsing="false" onAction="#onLoadingFailled" prefHeight="25.0" prefWidth="110.0" text="Echec Recherche" visible="false" />
-        <Button fx:id="afficheResultat" layoutX="330.0" layoutY="294.0" mnemonicParsing="false" onAction="#onLoadingAchieve" text="Afficher Résultats" textAlignment="CENTER" visible="false" />
-        <ChoiceBox layoutX="586.0" layoutY="268.0" prefHeight="26.0" prefWidth="89.0" />
+        <Button fx:id="buttonAgain" layoutX="661.0" layoutY="398.0" mnemonicParsing="false" onAction="#onLoadingFailled" prefHeight="25.0" prefWidth="108.0" text="Echec Recherche" visible="false" />
+        <Button fx:id="afficheResultat" layoutX="329.0" layoutY="361.0" mnemonicParsing="false" onAction="#onLoadingAchieve" prefHeight="25.0" prefWidth="142.0" text="Afficher Résultats" textAlignment="CENTER" visible="false" />
+        <ChoiceBox fx:id="choiceType" layoutX="586.0" layoutY="268.0" prefHeight="26.0" prefWidth="89.0" />
         <ImageView fitHeight="155.0" fitWidth="309.0" layoutX="232.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/LogoBong.png" />

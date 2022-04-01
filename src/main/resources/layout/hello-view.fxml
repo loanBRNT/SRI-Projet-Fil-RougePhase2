@@ -16,7 +16,7 @@
             <Image url="@../images/icone-parametres-android.png" />
          </image>
       </ImageView>
-      <ToggleButton fx:id="banButton" layoutX="70.0" layoutY="306.0" mnemonicParsing="false" onAction="#onBanWords" prefHeight="26.0" prefWidth="85.0" text="+ Ban words" />
+      <ToggleButton fx:id="banWordsButton" layoutX="70.0" layoutY="306.0" mnemonicParsing="false" onAction="#onBanWords" prefHeight="26.0" prefWidth="85.0" text="+ Ban words" />
       <TextField fx:id="textFieldBanWords" layoutX="170.0" layoutY="306.0" prefHeight="26.0" prefWidth="505.0" promptText="Saisir les mots clés a enlever" visible="false" />
       <MenuBar fx:id="menuBar" prefHeight="28.0" prefWidth="800.0">
          <menus>
