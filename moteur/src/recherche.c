@@ -528,7 +528,7 @@ int generationChaineCaracViaPileIMAGE(PILE_DESCRIPTEUR_IMAGE pile, DESCRIPTEUR_I
     if (pile == NULL) return 1;
 
     recupNomDUFic(pile->Di.ID,type,chaine_nom);
-    strcpy(chaine," ");
+    strcpy(chaine,"");
 
     while (pile != NULL){
         //strcat(chaine,"- ");

@@ -19,3 +19,5 @@
 01/04/2022 15:14:29 - rechercheFichier : motCle : [51null],motBan : [null];[]
 01/04/2022 15:18:06 - rechercheFichier : motCle : [51.bmp],motBan : [.bmp];[52.bmp,  53.bmp]
 01/04/2022 15:18:30 - rechercheFichier : motCle : [51.bmp, 53.bmp],motBan : [52.bmp];[52.bmp,  52.bmp]
+01/04/2022 15:29:33 - rechercheFichier : motCle : [51.bmp, 52.bmp],motBan : [53.bmp];[53.bmp]
+01/04/2022 15:29:59 - rechercheFichier : motCle : [53.bmp, 51.bmp],motBan : [52.bmp];[52.bmp]
