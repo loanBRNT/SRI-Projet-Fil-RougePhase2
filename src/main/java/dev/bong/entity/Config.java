@@ -25,7 +25,7 @@ public class  Config {
 
     private Config(){
         //ajout des config des differents moteur de recherche
-        listeDesConfig.add("./moteur/.config");
+        listeDesConfig.add("./moteurs/.config");
         try {
             chargementConfig();
         } catch (IOException e) {
@@ -73,7 +73,7 @@ public class  Config {
     }
 
     public void chargementConfig() throws IOException {
-        FileReader flux = new FileReader("./moteur/.config");
+        FileReader flux = new FileReader("./moteurs/.config");
         BufferedReader buffer = new BufferedReader(flux);
         List<String> listeLigne;
         String line,val,nom;
