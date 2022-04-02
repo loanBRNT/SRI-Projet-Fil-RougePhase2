@@ -4,6 +4,8 @@ import dev.bong.control.ControlModifierConfig;
 import dev.bong.entity.Config;
 import dev.bong.entity.GestionErreurs;
 import fr.dgac.ivy.IvyException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
@@ -52,17 +54,22 @@ public class ParamAdminController implements Initializable {
     @FXML
     private Spinner<Integer> spNbMotTexte;
     @FXML
-    private Spinner<Integer> spNbPointFen;
+    private Spinner<String> spNbPointFen;
+    //private Spinner<Integer> spNbPointFen;
     @FXML
     private Spinner<Integer> spNbBitQuant;
 
+     public ObservableList<String> puissanceDeux = FXCollections.observableArrayList("2","4","8","16","32","64","128","256","512","1024","2048");
     //Spinner Value Factory
+
     final int initialValue = 1; //permet d'initialisé la valeur dans la case par ex: ancienne valeur
     SpinnerValueFactory<Integer> svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100,config.getTauxSim());
     SpinnerValueFactory<Integer> svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200,config.getNbrIntervalleAudio());
     SpinnerValueFactory<Integer> svf3 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200,config.getSeuilOccMot());
     SpinnerValueFactory<Integer> svf4 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,200,config.getNbMaxMotParTexte());
-    SpinnerValueFactory<Integer> svf5 = new SpinnerValueFactory.IntegerSpinnerValueFactory(2,2048,config.getNbrPointsAudio());
+    SpinnerValueFactory<String> svf5 = new SpinnerValueFactory.ListSpinnerValueFactory<String>(puissanceDeux);
+    //SpinnerValueFactory<Integer> svf5 = new SpinnerValueFactory.ListSpinnerValueFactory<>(puissanceDeux);
+    //SpinnerValueFactory<Integer> svf5 = new SpinnerValueFactory.IntegerSpinnerValueFactory(2,2048,config.getNbrPointsAudio());
     SpinnerValueFactory<Integer> svf6 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,4,config.getBitQuantification());
     @FXML
     private TextArea taSummary;
@@ -71,17 +78,17 @@ public class ParamAdminController implements Initializable {
     @FXML
     protected void onApplyParamAdmin() throws IOException {
         ArrayList<Integer> listeValeur = recupererValeur() ;
+            try {
+                ControlModifierConfig.modifConfig(listeValeur);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Confirmation changement");
+                alert.setHeaderText("modification du .config effectuée avec succès");
+                alert.showAndWait();
+            } catch (Exception e) {
+                e.printStackTrace();
+                GestionErreurs.genererWarning("Ivy ERREUR","Echec de l'indexation automatique");
+            }
 
-        try {
-            ControlModifierConfig.modifConfig(listeValeur);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Confirmation changement");
-            alert.setHeaderText("modification du .config effectuée avec succès");
-            alert.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
-            GestionErreurs.genererWarning("Ivy ERREUR","Echec de l'indexation automatique");
-        }
     }
     @FXML
     protected void onBack() throws IOException {
@@ -100,6 +107,7 @@ public class ParamAdminController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        svf5.setValue(String.valueOf(config.getNbrPointsAudio()));
         spTauxSimi.setEditable(true);
         spTauxSimi.setValueFactory(svf1);
         spIntervalle.setEditable(true);
@@ -126,10 +134,15 @@ public class ParamAdminController implements Initializable {
         listeValeur.add(spNbMotTexte.getValue());
         listeValeur.add( spOccu.getValue());
         listeValeur.add(spIntervalle.getValue());
-        listeValeur.add(spNbPointFen.getValue());
+        listeValeur.add(Integer.parseInt(spNbPointFen.getValue()));
         listeValeur.add(spNbBitQuant.getValue());
         return listeValeur;
     }
 
+/*
+    public ObservableList<Integer> getPuissanceDeux() {
+        return puissanceDeux;
+    }
 
+ */
 }
