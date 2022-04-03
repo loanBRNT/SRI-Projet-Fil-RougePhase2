@@ -49,3 +49,4 @@ rechercheMotCle : motCle:[christophe, jean, ans],motBan:[]resultats:[26-Tom_Boon
 29/03/2022 08:12:32 - rechercheMotCle : motCle:[jean],motBan:[christophe]resultats:[12-Jean-Marie_Sevestre_libraire_et_PDG.xml]
 01/04/2022 12:02:31 - rechercheMotCle : motCle:[ocean],motBan:[]resultats:[ ]
 01/04/2022 12:03:22 - rechercheMotCle : motCle:[football],motBan:[]resultats:[ 22-Les_clubs_de_football_anglais.xml, 13-Ligue_des_champions____Si.xml]
+02/04/2022 12:16:22 - rechercheMotCle : motCle:[jean],motBan:[]resultats:[12-Jean-Marie_Sevestre_libraire_et_PDG.xml, 05-Jean-Christophe_Bette_a_du_attendre.xml,  TestJean.xml]
