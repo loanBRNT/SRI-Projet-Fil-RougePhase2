@@ -63,7 +63,6 @@ public class HistoriqueController implements Initializable {
             //Initialisation de la listeView
             listViewHisto.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
             //Ajoute le premier champ de notre listeDeListe qui correpond a la recherche
-            //listViewHisto.getItems().addAll(Historique.listeDeListe.get(0));
             for (int i =Historique.listeDeListe.get(0).size()-1; i >=0; i--) {
                 listViewHisto.getItems().add(Historique.listeDeListe.get(0).get(i));
             }
