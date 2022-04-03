@@ -158,7 +158,7 @@ public class RechercheController implements Initializable {
     @FXML
     protected void onClean() throws IOException {
         Historique.lire();
-        if (Historique.getRecherches().isEmpty() && Historique.getResultats().isEmpty()){
+        if (Historique.getListeDeListe().isEmpty()){
             GestionAlerte.genererInfos("Historique", "L'historique est déja vide");
         }else {
             Historique.effacer();

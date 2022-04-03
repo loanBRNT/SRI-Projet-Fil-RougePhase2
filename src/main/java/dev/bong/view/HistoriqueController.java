@@ -1,25 +1,31 @@
 package dev.bong.view;
 
+
 import dev.bong.entity.GestionAlerte;
 import dev.bong.entity.Historique;
-import javafx.beans.value.ChangeListener;
+import dev.bong.entity.Recherche;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class HistoriqueController implements Initializable {
 
     @FXML
-    public ListView<String> listViewHisto;
+    public TableView<Recherche> tableviewHisto;
+    public TableColumn<Recherche,String> dateCol;
+    public TableColumn typeCol;
+    public TableColumn searchCol;
+    public TableColumn bansCol;
+
+    public ObservableList<Recherche> temp = FXCollections.observableArrayList();
 
     @FXML
     protected void onBack() throws IOException {
@@ -28,25 +34,21 @@ public class HistoriqueController implements Initializable {
 
     @FXML
     protected void onRealeaseSelection() {
-        listViewHisto.getSelectionModel().clearSelection();
+        tableviewHisto.getSelectionModel().clearSelection();
     }
 
     @FXML
     protected void onClean() throws IOException {
         Historique.lire();
-        if (Historique.getRecherches().isEmpty() && Historique.getResultats().isEmpty()){
+        if (Historique.getListeDeListe().isEmpty()){
             GestionAlerte.genererInfos("Historique", "L'historique est déja vide");
         }else{
             try {
-                listViewHisto.getSelectionModel().clearSelection();
+                tableviewHisto.getSelectionModel().clearSelection();
                 Historique.effacer();
                 Historique.lire();
-                listViewHisto.getSelectionModel().selectAll();
-                ObservableList<Integer> indices = listViewHisto.getSelectionModel().getSelectedIndices();
-                for (int index : indices) {
-                    listViewHisto.getSelectionModel().getSelectedItems().remove(index);
-                }
-                listViewHisto.getItems().addAll(Historique.listeDeListe.get(0));
+                temp.clear();
+                tableviewHisto.refresh();
                 RechercheApplication.changerScene("historique.fxml");
                 GestionAlerte.genererInfos("Historique", "L'historique a bien été nettoyé");
             } catch (FileNotFoundException e) {
@@ -61,22 +63,29 @@ public class HistoriqueController implements Initializable {
             // Mise a jour de la liste hitorique
             Historique.lire();
             //Initialisation de la listeView
-            listViewHisto.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-            //Ajoute le premier champ de notre listeDeListe qui correpond a la recherche
-            for (int i =Historique.listeDeListe.get(0).size()-1; i >=0; i--) {
-                listViewHisto.getItems().add(Historique.listeDeListe.get(0).get(i));
+            tableviewHisto.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+            dateCol.setCellValueFactory(new PropertyValueFactory<Recherche, String>("date"));
+            typeCol.setCellValueFactory(new PropertyValueFactory<Recherche, String>("type"));
+            searchCol.setCellValueFactory(new PropertyValueFactory<Recherche, String>("search"));
+            bansCol.setCellValueFactory(new PropertyValueFactory<Recherche, String>("bans"));
+            //Ajoute de l'historique actuel dans la liste observable
+            for (int i = Historique.getListeDeListe().size()-1; i >=0; i--) {
+                temp.add(Historique.getListeDeListe().get(i));
             }
-            listViewHisto.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-                @Override
-                public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                    if(listViewHisto.getSelectionModel().getSelectedItem()!=null) {
-                        int index = listViewHisto.getSelectionModel().getSelectedIndex();
-                        GestionAlerte.genererInfos("Résultats de la recherche", Historique.getResultats().get(Historique.getResultats().size()-index-1));
-                    }
-                }
-            });
+            tableviewHisto.setItems(temp);
+            tableviewHisto.setOnMouseClicked(e -> {
+               events();
+           });
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void events(){
+        if(tableviewHisto.getSelectionModel().getSelectedItem()!=null) {
+            int index = tableviewHisto.getSelectionModel().getSelectedIndex();
+            GestionAlerte.genererInfos("Résultats de la recherche", temp.get(index).getResultats());
+            tableviewHisto.getSelectionModel().clearSelection();
         }
     }
 }
