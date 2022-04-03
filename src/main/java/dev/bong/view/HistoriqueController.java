@@ -13,6 +13,7 @@ import javafx.scene.control.SelectionMode;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class HistoriqueController implements Initializable {
@@ -62,13 +63,16 @@ public class HistoriqueController implements Initializable {
             //Initialisation de la listeView
             listViewHisto.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
             //Ajoute le premier champ de notre listeDeListe qui correpond a la recherche
-            listViewHisto.getItems().addAll(Historique.listeDeListe.get(0));
+            //listViewHisto.getItems().addAll(Historique.listeDeListe.get(0));
+            for (int i =Historique.listeDeListe.get(0).size()-1; i >=0; i--) {
+                listViewHisto.getItems().add(Historique.listeDeListe.get(0).get(i));
+            }
             listViewHisto.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                     if(listViewHisto.getSelectionModel().getSelectedItem()!=null) {
                         int index = listViewHisto.getSelectionModel().getSelectedIndex();
-                        GestionAlerte.genererInfos("Résultats de la recherche", Historique.getResultats().get(index));
+                        GestionAlerte.genererInfos("Résultats de la recherche", Historique.getResultats().get(Historique.getResultats().size()-index-1));
                     }
                 }
             });

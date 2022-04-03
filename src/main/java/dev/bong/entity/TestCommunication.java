@@ -30,6 +30,7 @@ public class TestCommunication implements PropertyChangeListener {
 
 
     public void testerCommunication() throws Exception {
+        tick = 0;
         communicationIvy.addPropertyChangeListener(ListenerPropriete.TEST.toString(),this);
 
         communicationIvy.definirBind(ListenerPropriete.TEST);
