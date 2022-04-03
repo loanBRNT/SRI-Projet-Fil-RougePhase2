@@ -80,7 +80,7 @@ int CleanToTok(){
 																		//Fonction TOKEN
 	FILE* fclean=fopen("test_temp.clean","r");							
 	FILE* ftok=fopen("test_toktemp.tok","w+");							//CREATION FICHIER .TOK
-	FILE* stoplist=fopen("./Database/Descripteur/stoplist.txt","r");	//OUVERTURE FICHIER STOPLIST
+	FILE* stoplist=fopen("../Database/Descripteur/stoplist.txt","r");	//OUVERTURE FICHIER STOPLIST
 	
 	if (fclean == NULL || ftok == NULL || stoplist == NULL){
 		printf("ERREUR OUVERTURE\n");
@@ -324,13 +324,13 @@ int sauvegardeMotCle(){
 	char temp1[30], temp2[30];
 	int nbterme,nbtermecpy,nbtok,nbtokcpy,ID,Idcpy,occ, occcpy;;
 
-	strcpy(commande,"cat ./Database/Descripteur/dT.txt > ./Database/Descripteur/dtcopy.txt");
+	strcpy(commande,"cat ../Database/Descripteur/dT.txt > ../Database/Descripteur/dtcopy.txt");
 	fflush(stdin);
 	system(commande);
 
-	FILE* fdT=fopen("./Database/Descripteur/dT.txt","r");
-	FILE* fcopy=fopen("./Database/Descripteur/dtcopy.txt","r");
-	FILE* fkeyword=fopen("./Database/Descripteur/table_index_texte.txt","w+");
+	FILE* fdT=fopen("../Database/Descripteur/dT.txt","r");
+	FILE* fcopy=fopen("../Database/Descripteur/dtcopy.txt","r");
+	FILE* fkeyword=fopen("../Database/Descripteur/table_index_texte.txt","w+");
 
 	if (fdT == NULL || fcopy == NULL || fkeyword == NULL ){
 		printf("ERREUR\n");

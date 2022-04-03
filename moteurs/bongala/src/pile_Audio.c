@@ -74,7 +74,7 @@ PILE_Audio Charger_Pile_DescripteurAudio(PILE_Audio PA){
     int nbrfen;
     int id;
     //gestion de l'ouverture du fichier
-    f=fopen("./Database/Descripteur/dA.txt","r");
+    f=fopen("../Database/Descripteur/dA.txt","r");
     if(f==NULL){
          printf("Impossible d'ouvrir le fichier contenant les descripteurs Audio");
     }

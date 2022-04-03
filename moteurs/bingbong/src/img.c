@@ -136,15 +136,15 @@ int generationIdUnique(int choix){ //Fonction qui génere un identifiant entre 2
     switch (choix){
         //TEXTE
         case 1 :
-            CHEMIN_LISTE = "./Database/Descripteur/liste_base_texte.txt";
+            CHEMIN_LISTE = "../Database/Descripteur/liste_base_texte.txt";
             break;
         //IMAGE
         case 2 :
-            CHEMIN_LISTE = "./Database/Descripteur/liste_base_image.txt";
+            CHEMIN_LISTE = "../Database/Descripteur/liste_base_image.txt";
             break;
         //AUDIO
         case 3 :
-            CHEMIN_LISTE = "./Database/Descripteur/liste_base_audio.txt";
+            CHEMIN_LISTE = "../Database/Descripteur/liste_base_audio.txt";
             break;
         default :
             printf("Erreur sur la valeur du paramètre pour la génération de l'ID unique");
@@ -184,7 +184,7 @@ Descripteur indexer_image(char* nom, int n){
     Descripteur descripteur;
     FILE* fichier = NULL;
     FILE* liste = NULL;
-    char* CHEMIN_LISTE = "./Database/Descripteur/liste_base_image.txt";
+    char* CHEMIN_LISTE = "../Database/Descripteur/liste_base_image.txt";
 
 
     // Ouverture de l'image

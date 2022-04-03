@@ -71,7 +71,7 @@ PILE_Texte Charger_Pile_DescripteurTexte(PILE_Texte PT){
     int nbtokens;
     int id;
      //gestion de l'ouverture du fichier
-    f=fopen("./Database/Descripteur/dT.txt","r"); //modif
+    f=fopen("../Database/Descripteur/dT.txt","r"); //modif
     if(f==NULL){
          printf("Impossible d'ouvrir le fichier contenant les descripteurs Image"); //modif
     }

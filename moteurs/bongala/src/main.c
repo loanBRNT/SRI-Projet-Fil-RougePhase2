@@ -50,12 +50,12 @@ void RechercheCallback (IvyClientPtr app, void *data, int argc, char **argv)
 		//ivyEnvoie(chaine, argv[1]);
 	} else if (!strcmp(argv[0], "indexation")){
 		if (!strcmp(argv[1],"reset")){
-			system("echo ' ' > ./Database/Descripteur/liste_base_image.txt");
-			system("echo ' ' > ./Database/Descripteur/dI.txt");
-			system("echo ' ' > ./Database/Descripteur/liste_base_audio.txt");
-			system("echo ' ' > ./Database/Descripteur/dA.txt");
-			system("echo ' ' > ./Database/Descripteur/liste_base_texte.txt");
-			system("echo ' ' > ./Database/Descripteur/dT.txt");
+			system("echo ' ' > ../Database/Descripteur/liste_base_image.txt");
+			system("echo ' ' > ../Database/Descripteur/dI.txt");
+			system("echo ' ' > ../Database/Descripteur/liste_base_audio.txt");
+			system("echo ' ' > ../Database/Descripteur/dA.txt");
+			system("echo ' ' > ../Database/Descripteur/liste_base_texte.txt");
+			system("echo ' ' > ../Database/Descripteur/dT.txt");
 		}
 		Indexation();
 		IvySendMsg("Moteur message=indexation ok");
@@ -83,7 +83,7 @@ void StopCallback (IvyClientPtr app, void *data, int argc, char **argv)
 int main(int argc, char const *argv[]){
 	
 	/* initialisation */
-	IvyInit("Moteur", "Le moteur est sur le reseau", 0, 0, 0, 0);
+	IvyInit("Bongala", "Bongala est sur le reseau", 0, 0, 0, 0);
 
 	/* On Eoute et on traite les messages qui commencent par n'importe quoi */
 	IvyBindMsg(RechercheCallback, 0, "^Interface message=(.*) source=(.*)");

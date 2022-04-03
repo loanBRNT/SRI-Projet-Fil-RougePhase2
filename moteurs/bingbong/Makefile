@@ -1,9 +1,8 @@
 MAKE = make
 GCC = gcc
 SRC = $(wildcard src/*.c)
-EXC = ./moteur.out
+EXC = ./bingbong.out
 LIB = $(wildcard lib/*.a)
-INCLUDE = include/
 
 
 all :

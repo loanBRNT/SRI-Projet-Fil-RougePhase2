@@ -476,36 +476,36 @@ int menuPointConfig(){
 				break;
 			case 2:
 				event=menuModifierNbMaxMot(ptr_sur_config );
-				system("echo ' ' > ./Database/Descripteur/liste_base_texte.txt");
-				system("echo ' ' > ./Database/Descripteur/dT.txt");
+				system("echo ' ' > ../Database/Descripteur/liste_base_texte.txt");
+				system("echo ' ' > ../Database/Descripteur/dT.txt");
 				maj=1;
 				getchar();
 				break;
 			case 3:
 				event= menuModifierSeuilOccurence(ptr_sur_config);
-				system("echo ' ' > ./Database/Descripteur/liste_base_texte.txt");
-				system("echo ' ' > ./Database/Descripteur/dT.txt");
+				system("echo ' ' > ../Database/Descripteur/liste_base_texte.txt");
+				system("echo ' ' > ../Database/Descripteur/dT.txt");
 				maj=1;
 				getchar();
 				break;
 			case 4:
 				event=menuModifierNbIntervalle(ptr_sur_config);
-				system("echo ' ' > ./Database/Descripteur/liste_base_audio.txt");
-				system("echo ' ' > ./Database/Descripteur/dA.txt");
+				system("echo ' ' > ../Database/Descripteur/liste_base_audio.txt");
+				system("echo ' ' > ../Database/Descripteur/dA.txt");
 				maj=1;
 				getchar();
 				break;
 			case 5:
 				event=menuModifierNbPoints(ptr_sur_config);
-				system("echo ' ' > ./Database/Descripteur/liste_base_audio.txt");
-				system("echo ' ' > ./Database/Descripteur/dA.txt");
+				system("echo ' ' > ../Database/Descripteur/liste_base_audio.txt");
+				system("echo ' ' > ../Database/Descripteur/dA.txt");
 				maj=1;
 				getchar();
 				break;
 			case 6:
 				event=menuModifierNbBits(ptr_sur_config);
-				system("echo ' ' > ./Database/Descripteur/liste_base_image.txt");
-				system("echo ' ' > ./Database/Descripteur/dI.txt");
+				system("echo ' ' > ../Database/Descripteur/liste_base_image.txt");
+				system("echo ' ' > ../Database/Descripteur/dI.txt");
 				maj=1;
 				getchar();
 				break;
@@ -787,20 +787,20 @@ while(event != 0){ //Event 0 représente une fermeture du programme, -1 pour un 
 			case 1:
 				event=0;
 				afficheDataSelection();
-				system("ls  ./Database/Texte/");
+				system("ls  ../Database/Texte/");
 				printf("Veuillez choisir un fichier\n");
 				break;
 			case 2:
 				event=0;
 				afficheDataSelection();
-				system("ls  ./Database/Audio/ | grep wav$");
+				system("ls  ../Database/Audio/ | grep wav$");
 				printf("Veuillez choisir un fichier\n");
 				break;
 			case 3:
 				event=0;
 				afficheDataSelection();
-				system("ls ./Database/Image/NB | grep bmp$");
-				system("ls  ./Database/Image/RGB| grep jpg$");
+				system("ls ../Database/Image/NB | grep bmp$");
+				system("ls  ../Database/Image/RGB| grep jpg$");
 				printf("Veuillez choisir un fichier\n");
 				break;
 			default:

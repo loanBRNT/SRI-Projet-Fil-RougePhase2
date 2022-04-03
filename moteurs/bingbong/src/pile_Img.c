@@ -71,7 +71,7 @@ PILE_Img Charger_Pile_DescripteurImg(PILE_Img PI){
     int taille;
     int id;
     //gestion de l'ouverture du fichier
-    f=fopen("./Database/Descripteur/dI.txt","r"); //modif
+    f=fopen("../Database/Descripteur/dI.txt","r"); //modif
     if(f==NULL){
          printf("Impossible d'ouvrir le fichier contenant les descripteurs Image"); //modif
     }

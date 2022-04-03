@@ -41,7 +41,7 @@ PTR_CONFIG ouvrirPanneauDeConfiguration(){
 
 	system("ls -al");
 
-	FILE * ptr_fic = fopen("./.config","r");
+	FILE * ptr_fic = fopen("../.config","r");
 	if (ptr_fic == NULL){
 		fprintf(stderr, "ERREUR : probleme d'acces a .config\n");
 		return NULL;
@@ -69,7 +69,7 @@ void fermerPanneauDeConfiguration(PTR_CONFIG config){
 }
 
 void sauvegarderConfig(PTR_CONFIG config){
-	FILE * ptr_fic = fopen("./.config","w");
+	FILE * ptr_fic = fopen("../.config","w");
 	if (ptr_fic == NULL){
 		fprintf(stderr, "ERREUR : probleme d'acces a .config\n");
 	} else {
@@ -84,7 +84,7 @@ int recupUnAttributConfig(char* nomAttributCible){
 	int valeur;
 	int continuerBoucle = 1;
 
-	FILE * ptr_fic = fopen("./.config","r");
+	FILE * ptr_fic = fopen("../.config","r");
 	if (ptr_fic == NULL){
 		fprintf(stderr, "ERREUR : probleme d'acces a .config\n");
 		return -1;

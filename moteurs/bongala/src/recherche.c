@@ -77,7 +77,7 @@ int recupIdDuFic(char* nom_fic, int type){
     int id;
     FILE* ptr_fic;
 
-    strcpy(chemin,"./Database/Descripteur");
+    strcpy(chemin,"../Database/Descripteur");
     if (type == 2){
         strcat(chemin, "/liste_base_image.txt");
     } else if (type == 1){
@@ -112,7 +112,7 @@ void recupNomDUFic(int id, int type,char* nom){
 
     sprintf(id_fic,"%d",id);
 
-    strcpy(chemin,"./Database/Descripteur");
+    strcpy(chemin,"../Database/Descripteur");
     if (type == 2 || type == 4){
         strcat(chemin, "/liste_base_image.txt");
         if (type == 4){
@@ -168,18 +168,18 @@ int lanceRechercheViaAdresse(char* adresse_fichier_cible, char* chaine_resultat)
 
     if (!strcmp(ptr_debutExtension,".xml")){
         type = 1;
-        strcpy(cheminBase, "./Database/Texte");
+        strcpy(cheminBase, "../Database/Texte");
     } else if (!strcmp(ptr_debutExtension,".jpg")){
         type = 2;
-        strcpy(cheminBase, "./Database/Image/RGB");
+        strcpy(cheminBase, "../Database/Image/RGB");
         changerExtension(sauvExtension,".jpg");
     } else if (!strcmp(ptr_debutExtension,".wav")){
         type = 3;
-        strcpy(cheminBase, "./Database/Audio");
+        strcpy(cheminBase, "../Database/Audio");
         changerExtension(sauvExtension,".wav");
     } else if (!strcmp(ptr_debutExtension,".bmp")){
         type = 2;
-        strcpy(cheminBase, "./Database/Image/NB");
+        strcpy(cheminBase, "../Database/Image/NB");
         changerExtension(sauvExtension,".bmp");
     } else {
         strcpy(chaine_resultat, "ERREUR : TYPE INCONNU\n");
@@ -301,7 +301,7 @@ int lanceRechercheViaMotCle(char* mot, char* chaine_resultat){
 
     strcpy(commande, "grep ^");
     strcat(commande, mot);  
-    strcat(commande,"$ ./Database/Descripteur/table_index_texte.txt -n > fic_temp");
+    strcat(commande,"$ ../Database/Descripteur/table_index_texte.txt -n > fic_temp");
     
     system(commande);
 
@@ -325,7 +325,7 @@ int lanceRechercheViaMotCle(char* mot, char* chaine_resultat){
     sprintf(numChar,"%d",numLigne);
 
 
-    strcpy(commande, "cat ./Database/Descripteur/table_index_texte.txt | head -");
+    strcpy(commande, "cat ../Database/Descripteur/table_index_texte.txt | head -");
     strcat(commande, numChar);
     strcat(commande, " | tail -1 > fic");
 
@@ -783,16 +783,16 @@ int ouvertureFichier(char* nom){
 
     switch(getTypeDuFichier(nom)){
         case 1:
-            strcpy(CHEMIN,"./Database/Texte/");
+            strcpy(CHEMIN,"../Database/Texte/");
             break;
         case 2:
-            strcpy(CHEMIN,"./Database/Image/RGB/");
+            strcpy(CHEMIN,"../Database/Image/RGB/");
             break;
         case 3:
-            strcpy(CHEMIN,"./Database/Audio/");
+            strcpy(CHEMIN,"../Database/Audio/");
             break;
         case 4:
-            strcpy(CHEMIN,"./Database/Image/NB/");
+            strcpy(CHEMIN,"../Database/Image/NB/");
             break;
         default:
             return 1;

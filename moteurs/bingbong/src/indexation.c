@@ -25,7 +25,7 @@ void changementNom(char* nom){
     char nom_modif[100];
     char commande[1000];
     char carac=32;
-    char CHEMIN_TEXTE [100] =  "./Database/Texte/";
+    char CHEMIN_TEXTE [100] =  "../Database/Texte/";
     int i = 0,j=0;
 
     carac = nom[0];
@@ -89,13 +89,13 @@ int VerificationTraitee(char* nom_fic){
 	int traite;
 	// on verife l'extension du texte pour savoir si on a affaire un fichier audio ,texte ou image et donc savoir quelle fichier contenant les fichiers déjà traité a ouvrir
 	if (strstr(nom_fic, ".xml")){
-    	strcpy( CHEMIN_FICHIER_INDEXEE,"./Database/Descripteur/liste_base_texte.txt");
+    	strcpy( CHEMIN_FICHIER_INDEXEE,"../Database/Descripteur/liste_base_texte.txt");
     }
     else if(strstr(nom_fic, ".bin")){
-		strcpy( CHEMIN_FICHIER_INDEXEE,"./Database/Descripteur/liste_base_audio.txt");
+		strcpy( CHEMIN_FICHIER_INDEXEE,"../Database/Descripteur/liste_base_audio.txt");
     }
     else if(strstr(nom_fic, ".txt")){
-    	strcpy( CHEMIN_FICHIER_INDEXEE,"./Database/Descripteur/liste_base_image.txt");
+    	strcpy( CHEMIN_FICHIER_INDEXEE,"../Database/Descripteur/liste_base_image.txt");
     }
     else{
     	fprintf(stderr, "ERREUR :  PB avec type du fichier\n");
@@ -140,10 +140,10 @@ int VerificationTraitee(char* nom_fic){
 void Indexation(){
 
 	// mettre un chemin vers un rpertoire qui ne contient que des fichiers//
-	char CHEMIN_TEXTE [100] =  "./Database/Texte/";
-	char CHEMIN_AUDIO [100] =  "./Database/Audio/";
-	char CHEMIN_IMAGE_NB [100] =  "./Database/Image/NB/";
-	char CHEMIN_IMAGE_RGB [100] =  "./Database/Image/RGB/";
+	char CHEMIN_TEXTE [100] =  "../Database/Texte/";
+	char CHEMIN_AUDIO [100] =  "../Database/Audio/";
+	char CHEMIN_IMAGE_NB [100] =  "../Database/Image/NB/";
+	char CHEMIN_IMAGE_RGB [100] =  "../Database/Image/RGB/";
 	char commande[1000] ;
 	char nom_fic[100];
 	char CHEMIN_INDEXATION [100];
@@ -153,7 +153,7 @@ void Indexation(){
 	PILE_Img pI=init_PILE_Img();
 	PILE_Texte pT=init_PILE_Texte();
 
-	system("chmod 777 ./.config");
+	system("chmod 777 ../.config");
 
 	// recuperation des valeurs du .config
 	int NbMot=recupNbMotParTexteDuConfig();
@@ -207,7 +207,7 @@ void Indexation(){
  	    	else{
      			if (strstr(nom_fic, ".xml")){
      				//concatenation pour avoir une chaine conteanant le chemin menant au fichier depuis le prog.out
-    				strcpy(CHEMIN_INDEXATION,"./Database/Texte/");	
+    				strcpy(CHEMIN_INDEXATION,"../Database/Texte/");	
     				strcat(CHEMIN_INDEXATION,nom_fic);
     				//indexation du fichier nom_fic
     				DescripteurTxt Dt =indexationTxt(CHEMIN_INDEXATION, NbMot,OccMot);
@@ -218,7 +218,7 @@ void Indexation(){
     				strcat(commande,id);
     				strcat(commande," " );
 					strcat(commande, nom_fic);
-					strcat(commande, " >> ./Database/Descripteur/liste_base_texte.txt");
+					strcat(commande, " >> ../Database/Descripteur/liste_base_texte.txt");
 					system(commande); 
     			}
     			else{
@@ -273,7 +273,7 @@ void Indexation(){
  	    	else{
     			if(strstr(nom_fic, ".bin")){
     				//concatenation pour avoir une chaine conteanant le chemin menant au fichier depuis le prog.out
-    				strcpy(CHEMIN_INDEXATION,"./Database/Audio/");	
+    				strcpy(CHEMIN_INDEXATION,"../Database/Audio/");	
     				strcat(CHEMIN_INDEXATION,nom_fic);
     				//indexation du fichier nom_fic
     				DescripteurAudio DA =IndexationFichierAudio(CHEMIN_INDEXATION,intervalleAudio,nbrPointAudio);
@@ -284,7 +284,7 @@ void Indexation(){
     				strcat(commande,id);
     				strcat(commande," " );
 					strcat(commande, nom_fic);
-					strcat(commande, " >> ./Database/Descripteur/liste_base_audio.txt");
+					strcat(commande, " >> ../Database/Descripteur/liste_base_audio.txt");
 					system(commande); 
     			}
     			else{
@@ -341,7 +341,7 @@ void Indexation(){
  	    	else{
     			if(strstr(nom_fic, ".txt")){
     				//concatenation pour avoir une chaine conteanant le chemin menant au fichier depuis le prog.out
-    				strcpy(CHEMIN_INDEXATION,"./Database/Image/NB/");	
+    				strcpy(CHEMIN_INDEXATION,"../Database/Image/NB/");	
     				strcat(CHEMIN_INDEXATION,nom_fic);
     				//indexation du fichier nom_fic
     				Descripteur DI=indexer_image(CHEMIN_INDEXATION, bitQ);
@@ -352,7 +352,7 @@ void Indexation(){
     				strcat(commande, id );
     				strcat(commande," " );
 					strcat(commande, nom_fic);
-					strcat(commande, " >> ./Database/Descripteur/liste_base_image.txt");
+					strcat(commande, " >> ../Database/Descripteur/liste_base_image.txt");
 					system(commande); 
     			}
     			else{
@@ -404,7 +404,7 @@ void Indexation(){
  	    	else{
     			if(strstr(nom_fic, ".txt")){
     				//concatenation pour avoir une chaine conteanant le chemin menant au fichier depuis le prog.out
-    				strcpy(CHEMIN_INDEXATION,"./Database/Image/RGB/");	
+    				strcpy(CHEMIN_INDEXATION,"../Database/Image/RGB/");	
     				strcat(CHEMIN_INDEXATION,nom_fic);
     				//indexation du fichier nom_fic
     				Descripteur DI=indexer_image(CHEMIN_INDEXATION, bitQ);
@@ -415,7 +415,7 @@ void Indexation(){
     				strcat(commande, id );
     				strcat(commande," " );
 					strcat(commande, nom_fic);
-					strcat(commande, " >> ./Database/Descripteur/liste_base_image.txt");
+					strcat(commande, " >> ../Database/Descripteur/liste_base_image.txt");
 					system(commande); 
     			}
     			else{
@@ -444,7 +444,7 @@ void Indexation(){
 /* Meme procede pour les 3 piles si la pile n'est pas vide alors on ouvre le fichier de sauvegarde associé  on depile la pile dans le fichier puis on ferme le fichier*/
 	FILE * f;
 	if(!PILE_Audio_estVide(pA)){
-		f=fopen("./Database/Descripteur/dA.txt","a+");
+		f=fopen("../Database/Descripteur/dA.txt","a+");
 		while(!PILE_Audio_estVide(pA)){
 			pA=dePILE_Audio(pA,f);
 		}
@@ -453,7 +453,7 @@ void Indexation(){
 
 
 	if(!PILE_Img_estVide(pI)){
-		f=fopen("./Database/Descripteur/dI.txt","a+");
+		f=fopen("../Database/Descripteur/dI.txt","a+");
 		while(!PILE_Img_estVide(pI)){
 			pI=dePILE_Img(pI,f);
 		}
@@ -462,7 +462,7 @@ void Indexation(){
 
 
 	if(!PILE_Texte_estVide(pT)){
-		f=fopen("./Database/Descripteur/dT.txt","a+");
+		f=fopen("../Database/Descripteur/dT.txt","a+");
 		while(!PILE_Texte_estVide(pT)){
 			pT=dePILE_Texte(pT,f);
 		}
