@@ -85,7 +85,7 @@ public class HistoriqueController implements Initializable {
         if(tableviewHisto.getSelectionModel().getSelectedItem()!=null) {
             int index = tableviewHisto.getSelectionModel().getSelectedIndex();
             GestionAlerte.genererInfos("Résultats de la recherche", temp.get(index).getResultats());
-            tableviewHisto.getSelectionModel().clearSelection();
+            //tableviewHisto.getSelectionModel().clearSelection();
         }
     }
 }

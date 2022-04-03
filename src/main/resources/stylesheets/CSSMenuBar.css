@@ -1,15 +1,17 @@
-/* VARIABLE DEFINITIONS: Only these 4 variables have to be adjusted, the rest is copy-paste */
+/* Gestionnaire de couleurs */
 * {
 -fx-my-menu-color: #182f56;
 -fx-my-menu-color-highlighted: #182f56;
 -fx-my-menu-font-color: #FFFFFF;
 -fx-my-menu-font-color-highlighted: #F16322;
 }
+
 /* MENU BAR + Top-level MENU BUTTONS */
 /*** The menu bar itself ***/
 .menu-bar {
 -fx-background-color: -fx-my-menu-color;
 }
+
 /*** Top-level menu itself (not selected /hovered) ***/
 .menu-bar > .container > .menu-button {
 -fx-background-color: -fx-my-menu-color;

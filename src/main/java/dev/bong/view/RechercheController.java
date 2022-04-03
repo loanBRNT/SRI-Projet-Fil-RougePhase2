@@ -169,7 +169,10 @@ public class RechercheController implements Initializable {
 
 
     @FXML
-    public void onLoadingFailled() throws IOException {
+    public void onLoadingFailled() throws Exception {
+        String motcle=textFieldSearch.getText();
+        String banWord=textFieldBanWords.getText();
+
         ButtonType okBtn = ButtonType.YES;
         ButtonType cancelBtn = ButtonType.NO;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"",okBtn,cancelBtn);
@@ -180,13 +183,10 @@ public class RechercheController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.YES) {
             restart();
-            /*
             ControlRechercheMotCle loadingScreen = new ControlRechercheMotCle(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),this);
             Thread thread = new Thread(loadingScreen);
             thread.setDaemon(true);
             thread.start();
-
-             */
         }
         else if(result.isPresent() && result.get() == ButtonType.NO){
             RechercheApplication.changerScene("hello-view.fxml");

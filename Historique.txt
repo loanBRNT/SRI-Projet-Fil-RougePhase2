@@ -1,0 +1,4 @@
+03/04/2022 19:57:16 - rechercheMotCle : motCle : [jean],motBan : [];[12-Jean-Marie_Sevestre_libraire_et_PDG.xml, 05-Jean-Christophe_Bette_a_du_attendre.xml,  TestJean.xml]
+03/04/2022 19:59:00 - rechercheMotCle : motCle : [christophe],motBan : [];[05-Jean-Christophe_Bette_a_du_attendre.xml,  TestJean.xml]
+03/04/2022 21:08:49 - rechercheMotCle : motCle : [],motBan : [];[]
+03/04/2022 21:09:02 - rechercheMotCle : motCle : [],motBan : [];[]
