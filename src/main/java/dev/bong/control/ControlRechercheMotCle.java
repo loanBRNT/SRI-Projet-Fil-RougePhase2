@@ -56,12 +56,12 @@ public class ControlRechercheMotCle extends ControlRecherche implements Runnable
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.2);
 
         // appel des fonctions de recherches
-        if (!motcle.toString().equals("[]")) resMotCle=recherche(motcle);
+        if (!motcle.toString().equals("[]")) resMotCle=recherche(motcle,TypeRequete.RECHERCHE_MOT_CLE,true);
         else {
             progressBar.setProgress(progressBar.getProgress() + 0.3);
             progressIndicator.setProgress(progressIndicator.getProgress() + 0.3);
         }
-        if (!motBan.toString().equals("[]")) resMotBan=recherche(motBan);
+        if (!motBan.toString().equals("[]")) resMotBan=recherche(motBan,TypeRequete.RECHERCHE_MOT_CLE,false);
         else {
             progressBar.setProgress(progressBar.getProgress() + 0.3);
             progressIndicator.setProgress(progressIndicator.getProgress() + 0.3);

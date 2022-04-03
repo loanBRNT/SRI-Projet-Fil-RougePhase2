@@ -32,7 +32,7 @@ public abstract class ControlRecherche {
 
     //A partir de la liste de mot clé, Créé une liste de requête (une requête par mot) et l'envoie au moteur
     //Récupère une String des résultats que l'on split en une liste de String (un élément pour un fichier)
-    protected Set<String> recherche(List<String> listeMot){
+    protected Set<String> recherche(List<String> listeMot,TypeRequete typeRequete,boolean polarite){
         List<String> res;
         Set<String> resTotal = new HashSet<>();
 
@@ -58,10 +58,20 @@ public abstract class ControlRecherche {
 
         res=controlRequete.getListeResultat();
 
-        for (String resultatRecherche : res) {
-            ArrayList<String> fichiersTrouvee = new ArrayList<>(List.of(resultatRecherche.split(",")));
-            fichiersTrouvee.remove(0);
-            resTotal.addAll(fichiersTrouvee);
+        switch (typeRequete){
+            case RECHERCHE_MOT_CLE :
+                if(polarite)
+                    resTotal=triResPlus(res);
+                else
+                    resTotal=triResMotCleMoins(res);
+                break;
+            case RECHERCHE_FICHIER:
+                if(polarite)
+                    resTotal=triResPlus(res);
+                else
+                    resTotal=triResFichierMoins(res);
+                break;
+            default:
         }
 
         progressBar.setProgress(progressBar.getProgress() + 0.1);
@@ -69,4 +79,41 @@ public abstract class ControlRecherche {
 
         return resTotal;
     }
+
+
+
+    protected  Set<String> triResFichierMoins(List<String> res){
+        Set<String> resTotal = new HashSet<>();
+        for (String listFichierTrouve : res) {
+            ArrayList<String> fichiersTrouvee = new ArrayList<>(List.of(listFichierTrouve.split(",")));
+            resTotal.addAll(fichiersTrouvee);
+        }
+        return resTotal;
+
+    }
+
+    protected  Set<String> triResMotCleMoins(List<String> res){
+        Set<String> resTotal = new HashSet<>();
+        for (String listFichierTrouve : res) {
+            ArrayList<String> fichiersTrouvee = new ArrayList<>(List.of(listFichierTrouve.split(",")));
+            fichiersTrouvee.remove(0);
+            resTotal.addAll(fichiersTrouvee);
+        }
+        return resTotal;
+    }
+
+    protected Set<String> triResPlus(List<String> res) {
+        Set<String> resTotal = new HashSet<>();
+        for (int i = 0; i < res.size(); i++) {
+            ArrayList<String> fichiersTrouvee = new ArrayList<>(List.of(res.get(i).split(",")));
+            fichiersTrouvee.remove(0);
+            if (i == 0) {
+                resTotal.addAll(fichiersTrouvee);
+            } else {
+                resTotal.retainAll(fichiersTrouvee);
+            }
+        }
+        return resTotal;
+    }
+
 }
