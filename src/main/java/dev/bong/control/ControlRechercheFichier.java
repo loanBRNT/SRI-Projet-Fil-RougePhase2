@@ -69,12 +69,12 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
 
         // appel des fonctions de recherches
-        if (!nomFicRecherche.toString().equals("[]")) resMotCle=recherche(nomFicRecherche);
+        if (!nomFicRecherche.toString().equals("[]")) resMotCle=recherche(nomFicRecherche,TypeRequete.RECHERCHE_FICHIER,true);
         else {
             progressBar.setProgress(progressBar.getProgress() + 0.3);
             progressIndicator.setProgress(progressIndicator.getProgress() + 0.3);
         }
-        if (!nomFicBan.toString().equals("[]")) resMotBan=recherche(nomFicBan);
+        if (!nomFicBan.toString().equals("[]")) resMotBan=recherche(nomFicBan,TypeRequete.RECHERCHE_FICHIER,false);
         else {
             progressBar.setProgress(progressBar.getProgress() + 0.3);
             progressIndicator.setProgress(progressIndicator.getProgress() + 0.3);

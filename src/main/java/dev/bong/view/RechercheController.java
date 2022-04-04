@@ -5,14 +5,12 @@ import dev.bong.control.ControlRechercheMotCle;
 import dev.bong.entity.Config;
 import dev.bong.entity.GestionAlerte;
 import dev.bong.entity.Historique;
-import dev.bong.entity.TypeMoteur;
 import fr.dgac.ivy.IvyException;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
