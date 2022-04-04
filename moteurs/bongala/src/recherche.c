@@ -552,7 +552,7 @@ int generationChaineCaracViaPileTexte(PILE_DESCRIPTEUR_TEXTE pile, DESCRIPTEUR_T
     strcat(chaine,"]\n");
     */
 
-    strcpy(chaine," ");
+    strcpy(chaine,"");
 
     CelluleT* sauv;
 
@@ -713,12 +713,12 @@ int rechercheJingle(DESCRIPTEUR_AUDIO* descFic, char* chaine_resultat){
 
     PILE_DESCRIPTEUR_AUDIO pile = Charger_Pile_DescripteurAudio(init_PILE_Audio());
     if (pile == NULL){
-        strcpy(chaine_resultat, " ");
+        strcpy(chaine_resultat, "");
         return 1;
     }
 
     Cellule* sauv;
-    strcpy(chaine_resultat, " ");
+    strcpy(chaine_resultat, "");
 
     while (pile != NULL){
         if (pile->Da->identifiant != descFic->identifiant) {
