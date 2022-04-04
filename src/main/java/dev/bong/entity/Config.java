@@ -1,12 +1,10 @@
 package dev.bong.entity;
 
 import dev.bong.control.ControlIndexation;
-import fr.dgac.ivy.IvyException;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class  Config {
 
@@ -32,6 +30,18 @@ public class  Config {
             e.printStackTrace();
         }
     }
+/* fonction pour spinner pointsFenetres en int
+    public boolean verfierPow2(Integer value) {
+        boolean puissance2 = false;
+        for(int i=0;i<15;i++){
+            if((int)Math.pow(2,i)==value)
+                puissance2=true;
+        }
+        return  puissance2;
+        }
+
+ */
+
     /** Holder **/
     private static class ConfigHolder {
         private final static Config instance = new Config();
@@ -41,7 +51,7 @@ public class  Config {
         return  ConfigHolder.instance;
     }
 
-    public void majConfig() throws Exception {
+    public void majConfig(List<Integer> listeValeur) throws Exception {
         TestCommunication.fermerCommunication();
         for (String config : listeDesConfig) {
                 File f = new File(config);
@@ -56,19 +66,39 @@ public class  Config {
 
                 //Ecrire dans le fichier
                 fw = new FileWriter(f, true);
-                fw.write("tauxSim " + this.tauxSim+"\n" +
-                        "nbMaxMotParTexte " + this.nbMaxMotParTexte + "\n" +
-                        "seuilOccurenceMot " + this.seuilOccMot+ "\n" +
-                        "nombreIntervalleAudio " + this.nbrIntervalleAudio + "\n" +
-                        "nombrePointsAudio " + this.nbrPointsAudio + "\n" +
-                        "nombreBitsQuantification " + this.bitQuantification+ "\n"
+                fw.write("tauxSim " + listeValeur.get(0)+"\n" +
+                        "nbMaxMotParTexte " + listeValeur.get(1) + "\n" +
+                        "seuilOccurenceMot " + listeValeur.get(2)+ "\n" +
+                        "nombreIntervalleAudio " + listeValeur.get(3) + "\n" +
+                        "nombrePointsAudio " + listeValeur.get(4) + "\n" +
+                        "nombreBitsQuantification " + listeValeur.get(5)+ "\n"
                 );
                 fw.flush();
                 fw.close();
 
-                if (maj){
-                    ControlIndexation.indexationForcee();
-                }
+                    try{
+                        ControlIndexation.indexationForcee();
+                    }catch (Exception e){
+                        fw = new FileWriter(f, false);
+                        fw.write("");
+                        fw.flush();
+                        fw.close();
+
+                        //Ecrire dans le fichier
+                        fw = new FileWriter(f, true);
+                        fw.write("tauxSim " + this.tauxSim+"\n" +
+                                "nbMaxMotParTexte " + this.nbMaxMotParTexte + "\n" +
+                                "seuilOccurenceMot " + this.seuilOccMot+ "\n" +
+                                "nombreIntervalleAudio " + this.nbrIntervalleAudio + "\n" +
+                                "nombrePointsAudio " + this.nbrPointsAudio + "\n" +
+                                "nombreBitsQuantification " + this.bitQuantification+ "\n"
+                        );
+                        fw.flush();
+                        fw.close();
+                        throw e;
+
+                    }
+
             }
     }
 
@@ -194,5 +224,16 @@ public class  Config {
                 "\n nombre points Audio =" + nbrPointsAudio +
                 "\n bit Quantification =" + bitQuantification ;
         return  s;
+    }
+
+    public ArrayList<Integer> getListValeur(){
+        ArrayList<Integer> listvaleur = new ArrayList<>();
+        listvaleur.add(getTauxSim());
+        listvaleur.add(getNbMaxMotParTexte());
+        listvaleur.add(getSeuilOccMot());
+        listvaleur.add(getNbrIntervalleAudio());
+        listvaleur.add(getNbrPointsAudio());
+        listvaleur.add(getBitQuantification());
+        return listvaleur;
     }
 }

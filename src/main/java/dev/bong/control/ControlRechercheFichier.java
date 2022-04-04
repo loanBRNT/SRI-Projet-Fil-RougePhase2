@@ -2,11 +2,9 @@ package dev.bong.control;
 
 
 import dev.bong.entity.Historique;
-import dev.bong.entity.TestCommunication;
 import dev.bong.entity.TypeMoteur;
 import dev.bong.entity.TypeRequete;
 import dev.bong.view.RechercheController;
-import fr.dgac.ivy.IvyException;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 
