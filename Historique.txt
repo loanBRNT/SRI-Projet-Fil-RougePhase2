@@ -26,3 +26,4 @@
 04/04/2022 03:22:34 - rechercheFichier : motCle : [blabla.xml],motBan : [.xml];[]
 04/04/2022 03:25:00 - rechercheFichier : motCle : [],motBan : [];[]
 04/04/2022 03:26:46 - rechercheFichier : motCle : [],motBan : [];[]
+04/04/2022 09:08:15 - rechercheMotCle : motCle : [monde],motBan : [];[05-L_apneiste_francais_Guillaume_Nery_plonge.xml, 06-Les_mauvais_comptes_d_une_elimination.xml, 21-La_France_se_reveille_pour.xml, 05-Jean-Christophe_Bette_a_du_attendre.xml,  TestJean.xml]
