@@ -5,6 +5,7 @@ import dev.bong.control.ControlRechercheMotCle;
 import dev.bong.entity.Config;
 import dev.bong.entity.GestionAlerte;
 import dev.bong.entity.Historique;
+import dev.bong.entity.TypeMoteur;
 import fr.dgac.ivy.IvyException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,8 +26,10 @@ public class RechercheController implements Initializable {
     private boolean banWordsButtonActivate = false;
     private boolean banNomsButtonActivate = false;
 
-    ControlRechercheMotCle loadingScreenMc;
-    ControlRechercheFichier loadingScreenFic;
+    private Config config = Config.getInstance();
+
+    public ControlRechercheMotCle loadingScreenMc;
+    public ControlRechercheFichier loadingScreenFic;
 
     @FXML
     public Button buttonSearch;
@@ -78,11 +81,11 @@ public class RechercheController implements Initializable {
     protected void onClickSearch(){
         affichageLancerRecherche();
 
-        String motcle=textFieldSearch.getText();
-        String banWord=textFieldBanWords.getText();
-
         try {
-            loadingScreenMc = new ControlRechercheMotCle(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),this);
+            String motcle=textFieldSearch.getText();
+            String banWord=textFieldBanWords.getText();
+
+            loadingScreenMc = new ControlRechercheMotCle(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),config.getTypeMoteur(),this);
             Thread thread = new Thread(loadingScreenMc);
             thread.setDaemon(true);
             thread.start();
@@ -103,7 +106,7 @@ public class RechercheController implements Initializable {
         String banWord=textFieldBanWords.getText();
 
         try {
-            loadingScreenFic = new ControlRechercheFichier(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),(String) choiceType.getValue(), Config.getInstance().getMode(),this);
+            loadingScreenFic = new ControlRechercheFichier(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),(String) choiceType.getValue(), Config.getInstance().getMode(),config.getTypeMoteur(),this);
             Thread thread = new Thread(loadingScreenFic);
             thread.setDaemon(true);
             thread.start();
@@ -221,5 +224,6 @@ public class RechercheController implements Initializable {
         choiceType.getItems().add(".wav");
         choiceType.setValue(".xml");
     }
+
 }
 

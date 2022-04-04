@@ -229,10 +229,6 @@ int lanceRechercheViaNom(char* nom_fichier_cible,char* chaine_resultat){
 
         DESCRIPTEUR_TEXTE descFic;
 
-        if (!VerificationTraitee(nom_fichier_cible)){
-            Indexation();
-        }
-
         descFic = getDescripteurTexteViaPile(nom_fichier_cible);
 
         if (descFic.ID == 0){
@@ -250,11 +246,6 @@ int lanceRechercheViaNom(char* nom_fichier_cible,char* chaine_resultat){
 
         DESCRIPTEUR_IMAGE descFic;
 
-        if (!VerificationTraitee(nom_fichier_cible)){
-            Indexation();
-        }
-
-
         descFic = getDescripteurImageViaPile(nom_fichier_cible);
 
         if (descFic.ID == 0){
@@ -271,10 +262,6 @@ int lanceRechercheViaNom(char* nom_fichier_cible,char* chaine_resultat){
     } else if (t == 3 ){
 
         DESCRIPTEUR_AUDIO descFic;
-
-        if (!VerificationTraitee(nom_fichier_cible)){
-            Indexation();
-        }
 
         descFic = getDescripteurAudioViaPile(nom_fichier_cible);
 

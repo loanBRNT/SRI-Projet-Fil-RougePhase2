@@ -20,7 +20,7 @@ public class  Config {
     private int bitQuantification;
 
     private boolean mode=false;   // false pour fermer et true pour ouvert
-    private boolean multiMoteur = false;
+    private TypeMoteur typeMoteur = TypeMoteur.BONGALA;
     private boolean maj = false;
 
     private Config(){
@@ -177,9 +177,13 @@ public class  Config {
     public void setModeOuvert(){this.mode=true;}
     public void setModeFerme(){this.mode=false;}
 
-    public boolean getMultiMoteur(){return multiMoteur;}
-    public void setMultiMoteurOn(){this.multiMoteur=true;}
-    public void setMultiMoteurOff(){this.multiMoteur=false;}
+    public TypeMoteur getTypeMoteur(){
+        return typeMoteur;
+    }
+
+    public void setTypeMoteur(String stingChoice){
+        typeMoteur = TypeMoteur.typeDeMoteur(stingChoice);
+    }
 
 
     public String toString(){

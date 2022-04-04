@@ -1,6 +1,7 @@
 package dev.bong.control;
 
 import dev.bong.entity.TestCommunication;
+import dev.bong.entity.TypeMoteur;
 import dev.bong.entity.TypeRequete;
 import dev.bong.view.RechercheController;
 import javafx.scene.control.ProgressBar;
@@ -21,8 +22,11 @@ public abstract class ControlRecherche {
     protected ControlEnvoieResultat controlEnvoieResultat = ControlEnvoieResultat.getInstance();
     protected TestCommunication testCommunication = TestCommunication.getInstance();
 
+    protected TypeMoteur typeMoteur;
 
-    public ControlRecherche(ControlRequete controlRequete,ProgressIndicator progressIndicator, ProgressBar progressBar,RechercheController rechercheController) {
+    public ControlRecherche(ControlRequete controlRequete,ProgressIndicator progressIndicator, ProgressBar progressBar,TypeMoteur typeMoteur, RechercheController rechercheController) {
+
+        this.typeMoteur = typeMoteur;
 
         this.controlRequete = controlRequete;
         this.progressIndicator = progressIndicator;
@@ -40,8 +44,15 @@ public abstract class ControlRecherche {
         int nbRequete = listeMot.size(), nbRequeteFinit=0;
         double pourcentage;
 
+        controlRequete.initRequete(); //reset à 0
+
         //Envoie de la liste au controlleur, qui envoie ensuite au moteur
-        controlRequete.creerEtenvoyerListeRequete(listeMot);
+        if (typeMoteur == TypeMoteur.INTERSECTION || typeMoteur == TypeMoteur.UNION){
+            controlRequete.creerEtenvoyerListeRequete(listeMot,TypeMoteur.BONGALA.name());
+            controlRequete.creerEtenvoyerListeRequete(listeMot,TypeMoteur.BINGBONG.name());
+        } else {
+            controlRequete.creerEtenvoyerListeRequete(listeMot,typeMoteur.name());
+        }
 
         while (!requeteFinit){
             try {
@@ -69,4 +80,5 @@ public abstract class ControlRecherche {
 
         return resTotal;
     }
+
 }

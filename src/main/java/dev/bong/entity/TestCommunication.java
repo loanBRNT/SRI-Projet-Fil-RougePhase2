@@ -33,7 +33,8 @@ public class TestCommunication implements PropertyChangeListener {
         tick = 0;
         communicationIvy.addPropertyChangeListener(ListenerPropriete.TEST.toString(),this);
 
-        communicationIvy.definirBind(ListenerPropriete.TEST);
+        communicationIvy.definirBind(ListenerPropriete.TEST,"BONGALA");
+        communicationIvy.definirBind(ListenerPropriete.TEST,"BINGBONG");
 
         communicationIvy.envoieMessage("Interface message=test");
 

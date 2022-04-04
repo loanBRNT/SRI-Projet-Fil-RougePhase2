@@ -2,24 +2,19 @@ package dev.bong.view;
 
 import dev.bong.entity.Config;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 
 
 import java.io.IOException;
 
 public class ParamController {
 
-
-
+    public ChoiceBox choiceMoteur;
     private Config config=Config.getInstance();
-    public ToggleGroup Multimoteur;
     public ToggleGroup Mode;
     public ToggleButton ButtonOuvert;
     public ToggleButton ButtonFerme;
-    public ToggleButton ButtonMultiModeOn;
-    public ToggleButton ButtonMultiModeOff;
+
     @FXML
     private Label paramText;
 
@@ -27,13 +22,16 @@ public class ParamController {
     public void initialize(){
         ButtonOuvert.setSelected(config.getMode());
         ButtonFerme.setSelected(!config.getMode());
-        ButtonMultiModeOff.setSelected(!config.getMultiMoteur());
-        ButtonMultiModeOn.setSelected((config.getMultiMoteur()));
+        choiceMoteur.getItems().add("BONGALA");
+        choiceMoteur.getItems().add("BINGBONG");
+        choiceMoteur.getItems().add("INTERSECTION");
+        choiceMoteur.getItems().add("UNION");
+        choiceMoteur.setValue(config.getTypeMoteur().name());
     }
-
 
     @FXML
     protected void onBack() throws IOException {
+        config.setTypeMoteur((String)choiceMoteur.getValue());
         RechercheApplication.changerScene("hello-view.fxml");
     }
     @FXML
@@ -54,15 +52,4 @@ public class ParamController {
         config.setModeOuvert();
     }
 
-    public void ChoixMoteurOff() {
-        ButtonMultiModeOff.setSelected(true);
-        ButtonMultiModeOn.setSelected(false);
-        config.setMultiMoteurOff();
-    }
-
-    public void ChoixMoteurOn() {
-        ButtonMultiModeOn.setSelected(true);
-        ButtonMultiModeOff.setSelected(false);
-        config.setMultiMoteurOn();
-    }
 }

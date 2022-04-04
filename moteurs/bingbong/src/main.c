@@ -22,54 +22,52 @@
 
 void ivyEnvoie(char* chaine_resultat, char* mot){
 	char chaine_envoie[1100];
-	strcpy(chaine_envoie,"Moteur mot=");
+	strcpy(chaine_envoie,"BINGBONG mot=");
 	strcat(chaine_envoie,mot);
 	strcat(chaine_envoie," liste=");
 	strcat(chaine_envoie,chaine_resultat);
-
-	printf("\n%ld : %s|\n",strlen(chaine_envoie), chaine_envoie);
 
 	IvySendMsg(chaine_envoie);
 }
 
 void RechercheCallback (IvyClientPtr app, void *data, int argc, char **argv)
 {
+	if (!strcmp(argv[0],"BINGBONG")){
+		char chaine[1000];
+		char sauvNom[100];
+		strcpy(sauvNom,argv[2]);
 
-	char chaine[1000];
-	char sauvNom[100];
-	strcpy(sauvNom,argv[1]);
-
-	if (!strcmp(argv[0],"rechercheMotCle")){
-		lanceRechercheViaMotCle(argv[1],chaine);
-		ivyEnvoie(chaine, sauvNom);
-	} else if (!strcmp(argv[0],"rechercheFichier")){
-		lanceRechercheViaNom(argv[1],chaine);
-		ivyEnvoie(chaine, sauvNom);
-	} else if (!strcmp(argv[0],"rechercheCouleur")){
-		printf("recherche a coder");
-		//ivyEnvoie(chaine, argv[1]);
-	} else if (!strcmp(argv[0], "indexation")){
-		if (!strcmp(argv[1],"reset")){
-			system("echo ' ' > ../Database/Descripteur/liste_base_image.txt");
-			system("echo ' ' > ../Database/Descripteur/dI.txt");
-			system("echo ' ' > ../Database/Descripteur/liste_base_audio.txt");
-			system("echo ' ' > ../Database/Descripteur/dA.txt");
-			system("echo ' ' > ../Database/Descripteur/liste_base_texte.txt");
-			system("echo ' ' > ../Database/Descripteur/dT.txt");
+		if (!strcmp(argv[1],"rechercheMotCle")){
+			lanceRechercheViaMotCle(argv[2],chaine);
+			ivyEnvoie(chaine, sauvNom);
+		} else if (!strcmp(argv[1],"rechercheFichier")){
+			lanceRechercheViaNom(argv[2],chaine);
+			ivyEnvoie(chaine, sauvNom);
+		} else if (!strcmp(argv[1],"rechercheCouleur")){
+			printf("recherche a coder");
+			//ivyEnvoie(chaine, argv[1]);
+		} else if (!strcmp(argv[1], "indexation")){
+			if (!strcmp(argv[2],"reset")){
+				system("echo ' ' > ../Database/Descripteur/liste_base_image.txt");
+				system("echo ' ' > ../Database/Descripteur/dI.txt");
+				system("echo ' ' > ../Database/Descripteur/liste_base_audio.txt");
+				system("echo ' ' > ../Database/Descripteur/dA.txt");
+				system("echo ' ' > ../Database/Descripteur/liste_base_texte.txt");
+				system("echo ' ' > ../Database/Descripteur/dT.txt");
+			}
+			Indexation();
+			IvySendMsg("BINGBONG message=indexation ok");
 		}
-		Indexation();
-		IvySendMsg("Moteur message=indexation ok");
-	}
-	else {
-		strcpy(chaine,"Requete non conforme");
+		else {
+			strcpy(chaine,"Requete non conforme");
+		}
 	}
 }
 
 void TestCallback (IvyClientPtr app, void *data, int argc, char **argv)
 {
 	if (!strcmp(argv[0],"test")){
-		printf("Moteur message=testOk");
-		IvySendMsg("Moteur message=testOk");
+		IvySendMsg("BINGBONG message=testOk");
 	}
 }
 
@@ -86,7 +84,7 @@ int main(int argc, char const *argv[]){
 	IvyInit("BingBong", "BingBong est sur le reseau", 0, 0, 0, 0);
 
 	/* On Eoute et on traite les messages qui commencent par n'importe quoi */
-	IvyBindMsg(RechercheCallback, 0, "^Interface message=(.*) source=(.*)");
+	IvyBindMsg(RechercheCallback, 0, "^Interface destinataire=(.*) message=(.*) source=(.*)");
 
 	/* On Eoute et on traite les messages qui commencent par n'importe quoi */
 	IvyBindMsg(TestCallback, 0, "^Interface message=(.*)");
