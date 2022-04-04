@@ -1,4 +1,4 @@
-Exception in thread "AWT-EventQueue-0" java.lang.ArrayIndexOutOfBoundsException: 1 >= 1
+Exception in thread "AWT-EventQueue-0" java.lang.ArrayIndexOutOfBoundsException: 5 >= 5
 	at java.util.Vector.elementAt(Unknown Source)
 	at javax.swing.JList$5.getElementAt(Unknown Source)
 	at javax.swing.plaf.basic.BasicListUI.updateLayoutState(Unknown Source)

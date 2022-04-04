@@ -11,7 +11,7 @@ public class ControlSidentifier {
         String login;
         String mdp;
         boolean verifok;
-        FileReader flux = new FileReader("./moteur/mdp/admin.txt");
+        FileReader flux = new FileReader("./moteurs/mdp/admin.txt");
         BufferedReader buffer = new BufferedReader(flux);
 
         login= buffer.readLine();

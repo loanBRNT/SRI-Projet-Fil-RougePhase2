@@ -7,17 +7,18 @@ public class Requete{
     private CommunicationIvy communicationIvy= CommunicationIvy.getInstance();
     private String mot;
     private EtatRequete etatRequete = EtatRequete.WAITING_FOR_INIT;
-    private String resultat="";
+    private String destinataire;
 
 
-    public Requete(String mot){
+    public Requete(String mot,String destinataire){
         this.mot = mot;
+        this.destinataire = destinataire;
     }
 
     public void initRecherche(){
         try {
 
-            communicationIvy.definirBind(mot);
+            communicationIvy.definirBind(mot,destinataire);
 
             etatRequete = EtatRequete.READY_FOR_START;
 
@@ -30,7 +31,7 @@ public class Requete{
     public void initIndexation(){
         try {
 
-            communicationIvy.definirBind(ListenerPropriete.RESULTAT);
+            communicationIvy.definirBind(ListenerPropriete.RESULTAT,"BONGALA");
 
             etatRequete = EtatRequete.READY_FOR_START;
 
@@ -43,7 +44,7 @@ public class Requete{
     public void start(dev.bong.entity.TypeRequete requete) {
         int nbAgentReceveur;
         try {
-            nbAgentReceveur = communicationIvy.envoieMessage("Interface message=" + requete.toString() + " source=" + mot);
+            nbAgentReceveur = communicationIvy.envoieMessage("Interface destinataire=" + destinataire + " message=" + requete.toString() + " source=" + mot);
             if (nbAgentReceveur > 0){
                 System.out.println(mot + " envoyé à " + nbAgentReceveur + " agents");
                 setEtatRequete(EtatRequete.RUNNABLE);

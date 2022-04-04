@@ -1,18 +1,13 @@
 package dev.bong.entity;
 
 
-import dev.bong.control.ControlEnvoieResultat;
-import fr.dgac.ivy.IvyException;
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class TestCommunication implements PropertyChangeListener {
-    private static final TypeRequete typeRequete = TypeRequete.TEST_COMMUNICATION;
-    private static CommunicationIvy communicationIvy = CommunicationIvy.getInstance();
+    private static final CommunicationIvy communicationIvy = CommunicationIvy.getInstance();
 
     private boolean recu = false;
-    private int tick=0;
 
     private TestCommunication(){}
 
@@ -30,10 +25,11 @@ public class TestCommunication implements PropertyChangeListener {
 
 
     public void testerCommunication() throws Exception {
-        tick = 0;
+        int tick = 0;
         communicationIvy.addPropertyChangeListener(ListenerPropriete.TEST.toString(),this);
 
-        communicationIvy.definirBind(ListenerPropriete.TEST);
+        communicationIvy.definirBind(ListenerPropriete.TEST,TypeMoteur.BONGALA.name());
+        communicationIvy.definirBind(ListenerPropriete.TEST,TypeMoteur.BINGBONG.name());
 
         communicationIvy.envoieMessage("Interface message=test");
 
@@ -52,7 +48,6 @@ public class TestCommunication implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         String mess = (String) evt.getNewValue();
-        System.out.println(mess);
         if (mess.equals("testOk")){
             recu = true;
         }

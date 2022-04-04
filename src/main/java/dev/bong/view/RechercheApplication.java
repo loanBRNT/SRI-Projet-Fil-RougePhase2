@@ -1,5 +1,7 @@
 package dev.bong.view;
 
+import dev.bong.control.ControlDeconnexionMoteur;
+import fr.dgac.ivy.IvyException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -33,6 +35,13 @@ public class RechercheApplication extends Application {
 
     public static void main(String[] args) {
         launch();
+
+        try {
+            ControlDeconnexionMoteur.deconnexionMoteurs();
+        } catch (IvyException e){
+            e.printStackTrace();
+        }
+
     }
 
 }

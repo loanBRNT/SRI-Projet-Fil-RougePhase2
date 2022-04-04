@@ -1,9 +1,6 @@
 package dev.bong.control;
 
-import dev.bong.entity.GestionAlerte;
-import dev.bong.entity.Historique;
-import dev.bong.entity.TestCommunication;
-import dev.bong.entity.TypeRequete;
+import dev.bong.entity.*;
 import dev.bong.view.RechercheController;
 import fr.dgac.ivy.IvyException;
 import javafx.scene.control.Alert;
@@ -23,9 +20,8 @@ public class ControlRechercheMotCle extends ControlRecherche implements Runnable
     private List<String> motcle;
     private List<String> motBan;
 
-
-    public ControlRechercheMotCle(ProgressIndicator progressIndicator, ProgressBar progressBar,List<String> motcle, List<String> motBan, RechercheController rc) throws Exception {
-        super(new ControlRequete(TypeRequete.RECHERCHE_MOT_CLE),progressIndicator,progressBar,rc);
+    public ControlRechercheMotCle(ProgressIndicator progressIndicator, ProgressBar progressBar,List<String> motcle, List<String> motBan,TypeMoteur typeMoteur, RechercheController rc) throws Exception {
+        super(new ControlRequete(TypeRequete.RECHERCHE_MOT_CLE),progressIndicator,progressBar,typeMoteur,rc);
 
         //LANCER LA COM
         controlRequete.lancerCommunicationBus();
@@ -46,7 +42,6 @@ public class ControlRechercheMotCle extends ControlRecherche implements Runnable
     //se lance avec .start() (Tread)
     @Override
     public void run(){
-
         // creation des set servant a recuperer les resultats des recherches
         Set<String> resMotCle = new HashSet<>();
         Set<String> resMotBan = new HashSet<>();

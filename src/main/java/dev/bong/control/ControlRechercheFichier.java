@@ -3,6 +3,7 @@ package dev.bong.control;
 
 import dev.bong.entity.Historique;
 import dev.bong.entity.TestCommunication;
+import dev.bong.entity.TypeMoteur;
 import dev.bong.entity.TypeRequete;
 import dev.bong.view.RechercheController;
 import fr.dgac.ivy.IvyException;
@@ -24,8 +25,10 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
     private boolean modeOuvert;
 
     //Permet d'initialiser la com + les listes de mots clés
-    public ControlRechercheFichier(ProgressIndicator progressIndicator, ProgressBar progressBar,List<String> nomFicRecherche, List<String> nomFicBan, String extension, boolean modeOuvert, RechercheController rechercheController) throws Exception {
-        super(new ControlRequete(TypeRequete.RECHERCHE_FICHIER),progressIndicator,progressBar,rechercheController);
+    public ControlRechercheFichier(ProgressIndicator progressIndicator, ProgressBar progressBar,
+                                   List<String> nomFicRecherche, List<String> nomFicBan, String extension,
+                                   boolean modeOuvert, TypeMoteur typeMoteur, RechercheController rechercheController) throws Exception {
+        super(new ControlRequete(TypeRequete.RECHERCHE_FICHIER),progressIndicator,progressBar, typeMoteur,rechercheController);
 
         //LANCER LA COM
         controlRequete.lancerCommunicationBus();
@@ -55,7 +58,10 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
         progressBar.setProgress(progressBar.getProgress() + 0.1);
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
 
+        System.out.println("mode Ouvert : " + modeOuvert);
+
         if (modeOuvert){
+            System.out.println("On indexe");
             ControlIndexation.IndexationDuModeOuvert();
         }
 
@@ -110,16 +116,20 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
     }
 
     public void ajoutExtension(String extension, List<String> listeMc, List<String> listeBan){
-        System.out.println(extension);
 
-        for (String mot : listeMc){
-            this.nomFicRecherche.add(mot + extension);
+        if (!nomFicRecherche.toString().equals("[]")) {
+            for (String mot : listeMc){
+                this.nomFicRecherche.add(mot + extension);
+            }
         }
 
-        for (String mot : listeBan){
-            this.nomFicBan.add(mot+extension);
+        if (!nomFicBan.toString().equals("[]")){
+            for (String mot : listeBan){
+                this.nomFicBan.add(mot+extension);
+            }
         }
-        System.out.println(nomFicRecherche);
+
+
     }
 
 }
