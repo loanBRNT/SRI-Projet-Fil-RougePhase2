@@ -1,0 +1,23 @@
+
+.text-field:focused {
+    -fx-background-color: #182f56;
+    -fx-background-radius: 4 ;
+    -fx-text-inner-color: #F16322;
+}
+
+.text-field:hover {
+    -fx-background-color: #182f56;
+    -fx-background-radius: 4 ;
+    -fx-prompt-text-fill: #F16322;
+    -fx-text-inner-color: #F16322;
+}
+
+
+.text-field {
+    -fx-background-color: #182f56;
+    -fx-background-radius: 4 ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-text-fill: #F16322;
+    -fx-prompt-text-fill: white;
+}
+

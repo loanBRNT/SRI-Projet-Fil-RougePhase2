@@ -11,7 +11,7 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <ToggleButton id="Button" fx:id="ButtonOuvert" layoutX="320.0" layoutY="83.0" mnemonicParsing="false" onAction="#ChoixmodeOuvert" prefHeight="26.0" prefWidth="76.0" text="Ouvert" toggleGroup="$Mode">
+      <ToggleButton id="Button" fx:id="ButtonOuvert" layoutX="331.0" layoutY="83.0" mnemonicParsing="false" onAction="#ChoixmodeOuvert" prefHeight="26.0" prefWidth="76.0" text="Ouvert" toggleGroup="$Mode">
          <toggleGroup>
             <ToggleGroup fx:id="Mode" />
          </toggleGroup></ToggleButton>
@@ -22,7 +22,7 @@
       </Label>
       <Button id="Button" layoutX="74.0" layoutY="369.0" mnemonicParsing="false" onAction="#onConnexionAdmin" prefHeight="34.0" prefWidth="182.0" text="Parametres administrateur" />
       <Button id="Button" layoutX="655.0" layoutY="369.0" mnemonicParsing="false" onAction="#onBack" prefHeight="26.0" prefWidth="107.0" text="Retour" />
-      <ToggleButton id="Button" fx:id="ButtonFerme" layoutX="433.0" layoutY="83.0" mnemonicParsing="false" onAction="#ChoixmodeFerme" prefHeight="25.0" prefWidth="76.0" text="Fermé" toggleGroup="$Mode" />
-      <ChoiceBox fx:id="choiceMoteur" layoutX="358.0" layoutY="243.0" prefWidth="150.0" />
+      <ToggleButton id="Button" fx:id="ButtonFerme" layoutX="471.0" layoutY="83.0" mnemonicParsing="false" onAction="#ChoixmodeFerme" prefHeight="25.0" prefWidth="76.0" text="Fermé" toggleGroup="$Mode" />
+      <ChoiceBox fx:id="choiceMoteur" layoutX="320.0" layoutY="242.0" prefHeight="27.0" prefWidth="254.0" stylesheets="@../stylesheets/CSSMenuBar.css" />
    </children>
 </AnchorPane>

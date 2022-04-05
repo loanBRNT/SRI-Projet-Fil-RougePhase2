@@ -58,7 +58,7 @@ public class ControlRechercheCouleur extends ControlRecherche implements Runnabl
         controlEnvoieResultat.receptionResultat(resTotal);
 
         //appel de l'historique
-        Historique.ecrire(TypeRequete.RECHERCHE_MOT_CLE,"motCle : " + couleur.toString() + ",motBan : " + "[]" + ";" + resTotal);
+        Historique.ecrire(TypeRequete.RECHERCHE_COULEUR,"motCle : " + couleur.toString() + ",motBan : " + "[]" + ";" + resTotal);
 
         //delier l'OBSERVER
         controlRequete.removePropertyChangeListener();

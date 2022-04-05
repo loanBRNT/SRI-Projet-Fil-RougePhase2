@@ -10,6 +10,8 @@
 /*** The menu bar itself ***/
 .menu-bar {
 -fx-background-color: -fx-my-menu-color;
+-fx-padding: 5 0 0 0;
+-fx-background-radius: 4 ;
 }
 
 /*** Top-level menu itself (not selected /hovered) ***/
@@ -63,4 +65,16 @@
 /*** The context menu that contains a menu's menu items ***/
 .context-menu {
 -fx-background-color: -fx-my-menu-color;
+}
+
+.choice-box > * {
+    -fx-background-radius: 5;
+    -fx-background-color: -fx-my-menu-color;
+    -fx-text-fill: -fx-my-menu-font-color;
+}
+
+.choice-box: hover > * {
+    -fx-background-radius: 5;
+    -fx-background-color: -fx-my-menu-color;
+    -fx-text-fill: -fx-my-menu-font-color-highlighted;
 }
