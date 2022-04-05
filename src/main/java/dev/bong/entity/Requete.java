@@ -6,13 +6,14 @@ import fr.dgac.ivy.IvyException;
 public class Requete{
     private CommunicationIvy communicationIvy= CommunicationIvy.getInstance();
     private String mot;
-    private EtatRequete etatRequete = EtatRequete.WAITING_FOR_INIT;
+    private EtatRequete etatRequete;
     private String destinataire;
 
 
     public Requete(String mot,String destinataire){
         this.mot = mot;
         this.destinataire = destinataire;
+        this.etatRequete = EtatRequete.WAITING_FOR_INIT;
     }
 
     public void initRecherche(){

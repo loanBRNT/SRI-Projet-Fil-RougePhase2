@@ -47,6 +47,7 @@ public class ControlRequete implements PropertyChangeListener{
 
         for (String s : motCle) {
             creerRequeteRecherche(s,destinataire);
+            System.out.println("motCle : " + motCle);
         }
 
         envoyerTouteRequete();

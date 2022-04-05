@@ -337,6 +337,7 @@ int lanceRechercheViaMotCle(char* mot, char* chaine_resultat){
         sprintf(numChar,"%d",num);
         recupNomDUFic(id,1,nom);
 
+        printf("\n%s : %s",nom,numChar);
 
         //strcat(chaine_resultat, " nom=");
         strcat(chaine_resultat,nom);
@@ -522,6 +523,8 @@ int generationChaineCaracViaPileIMAGE(PILE_DESCRIPTEUR_IMAGE pile, DESCRIPTEUR_I
         strcat(chaine,chaine_nom);
         //strcat(chaine,"\n");
 
+        printf("\n%s",chaine_nom);
+
         sauv = pile;
         pile = pile->next;
         dePILE_Img_Sans_Sauvegarde(sauv);
@@ -544,6 +547,8 @@ int generationChaineCaracViaPileIMAGE(PILE_DESCRIPTEUR_IMAGE pile, DESCRIPTEUR_I
 int generationChaineCaracViaPileTexte(PILE_DESCRIPTEUR_TEXTE pile, DESCRIPTEUR_TEXTE* ptr_descFic,char* chaine){
     char chaine_nom[50];
 
+    int nbOcc;
+
     //recupNomDUFic(ptr_descFic->ID,1,chaine_nom);
 
     /* PHASE 1
@@ -561,9 +566,11 @@ int generationChaineCaracViaPileTexte(PILE_DESCRIPTEUR_TEXTE pile, DESCRIPTEUR_T
         //strcat(chaine,"- ");
         strcat(chaine,chaine_nom);
         //strcat(chaine, " : mots cle en commun : ");
-        //nbOcc = nbMotCmmunFichierTexte(ptr_descFic, &(pile->Dt));
+        nbOcc = nbMotCmmunFichierTexte(ptr_descFic, &(pile->Dt));
         //sprintf(chaine_occ,"%d",nbOcc);
         //strcat(chaine, chaine_occ);
+
+        printf("\n%s : %d",chaine_nom,nbOcc);
 
         /*
         if (nbOcc > occMax){
@@ -751,7 +758,7 @@ int rechercheJingle(DESCRIPTEUR_AUDIO* descFic, char* chaine_resultat){
         dePILE_Audio_Sans_Sauvegarde(sauv);
     }
 
-    if (nbAud == 0) strcpy(chaine_resultat," ");
+    if (nbAud == 0) strcpy(chaine_resultat,"");
     /* PHASE 1
     if (presMax > 0){
         if (!ouvertureFichier(chaine_nomSauv)){

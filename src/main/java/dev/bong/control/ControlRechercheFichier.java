@@ -66,8 +66,12 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
         progressBar.setProgress(progressBar.getProgress() + 0.1);
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
 
+        System.out.println(nomFicRecherche.toString());
+
         // appel des fonctions de recherches
-        if (!nomFicRecherche.toString().equals("[]")) resMotCle=recherche(nomFicRecherche,TypeRequete.RECHERCHE_FICHIER,true);
+        if (!nomFicRecherche.toString().equals("[]")) {
+            resMotCle=recherche(nomFicRecherche,TypeRequete.RECHERCHE_FICHIER,true);
+        }
         else {
             progressBar.setProgress(progressBar.getProgress() + 0.3);
             progressIndicator.setProgress(progressIndicator.getProgress() + 0.3);
@@ -115,13 +119,13 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
 
     public void ajoutExtension(String extension, List<String> listeMc, List<String> listeBan){
 
-        if (!nomFicRecherche.toString().equals("[]")) {
+        if (!listeMc.toString().equals("[]")) {
             for (String mot : listeMc){
                 this.nomFicRecherche.add(mot + extension);
             }
         }
 
-        if (!nomFicBan.toString().equals("[]")){
+        if (!listeBan.toString().equals("[]")){
             for (String mot : listeBan){
                 this.nomFicBan.add(mot+extension);
             }
