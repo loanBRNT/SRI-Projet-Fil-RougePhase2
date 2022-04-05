@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.ResultatsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onRealeaseSelection" prefHeight="450.0" prefWidth="800.0" stylesheets="@../stylesheets/CSSListView.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.ResultatsController">
     <children>
-        <Label fx:id="bongResultats" layoutX="366.0" layoutY="135.0" prefHeight="34.0" prefWidth="69.0" text="Bong">
-            <font>
-                <Font size="29.0" />
-            </font>
-        </Label>
-      <Label fx:id="textResultat" alignment="CENTER" layoutX="47.0" layoutY="199.0" prefHeight="181.0" prefWidth="698.0" textAlignment="JUSTIFY" />
-      <Button layoutX="629.0" layoutY="394.0" mnemonicParsing="false" onAction="#onRelancerRecherche" text="Relancer une recherche" />
+        <ImageView fitHeight="73.0" fitWidth="149.0" layoutX="26.0" layoutY="14.0" onMouseClicked="#onRealeaseSelection" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/LogoBong.png" />
+            </image>
+        </ImageView>
+      <ListView fx:id="listViewRes" fixedCellSize="45.0" layoutX="31.0" layoutY="91.0" prefHeight="311.0" prefWidth="734.0" />
+      <Button layoutX="330.0" layoutY="411.0" mnemonicParsing="false" onAction="#onRelancerRecherche" text="Relancer une recherche" />
+
     </children>
 </AnchorPane>

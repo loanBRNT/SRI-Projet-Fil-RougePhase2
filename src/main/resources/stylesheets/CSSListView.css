@@ -1,0 +1,36 @@
+/*Cellule selectionnée*/
+.list-cell:filled:selected:focused: even, .list-cell:filled:selected: even {
+    -fx-background-color: linear-gradient(#1a3561 0.0%, #182f56 25.0%, #182f56 75.0%, #1a3561 100.0%);
+    -fx-text-fill: #F16322;
+}
+
+.list-cell:filled:selected:focused: odd, .list-cell:filled:selected: odd {
+    -fx-background-color: linear-gradient(#1a3561 0.0%, #182f56 25.0%, #182f56 75.0%, #1a3561 100.0%);
+    -fx-text-fill: #F16322;
+}
+
+/*Cellules de base*/
+.list-cell{
+    -fx-text-fill: white;
+    -fx-font-size:16;
+    -fx-background-color: #182f56;
+}
+
+/*Cellules paires*/
+.list-cell: even{
+    -fx-text-fill: white;
+    -fx-font-size:16;
+    -fx-background-color: #182f56;
+}
+
+/*Cellules impaires*/
+.list-cell: odd{
+    -fx-text-fill: white;
+    -fx-font-size:16;
+    -fx-background-color: #1a3561;
+}
+
+/*Passe la souris dessus*/
+.list-cell:filled:hover {
+    -fx-text-fill: #F16322;
+}
