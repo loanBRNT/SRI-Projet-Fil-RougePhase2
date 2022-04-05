@@ -43,8 +43,6 @@ public class RechercheController implements Initializable {
     @FXML
     public Label labelInProgress;
     @FXML
-    public Button buttonAgain;
-    @FXML
     public ProgressBar progressBar;
     @FXML
     private ToggleButton banWordsButton;
@@ -62,7 +60,6 @@ public class RechercheController implements Initializable {
         progressBar.setVisible(true);
         progressIndicator.setVisible(true);
         labelInProgress.setVisible(true);
-        buttonAgain.setVisible(true);
 
         textFieldBanWords.setVisible(false);
         banWordsButton.setVisible(false);
@@ -79,7 +76,7 @@ public class RechercheController implements Initializable {
     }
 
     @FXML
-    protected void onClickSearch(){
+    protected void onClickSearch() throws IOException {
         affichageLancerRecherche();
 
         try {
@@ -92,15 +89,15 @@ public class RechercheController implements Initializable {
             thread.start();
         } catch (IvyException e) {
             e.printStackTrace();
-           GestionAlerte.genererErreur("Ivy Erreur","La connexion au bus a échouée");
+           GestionAlerte.genererErreurIvy("Ivy Erreur","La connexion au bus a échouée","hello-view.fxml");
         } catch (Exception e){
             e.printStackTrace();
-           GestionAlerte.genererErreur("Ivy Erreur","Communication avec le(s) moteur(s) impossible");
+           GestionAlerte.genererErreurIvy("Ivy Erreur","Communication avec le(s) moteur(s) impossible","hello-view.fxml");
         }
     }
 
     @FXML
-    protected void onClickFicSearch(){
+    protected void onClickFicSearch() throws IOException {
         affichageLancerRecherche();
 
         String motcle=textFieldSearch.getText();
@@ -113,10 +110,10 @@ public class RechercheController implements Initializable {
             thread.start();
         } catch (IvyException e) {
             e.printStackTrace();
-           GestionAlerte.genererErreur("Ivy Erreur","La connexion au bus a échouée");
+           GestionAlerte.genererErreurIvy("Ivy Erreur","La connexion au bus a échouée","rechercheFichier.fxml");
         } catch (Exception e){
             e.printStackTrace();
-           GestionAlerte.genererErreur("Ivy Erreur","Communication avec le(s) moteur(s) impossible");
+           GestionAlerte.genererErreurIvy("Ivy Erreur","Communication avec le(s) moteur(s) impossible","rechercheFichier.fxml");
         }
     }
 
@@ -125,7 +122,6 @@ public class RechercheController implements Initializable {
         progressBar.setVisible(true);
         progressIndicator.setVisible(true);
         labelInProgress.setVisible(true);
-        buttonAgain.setVisible(true);
 
         buttonSearch.setVisible(false);
         listeCouleur.setVisible(false);
@@ -136,11 +132,14 @@ public class RechercheController implements Initializable {
             Thread thread = new Thread(loadingScreenColor);
             thread.setDaemon(true);
             thread.start();
-        } catch (Exception e) {
+        } catch (IvyException e) {
             e.printStackTrace();
+            GestionAlerte.genererErreurIvy("Ivy Erreur","La connexion au bus a échouée","paletteCouleur.fxml");
+        } catch (Exception e){
+            e.printStackTrace();
+            GestionAlerte.genererErreurIvy("Ivy Erreur","Communication avec le(s) moteur(s) impossible","paletteCouleur.fxml");
         }
     }
-
 
     @FXML
     protected void onClickParam() throws IOException {
@@ -193,41 +192,10 @@ public class RechercheController implements Initializable {
     }
 
 
-    @FXML
-    public void onLoadingFailled() throws Exception {
-        ButtonType okBtn = ButtonType.YES;
-        ButtonType cancelBtn = ButtonType.NO;
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"",okBtn,cancelBtn);
-        alert.setTitle("Echec");
-        alert.setHeaderText("Echec de la recherche");
-        alert.setContentText("Voulez-vous relancer la recherche ?");
-        alert.setResizable(false);
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.YES) {
-            restart();
-            /*
-            ControlRechercheMotCle loadingScreen = new ControlRechercheMotCle(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),this);
-            Thread thread = new Thread(loadingScreen);
-            thread.setDaemon(true);
-            thread.start();
-             */
-        }
-        else if(result.isPresent() && result.get() == ButtonType.NO){
-            RechercheApplication.changerScene("hello-view.fxml");
-        }
-    }
-
-    @FXML
-    void restart() {
-        progressIndicator.setProgress(0);
-        progressBar.setProgress(0);
-    }
-
     public void afficherResultat(){
         progressBar.setVisible(false);
         progressIndicator.setVisible(false);
         labelInProgress.setVisible(false);
-        buttonAgain.setVisible(false);
 
         afficheResultat.setVisible(true);
     }

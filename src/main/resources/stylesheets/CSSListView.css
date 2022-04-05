@@ -1,11 +1,11 @@
 /*Cellule selectionnée*/
 .list-cell:filled:selected:focused: even, .list-cell:filled:selected: even {
-    -fx-background-color: linear-gradient(#1a3561 0.0%, #182f56 25.0%, #182f56 75.0%, #1a3561 100.0%);
+    -fx-background-color: linear-gradient(#182f56 0.0%, #1a3561 30.0%, #1a3561 70.0%,#182f56 100.0%);
     -fx-text-fill: #F16322;
 }
 
 .list-cell:filled:selected:focused: odd, .list-cell:filled:selected: odd {
-    -fx-background-color: linear-gradient(#1a3561 0.0%, #182f56 25.0%, #182f56 75.0%, #1a3561 100.0%);
+    -fx-background-color: linear-gradient(#1a3561 0.0%, #234e8a 30%, #234e8a 70%, #1a3561 100.0%);
     -fx-text-fill: #F16322;
 }
 

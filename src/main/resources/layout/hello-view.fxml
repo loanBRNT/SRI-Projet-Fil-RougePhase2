@@ -49,7 +49,6 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="buttonAgain" layoutX="661.0" layoutY="398.0" mnemonicParsing="false" onAction="#onLoadingFailled" prefHeight="25.0" prefWidth="108.0" text="Echec Recherche" visible="false" />
       <Button fx:id="afficheResultat" layoutX="329.0" layoutY="361.0" mnemonicParsing="false" onAction="#onLoadingAchieve" prefHeight="25.0" prefWidth="142.0" text="Afficher Résultats" textAlignment="CENTER" visible="false" />
       <ImageView fitHeight="155.0" fitWidth="309.0" layoutX="232.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
          <image>
