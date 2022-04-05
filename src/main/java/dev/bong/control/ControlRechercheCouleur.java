@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class ControlRechercheCouleur extends ControlRecherche{
+public class ControlRechercheCouleur extends ControlRecherche implements Runnable{
     private Color couleur;
 
     public ControlRechercheCouleur(ProgressIndicator progressIndicator, ProgressBar progressBar, TypeMoteur typeMoteur, Color couleur, RechercheController rechercheController) throws Exception {
@@ -35,13 +35,17 @@ public class ControlRechercheCouleur extends ControlRecherche{
 
     }
 
+    @Override
     public void run(){
-
         List<String> listeCouleur = new ArrayList<>();
         listeCouleur.add(couleur.toString());
 
+        System.out.println(couleur.toString());
+
         progressBar.setProgress(progressBar.getProgress() + 0.3);
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.3);
+
+        System.out.println(listeCouleur);
 
         Set<String> resTotal  = recherche(listeCouleur,TypeRequete.RECHERCHE_COULEUR,true);
 

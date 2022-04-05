@@ -1,0 +1,3 @@
+05/04/2022 12:31:03 - rechercheMotCle : motCle : 0xcc6633ff,motBan : [];[51.bmp]
+05/04/2022 12:31:55 - rechercheMotCle : motCle : 0xccb3ffff,motBan : [];[51.bmp]
+05/04/2022 12:33:50 - rechercheMotCle : motCle : 0xcc99ccff,motBan : [];[51.bmp]
