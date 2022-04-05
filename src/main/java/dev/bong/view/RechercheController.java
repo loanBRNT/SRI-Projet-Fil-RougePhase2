@@ -1,5 +1,6 @@
 package dev.bong.view;
 
+import dev.bong.control.ControlRechercheCouleur;
 import dev.bong.control.ControlRechercheFichier;
 import dev.bong.control.ControlRechercheMotCle;
 import dev.bong.entity.Config;
@@ -20,6 +21,7 @@ import java.util.ResourceBundle;
 
 public class RechercheController implements Initializable {
 
+    public ColorPicker listeCouleur;
     private boolean ResultatTrouvé = false;
     private boolean banWordsButtonActivate = false;
     private boolean banNomsButtonActivate = false;
@@ -28,6 +30,7 @@ public class RechercheController implements Initializable {
 
     public ControlRechercheMotCle loadingScreenMc;
     public ControlRechercheFichier loadingScreenFic;
+    public ControlRechercheCouleur loadingScreenColor;
 
     @FXML
     public Button buttonSearch;
@@ -114,6 +117,20 @@ public class RechercheController implements Initializable {
         } catch (Exception e){
             e.printStackTrace();
            GestionAlerte.genererErreur("Ivy Erreur","Communication avec le(s) moteur(s) impossible");
+        }
+    }
+
+    @FXML
+    protected void onClickColorSearch() throws IOException  {
+        affichageLancerRecherche();
+
+        try {
+            loadingScreenColor = new ControlRechercheCouleur(progressIndicator,progressBar,config.getTypeMoteur(),listeCouleur.getValue(),this);
+            Thread thread = new Thread(loadingScreenFic);
+            thread.setDaemon(true);
+            thread.start();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

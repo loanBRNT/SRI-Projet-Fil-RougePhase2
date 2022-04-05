@@ -49,9 +49,7 @@ public class ControlRequete implements PropertyChangeListener{
             creerRequeteRecherche(s,destinataire);
         }
 
-        for (Requete requete : listeRequete) {
-            if (requete.getEtatRequete() != EtatRequete.RUNNABLE) envoyerRequete(requete);
-        }
+        envoyerTouteRequete();
     }
 
     public void envoyerRequete(Requete requete){
@@ -86,6 +84,12 @@ public class ControlRequete implements PropertyChangeListener{
         listeRequete.clear();
         listeResultat.clear();
         nbRequeteFinit=0;
+    }
+
+    public void envoyerTouteRequete(){
+        for (Requete requete : listeRequete) {
+            if (requete.getEtatRequete() != EtatRequete.RUNNABLE) envoyerRequete(requete);
+        }
     }
 
     /* ------------------- FONCTIONS accesseurs ------------------ */

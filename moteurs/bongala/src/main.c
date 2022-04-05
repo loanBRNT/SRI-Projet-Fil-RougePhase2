@@ -45,7 +45,7 @@ void RechercheCallback (IvyClientPtr app, void *data, int argc, char **argv)
 			ivyEnvoie(chaine, sauvNom);
 		} else if (!strcmp(argv[1],"rechercheCouleur")){
 			printf("recherche a coder");
-			//ivyEnvoie(chaine, argv[1]);
+			ivyEnvoie("51.bmp",sauvNom);
 		} else if (!strcmp(argv[1], "indexation")){
 			if (!strcmp(argv[2],"reset")){
 				system("echo ' ' > ../Database/Descripteur/liste_base_image.txt");

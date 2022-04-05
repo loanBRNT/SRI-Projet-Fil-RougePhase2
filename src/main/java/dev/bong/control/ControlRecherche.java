@@ -82,7 +82,10 @@ public abstract class ControlRecherche {
                 else
                     resTotal=triResFichierMoins(res);
                 break;
+            case RECHERCHE_COULEUR:
+                resTotal=triResPlus(res);
             default:
+                break;
         }
 
         progressBar.setProgress(progressBar.getProgress() + 0.1);
