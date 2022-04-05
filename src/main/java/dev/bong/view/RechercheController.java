@@ -122,11 +122,18 @@ public class RechercheController implements Initializable {
 
     @FXML
     protected void onClickColorSearch() throws IOException  {
-        affichageLancerRecherche();
+        progressBar.setVisible(true);
+        progressIndicator.setVisible(true);
+        labelInProgress.setVisible(true);
+        buttonAgain.setVisible(true);
+
+        buttonSearch.setVisible(false);
+        listeCouleur.setVisible(false);
+
 
         try {
             loadingScreenColor = new ControlRechercheCouleur(progressIndicator,progressBar,config.getTypeMoteur(),listeCouleur.getValue(),this);
-            Thread thread = new Thread(loadingScreenFic);
+            Thread thread = new Thread(loadingScreenColor);
             thread.setDaemon(true);
             thread.start();
         } catch (Exception e) {
@@ -188,9 +195,6 @@ public class RechercheController implements Initializable {
 
     @FXML
     public void onLoadingFailled() throws Exception {
-        String motcle=textFieldSearch.getText();
-        String banWord=textFieldBanWords.getText();
-
         ButtonType okBtn = ButtonType.YES;
         ButtonType cancelBtn = ButtonType.NO;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"",okBtn,cancelBtn);

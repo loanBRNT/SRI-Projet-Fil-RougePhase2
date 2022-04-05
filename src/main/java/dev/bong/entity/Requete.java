@@ -41,7 +41,7 @@ public class Requete{
         }
     }
 
-    public void start(dev.bong.entity.TypeRequete requete) {
+    public void start(TypeRequete requete) {
         int nbAgentReceveur;
         try {
             nbAgentReceveur = communicationIvy.envoieMessage("Interface destinataire=" + destinataire + " message=" + requete.toString() + " source=" + mot);
