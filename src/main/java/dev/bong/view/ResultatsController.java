@@ -1,6 +1,8 @@
 package dev.bong.view;
 
 import dev.bong.control.ControlEnvoieResultat;
+import dev.bong.entity.GestionAlerte;
+import dev.bong.entity.TypeFichier;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -43,11 +45,6 @@ public class ResultatsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //String path = "/images/jingle_fi.wav";
-        //me = new Media(new File(path).toURI().toString());
-        //mediaPlayer =new MediaPlayer(me);
-        //mediaView.setMediaPlayer(mediaPlayer);
-        //Initialisation de la listeView
         listViewRes.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         //Remplissage
         listViewRes.getItems().addAll(controlEnvoieResultat.getResultat());
@@ -56,16 +53,35 @@ public class ResultatsController implements Initializable {
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 if(listViewRes.getSelectionModel().getSelectedItem()!=null) {
                     int index = listViewRes.getSelectionModel().getSelectedIndex();
+                    String name = controlEnvoieResultat.getResultat().get(index);
+                    TypeFichier typeFichier = controlEnvoieResultat.getType();
+                    String path;
+                    switch (typeFichier){
+                        case JPG :
+                            path = "Image/RGB/";
+                            break;
+                        case BMP :
+                            path = "Image/NB/";
+                            break;
+                        case WAV :
+                            path = "Audio/";
+                            break;
+                        default :
+                            path = "Texte/";
+                            break;
+                    }
                     try  {
-                        File file = new File("./moteurs/Database/Image/RGB/18.jpg");
+                        File file = new File("./moteurs/Database/"+ path +name);
                         if (!Desktop.isDesktopSupported()){
-                            System.out.println("not supportred");
+                            GestionAlerte.genererErreur("Erreur", "Desktop not supported");
                         } else {
                             Desktop desktop = Desktop.getDesktop();
                             desktop.open(file);
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
+                        GestionAlerte.genererWarning("Attention", "Fichier introuvable");
+
                     }
                 }
             }

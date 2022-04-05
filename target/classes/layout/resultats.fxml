@@ -11,7 +11,7 @@
                 <Image url="@../images/LogoBong.png" />
             </image>
         </ImageView>
-      <ListView fx:id="listViewRes" fixedCellSize="45.0" layoutX="31.0" layoutY="91.0" prefHeight="311.0" prefWidth="734.0" />
+      <ListView fx:id="listViewRes" fixedCellSize="50.0" layoutX="31.0" layoutY="91.0" prefHeight="311.0" prefWidth="734.0" />
       <Button layoutX="330.0" layoutY="411.0" mnemonicParsing="false" onAction="#onRelancerRecherche" text="Relancer une recherche" />
 
     </children>

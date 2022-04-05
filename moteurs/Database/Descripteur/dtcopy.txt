@@ -1,5 +1,5 @@
  
-23340
+26227
 10
 423
 jean 6 
@@ -13,11 +13,11 @@ ans 4
 monde 4 
 dès 4 
 
-26641
+29814
 0
 49
 
-26555
+27314
 10
 272
 arctique 10 
@@ -31,7 +31,7 @@ faible 4
 nsidc 4 
 effectuées 4 
 
-29615
+21448
 10
 453
 Œdipe 14 
@@ -45,7 +45,7 @@ sophocle 4
 rome 4 
 metteur 4 
 
-29166
+22413
 10
 375
 ososphère 8 
@@ -59,7 +59,7 @@ deux 4
 30 4 
 septembre 4 
 
-26128
+28332
 8
 413
 robyn 6 
@@ -71,7 +71,7 @@ danse 4
 danseurs 4 
 pièce 4 
 
-25359
+22893
 10
 336
 avait 7 
@@ -85,7 +85,7 @@ titre 4
 me 4 
 première 4 
 
-24017
+23690
 10
 775
 voyager 11 
@@ -99,14 +99,14 @@ aura 6
 avait 5 
 aux 5 
 
-20943
+27339
 3
 180
 cinémathèque 5 
 scorsese 4 
 film 4 
 
-28391
+22305
 10
 699
 stade 25 
@@ -120,7 +120,7 @@ denis 7
 ligue 7 
 rugby 7 
 
-21686
+22082
 10
 539
 louvre 9 
@@ -134,7 +134,7 @@ musée 4
 être 4 
 président 4 
 
-26339
+25240
 5
 276
 avait 5 
@@ -143,13 +143,13 @@ boonen 4
 ans 4 
 était 4 
 
-28967
+28312
 2
 331
 tête 5 
 entraîneur 4 
 
-27004
+24212
 5
 225
 jazz 8 
@@ -158,14 +158,14 @@ manu 5
 disque 4 
 star 4 
 
-28673
+25480
 3
 187
 grippe 5 
 aviaire 5 
 homme 4 
 
-28812
+22270
 10
 486
 effet 8 
@@ -179,7 +179,7 @@ serre 4
 forêts 4 
 gaz 4 
 
-27082
+24666
 7
 272
 points 6 
@@ -190,7 +190,7 @@ basket 4
 france 4 
 très 4 
 
-23286
+27176
 8
 616
 france 13 
@@ -202,11 +202,11 @@ français 5
 paris 5 
 pays 4 
 
-21529
+29523
 0
 227
 
-27302
+23874
 10
 550
 football 12 
@@ -220,7 +220,7 @@ league 5
 fréquentation 5 
 entre 5 
 
-21325
+28134
 10
 593
 virus 12 
@@ -234,7 +234,7 @@ grippe 4
 aviaire 4 
 malte 4 
 
-28941
+20839
 10
 713
 girodet 13 
@@ -248,7 +248,7 @@ toile 5
 musée 4 
 artiste 4 
 
-20462
+20477
 10
 518
 architectes 14 
@@ -262,7 +262,7 @@ agences 5
 année 4 
 activité 4 
 
-20674
+21325
 10
 658
 ogm 6 
@@ -276,7 +276,7 @@ très 5
 début 5 
 faucheurs 4 
 
-25652
+27752
 6
 427
 sao 7 
@@ -286,7 +286,7 @@ ivaldo 4
 bertazzo 4 
 30 4 
 
-22448
+21685
 5
 271
 exposition 6 
@@ -295,7 +295,7 @@ masculine 4
 aux 4 
 présents 4 
 
-23264
+26001
 10
 345
 champions 6 
@@ -309,22 +309,22 @@ match 4
 claude 4 
 bergeaud 4 
 
-28477
+20994
 0
 54
 
-27784
+26301
 3
 137
 000 6 
 journées 4 
 visiteurs 4 
 
-23172
+21554
 0
 27
 
-29579
+21463
 10
 361
 france 8 
@@ -338,7 +338,7 @@ parker 4
 matches 4 
 points 4 
 
-23725
+28426
 10
 620
 cellules 30 
@@ -352,7 +352,7 @@ greffe 6
 mouton 5 
 aux 4 
 
-21123
+27401
 9
 428
 devi 9 
@@ -365,7 +365,7 @@ voix 4
 art 4 
 ans 4 
 
-20426
+28982
 6
 395
 prévision 9 
@@ -375,7 +375,7 @@ inondations 4
 eau 4 
 ministère 4 
 
-27904
+22203
 6
 293
 deux 5 
@@ -385,7 +385,7 @@ anouk 4
 aimée 4 
 même 4 
 
-25148
+28723
 10
 660
 sonde 9 
@@ -399,7 +399,7 @@ japonais 5
 hayabusa 5 
 surface 5 
 
-28833
+20993
 6
 425
 basket 9 
@@ -409,14 +409,14 @@ joueurs 5
 sélectionneur 4 
 championnat 4 
 
-26967
+20588
 3
 283
 quasar 7 
 galaxie 5 
 astronomes 4 
 
-22331
+25255
 10
 468
 lille 6 
@@ -430,7 +430,7 @@ stade 4
 juventus 4 
 turin 4 
 
-28252
+25746
 9
 302
 théâtre 7 
@@ -443,7 +443,7 @@ travaux 4
 acoustiques 4 
 scène 4 
 
-23072
+23992
 10
 555
 film 14 
@@ -457,13 +457,13 @@ story 5
 réalisateur 4 
 welles 4 
 
-28330
+21518
 2
 223
 preljocaj 5 
 opéra 4 
 
-27666
+29760
 10
 593
 co2 21 
@@ -477,7 +477,7 @@ même 4
 charbon 4 
 coût 4 
 
-23802
+29690
 10
 594
 co2 20 
@@ -491,7 +491,7 @@ même 4
 charbon 4 
 coût 4 
 
-29921
+29546
 7
 266
 pays 8 
@@ -502,7 +502,7 @@ oms 4
 plans 4 
 pandémie 4 
 
-29034
+21952
 10
 416
 ol 9 
@@ -516,7 +516,7 @@ madrid 4
 essien 4 
 grand 4 
 
-27283
+22747
 10
 623
 avc 16 
@@ -530,13 +530,13 @@ charge 5
 ischémie 5 
 trois 5 
 
-29780
+24439
 2
 178
 goutte 5 
 huile 4 
 
-25609
+22690
 9
 320
 explosion 6 
@@ -549,7 +549,7 @@ astronomes 4
 gamma 4 
 septembre 4 
 
-26236
+28684
 7
 390
 kg 7 
@@ -560,7 +560,7 @@ caire 4
 stéphane 4 
 traineau 4 
 
-26840
+23397
 10
 382
 raman 10 
@@ -574,12 +574,12 @@ sam 4
 music 4 
 chanteuse 4 
 
-20650
+20457
 1
 263
 oberon 6 
 
-23289
+23087
 10
 620
 marie 11 
@@ -593,18 +593,11 @@ montpellier 5
 livre 5 
 littérature 4 
 
-21662
-7
+22440
+0
 377
-septembre 4 
-spa 4 
-fia 4 
-michelin 4 
-pilote 4 
-course 4 
-mclaren 4 
 
-21058
+25324
 10
 635
 federer 10 
@@ -618,7 +611,7 @@ chelem 7
 américain 6 
 ans 6 
 
-20823
+20406
 9
 359
 no2 6 
@@ -631,7 +624,7 @@ combustion 4
 claire 4 
 mme 4 
 
-24664
+25384
 10
 437
 nasa 6 
@@ -645,7 +638,7 @@ fin 4
 centre 4 
 spatial 4 
 
-20091
+28094
 10
 486
 3d 9 
@@ -659,23 +652,23 @@ archéopôle 4
 public 4 
 institut 4 
 
-28897
+23178
 1
 262
 angleterre 4 
 
-24059
+21522
 0
 63
 
-25697
+24153
 3
 285
 deux 4 
 jules 4 
 scène 4 
 
-29153
+22481
 10
 618
 carbone 16 
@@ -689,13 +682,11 @@ régions 5
 zones 5 
 également 5 
 
-25820
-2
+29871
+0
 272
-paysagiste 5 
-archives 4 
 
-25974
+22326
 10
 612
 été 11 
@@ -704,21 +695,22 @@ impact 8
 tempel 8 
 sonde 6 
 deep 5 
-très 5 
 mission 4 
 violence 4 
 collision 4 
+lors 4 
 
-25241
-5
-208
-france 6 
-équipe 4 
-président 4 
-demandé 4 
-joueurs 4 
+21637
+6
+613
+été 11 
+comète 9 
+impact 8 
+deep 5 
+mission 4 
+violence 4 
 
-20937
+21614
 6
 550
 fado 27 
@@ -728,7 +720,7 @@ carmo 6
 carlos 5 
 amalia 5 
 
-26465
+23467
 10
 317
 fédération 7 
@@ -742,11 +734,11 @@ lecomte 5
 député 4 
 équestres 4 
 
-20581
+25246
 0
 23
 
-27543
+20244
 10
 666
 personnes 11 
@@ -760,7 +752,7 @@ vaccinale 6
 dgs 5 
 être 5 
 
-27649
+23737
 10
 665
 france 19 
@@ -774,7 +766,7 @@ deux 6
 matches 6 
 millions 6 
 
-24234
+25986
 10
 515
 maïs 9 
@@ -788,7 +780,7 @@ chapela 5
 ogm 4 
 2003 4 
 
-29270
+27950
 10
 477
 athlètes 7 
@@ -802,7 +794,7 @@ leurs 4
 équipe 4 
 france 4 
 
-28408
+21971
 6
 399
 the 8 
@@ -812,7 +804,7 @@ illinois 4
 disque 4 
 feel 4 
 
-28631
+21456
 10
 446
 patrimoine 8 
@@ -826,26 +818,15 @@ tchèque 5
 mois 4 
 historiques 4 
 
-26519
-5
+26943
+0
 215
-visa 6 
-été 5 
-or 4 
-festival 4 
-prix 4 
 
-23789
-6
+25107
+0
 314
-can 8 
-sacd 8 
-musique 5 
-groupe 5 
-landed 5 
-quatre 4 
 
-27073
+22910
 10
 797
 théâtre 33 
@@ -859,7 +840,7 @@ ans 5
 français 5 
 être 5 
 
-24695
+24063
 10
 805
 mclaren 12 
@@ -873,7 +854,7 @@ montoya 6
 grand 6 
 prix 6 
 
-26588
+21042
 10
 595
 vih 12 
@@ -887,7 +868,7 @@ sida 5
 sud 5 
 résultats 5 
 
-24959
+25881
 8
 448
 mètres 7 
@@ -899,7 +880,7 @@ français 4
 était 4 
 dont 4 
 
-22946
+29244
 10
 423
 jean 6 
@@ -913,12 +894,12 @@ ans 4
 monde 4 
 dès 4 
 
-28825
+24605
 1
 274
 étude 5 
 
-23240
+25133
 4
 251
 abidjan 5 
@@ -926,13 +907,13 @@ victoire 5
 rêve 4 
 pays 4 
 
-22466
+26329
 2
 272
 comportement 4 
 hôte 4 
 
-26998
+27055
 7
 331
 cellules 21 

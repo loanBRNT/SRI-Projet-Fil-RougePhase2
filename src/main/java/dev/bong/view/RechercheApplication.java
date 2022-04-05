@@ -39,13 +39,10 @@ public class RechercheApplication extends Application {
 
         launch();
 
-
         try {
             ControlDeconnexionMoteur.deconnexionMoteurs();
         } catch (IvyException e){
             e.printStackTrace();
         }
-
     }
-
 }
