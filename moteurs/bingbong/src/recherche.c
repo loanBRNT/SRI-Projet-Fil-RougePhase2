@@ -486,6 +486,7 @@ PILE_DESCRIPTEUR_TEXTE rechercheTexteParDescripteur(DESCRIPTEUR_TEXTE* ptr_descF
     while (pile != NULL){
         if (pile->Dt.ID != ptr_descFic->ID){
             tauxAct = comparaisonFichiersTexte(ptr_descFic,&(pile->Dt));
+            printf("- %d : %d\n",pile->Dt.ID,tauxAct);
             if (tauxAct >= tauwSim){
                 pileSim = emPILE_Texte(pileSim, pile->Dt);
             }
@@ -558,6 +559,9 @@ int generationChaineCaracViaPileTexte(PILE_DESCRIPTEUR_TEXTE pile, DESCRIPTEUR_T
 
     while (pile != NULL){
         recupNomDUFic(pile->Dt.ID,1,chaine_nom);
+
+        printf("-%d\n",pile->Dt.ID);
+
         //strcat(chaine,"- ");
         strcat(chaine,chaine_nom);
         //strcat(chaine, " : mots cle en commun : ");

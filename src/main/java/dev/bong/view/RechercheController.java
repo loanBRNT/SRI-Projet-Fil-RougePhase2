@@ -103,6 +103,8 @@ public class RechercheController implements Initializable {
         String motcle=textFieldSearch.getText();
         String banWord=textFieldBanWords.getText();
 
+
+
         try {
             loadingScreenFic = new ControlRechercheFichier(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),(String) choiceType.getValue(), Config.getInstance().getMode(),config.getTypeMoteur(),this);
             Thread thread = new Thread(loadingScreenFic);

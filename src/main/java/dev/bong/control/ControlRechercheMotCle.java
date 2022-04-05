@@ -7,6 +7,7 @@ import dev.bong.view.RechercheController;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -43,7 +44,7 @@ public class ControlRechercheMotCle extends ControlRecherche implements Runnable
         // creation des set servant a recuperer les resultats des recherches
         Set<String> resMotCle = new HashSet<>();
         Set<String> resMotBan = new HashSet<>();
-        Set<String> resTotal = new HashSet<>();
+        List<String> resTotal = new ArrayList<>();
 
         progressBar.setProgress(progressBar.getProgress() + 0.2);
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.2);
