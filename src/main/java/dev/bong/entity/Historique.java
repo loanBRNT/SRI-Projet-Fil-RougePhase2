@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class Historique {
 
-    public static ArrayList<ArrayList<String>> listeDeListe = new ArrayList<>();
+    public static ArrayList<Recherche> listeDeListe = new ArrayList<>();
 
     public static void ecrire(TypeRequete type, String texte) {
         try {
@@ -45,32 +45,33 @@ public class Historique {
     }
 
     public static void lire() throws FileNotFoundException {
-        ArrayList<String> recherches = new ArrayList<>();
-        ArrayList<String> resultats = new ArrayList<>();
+        String recherches = "";
+        String resultats = "";
+        String date = "";
+        String type = "";
+        String bans = "";
         File f = new File("./Historique.txt");
         Scanner sc = new Scanner(f);
         listeDeListe.clear();
         while (sc.hasNext()){
             String ligne = sc.nextLine();
-            ArrayList<String> decoupe = new ArrayList<>(List.of(ligne.split(";")));
+            ArrayList<String> decoupeRes = new ArrayList<>(List.of(ligne.split(";")));
+            ArrayList<String> decoupeDate = new ArrayList<>(List.of(decoupeRes.get(0).split(" - ")));
+            ArrayList<String> decoupe = new ArrayList<>(List.of(decoupeDate.get(1).split(" : ")));
+            ArrayList<String> decoupeRecherche = new ArrayList<>(List.of(decoupe.get(2).split(",")));
             //Decouper ligne en 2 String la première contenant la recherche et la deuxième les resultats
-            recherches.add(decoupe.get(0));
-            resultats.add(decoupe.get(1));
+            date=decoupeDate.get(0);
+            type=decoupe.get(0);
+            recherches=decoupeRecherche.get(0);
+            bans=decoupe.get(3);
+            resultats=decoupeRes.get(1);
+            listeDeListe.add(new Recherche(date,type,recherches,bans,resultats));
         }
-        listeDeListe.add(recherches);
-        listeDeListe.add(resultats);
     }
 
-    public static ArrayList<String> getRecherches(){
-        return getListeDeListe().get(0);
-    }
-
-    public static ArrayList<String> getResultats(){
-        return getListeDeListe().get(1);
-    }
-
-    public static ArrayList<ArrayList<String>> getListeDeListe() {
+    public static ArrayList<Recherche> getListeDeListe() {
         return listeDeListe;
     }
+
 
 }

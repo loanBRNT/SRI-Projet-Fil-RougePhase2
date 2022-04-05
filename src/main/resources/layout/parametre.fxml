@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.ParamController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.ParamController">
    <children>
       <Label fx:id="paramText" layoutX="84.0" layoutY="83.0" text="Sélection du mode :">
          <font>
@@ -15,29 +15,14 @@
          <toggleGroup>
             <ToggleGroup fx:id="Mode" />
          </toggleGroup></ToggleButton>
-      <Label layoutX="84.0" layoutY="159.0" text="Recherche multimoteur :">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </Label>
       <Label fx:id="lbMoteur" layoutX="84.0" layoutY="238.0" text="Moteur par défaut :">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <ToggleButton fx:id="ButtonMultiModeOn" layoutX="356.0" layoutY="160.0" mnemonicParsing="false" onAction="#ChoixMoteurOn" prefHeight="26.0" prefWidth="76.0" text="Oui" toggleGroup="$Multimoteur">
-         <toggleGroup>
-            <ToggleGroup fx:id="Multimoteur" />
-         </toggleGroup></ToggleButton>
       <Button layoutX="74.0" layoutY="369.0" mnemonicParsing="false" onAction="#onConnexionAdmin" prefHeight="34.0" prefWidth="182.0" text="Parametres administrateur" />
       <Button layoutX="669.0" layoutY="384.0" mnemonicParsing="false" onAction="#onBack" prefHeight="26.0" prefWidth="107.0" text="Retour" />
-      <SplitMenuButton layoutX="356.0" layoutY="242.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Choix Moteur">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Moteur 1" />
-            <MenuItem mnemonicParsing="false" text="Moteur 2" />
-         </items>
-      </SplitMenuButton>
-      <ToggleButton  fx:id="ButtonFerme" layoutX="452.0" layoutY="85.0" mnemonicParsing="false" onAction="#ChoixmodeFerme" prefHeight="25.0" prefWidth="76.0" text="Fermé" toggleGroup="$Mode" />
-      <ToggleButton fx:id="ButtonMultiModeOff" layoutX="452.0" layoutY="161.0" mnemonicParsing="false" onAction="#ChoixMoteurOff" prefHeight="25.0" prefWidth="76.0" text="Non" toggleGroup="$Multimoteur" />
+      <ToggleButton fx:id="ButtonFerme" layoutX="452.0" layoutY="85.0" mnemonicParsing="false" onAction="#ChoixmodeFerme" prefHeight="25.0" prefWidth="76.0" text="Fermé" toggleGroup="$Mode" />
+      <ChoiceBox fx:id="choiceMoteur" layoutX="358.0" layoutY="243.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

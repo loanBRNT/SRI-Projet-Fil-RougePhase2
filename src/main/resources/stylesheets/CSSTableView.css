@@ -1,0 +1,57 @@
+/* Gestionnaire de couleurs */
+* {
+-fx-my-menu-color: #182f56;
+-fx-my-menu-color-highlighted: #F16322;
+-fx-my-menu-font-color: #FFFFFF;
+-fx-my-menu-font-color-highlighted: #F16322;
+}
+
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color:  -fx-my-menu-color;
+}
+
+/* En-tetes */
+.table-view .column-header .label{
+   -fx-text-fill: white;
+   -fx-font-weight: bold;
+   -fx-alignment: CENTER;
+   -fx-border-color: -fx-my-menu-font-color-highlighted;
+}
+
+/* Cellules */
+.table-view .cell{
+  -fx-cell-size: 40;
+  -fx-background-color: #29292D;
+  -fx-border-color: #29292D;
+  -fx-text-fill: lightgray;
+  -fx-alignment: CENTER;
+}
+
+
+
+/* scroll bar starts here */
+
+/* The increment and decrement button CSS class of scrollbar */
+.table-view .increment-button ,.table-view .decrement-button {
+    -fx-background-color:transparent;
+	-fx-background-radius: 2em;
+
+}
+
+/* The main scrollbar **track** CSS class  */
+.table-view .scroll-bar:horizontal .track,
+.table-view .scroll-bar:vertical .track{
+	-fx-background-color: transparent;
+	-fx-border-color:derive( -fx-my-menu-color,80%);
+	-fx-background-radius: 2em;
+	-fx-border-radius:2em;
+}
+
+/* The main scrollbar **thumb** CSS class which we drag every time (movable) */
+.table-view .scroll-bar:horizontal .thumb,
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color:derive( -fx-my-menu-color,90%);
+	-fx-background-insets: 2, 0, 0;
+	-fx-background-radius: 2em;
+}

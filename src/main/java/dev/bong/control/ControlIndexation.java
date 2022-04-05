@@ -21,6 +21,8 @@ public class ControlIndexation {
 
         //Utilisation particulière de controlRequete, car on ne soumet ici qu'une seule requête spécifique à l'indexation
 
+        controlRequete.initRequete();
+
         controlRequete.creerRequeteIndexation(true);
 
         for (Requete requete : controlRequete.getListeRequete()){
@@ -47,6 +49,7 @@ public class ControlIndexation {
     }
 
     public static void IndexationDuModeOuvert(){
+        controlRequete.initRequete();
         controlRequete.creerRequeteIndexation(false);
 
         for (Requete requete : controlRequete.getListeRequete()){

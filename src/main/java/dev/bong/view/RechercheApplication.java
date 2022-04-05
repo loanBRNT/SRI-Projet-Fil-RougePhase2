@@ -1,18 +1,14 @@
 package dev.bong.view;
 
-import dev.bong.control.ControlIndexation;
-import dev.bong.control.ControlRechercheFichier;
-import dev.bong.control.ControlRechercheMotCle;
+import dev.bong.control.ControlDeconnexionMoteur;
+import fr.dgac.ivy.IvyException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
-import javax.swing.text.View;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class RechercheApplication extends Application {
     public static Stage stage;
@@ -38,23 +34,14 @@ public class RechercheApplication extends Application {
     }
 
     public static void main(String[] args) {
-
         launch();
 
-        /* TEST INDEXATION
-        ControlIndexation controlIndexation = new ControlIndexation();
-        controlIndexation.run();
+        try {
+            ControlDeconnexionMoteur.deconnexionMoteurs();
+        } catch (IvyException e){
+            e.printStackTrace();
+        }
 
-         */
-
-        /* TEST FICHIER + MODE
-        ArrayList<String> l = new ArrayList<>();
-        ArrayList<String> li = new ArrayList<>();
-
-        l.add("26-Lyon_prend_ses_aises_en.xml");
-
-        ControlRechercheFichier controlRechercheFichier = new ControlRechercheFichier(l,li,true);
-        controlRechercheFichier.start();
-        */
     }
+
 }

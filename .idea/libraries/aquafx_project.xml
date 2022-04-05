@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="aquafx.project" type="repository">
+    <properties maven-id="com.aquafx-project:aquafx:0.2" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/aquafx-0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/stylemanager-0.1b2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

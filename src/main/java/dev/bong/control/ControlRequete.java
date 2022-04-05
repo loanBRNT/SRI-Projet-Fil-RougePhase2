@@ -43,16 +43,13 @@ public class ControlRequete implements PropertyChangeListener{
     }
 
     //A partir de la liste en param,
-    public void creerEtenvoyerListeRequete(List<String> motCle){
-        initRequete();
+    public void creerEtenvoyerListeRequete(List<String> motCle,String destinataire){
 
         for (String s : motCle) {
-            creerRequeteRecherche(s);
+            creerRequeteRecherche(s,destinataire);
         }
 
-        for (Requete requete : listeRequete) {
-            envoyerRequete(requete);
-        }
+        envoyerTouteRequete();
     }
 
     public void envoyerRequete(Requete requete){
@@ -65,8 +62,8 @@ public class ControlRequete implements PropertyChangeListener{
 
     /* ------------------- FONCTIONS SPECIFIQUES ------------------ */
 
-    public void creerRequeteRecherche(String mot){
-        Requete requete = new Requete(mot);
+    public void creerRequeteRecherche(String mot,String destinataire){
+        Requete requete = new Requete(mot,destinataire);
         requete.initRecherche();
         listeRequete.add(requete);
     }
@@ -75,9 +72,9 @@ public class ControlRequete implements PropertyChangeListener{
         initRequete();
         Requete requete;
         if (forcee){
-            requete = new Requete("reset");
+            requete = new Requete("reset",TypeMoteur.BONGALA.name());
         } else {
-            requete = new Requete("");
+            requete = new Requete("",TypeMoteur.BONGALA.name());
         }
         requete.initIndexation();
         listeRequete.add(requete);
@@ -87,6 +84,12 @@ public class ControlRequete implements PropertyChangeListener{
         listeRequete.clear();
         listeResultat.clear();
         nbRequeteFinit=0;
+    }
+
+    public void envoyerTouteRequete(){
+        for (Requete requete : listeRequete) {
+            if (requete.getEtatRequete() != EtatRequete.RUNNABLE) envoyerRequete(requete);
+        }
     }
 
     /* ------------------- FONCTIONS accesseurs ------------------ */

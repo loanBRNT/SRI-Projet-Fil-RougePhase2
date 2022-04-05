@@ -1,17 +1,12 @@
 package dev.bong.control;
 
-import dev.bong.entity.GestionAlerte;
 import dev.bong.entity.Historique;
-import dev.bong.entity.TestCommunication;
+import dev.bong.entity.TypeMoteur;
 import dev.bong.entity.TypeRequete;
 import dev.bong.view.RechercheController;
-import fr.dgac.ivy.IvyException;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,9 +18,8 @@ public class ControlRechercheMotCle extends ControlRecherche implements Runnable
     private List<String> motcle;
     private List<String> motBan;
 
-
-    public ControlRechercheMotCle(ProgressIndicator progressIndicator, ProgressBar progressBar,List<String> motcle, List<String> motBan, RechercheController rc) throws Exception {
-        super(new ControlRequete(TypeRequete.RECHERCHE_MOT_CLE),progressIndicator,progressBar,rc);
+    public ControlRechercheMotCle(ProgressIndicator progressIndicator, ProgressBar progressBar,List<String> motcle, List<String> motBan,TypeMoteur typeMoteur, RechercheController rc) throws Exception {
+        super(new ControlRequete(TypeRequete.RECHERCHE_MOT_CLE),progressIndicator,progressBar,typeMoteur,rc);
 
         //LANCER LA COM
         controlRequete.lancerCommunicationBus();
@@ -46,7 +40,6 @@ public class ControlRechercheMotCle extends ControlRecherche implements Runnable
     //se lance avec .start() (Tread)
     @Override
     public void run(){
-
         // creation des set servant a recuperer les resultats des recherches
         Set<String> resMotCle = new HashSet<>();
         Set<String> resMotBan = new HashSet<>();
@@ -56,12 +49,12 @@ public class ControlRechercheMotCle extends ControlRecherche implements Runnable
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.2);
 
         // appel des fonctions de recherches
-        if (!motcle.toString().equals("[]")) resMotCle=recherche(motcle);
+        if (!motcle.toString().equals("[]")) resMotCle=recherche(motcle,TypeRequete.RECHERCHE_MOT_CLE,true);
         else {
             progressBar.setProgress(progressBar.getProgress() + 0.3);
             progressIndicator.setProgress(progressIndicator.getProgress() + 0.3);
         }
-        if (!motBan.toString().equals("[]")) resMotBan=recherche(motBan);
+        if (!motBan.toString().equals("[]")) resMotBan=recherche(motBan,TypeRequete.RECHERCHE_MOT_CLE,false);
         else {
             progressBar.setProgress(progressBar.getProgress() + 0.3);
             progressIndicator.setProgress(progressIndicator.getProgress() + 0.3);

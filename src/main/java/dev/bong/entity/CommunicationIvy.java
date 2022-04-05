@@ -38,16 +38,16 @@ public class CommunicationIvy {
         bus.start("127.255.255.255:2010");
     }
 
-    public void definirBind(String mot) throws IvyException {
-        bus.bindMsgOnce("^Moteur mot=" + mot + " liste=(.*)",(client, args) -> {
+    public void definirBind(String mot, String destinataire) throws IvyException {
+        bus.bindMsgOnce("^" + destinataire + " mot=" + mot + " liste=(.*)",(client, args) -> {
             String message = mot + "," + args[0];
             support.firePropertyChange(ListenerPropriete.RESULTAT.toString(),resultat,message);
             resultat = "";
         });
     }
 
-    public void definirBind(ListenerPropriete listenerPropriete) throws IvyException {
-        bus.bindMsg("^Moteur message=(.*)", ((ivyClient, args) -> {
+    public void definirBind(ListenerPropriete listenerPropriete, String destinataire) throws IvyException {
+        bus.bindMsg("^" + destinataire + " message=(.*)", ((ivyClient, args) -> {
             support.firePropertyChange(listenerPropriete.toString(),resultat,args[0]);
             resultat = "";
         }));
