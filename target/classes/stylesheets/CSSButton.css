@@ -1,0 +1,22 @@
+#Button {
+    -fx-padding: 8 2 15 2;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        #F16322,
+        #1a3561,
+        #182f56,
+        radial-gradient(center 50% 50%, radius 100%, #1a3561, #182f56);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-text-fill: white;
+
+}
+#Button:hover {
+    -fx-text-fill: #F16322;
+}
+
+#Button:pressed {
+    -fx-padding: 10 2 13 2;
+    -fx-text-fill: #F16322;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
