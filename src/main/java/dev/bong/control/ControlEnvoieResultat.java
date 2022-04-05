@@ -1,13 +1,10 @@
 package dev.bong.control;
 
-import dev.bong.view.RechercheApplication;
-
-import java.io.IOException;
-import java.util.Set;
+import java.util.List;
 
 public class ControlEnvoieResultat {
 
-    private Set<String> resultat;
+    private List<String> resultat;
 
     private ControlEnvoieResultat(){}
 
@@ -19,11 +16,11 @@ public class ControlEnvoieResultat {
         return ControlEnvoieResultatHolder.instance;
     }
 
-    public void receptionResultat(Set<String> resultat){
+    public void receptionResultat(List<String> resultat){
         this.resultat = resultat;
     }
 
-    public Set<String> getResultat() {
+    public List<String> getResultat() {
         return resultat;
     }
 }

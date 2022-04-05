@@ -1,6 +1,7 @@
 package dev.bong.control;
 
 
+import dev.bong.entity.Database;
 import dev.bong.entity.Historique;
 import dev.bong.entity.TypeMoteur;
 import dev.bong.entity.TypeRequete;
@@ -8,6 +9,7 @@ import dev.bong.view.RechercheController;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,6 +24,8 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
     //Mode pour la recherche
     private boolean modeOuvert;
 
+    private String extension;
+
     //Permet d'initialiser la com + les listes de mots clés
     public ControlRechercheFichier(ProgressIndicator progressIndicator, ProgressBar progressBar,
                                    List<String> nomFicRecherche, List<String> nomFicBan, String extension,
@@ -30,6 +34,8 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
 
         //LANCER LA COM
         controlRequete.lancerCommunicationBus();
+
+        this.extension = extension;
 
         //Laisse le temps à la communication de s'établir entre tous les agents
         try {
@@ -51,7 +57,7 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
         // creation des set servant a recuperer les resultats des recherches
         Set<String> resMotCle = new HashSet<>();
         Set<String> resMotBan = new HashSet<>();
-        Set<String> resTotal = new HashSet<>();
+        List<String> resTotal = new ArrayList<>();
 
         progressBar.setProgress(progressBar.getProgress() + 0.1);
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
@@ -85,7 +91,12 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
         // ajout des recherches a polarité positives et suppression des polarité négatives
         if (nomFicRecherche.toString().equals("[]")){
 
-            //inverser les résultats
+            try {
+                resTotal.addAll(Database.getListeFichier(extension));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            resTotal.removeAll(resMotBan);
 
         } else {
             resTotal.addAll(resMotCle);
@@ -114,7 +125,6 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
 
         rechercheController.afficherResultat();
-
     }
 
     public void ajoutExtension(String extension, List<String> listeMc, List<String> listeBan){
