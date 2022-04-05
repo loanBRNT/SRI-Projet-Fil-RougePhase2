@@ -1,8 +1,5 @@
 package dev.bong.entity;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
