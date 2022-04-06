@@ -77,7 +77,7 @@ void StopCallback (IvyClientPtr app, void *data, int argc, char **argv)
 	IvyStop ();
 }
 
-int main(int argc, char const *argv[]){
+int main(int argc, char *argv[]){
 	
 	/* initialisation */
 	IvyInit("BingBong", "BingBong est sur le reseau", 0, 0, 0, 0);

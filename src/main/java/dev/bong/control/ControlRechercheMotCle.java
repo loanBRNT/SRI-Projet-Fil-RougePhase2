@@ -1,6 +1,7 @@
 package dev.bong.control;
 
 import dev.bong.entity.Historique;
+import dev.bong.entity.TypeFichier;
 import dev.bong.entity.TypeMoteur;
 import dev.bong.entity.TypeRequete;
 import dev.bong.view.RechercheController;
@@ -24,6 +25,8 @@ public class ControlRechercheMotCle extends ControlRecherche implements Runnable
 
         //LANCER LA COM
         controlRequete.lancerCommunicationBus();
+
+        controlEnvoieResultat.receptionType(TypeFichier.XML);
 
         //Laisse le temps à la communication de s'établir entre tous les agents
         try {
