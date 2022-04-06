@@ -330,7 +330,7 @@ int lanceRechercheViaMotCle(char* mot, char* chaine_resultat){
     strcat(chaine_resultat, "]:\n");
     */
 
-    strcpy(chaine_resultat," ");
+    strcpy(chaine_resultat,"");
 
     while (!feof(f)){
         fscanf(f,"%d %d ",&id,&num);

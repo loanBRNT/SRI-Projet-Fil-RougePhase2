@@ -301,7 +301,7 @@ int lanceRechercheViaMotCle(char* mot, char* chaine_resultat){
     fscanf(fTit,"%d",&numLigne);
 
     if (numLigne == 0){
-        strcpy(chaine_resultat," ");
+        strcpy(chaine_resultat,"");
         return 0;
     }
 

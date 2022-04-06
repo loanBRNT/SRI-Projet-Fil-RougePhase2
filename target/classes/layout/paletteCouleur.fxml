@@ -7,11 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<<<<<<< HEAD
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" stylesheets="@../stylesheets/CSSMenuBar.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.RechercheController">
-=======
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.RechercheController">
->>>>>>> 7444700760ed16f8a164943036bdd659bc79e3d0
     <children>
         <Button id="Button" fx:id="buttonSearch" layoutX="693.0" layoutY="261.0" onAction="#onClickColorSearch" prefHeight="40.0" prefWidth="77.0" text="Search" />
         <ImageView fx:id="param" fitHeight="50.0" fitWidth="68.0" layoutX="24.0" layoutY="373.0" onMouseClicked="#onClickParam" pickOnBounds="true" preserveRatio="true">
@@ -51,11 +47,7 @@
                 <Font size="15.0" />
             </font>
         </Label>
-<<<<<<< HEAD
-        <Button fx:id="afficheResultat" layoutX="329.0" layoutY="361.0" mnemonicParsing="false" onAction="#onLoadingAchieve" prefHeight="25.0" prefWidth="142.0" text="Afficher Résultats" textAlignment="CENTER" visible="false" />
-=======
         <Button id="Button" fx:id="afficheResultat" layoutX="329.0" layoutY="361.0" mnemonicParsing="false" onAction="#onLoadingAchieve" prefHeight="25.0" prefWidth="142.0" text="Afficher Résultats" textAlignment="CENTER" visible="false" />
->>>>>>> 7444700760ed16f8a164943036bdd659bc79e3d0
 
         <ImageView fitHeight="155.0" fitWidth="309.0" layoutX="232.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
             <image>
