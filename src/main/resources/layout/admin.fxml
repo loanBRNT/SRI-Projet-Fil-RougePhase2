@@ -5,7 +5,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.AdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" stylesheets="@../stylesheets/CSSButton.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.AdminController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8c9dd" height="309.0" layoutX="100.0" layoutY="75.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="600.0" />
       <PasswordField fx:id="inputPwd" layoutX="245.0" layoutY="256.0" prefHeight="26.0" prefWidth="353.0" />
@@ -25,7 +25,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="710.0" layoutY="397.0" mnemonicParsing="false" onAction="#onBackParam" prefHeight="28.0" prefWidth="64.0" text="Retour" />
-      <Button layoutX="343.0" layoutY="322.0" mnemonicParsing="false" onAction="#onConnexion" prefHeight="26.0" prefWidth="114.0" text="Connexion" />
+      <Button id="Button" layoutX="710.0" layoutY="397.0" mnemonicParsing="false" onAction="#onBackParam" prefHeight="28.0" prefWidth="64.0" text="Retour" />
+      <Button id="Button" layoutX="343.0" layoutY="322.0" mnemonicParsing="false" onAction="#onConnexion" prefHeight="26.0" prefWidth="114.0" text="Connexion" />
    </children>
 </AnchorPane>

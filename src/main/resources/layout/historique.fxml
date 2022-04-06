@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onRealeaseSelection" prefHeight="450.0" prefWidth="800.0" stylesheets="@../stylesheets/CSSTableView.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.HistoriqueController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onRealeaseSelection" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.HistoriqueController">
     <cursor>
         <Cursor fx:constant="DEFAULT" />
     </cursor>
    <children>
-      <Button layoutX="635.0" layoutY="391.0" mnemonicParsing="false" onAction="#onBack" prefHeight="25.0" prefWidth="121.0" text="Retour" />
-      <Button layoutX="44.0" layoutY="391.0" mnemonicParsing="false" onAction="#onClean" prefHeight="25.0" prefWidth="121.0" text="Effacer l'hitorique" />
+      <Button id="Button" layoutX="627.0" layoutY="385.0" mnemonicParsing="false" onAction="#onBack" prefHeight="25.0" prefWidth="121.0" text="Retour" />
+      <Button id="Button" layoutX="53.0" layoutY="385.0" mnemonicParsing="false" onAction="#onClean" prefHeight="25.0" prefWidth="121.0" text="Effacer l'hitorique" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="14.0" prefHeight="51.0" prefWidth="800.0" text="Historique">
          <font>
             <Font size="24.0" />
@@ -26,4 +27,8 @@
          </columns>
       </TableView>
    </children>
+   <stylesheets>
+      <URL value="@../stylesheets/CSSTableView.css" />
+      <URL value="@../stylesheets/CSSButton.css" />
+   </stylesheets>
 </Pane>

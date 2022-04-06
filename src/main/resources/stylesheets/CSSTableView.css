@@ -11,6 +11,12 @@
     -fx-background-color:  -fx-my-menu-color;
 }
 
+.table-view.row:hover {
+   -fx-text-fill: -fx-my-menu-font-color-highlighted;
+   -fx-font-weight: bold;
+   -fx-border-color: -fx-my-menu-font-color-highlighted;
+}
+
 /* En-tetes */
 .table-view .column-header .label{
    -fx-text-fill: white;

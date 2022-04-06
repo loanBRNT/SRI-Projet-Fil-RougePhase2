@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.ParamAdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" stylesheets="@../stylesheets/CSSButton.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.ParamAdminController">
    <children>
       <Label fx:id="lbTauxSimi" layoutX="26.0" layoutY="31.0" prefHeight="26.0" prefWidth="133.0" text="Taux de similitude">
          <font>
@@ -16,8 +16,8 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="627.0" layoutY="340.0" mnemonicParsing="false" onAction="#onApplyParamAdmin" prefHeight="28.0" prefWidth="100.0" text="Appliquer" />
-      <Button layoutX="627.0" layoutY="396.0" mnemonicParsing="false" onAction="#onBack" prefHeight="28.0" prefWidth="100.0" text="Retour" />
+      <Button id="Button" layoutX="634.0" layoutY="321.0" mnemonicParsing="false" onAction="#onApplyParamAdmin" prefHeight="28.0" prefWidth="100.0" text="Appliquer" />
+      <Button id="Button" layoutX="634.0" layoutY="384.0" mnemonicParsing="false" onAction="#onBack" prefHeight="28.0" prefWidth="100.0" text="Retour" />
       <Label fx:id="lbNbMotTexte" layoutX="25.0" layoutY="101.0" text="Nombre de mots par texte">
          <font>
             <Font size="15.0" />
@@ -48,7 +48,7 @@
       <Label layoutX="427.0" layoutY="245.0" text="Supérieur à 0" />
       <Label layoutX="427.0" layoutY="320.0" text="Valeur d'une puissance de 2" />
       <Label layoutX="427.0" layoutY="387.0" text="Valeur entre 1 et 4" />
-      <Button fx:id="btnAffiche" layoutX="602.0" layoutY="44.0" mnemonicParsing="false" onAction="#HandleBtnAfficheAction" text="Afficher Valeurs .Config" />
+      <Button id="Button" fx:id="btnAffiche" layoutX="608.0" layoutY="25.0" mnemonicParsing="false" onAction="#HandleBtnAfficheAction" prefHeight="40.0" prefWidth="139.0" text="Afficher Valeurs .Config" />
       <TextArea fx:id="taSummary" layoutX="577.0" layoutY="88.0" prefHeight="200.0" prefWidth="200.0" />
       <Spinner fx:id="spNbPointFen" layoutX="262.0" layoutY="316.0" />
       <Spinner fx:id="spTauxSimi" layoutX="259.0" layoutY="32.0" />

@@ -1,10 +1,13 @@
 package dev.bong.control;
 
+import dev.bong.entity.TypeFichier;
+
 import java.util.List;
 
 public class ControlEnvoieResultat {
 
     private List<String> resultat;
+    private TypeFichier type;
 
     private ControlEnvoieResultat(){}
 
@@ -22,5 +25,13 @@ public class ControlEnvoieResultat {
 
     public List<String> getResultat() {
         return resultat;
+    }
+
+    public TypeFichier getType() {
+        return type;
+    }
+
+    public void receptionType(TypeFichier typeFichier){
+        type = typeFichier;
     }
 }

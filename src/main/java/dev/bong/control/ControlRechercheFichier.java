@@ -1,10 +1,7 @@
 package dev.bong.control;
 
 
-import dev.bong.entity.Database;
-import dev.bong.entity.Historique;
-import dev.bong.entity.TypeMoteur;
-import dev.bong.entity.TypeRequete;
+import dev.bong.entity.*;
 import dev.bong.view.RechercheController;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
@@ -24,7 +21,7 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
     //Mode pour la recherche
     private boolean modeOuvert;
 
-    private String extension;
+    private TypeFichier typeFichier;
 
     //Permet d'initialiser la com + les listes de mots clés
     public ControlRechercheFichier(ProgressIndicator progressIndicator, ProgressBar progressBar,
@@ -32,10 +29,14 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
                                    boolean modeOuvert, TypeMoteur typeMoteur, RechercheController rechercheController) throws Exception {
         super(new ControlRequete(TypeRequete.RECHERCHE_FICHIER),progressIndicator,progressBar, typeMoteur,rechercheController);
 
+        this.typeFichier = TypeFichier.stringToEnum(extension);
+        this.modeOuvert = modeOuvert;
+
         //LANCER LA COM
         controlRequete.lancerCommunicationBus();
 
-        this.extension = extension;
+        //Envoie au control resultat des donnees
+        controlEnvoieResultat.receptionType(typeFichier);
 
         //Laisse le temps à la communication de s'établir entre tous les agents
         try {
@@ -44,11 +45,11 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
             e.printStackTrace();
         }
 
+        //On test la connexion au bus et aux moteurs
         testCommunication.testerCommunication();
 
+        //On initialise les listes pour la recherche
         this.ajoutExtension(extension,nomFicRecherche,nomFicBan);
-
-        this.modeOuvert = modeOuvert;
     }
 
     //se lance avec .start() (Tread)
@@ -92,7 +93,7 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
         if (nomFicRecherche.toString().equals("[]")){
 
             try {
-                resTotal.addAll(Database.getListeFichier(extension));
+                resTotal.addAll(Database.getListeFichier(TypeFichier.enumToString(typeFichier)));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
