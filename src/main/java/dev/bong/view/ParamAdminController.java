@@ -113,7 +113,7 @@ public class ParamAdminController implements Initializable {
         spOccu.setValueFactory(svf3);
         spNbMotTexte.setEditable(true);
         spNbMotTexte.setValueFactory(svf4);
-        spNbPointFen.setEditable(true);
+        spNbPointFen.setEditable(false);
         spNbPointFen.setValueFactory(svf5);
         spNbBitQuant.setEditable(true);
         spNbBitQuant.setValueFactory(svf6);

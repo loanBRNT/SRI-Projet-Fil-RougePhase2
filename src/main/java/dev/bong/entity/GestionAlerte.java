@@ -33,9 +33,9 @@ public class GestionAlerte {
         alert.showAndWait();
     }
 
-    public static void genererErreurIvy(String titre, String message,String destination) throws IOException {
+    public static void genererAlertChangeFenetre(String titre, Alert.AlertType type, String message, String destination) throws IOException {
         testCommunication.fermerCommunication();
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alert = new Alert(type);
         alert.setTitle(titre);
         alert.setHeaderText(message);
         Optional<ButtonType> result = alert.showAndWait();

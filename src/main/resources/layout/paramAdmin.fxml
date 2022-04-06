@@ -16,8 +16,8 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button id="Button" layoutX="634.0" layoutY="321.0" mnemonicParsing="false" onAction="#onApplyParamAdmin" prefHeight="28.0" prefWidth="100.0" text="Appliquer" />
-      <Button id="Button" layoutX="634.0" layoutY="384.0" mnemonicParsing="false" onAction="#onBack" prefHeight="28.0" prefWidth="100.0" text="Retour" />
+      <Button id="Button" layoutX="627.0" layoutY="319.0" mnemonicParsing="false" onAction="#onApplyParamAdmin" prefHeight="28.0" prefWidth="100.0" text="Appliquer" />
+      <Button id="Button" layoutX="627.0" layoutY="384.0" mnemonicParsing="false" onAction="#onBack" prefHeight="28.0" prefWidth="100.0" text="Retour" />
       <Label fx:id="lbNbMotTexte" layoutX="25.0" layoutY="101.0" text="Nombre de mots par texte">
          <font>
             <Font size="15.0" />

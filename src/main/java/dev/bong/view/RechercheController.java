@@ -1,5 +1,6 @@
 package dev.bong.view;
 
+import dev.bong.control.ControlEnvoieResultat;
 import dev.bong.control.ControlRechercheCouleur;
 import dev.bong.control.ControlRechercheFichier;
 import dev.bong.control.ControlRechercheMotCle;
@@ -7,6 +8,7 @@ import dev.bong.entity.Config;
 import dev.bong.entity.GestionAlerte;
 import dev.bong.entity.Historique;
 import fr.dgac.ivy.IvyException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -14,6 +16,7 @@ import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -92,10 +95,10 @@ public class RechercheController implements Initializable {
             thread.start();
         } catch (IvyException e) {
             e.printStackTrace();
-           GestionAlerte.genererErreurIvy("Ivy Erreur","La connexion au bus a échouée","hello-view.fxml");
+           GestionAlerte.genererAlertChangeFenetre("Ivy Erreur",Alert.AlertType.ERROR,"La connexion au bus a échouée","hello-view.fxml");
         } catch (Exception e){
             e.printStackTrace();
-           GestionAlerte.genererErreurIvy("Ivy Erreur","Communication avec le(s) moteur(s) impossible","hello-view.fxml");
+           GestionAlerte.genererAlertChangeFenetre("Ivy Erreur",Alert.AlertType.ERROR,"Communication avec le(s) moteur(s) impossible","hello-view.fxml");
         }
     }
 
@@ -117,10 +120,10 @@ public class RechercheController implements Initializable {
             thread.start();
         } catch (IvyException e) {
             e.printStackTrace();
-           GestionAlerte.genererErreurIvy("Ivy Erreur","La connexion au bus a échouée","rechercheFichier.fxml");
+           GestionAlerte.genererAlertChangeFenetre("Ivy Erreur",Alert.AlertType.ERROR,"La connexion au bus a échouée","rechercheFichier.fxml");
         } catch (Exception e){
             e.printStackTrace();
-           GestionAlerte.genererErreurIvy("Ivy Erreur","Communication avec le(s) moteur(s) impossible","rechercheFichier.fxml");
+           GestionAlerte.genererAlertChangeFenetre("Ivy Erreur",Alert.AlertType.ERROR,"Communication avec le(s) moteur(s) impossible","rechercheFichier.fxml");
         }
     }
 
@@ -141,10 +144,10 @@ public class RechercheController implements Initializable {
             thread.start();
         } catch (IvyException e) {
             e.printStackTrace();
-            GestionAlerte.genererErreurIvy("Ivy Erreur","La connexion au bus a échouée","paletteCouleur.fxml");
+            GestionAlerte.genererAlertChangeFenetre("Ivy Erreur",Alert.AlertType.ERROR,"La connexion au bus a échouée","paletteCouleur.fxml");
         } catch (Exception e){
             e.printStackTrace();
-            GestionAlerte.genererErreurIvy("Ivy Erreur","Communication avec le(s) moteur(s) impossible","paletteCouleur.fxml");
+            GestionAlerte.genererAlertChangeFenetre("Ivy Erreur",Alert.AlertType.ERROR,"Communication avec le(s) moteur(s) impossible","paletteCouleur.fxml");
         }
     }
 
@@ -183,7 +186,17 @@ public class RechercheController implements Initializable {
 
     @FXML
     protected void onLoadingAchieve() throws IOException {
-        RechercheApplication.changerScene("resultats.fxml");
+        ControlEnvoieResultat controlEnvoieResultat = ControlEnvoieResultat.getInstance();
+        ArrayList<String> listeResultat = (ArrayList<String>) controlEnvoieResultat.getResultat();
+        if (listeResultat.isEmpty() || listeResultat.toString().equals("[ ]")) {
+            try {
+                GestionAlerte.genererAlertChangeFenetre("Resultats", Alert.AlertType.ERROR, "La recherche n'a aboutit à aucun résultat", "hello-view.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else {
+            RechercheApplication.changerScene("resultats.fxml");
+        }
     }
 
     @FXML
@@ -219,6 +232,15 @@ public class RechercheController implements Initializable {
         choiceType.getItems().add(".bmp");
         choiceType.getItems().add(".wav");
         choiceType.setValue(".xml");
+    }
+
+    @FXML
+    public void onEnterMotCle(ActionEvent ae) throws IOException {
+        onClickSearch();
+    }
+    @FXML
+    public void onEnterFic(ActionEvent ae) throws IOException {
+        onClickFicSearch();
     }
 
 }
