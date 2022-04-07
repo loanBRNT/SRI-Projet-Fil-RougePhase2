@@ -81,8 +81,8 @@ public abstract class ControlRecherche {
         System.out.println("bongala :" + resBongala);
         System.out.println("bingbong :" + resBingBong);
 
-        resTotal.addAll(resBingBong); // POUR LES TESTS
-        resTotal.addAll(resBongala); //POUR LES TESTS
+        //resTotal.addAll(resBingBong); // POUR LES TESTS
+        resTotal = triAudio(resBongala); //POUR LES TESTS
 
         /* JE L'ai ENLEVE POUR LES TEST
         switch (typeRequete){
@@ -112,6 +112,20 @@ public abstract class ControlRecherche {
         return resTotal;
     }
 
+    protected Set<String> triAudio(List<String> res){
+        System.out.println("res : " + res);
+        Set<String> resTotal = new HashSet<>();
+        for (String listFichierTrouve : res) {
+            System.out.println("Petite String : " + listFichierTrouve);
+            ArrayList<String> fichiersTrouvee = new ArrayList<>(List.of(listFichierTrouve.split(",")));
+            fichiersTrouvee.remove(0);
+            for (String listeRepSon : fichiersTrouvee){
+                ArrayList<String> repSon = new ArrayList<>(List.of(listeRepSon.split("/")));
+                resTotal.add(repSon.get(1) + " : " + repSon.get(0));
+            }
+        }
+        return resTotal;
+    }
 
     protected  Set<String> triResFichierMoins(List<String> res){
         Set<String> resTotal = new HashSet<>();

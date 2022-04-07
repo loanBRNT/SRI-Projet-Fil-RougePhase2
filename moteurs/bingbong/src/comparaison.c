@@ -56,6 +56,7 @@ int comparaisonFichiersAudio(DESCRIPTEUR_AUDIO* jingle, DESCRIPTEUR_AUDIO* corpu
     char tab[20];
     int taux = 0, tauxSim = recupTauxSimmilaritudeDuConfig(),pres=0;
     float s;
+
     if (jingle == NULL || corpus == NULL) return 0;
     if (jingle->taille > corpus->taille) return 0;
 
@@ -64,6 +65,8 @@ int comparaisonFichiersAudio(DESCRIPTEUR_AUDIO* jingle, DESCRIPTEUR_AUDIO* corpu
     for (int i = 0; i < corpus->taille - jingle->taille; ++i)
     {
         if (ptr_CorpusHisto == NULL) break;
+
+        if (pres > 10) break;
 
         taux = calculSimHisto(jingle->histo,ptr_CorpusHisto);
 

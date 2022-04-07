@@ -65,6 +65,8 @@ int comparaisonFichiersAudio(DESCRIPTEUR_AUDIO* jingle, DESCRIPTEUR_AUDIO* corpu
     {
         if (ptr_CorpusHisto == NULL) break;
 
+        if (pres > 10) break;
+
         taux = calculSimHisto(jingle->histo,ptr_CorpusHisto);
 
         if (taux >= tauxSim){

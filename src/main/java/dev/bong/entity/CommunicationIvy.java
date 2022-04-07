@@ -9,7 +9,6 @@ import java.beans.PropertyChangeSupport;
 public class CommunicationIvy {
     private Ivy bus = new Ivy("interface", " interface is ready", null);
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
-    private String resultat = "";
 
     //SINGLETON
     private CommunicationIvy() {}
@@ -41,15 +40,13 @@ public class CommunicationIvy {
     public void definirBind(String mot, String destinataire) throws IvyException {
         bus.bindMsgOnce("^" + destinataire + " mot=" + mot + " liste=(.*)",(client, args) -> {
             String message = mot + "," + args[0];
-            support.firePropertyChange(ListenerPropriete.RESULTAT.toString(),resultat,message);
-            resultat = "";
+            support.firePropertyChange(ListenerPropriete.RESULTAT.toString(),null,message);
         });
     }
 
     public void definirBind(ListenerPropriete listenerPropriete, String destinataire) throws IvyException {
         bus.bindMsg("^" + destinataire + " message=(.*)", ((ivyClient, args) -> {
-            support.firePropertyChange(listenerPropriete.toString(),resultat,args[0]);
-            resultat = "";
+            support.firePropertyChange(listenerPropriete.toString(),null,args[0]);
         }));
     }
 

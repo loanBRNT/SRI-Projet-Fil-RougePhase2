@@ -709,7 +709,7 @@ DESCRIPTEUR_TEXTE getDescripteurTexteViaPile(char* nom_fichier){
 
 int rechercheJingle(DESCRIPTEUR_AUDIO* descFic, char* chaine_resultat){
     char chaine_nom[50];
-    int pres, nbAud=0;
+    int pres;
 
     /* PHASE 1
     recupNomDUFic(descFic->identifiant,3,chaine_nom);
@@ -747,9 +747,9 @@ int rechercheJingle(DESCRIPTEUR_AUDIO* descFic, char* chaine_resultat){
             pres = comparaisonFichiersAudio(descFic,pile->Da,chaine_resultat);
             
             if (pres > 0){
-                if (nbAud != 0) strcat(chaine_resultat,",");
+                strcat(chaine_resultat,"/");
                 strcat(chaine_resultat, chaine_nom);
-                nbAud++;
+                strcat(chaine_resultat,",");
             }
         
         }
@@ -758,7 +758,6 @@ int rechercheJingle(DESCRIPTEUR_AUDIO* descFic, char* chaine_resultat){
         dePILE_Audio_Sans_Sauvegarde(sauv);
     }
 
-    if (nbAud == 0) strcpy(chaine_resultat,"");
     /* PHASE 1
     if (presMax > 0){
         if (!ouvertureFichier(chaine_nomSauv)){

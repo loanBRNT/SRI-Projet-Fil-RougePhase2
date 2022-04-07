@@ -7,7 +7,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 
@@ -16,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -61,13 +61,14 @@ public class ResultatsController implements Initializable {
                             break;
                         case WAV :
                             path = "Audio/";
+                            name = List.of(name.split(" :")).get(0);
                             break;
                         default :
                             path = "Texte/";
                             break;
                     }
                     try  {
-                        File file = new File("./moteurs/Database/"+ path +name);
+                        File file = new File("./moteurs/Database/"+ path + name);
                         if (!Desktop.isDesktopSupported()){
                             GestionAlerte.genererErreur("Erreur", "Desktop not supported");
                         } else {
