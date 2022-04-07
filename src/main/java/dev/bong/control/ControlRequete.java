@@ -17,7 +17,9 @@ public class ControlRequete implements PropertyChangeListener{
 
     //Liste de données
     private List<Requete> listeRequete = new ArrayList<>();
-    private List<String> listeResultat = new ArrayList<>();
+
+    private List<String> listeResultatBongala = new ArrayList<>();
+    private List<String> listeResultatBingBong = new ArrayList<>();
 
     //Compteur de retour
     private int nbRequeteFinit = 0;
@@ -83,7 +85,8 @@ public class ControlRequete implements PropertyChangeListener{
 
     public void initRequete(){
         listeRequete.clear();
-        listeResultat.clear();
+        listeResultatBongala.clear();
+        listeResultatBingBong.clear();
         nbRequeteFinit=0;
     }
 
@@ -93,16 +96,34 @@ public class ControlRequete implements PropertyChangeListener{
         }
     }
 
+    private Requete trouverRequeteViaMot(String mot){
+        Requete requeteCorrespondante = null;
+        for (Requete requete : listeRequete){
+            if (requete.getMot().equals(mot) && (requete.getEtatRequete() != EtatRequete.TERMINATED)) requeteCorrespondante = requete;
+        }
+        return requeteCorrespondante;
+    }
+
     /* ------------------- FONCTIONS accesseurs ------------------ */
 
     public List<Requete> getListeRequete() {
         return listeRequete;
     }
 
-    public List<String> getListeResultat() {
-        return listeResultat;
+    public List<String> getListeResultat(String nomDuMoteur){
+        if (nomDuMoteur.equals(TypeMoteur.BONGALA.name())){
+            return getListeResultatBongala();
+        }
+        return getListeResultatBingBong();
     }
 
+    private List<String> getListeResultatBongala() {
+        return listeResultatBongala;
+    }
+
+    private List<String> getListeResultatBingBong() {
+        return listeResultatBingBong;
+    }
 
     public int getNbRequeteFinit(){return nbRequeteFinit;}
 
@@ -111,7 +132,14 @@ public class ControlRequete implements PropertyChangeListener{
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         String message = (String) evt.getNewValue();
-        listeResultat.add(message);
+        String mot = List.of(message.split(",")).get(0);
+        Requete requete = trouverRequeteViaMot(mot);
+        if (requete != null){
+            requete.setEtatRequete(EtatRequete.TERMINATED);
+            System.out.println("- " + requete.getDestinataire() + " : " + mot);
+            if (requete.getDestinataire().equals(TypeMoteur.BONGALA.name())) listeResultatBongala.add(message);
+            else listeResultatBingBong.add(message);
+        }
         this.nbRequeteFinit++;
         System.out.println(this + " -> " + nbRequeteFinit + " / " + listeRequete.size());
     }

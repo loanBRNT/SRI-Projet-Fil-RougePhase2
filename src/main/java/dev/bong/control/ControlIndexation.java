@@ -3,7 +3,6 @@ package dev.bong.control;
 import dev.bong.entity.Requete;
 import dev.bong.entity.TestCommunication;
 import dev.bong.entity.TypeRequete;
-import fr.dgac.ivy.IvyException;
 
 public class ControlIndexation {
     private static ControlRequete controlRequete = new ControlRequete(TypeRequete.INDEXATION);
@@ -37,8 +36,6 @@ public class ControlIndexation {
                 e.printStackTrace();
             }
         }
-
-        System.out.println(controlRequete.getListeResultat());
 
 
         //STOPPER LA COM

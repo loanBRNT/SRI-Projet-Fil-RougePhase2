@@ -67,4 +67,12 @@ public class Requete{
     public EtatRequete getEtatRequete() {
         return etatRequete;
     }
+
+    public String getMot(){
+        return  mot;
+    }
+
+    public String getDestinataire() {
+        return destinataire;
+    }
 }

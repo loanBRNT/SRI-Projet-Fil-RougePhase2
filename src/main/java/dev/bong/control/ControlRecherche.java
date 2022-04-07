@@ -37,7 +37,7 @@ public abstract class ControlRecherche {
     //A partir de la liste de mot clé, Créé une liste de requête (une requête par mot) et l'envoie au moteur
     //Récupère une String des résultats que l'on split en une liste de String (un élément pour un fichier)
     protected Set<String> recherche(List<String> listeMot,TypeRequete typeRequete,boolean polarite){
-        List<String> res;
+        List<String> resBongala, resBingBong;
         Set<String> resTotal = new HashSet<>();
 
         boolean requeteFinit = false;
@@ -67,8 +67,24 @@ public abstract class ControlRecherche {
             }
         }
 
-        res=controlRequete.getListeResultat();
+        if (typeMoteur == TypeMoteur.INTERSECTION || typeMoteur == TypeMoteur.UNION){
+            resBongala=controlRequete.getListeResultat(TypeMoteur.BONGALA.name());
+            resBingBong=controlRequete.getListeResultat(TypeMoteur.BINGBONG.name());
+        } else if (typeMoteur == TypeMoteur.BONGALA){
+            resBongala=controlRequete.getListeResultat(TypeMoteur.BONGALA.name());
+            resBingBong=new ArrayList<>(); //POUR LES TEST
+        } else {
+            resBingBong=controlRequete.getListeResultat(TypeMoteur.BINGBONG.name());
+            resBongala=new ArrayList<>(); //POUR LES TEST
+        }
 
+        System.out.println("bongala :" + resBongala);
+        System.out.println("bingbong :" + resBingBong);
+
+        resTotal.addAll(resBingBong); // POUR LES TESTS
+        resTotal.addAll(resBongala); //POUR LES TESTS
+
+        /* JE L'ai ENLEVE POUR LES TEST
         switch (typeRequete){
             case RECHERCHE_MOT_CLE :
                 if(polarite)
@@ -87,6 +103,8 @@ public abstract class ControlRecherche {
             default:
                 break;
         }
+
+         */
 
         progressBar.setProgress(progressBar.getProgress() + 0.1);
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
