@@ -36,9 +36,11 @@ public abstract class ControlRecherche {
 
     //A partir de la liste de mot clé, Créé une liste de requête (une requête par mot) et l'envoie au moteur
     //Récupère une String des résultats que l'on split en une liste de String (un élément pour un fichier)
-    protected Set<String> recherche(List<String> listeMot,TypeRequete typeRequete,boolean polarite){
+    protected List<Set<String>> recherche(List<String> listeMot,TypeRequete typeRequete,boolean polarite){
         List<String> resBongala, resBingBong;
-        Set<String> resTotal = new HashSet<>();
+        Set<String> resFinalBingBong = new HashSet<>();
+        Set<String> resFinalBongala = new HashSet<>();
+        List<Set<String>> listeResultat = new ArrayList<>();
 
         boolean requeteFinit = false;
         int nbRequete = listeMot.size(), nbRequeteFinit=0;
@@ -70,21 +72,33 @@ public abstract class ControlRecherche {
         if (typeMoteur == TypeMoteur.INTERSECTION || typeMoteur == TypeMoteur.UNION){
             resBongala=controlRequete.getListeResultat(TypeMoteur.BONGALA.name());
             resBingBong=controlRequete.getListeResultat(TypeMoteur.BINGBONG.name());
+            resFinalBingBong=calculListeResultats(resBingBong,polarite,typeRequete);
+            resFinalBongala=calculListeResultats(resBongala,polarite,typeRequete);
+            listeResultat.add(resFinalBingBong);
+            listeResultat.add(resFinalBongala);
+
         } else if (typeMoteur == TypeMoteur.BONGALA){
             resBongala=controlRequete.getListeResultat(TypeMoteur.BONGALA.name());
-            resBingBong=new ArrayList<>(); //POUR LES TEST
+            resFinalBongala=calculListeResultats(resBongala,polarite,typeRequete);
+            listeResultat.add(resFinalBongala);
+
         } else {
             resBingBong=controlRequete.getListeResultat(TypeMoteur.BINGBONG.name());
-            resBongala=new ArrayList<>(); //POUR LES TEST
+            resFinalBingBong=calculListeResultats(resBingBong,polarite,typeRequete);
+            listeResultat.add(resFinalBingBong);
+
         }
 
-        System.out.println("bongala :" + resBongala);
-        System.out.println("bingbong :" + resBingBong);
 
-        //resTotal.addAll(resBingBong); // POUR LES TESTS
-        resTotal = triAudio(resBongala); //POUR LES TESTS
 
-        /* JE L'ai ENLEVE POUR LES TEST
+        progressBar.setProgress(progressBar.getProgress() + 0.1);
+        progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
+
+        return listeResultat;
+    }
+
+    protected Set<String> calculListeResultats(List<String> res,boolean polarite,TypeRequete typeRequete){
+        Set<String> resTotal = new HashSet<>();
         switch (typeRequete){
             case RECHERCHE_MOT_CLE :
                 if(polarite)
@@ -103,29 +117,10 @@ public abstract class ControlRecherche {
             default:
                 break;
         }
-
-         */
-
-        progressBar.setProgress(progressBar.getProgress() + 0.1);
-        progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
-
         return resTotal;
+
     }
 
-    protected Set<String> triAudio(List<String> res){
-        System.out.println("res : " + res);
-        Set<String> resTotal = new HashSet<>();
-        for (String listFichierTrouve : res) {
-            System.out.println("Petite String : " + listFichierTrouve);
-            ArrayList<String> fichiersTrouvee = new ArrayList<>(List.of(listFichierTrouve.split(",")));
-            fichiersTrouvee.remove(0);
-            for (String listeRepSon : fichiersTrouvee){
-                ArrayList<String> repSon = new ArrayList<>(List.of(listeRepSon.split("/")));
-                resTotal.add(repSon.get(1) + " : " + repSon.get(0));
-            }
-        }
-        return resTotal;
-    }
 
     protected  Set<String> triResFichierMoins(List<String> res){
         Set<String> resTotal = new HashSet<>();
@@ -156,6 +151,21 @@ public abstract class ControlRecherche {
                 resTotal.addAll(fichiersTrouvee);
             } else {
                 resTotal.retainAll(fichiersTrouvee);
+            }
+        }
+        return resTotal;
+    }
+
+    protected Set<String> triAudio(List<String> res){
+        System.out.println("res : " + res);
+        Set<String> resTotal = new HashSet<>();
+        for (String listFichierTrouve : res) {
+            System.out.println("Petite String : " + listFichierTrouve);
+            ArrayList<String> fichiersTrouvee = new ArrayList<>(List.of(listFichierTrouve.split(",")));
+            fichiersTrouvee.remove(0);
+            for (String listeRepSon : fichiersTrouvee){
+                ArrayList<String> repSon = new ArrayList<>(List.of(listeRepSon.split("/")));
+                resTotal.add(repSon.get(1) + " : " + repSon.get(0));
             }
         }
         return resTotal;

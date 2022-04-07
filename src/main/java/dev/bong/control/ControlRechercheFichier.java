@@ -56,8 +56,8 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
     public void run(){
 
         // creation des set servant a recuperer les resultats des recherches
-        Set<String> resMotCle = new HashSet<>();
-        Set<String> resMotBan = new HashSet<>();
+        List<Set<String>> resMotCle = new ArrayList<>();
+        List<Set<String>> resMotBan = new ArrayList<>();
         List<String> resTotal = new ArrayList<>();
 
         progressBar.setProgress(progressBar.getProgress() + 0.1);
@@ -100,8 +100,13 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
             resTotal.removeAll(resMotBan);
 
         } else {
-            resTotal.addAll(resMotCle);
-            resTotal.removeAll(resMotBan);
+            if (!nomFicBan.toString().equals("[]")){
+                resTotal=sommeCleEtBan(resMotCle,resMotBan);
+            }
+            else{
+                resTotal=sommeCleSansBan(resMotCle);
+            }
+
         }
 
         progressBar.setProgress(progressBar.getProgress() + 0.1);
@@ -144,5 +149,61 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
 
 
     }
+
+    protected List<String> sommeCleEtBan(List<Set<String>> resMotCle,List<Set<String>> resMotBan){
+        List<String> moteur1 = new ArrayList<>();
+        List<String> moteur2 = new ArrayList<>();
+        Set<String> resTotal = new HashSet<>();
+        List<String> resTotalList = new ArrayList<>();
+        if(this.typeMoteur==TypeMoteur.BINGBONG || this.typeMoteur==TypeMoteur.BONGALA){
+            resTotal.addAll(resMotCle.get(0));
+            resTotal.removeAll(resMotBan.get(0));
+        }
+        else {
+            moteur1.addAll(resMotCle.get(0));
+            moteur1.removeAll(resMotBan.get(0));
+            moteur2.addAll(resMotCle.get(1));
+            moteur2.removeAll(resMotBan.get(1));
+            if (this.typeMoteur==TypeMoteur.UNION){
+                resTotal.addAll(moteur1);
+                resTotal.addAll(moteur2);
+
+            }
+            else {
+                resTotal.addAll(moteur1);
+                resTotal.retainAll(moteur2);
+            }
+
+        }
+        resTotalList.addAll(resTotal);
+        return  resTotalList;
+
+    }
+
+    protected List<String> sommeCleSansBan(List<Set<String>> resMotCle){
+        List<String> moteur1 = new ArrayList<>();
+        List<String> moteur2 = new ArrayList<>();
+        Set<String> resTotal = new HashSet<>();
+        List<String> resTotalList = new ArrayList<>();
+        if(this.typeMoteur==TypeMoteur.BINGBONG || this.typeMoteur==TypeMoteur.BONGALA){
+            resTotal.addAll(resMotCle.get(0));
+        }
+        else {
+            moteur1.addAll(resMotCle.get(0));
+            moteur2.addAll(resMotCle.get(1));
+            if (this.typeMoteur==TypeMoteur.UNION){
+                resTotal.addAll(moteur1);
+                resTotal.addAll(moteur2);
+            }
+            else {
+                resTotal.addAll(moteur1);
+                resTotal.retainAll(moteur2);
+            }
+        }
+        resTotalList.addAll(resTotal);
+        return  resTotalList;
+
+    }
+
 
 }

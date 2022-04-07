@@ -51,9 +51,9 @@ public class ControlRechercheCouleur extends ControlRecherche implements Runnabl
 
         System.out.println(listeCouleur);
 
-        Set<String> res  = recherche(listeCouleur,TypeRequete.RECHERCHE_COULEUR,true);
+        List<Set<String>> res  = recherche(listeCouleur,TypeRequete.RECHERCHE_COULEUR,true);
         List<String> resTotal = new ArrayList<>();
-        resTotal.addAll(res);
+        resTotal.addAll(res.get(0));
 
         progressBar.setProgress(progressBar.getProgress() + 0.2);
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.2);
