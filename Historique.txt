@@ -1,3 +1,7 @@
 05/04/2022 12:31:03 - rechercheMotCle : motCle : 0xcc6633ff,motBan : [];[51.bmp]
 05/04/2022 12:31:55 - rechercheMotCle : motCle : 0xccb3ffff,motBan : [];[51.bmp]
 05/04/2022 12:33:50 - rechercheMotCle : motCle : 0xcc99ccff,motBan : [];[51.bmp]
+05/04/2022 13:01:27 - rechercheMotCle : motCle : [jean],motBan : [];[12-Jean-Marie_Sevestre_libraire_et_PDG.xml, 05-Jean-Christophe_Bette_a_du_attendre.xml,  TestJean.xml]
+05/04/2022 13:01:52 - rechercheMotCle : motCle : [jean],motBan : [christophe];[12-Jean-Marie_Sevestre_libraire_et_PDG.xml]
+07/04/2022 10:24:05 - rechercheMotCle : motCle : [christophe],motBan : [];[05-Jean-Christophe_Bette_a_du_attendre.xml,  TestJean.xml]
+07/04/2022 10:28:57 - rechercheMotCle : motCle : [jean, christophe],motBan : [];[05-Jean-Christophe_Bette_a_du_attendre.xml,  TestJean.xml]

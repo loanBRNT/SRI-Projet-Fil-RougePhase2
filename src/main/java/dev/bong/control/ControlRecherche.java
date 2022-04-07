@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 public abstract class ControlRecherche {
+    //attributs
     protected ProgressIndicator progressIndicator;
     protected ProgressBar progressBar;
     protected RechercheController rechercheController;
@@ -24,6 +25,7 @@ public abstract class ControlRecherche {
 
     protected TypeMoteur typeMoteur;
 
+    // constructeurs
     public ControlRecherche(ControlRequete controlRequete,ProgressIndicator progressIndicator, ProgressBar progressBar,TypeMoteur typeMoteur, RechercheController rechercheController) {
 
         this.typeMoteur = typeMoteur;
@@ -34,8 +36,11 @@ public abstract class ControlRecherche {
         this.rechercheController = rechercheController;
     }
 
+    //methode
+
     //A partir de la liste de mot clé, Créé une liste de requête (une requête par mot) et l'envoie au moteur
     //Récupère une String des résultats que l'on split en une liste de String (un élément pour un fichier)
+
     protected Set<String> recherche(List<String> listeMot,TypeRequete typeRequete,boolean polarite){
         List<String> res;
         Set<String> resTotal = new HashSet<>();
@@ -68,6 +73,7 @@ public abstract class ControlRecherche {
         }
 
         res=controlRequete.getListeResultat();
+        System.out.println(res);
 
         switch (typeRequete){
             case RECHERCHE_MOT_CLE :
@@ -95,6 +101,8 @@ public abstract class ControlRecherche {
     }
 
 
+    //****** fonction  de creation de la liste de resultats en fonction du type de recherche *****//
+
     protected  Set<String> triResFichierMoins(List<String> res){
         Set<String> resTotal = new HashSet<>();
         for (String listFichierTrouve : res) {
@@ -102,7 +110,6 @@ public abstract class ControlRecherche {
             resTotal.addAll(fichiersTrouvee);
         }
         return resTotal;
-
     }
 
     protected  Set<String> triResMotCleMoins(List<String> res){
