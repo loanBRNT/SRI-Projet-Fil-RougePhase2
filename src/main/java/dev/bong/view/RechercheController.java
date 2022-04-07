@@ -89,10 +89,16 @@ public class RechercheController implements Initializable {
             }else{
                 banWord ="";
             }
-            loadingScreenMc = new ControlRechercheMotCle(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),config.getTypeMoteur(),this);
-            Thread thread = new Thread(loadingScreenMc);
-            thread.setDaemon(true);
-            thread.start();
+
+            if(verifSaisie(motcle,banWord)){
+                GestionAlerte.genererAlertChangeFenetre("Saisie incorrecte",Alert.AlertType.ERROR,"La saisie contient des caracteres non autorisés","hello-view.fxml");
+            }else {
+                loadingScreenMc = new ControlRechercheMotCle(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),config.getTypeMoteur(),this);
+                Thread thread = new Thread(loadingScreenMc);
+                thread.setDaemon(true);
+                thread.start();
+            }
+
         } catch (IvyException e) {
             e.printStackTrace();
            GestionAlerte.genererAlertChangeFenetre("Ivy Erreur",Alert.AlertType.ERROR,"La connexion au bus a échouée","hello-view.fxml");
@@ -100,24 +106,30 @@ public class RechercheController implements Initializable {
             e.printStackTrace();
            GestionAlerte.genererAlertChangeFenetre("Ivy Erreur",Alert.AlertType.ERROR,"Communication avec le(s) moteur(s) impossible","hello-view.fxml");
         }
+
     }
 
     @FXML
     protected void onClickFicSearch() throws IOException {
         affichageLancerRecherche();
 
-        String motcle=textFieldSearch.getText();
-        String banWord;
-        if (banWordsButtonActivate){
-            banWord =textFieldBanWords.getText();
-        }else{
-            banWord ="";
-        }
         try {
-            loadingScreenFic = new ControlRechercheFichier(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),(String) choiceType.getValue(), Config.getInstance().getMode(),config.getTypeMoteur(),this);
-            Thread thread = new Thread(loadingScreenFic);
-            thread.setDaemon(true);
-            thread.start();
+            String motcle=textFieldSearch.getText();
+            String banWord;
+            if (banWordsButtonActivate){
+                banWord =textFieldBanWords.getText();
+            }else{
+                banWord ="";
+            }
+
+            if(verifSaisie(motcle,banWord)){
+                GestionAlerte.genererAlertChangeFenetre("Saisie incorrecte",Alert.AlertType.ERROR,"La saisie contient des caracteres non autorisés","hello-view.fxml");
+            }else {
+                loadingScreenFic = new ControlRechercheFichier(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),(String) choiceType.getValue(), Config.getInstance().getMode(),config.getTypeMoteur(),this);
+                Thread thread = new Thread(loadingScreenMc);
+                thread.setDaemon(true);
+                thread.start();
+            }
         } catch (IvyException e) {
             e.printStackTrace();
            GestionAlerte.genererAlertChangeFenetre("Ivy Erreur",Alert.AlertType.ERROR,"La connexion au bus a échouée","rechercheFichier.fxml");
@@ -241,6 +253,17 @@ public class RechercheController implements Initializable {
     @FXML
     public void onEnterFic(ActionEvent ae) throws IOException {
         onClickFicSearch();
+    }
+
+    public boolean verifSaisie(String motcle ,String banword){
+        CharSequence[] banChar={"$","£","@","#","&","?","§","*","¤","+","=","{","}","(",")","~","°"};
+        boolean erreur =false;
+        for(CharSequence caractere : banChar){
+            if(motcle.contains(caractere) || banword.contains(caractere))
+                erreur=true;
+        }
+        return erreur;
+
     }
 
 }
