@@ -253,7 +253,7 @@ public class RechercheController implements Initializable {
     }
 
     public boolean verifSaisie(String motcle ,String banword){
-        CharSequence[] banChar={"$","£","@","#","&","?","§","*","¤","+","=","{","}","(",")","~","°"};
+        CharSequence[] banChar={"$","£","@","#","&","?","§","*","¤","+","=","{","}","(",")","~","°", "\"","'"};
         boolean erreur =false;
         for(CharSequence caractere : banChar){
             if(motcle.contains(caractere) || banword.contains(caractere))

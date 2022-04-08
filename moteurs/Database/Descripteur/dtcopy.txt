@@ -907,3 +907,845 @@ musculaires 5
 adultes 5 
 institut 4 
 
+27689
+1
+262
+angleterre 4 
+
+21981
+3
+285
+deux 4 
+jules 4 
+scène 4 
+
+28193
+10
+618
+carbone 16 
+sols 12 
+effet 9 
+réchauffement 5 
+chercheurs 5 
+climatique 5 
+pays 5 
+régions 5 
+zones 5 
+également 5 
+
+26448
+2
+272
+paysagiste 5 
+archives 4 
+
+25666
+10
+612
+été 11 
+comète 9 
+impact 8 
+tempel 8 
+sonde 6 
+deep 5 
+très 5 
+mission 4 
+violence 4 
+collision 4 
+
+23331
+5
+208
+france 6 
+équipe 4 
+président 4 
+demandé 4 
+joueurs 4 
+
+21426
+6
+550
+fado 27 
+été 8 
+do 6 
+carmo 6 
+carlos 5 
+amalia 5 
+
+25559
+10
+317
+fédération 7 
+francis 7 
+delattre 7 
+sports 5 
+ministère 5 
+ffe 5 
+serge 5 
+lecomte 5 
+député 4 
+équestres 4 
+
+25409
+10
+666
+personnes 11 
+virus 11 
+vaccination 10 
+grippe 9 
+aviaire 8 
+contre 6 
+couverture 6 
+vaccinale 6 
+dgs 5 
+être 5 
+
+28145
+10
+665
+france 19 
+coupe 8 
+équipe 7 
+monde 7 
+2006 6 
+match 6 
+groupe 6 
+deux 6 
+matches 6 
+millions 6 
+
+24565
+10
+515
+maïs 9 
+transgènes 6 
+été 6 
+contamination 5 
+2004 5 
+région 5 
+être 5 
+chapela 5 
+ogm 4 
+2003 4 
+
+23186
+10
+477
+athlètes 7 
+aux 6 
+été 6 
+saut 5 
+euros 5 
+décanation 4 
+leurs 4 
+être 4 
+équipe 4 
+france 4 
+
+26189
+6
+399
+the 8 
+sufjan 5 
+stevens 5 
+illinois 4 
+disque 4 
+feel 4 
+
+29539
+10
+446
+patrimoine 8 
+prague 6 
+palais 6 
+journées 5 
+septembre 5 
+culture 5 
+france 5 
+tchèque 5 
+mois 4 
+historiques 4 
+
+29557
+5
+215
+visa 6 
+été 5 
+or 4 
+festival 4 
+prix 4 
+
+22134
+6
+314
+can 8 
+sacd 8 
+musique 5 
+groupe 5 
+landed 5 
+quatre 4 
+
+26993
+10
+797
+théâtre 33 
+public 15 
+avignon 11 
+festival 10 
+art 6 
+deux 5 
+années 5 
+ans 5 
+français 5 
+être 5 
+
+23113
+10
+805
+mclaren 12 
+renault 10 
+points 9 
+pilotes 7 
+kimi 7 
+juan 6 
+pablo 6 
+montoya 6 
+grand 6 
+prix 6 
+
+28823
+10
+595
+vih 12 
+circoncision 11 
+hommes 9 
+circoncis 9 
+infection 8 
+étude 7 
+risque 5 
+sida 5 
+sud 5 
+résultats 5 
+
+24130
+8
+448
+mètres 7 
+néry 6 
+monde 6 
+guillaume 5 
+record 5 
+français 4 
+était 4 
+dont 4 
+
+29536
+10
+423
+jean 6 
+christophe 6 
+bette 5 
+bateau 5 
+quatre 4 
+ans 4 
+était 4 
+été 4 
+monde 4 
+dès 4 
+
+23773
+1
+274
+étude 5 
+
+20073
+4
+251
+abidjan 5 
+victoire 5 
+rêve 4 
+pays 4 
+
+20966
+2
+272
+comportement 4 
+hôte 4 
+
+20419
+7
+331
+cellules 21 
+souches 10 
+chercheurs 6 
+souris 5 
+musculaires 5 
+adultes 5 
+institut 4 
+
+22919
+10
+423
+jean 6 
+christophe 6 
+bette 5 
+bateau 5 
+quatre 4 
+ans 4 
+était 4 
+été 4 
+monde 4 
+dès 4 
+
+23152
+1
+262
+angleterre 4 
+
+27528
+3
+285
+deux 4 
+jules 4 
+scène 4 
+
+28424
+10
+618
+carbone 16 
+sols 12 
+effet 9 
+réchauffement 5 
+chercheurs 5 
+climatique 5 
+pays 5 
+régions 5 
+zones 5 
+également 5 
+
+25275
+2
+272
+paysagiste 5 
+archives 4 
+
+28757
+10
+612
+été 11 
+comète 9 
+impact 8 
+tempel 8 
+sonde 6 
+deep 5 
+très 5 
+mission 4 
+violence 4 
+collision 4 
+
+23062
+5
+208
+france 6 
+équipe 4 
+président 4 
+demandé 4 
+joueurs 4 
+
+20676
+6
+550
+fado 27 
+été 8 
+do 6 
+carmo 6 
+carlos 5 
+amalia 5 
+
+27899
+10
+317
+fédération 7 
+francis 7 
+delattre 7 
+sports 5 
+ministère 5 
+ffe 5 
+serge 5 
+lecomte 5 
+député 4 
+équestres 4 
+
+20634
+10
+666
+personnes 11 
+virus 11 
+vaccination 10 
+grippe 9 
+aviaire 8 
+contre 6 
+couverture 6 
+vaccinale 6 
+dgs 5 
+être 5 
+
+24217
+10
+665
+france 19 
+coupe 8 
+équipe 7 
+monde 7 
+2006 6 
+match 6 
+groupe 6 
+deux 6 
+matches 6 
+millions 6 
+
+29259
+10
+515
+maïs 9 
+transgènes 6 
+été 6 
+contamination 5 
+2004 5 
+région 5 
+être 5 
+chapela 5 
+ogm 4 
+2003 4 
+
+25432
+10
+477
+athlètes 7 
+aux 6 
+été 6 
+saut 5 
+euros 5 
+décanation 4 
+leurs 4 
+être 4 
+équipe 4 
+france 4 
+
+25636
+6
+399
+the 8 
+sufjan 5 
+stevens 5 
+illinois 4 
+disque 4 
+feel 4 
+
+25075
+10
+446
+patrimoine 8 
+prague 6 
+palais 6 
+journées 5 
+septembre 5 
+culture 5 
+france 5 
+tchèque 5 
+mois 4 
+historiques 4 
+
+23413
+5
+215
+visa 6 
+été 5 
+or 4 
+festival 4 
+prix 4 
+
+24470
+6
+314
+can 8 
+sacd 8 
+musique 5 
+groupe 5 
+landed 5 
+quatre 4 
+
+22334
+10
+797
+théâtre 33 
+public 15 
+avignon 11 
+festival 10 
+art 6 
+deux 5 
+années 5 
+ans 5 
+français 5 
+être 5 
+
+21132
+10
+805
+mclaren 12 
+renault 10 
+points 9 
+pilotes 7 
+kimi 7 
+juan 6 
+pablo 6 
+montoya 6 
+grand 6 
+prix 6 
+
+24576
+10
+595
+vih 12 
+circoncision 11 
+hommes 9 
+circoncis 9 
+infection 8 
+étude 7 
+risque 5 
+sida 5 
+sud 5 
+résultats 5 
+
+21806
+8
+448
+mètres 7 
+néry 6 
+monde 6 
+guillaume 5 
+record 5 
+français 4 
+était 4 
+dont 4 
+
+27211
+10
+423
+jean 6 
+christophe 6 
+bette 5 
+bateau 5 
+quatre 4 
+ans 4 
+était 4 
+été 4 
+monde 4 
+dès 4 
+
+27102
+1
+274
+étude 5 
+
+25598
+4
+251
+abidjan 5 
+victoire 5 
+rêve 4 
+pays 4 
+
+28604
+2
+272
+comportement 4 
+hôte 4 
+
+21390
+7
+331
+cellules 21 
+souches 10 
+chercheurs 6 
+souris 5 
+musculaires 5 
+adultes 5 
+institut 4 
+
+24258
+1
+262
+angleterre 4 
+
+29007
+3
+285
+deux 4 
+jules 4 
+scène 4 
+
+20326
+10
+618
+carbone 16 
+sols 12 
+effet 9 
+réchauffement 5 
+chercheurs 5 
+climatique 5 
+pays 5 
+régions 5 
+zones 5 
+également 5 
+
+24091
+2
+272
+paysagiste 5 
+archives 4 
+
+24087
+10
+612
+été 11 
+comète 9 
+impact 8 
+tempel 8 
+sonde 6 
+deep 5 
+très 5 
+mission 4 
+violence 4 
+collision 4 
+
+21123
+5
+208
+france 6 
+équipe 4 
+président 4 
+demandé 4 
+joueurs 4 
+
+27600
+6
+550
+fado 27 
+été 8 
+do 6 
+carmo 6 
+carlos 5 
+amalia 5 
+
+28932
+10
+317
+fédération 7 
+francis 7 
+delattre 7 
+sports 5 
+ministère 5 
+ffe 5 
+serge 5 
+lecomte 5 
+député 4 
+équestres 4 
+
+26056
+10
+666
+personnes 11 
+virus 11 
+vaccination 10 
+grippe 9 
+aviaire 8 
+contre 6 
+couverture 6 
+vaccinale 6 
+dgs 5 
+être 5 
+
+24815
+10
+665
+france 19 
+coupe 8 
+équipe 7 
+monde 7 
+2006 6 
+match 6 
+groupe 6 
+deux 6 
+matches 6 
+millions 6 
+
+21298
+10
+515
+maïs 9 
+transgènes 6 
+été 6 
+contamination 5 
+2004 5 
+région 5 
+être 5 
+chapela 5 
+ogm 4 
+2003 4 
+
+25037
+10
+477
+athlètes 7 
+aux 6 
+été 6 
+saut 5 
+euros 5 
+décanation 4 
+leurs 4 
+être 4 
+équipe 4 
+france 4 
+
+29350
+6
+399
+the 8 
+sufjan 5 
+stevens 5 
+illinois 4 
+disque 4 
+feel 4 
+
+21080
+10
+446
+patrimoine 8 
+prague 6 
+palais 6 
+journées 5 
+septembre 5 
+culture 5 
+france 5 
+tchèque 5 
+mois 4 
+historiques 4 
+
+24742
+5
+215
+visa 6 
+été 5 
+or 4 
+festival 4 
+prix 4 
+
+22356
+6
+314
+can 8 
+sacd 8 
+musique 5 
+groupe 5 
+landed 5 
+quatre 4 
+
+23369
+10
+797
+théâtre 33 
+public 15 
+avignon 11 
+festival 10 
+art 6 
+deux 5 
+années 5 
+ans 5 
+français 5 
+être 5 
+
+20448
+10
+805
+mclaren 12 
+renault 10 
+points 9 
+pilotes 7 
+kimi 7 
+juan 6 
+pablo 6 
+montoya 6 
+grand 6 
+prix 6 
+
+26768
+10
+595
+vih 12 
+circoncision 11 
+hommes 9 
+circoncis 9 
+infection 8 
+étude 7 
+risque 5 
+sida 5 
+sud 5 
+résultats 5 
+
+22602
+8
+448
+mètres 7 
+néry 6 
+monde 6 
+guillaume 5 
+record 5 
+français 4 
+était 4 
+dont 4 
+
+29560
+10
+423
+jean 6 
+christophe 6 
+bette 5 
+bateau 5 
+quatre 4 
+ans 4 
+était 4 
+été 4 
+monde 4 
+dès 4 
+
+24914
+1
+274
+étude 5 
+
+20495
+4
+251
+abidjan 5 
+victoire 5 
+rêve 4 
+pays 4 
+
+24059
+2
+272
+comportement 4 
+hôte 4 
+
+28809
+7
+331
+cellules 21 
+souches 10 
+chercheurs 6 
+souris 5 
+musculaires 5 
+adultes 5 
+institut 4 
+

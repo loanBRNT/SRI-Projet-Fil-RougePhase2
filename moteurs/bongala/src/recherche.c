@@ -72,8 +72,8 @@ int getTypeDuFichier(char* nom_fichier_cible){
 }
 
 int recupIdDuFic(char* nom_fic, int type){
-    char chemin[100];
-    char commande[150];
+    char chemin[1000];
+    char commande[1500];
     int id;
     FILE* ptr_fic;
 
@@ -104,8 +104,8 @@ int recupIdDuFic(char* nom_fic, int type){
 }
 
 void recupNomDUFic(int id, int type,char* nom){
-    char chemin[100];
-    char commande[150];
+    char chemin[1000];
+    char commande[1500];
     char id_fic[10];
     char extension[5];
     FILE* ptr_fic;
@@ -153,8 +153,8 @@ void recupNomDUFic(int id, int type,char* nom){
 
 //Lance une recherche via l'adresse d'un fichier
 int lanceRechercheViaAdresse(char* adresse_fichier_cible, char* chaine_resultat){
-    char commande[300];
-    char cheminBase[100];
+    char commande[3000];
+    char cheminBase[1000];
     char sauvExtension[5];
     int type = 0;
 
@@ -281,7 +281,7 @@ int lanceRechercheViaNom(char* nom_fichier_cible,char* chaine_resultat){
 }
 
 int lanceRechercheViaMotCle(char* mot, char* chaine_resultat){
-    char commande[100], numChar[5], nom[50];
+    char commande[1000], numChar[5], nom[500];
     int numLigne=0, id, num;
 
     //char message[100];
@@ -501,7 +501,7 @@ PILE_DESCRIPTEUR_TEXTE rechercheTexteParDescripteur(DESCRIPTEUR_TEXTE* ptr_descF
 
 
 int generationChaineCaracViaPileIMAGE(PILE_DESCRIPTEUR_IMAGE pile, DESCRIPTEUR_IMAGE* ptr_descFic,char* chaine, int type){
-    char chaine_nom[50];
+    char chaine_nom[500];
 
     //recupNomDUFic(ptr_descFic->ID,type,chaine_nom);
 
@@ -543,7 +543,7 @@ int generationChaineCaracViaPileIMAGE(PILE_DESCRIPTEUR_IMAGE pile, DESCRIPTEUR_I
 }
 
 int generationChaineCaracViaPileTexte(PILE_DESCRIPTEUR_TEXTE pile, DESCRIPTEUR_TEXTE* ptr_descFic,char* chaine){
-    char chaine_nom[50];
+    char chaine_nom[500];
 
     //recupNomDUFic(ptr_descFic->ID,1,chaine_nom);
 
@@ -702,7 +702,7 @@ DESCRIPTEUR_TEXTE getDescripteurTexteViaPile(char* nom_fichier){
 // -----------------------------------------------------------------------------------------
 
 int rechercheJingle(DESCRIPTEUR_AUDIO* descFic, char* chaine_resultat){
-    char chaine_nom[50];
+    char chaine_nom[500];
     int pres;
 
     /* PHASE 1
@@ -764,7 +764,7 @@ int rechercheJingle(DESCRIPTEUR_AUDIO* descFic, char* chaine_resultat){
 //----------------------------------------------------------------------------------------
 
 int ouvertureFichier(char* nom){
-    char commande[150];
+    char commande[1500];
 
     char CHEMIN[100];
 

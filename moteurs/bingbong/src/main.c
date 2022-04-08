@@ -33,7 +33,7 @@ void ivyEnvoie(char* chaine_resultat, char* mot){
 void RechercheCallback (IvyClientPtr app, void *data, int argc, char **argv)
 {
 	if (!strcmp(argv[0],"BINGBONG")){
-		char chaine[1000];
+		char chaine[10000];
 		char sauvNom[100];
 		strcpy(sauvNom,argv[2]);
 
