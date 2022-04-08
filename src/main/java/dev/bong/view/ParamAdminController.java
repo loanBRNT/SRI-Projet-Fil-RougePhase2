@@ -3,22 +3,16 @@ package dev.bong.view;
 import dev.bong.control.ControlModifierConfig;
 import dev.bong.entity.Config;
 import dev.bong.entity.GestionAlerte;
-import fr.dgac.ivy.IvyException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ParamAdminController implements Initializable {
@@ -84,7 +78,7 @@ public class ParamAdminController implements Initializable {
             alert.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();
-            GestionAlerte.genererErreur("Ivy ERREUR","Echec de l'indexation automatique");
+            GestionAlerte.genererErreur("Ivy ERREUR","Echec de l'indexation automatique, communication avec les moteurs impossible");
         }
     }
     @FXML
