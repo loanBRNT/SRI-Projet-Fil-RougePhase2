@@ -47,7 +47,7 @@ public class ControlIndexation {
 
     public static void IndexationDuModeOuvert(){
         controlRequete.initRequete();
-        controlRequete.creerRequeteIndexation(false);
+        controlRequete.creerRequeteIndexation(true);
 
         for (Requete requete : controlRequete.getListeRequete()){
             controlRequete.envoyerRequete(requete);
@@ -63,5 +63,7 @@ public class ControlIndexation {
                 e.printStackTrace();
             }
         }
+
+        System.out.println("indexation ok");
     }
 }

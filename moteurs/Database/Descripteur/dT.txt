@@ -1,9 +1,23 @@
  
-29903
+26618
+10
+423
+jean 6 
+christophe 6 
+bette 5 
+bateau 5 
+quatre 4 
+ans 4 
+était 4 
+été 4 
+monde 4 
+dès 4 
+
+26059
 0
 49
 
-23964
+26540
 10
 272
 arctique 10 
@@ -17,7 +31,7 @@ faible 4
 nsidc 4 
 effectuées 4 
 
-24247
+21277
 10
 453
 Œdipe 14 
@@ -31,7 +45,7 @@ sophocle 4
 rome 4 
 metteur 4 
 
-29402
+21206
 10
 375
 ososphère 8 
@@ -45,7 +59,7 @@ deux 4
 30 4 
 septembre 4 
 
-26164
+21472
 8
 413
 robyn 6 
@@ -57,7 +71,7 @@ danse 4
 danseurs 4 
 pièce 4 
 
-29593
+22021
 10
 336
 avait 7 
@@ -71,7 +85,7 @@ titre 4
 me 4 
 première 4 
 
-26754
+29791
 10
 775
 voyager 11 
@@ -85,14 +99,14 @@ aura 6
 avait 5 
 aux 5 
 
-29244
+23147
 3
 180
 cinémathèque 5 
 scorsese 4 
 film 4 
 
-25877
+29614
 10
 699
 stade 25 
@@ -106,7 +120,7 @@ denis 7
 ligue 7 
 rugby 7 
 
-20497
+20222
 10
 539
 louvre 9 
@@ -120,7 +134,7 @@ musée 4
 être 4 
 président 4 
 
-23799
+22175
 5
 276
 avait 5 
@@ -129,13 +143,13 @@ boonen 4
 ans 4 
 était 4 
 
-23544
+21506
 2
 331
 tête 5 
 entraîneur 4 
 
-27505
+29001
 5
 225
 jazz 8 
@@ -144,14 +158,14 @@ manu 5
 disque 4 
 star 4 
 
-26174
+27402
 3
 187
 grippe 5 
 aviaire 5 
 homme 4 
 
-23032
+27852
 10
 486
 effet 8 
@@ -165,7 +179,7 @@ serre 4
 forêts 4 
 gaz 4 
 
-28441
+29243
 7
 272
 points 6 
@@ -176,7 +190,7 @@ basket 4
 france 4 
 très 4 
 
-29935
+29046
 8
 616
 france 13 
@@ -188,11 +202,11 @@ français 5
 paris 5 
 pays 4 
 
-20283
+26976
 0
 227
 
-22693
+26470
 10
 550
 football 12 
@@ -206,7 +220,7 @@ league 5
 fréquentation 5 
 entre 5 
 
-28969
+27479
 10
 593
 virus 12 
@@ -220,7 +234,7 @@ grippe 4
 aviaire 4 
 malte 4 
 
-22738
+27882
 10
 713
 girodet 13 
@@ -234,7 +248,7 @@ toile 5
 musée 4 
 artiste 4 
 
-29844
+24296
 10
 518
 architectes 14 
@@ -248,7 +262,7 @@ agences 5
 année 4 
 activité 4 
 
-28310
+20150
 10
 658
 ogm 6 
@@ -262,7 +276,7 @@ très 5
 début 5 
 faucheurs 4 
 
-21406
+22738
 6
 427
 sao 7 
@@ -272,7 +286,7 @@ ivaldo 4
 bertazzo 4 
 30 4 
 
-26874
+26841
 5
 271
 exposition 6 
@@ -281,7 +295,7 @@ masculine 4
 aux 4 
 présents 4 
 
-20442
+25510
 10
 345
 champions 6 
@@ -295,22 +309,22 @@ match 4
 claude 4 
 bergeaud 4 
 
-28745
+28770
 0
 54
 
-22318
+21655
 3
 137
 000 6 
 journées 4 
 visiteurs 4 
 
-24728
+25341
 0
 27
 
-22031
+24852
 10
 361
 france 8 
@@ -324,7 +338,7 @@ parker 4
 matches 4 
 points 4 
 
-20293
+25068
 10
 620
 cellules 30 
@@ -338,7 +352,7 @@ greffe 6
 mouton 5 
 aux 4 
 
-20500
+22903
 9
 428
 devi 9 
@@ -351,7 +365,7 @@ voix 4
 art 4 
 ans 4 
 
-21448
+25063
 6
 395
 prévision 9 
@@ -361,7 +375,7 @@ inondations 4
 eau 4 
 ministère 4 
 
-24653
+21973
 6
 293
 deux 5 
@@ -371,7 +385,7 @@ anouk 4
 aimée 4 
 même 4 
 
-26296
+22407
 10
 660
 sonde 9 
@@ -385,7 +399,7 @@ japonais 5
 hayabusa 5 
 surface 5 
 
-26920
+25554
 6
 425
 basket 9 
@@ -395,14 +409,14 @@ joueurs 5
 sélectionneur 4 
 championnat 4 
 
-27364
+26573
 3
 283
 quasar 7 
 galaxie 5 
 astronomes 4 
 
-29905
+21087
 10
 468
 lille 6 
@@ -416,7 +430,7 @@ stade 4
 juventus 4 
 turin 4 
 
-29093
+26379
 9
 302
 théâtre 7 
@@ -429,7 +443,7 @@ travaux 4
 acoustiques 4 
 scène 4 
 
-22333
+25697
 10
 555
 film 14 
@@ -443,13 +457,13 @@ story 5
 réalisateur 4 
 welles 4 
 
-26640
+26822
 2
 223
 preljocaj 5 
 opéra 4 
 
-21273
+24104
 10
 593
 co2 21 
@@ -463,7 +477,7 @@ même 4
 charbon 4 
 coût 4 
 
-20511
+20320
 10
 594
 co2 20 
@@ -477,7 +491,7 @@ même 4
 charbon 4 
 coût 4 
 
-29064
+29758
 7
 266
 pays 8 
@@ -488,7 +502,7 @@ oms 4
 plans 4 
 pandémie 4 
 
-26238
+28356
 10
 416
 ol 9 
@@ -502,7 +516,7 @@ madrid 4
 essien 4 
 grand 4 
 
-26397
+24524
 10
 623
 avc 16 
@@ -516,13 +530,13 @@ charge 5
 ischémie 5 
 trois 5 
 
-29395
+22773
 2
 178
 goutte 5 
 huile 4 
 
-24614
+21566
 9
 320
 explosion 6 
@@ -535,7 +549,7 @@ astronomes 4
 gamma 4 
 septembre 4 
 
-27545
+29094
 7
 390
 kg 7 
@@ -546,7 +560,7 @@ caire 4
 stéphane 4 
 traineau 4 
 
-22849
+25822
 10
 382
 raman 10 
@@ -560,12 +574,12 @@ sam 4
 music 4 
 chanteuse 4 
 
-20658
+20977
 1
 263
 oberon 6 
 
-24980
+28792
 10
 620
 marie 11 
@@ -579,7 +593,7 @@ montpellier 5
 livre 5 
 littérature 4 
 
-26618
+21102
 7
 377
 septembre 4 
@@ -590,7 +604,7 @@ pilote 4
 course 4 
 mclaren 4 
 
-21516
+28287
 10
 635
 federer 10 
@@ -604,7 +618,7 @@ chelem 7
 américain 6 
 ans 6 
 
-22661
+27616
 9
 359
 no2 6 
@@ -617,7 +631,7 @@ combustion 4
 claire 4 
 mme 4 
 
-28203
+25186
 10
 437
 nasa 6 
@@ -631,7 +645,7 @@ fin 4
 centre 4 
 spatial 4 
 
-25713
+23817
 10
 486
 3d 9 
@@ -645,281 +659,23 @@ archéopôle 4
 public 4 
 institut 4 
 
-26714
+23917
 1
 262
 angleterre 4 
 
-22025
-3
-285
-deux 4 
-jules 4 
-scène 4 
-
-27876
-8
-618
-carbone 16 
-sols 12 
-effet 9 
-réchauffement 5 
-chercheurs 5 
-climatique 5 
-pays 5 
-co2 4 
-
-24231
-2
-272
-paysagiste 5 
-archives 4 
-
-25639
-10
-612
-été 11 
-comète 9 
-impact 8 
-tempel 8 
-sonde 6 
-deep 5 
-mission 4 
-violence 4 
-collision 4 
-lors 4 
-
-24204
-5
-208
-france 6 
-équipe 4 
-président 4 
-demandé 4 
-joueurs 4 
-
-24528
-5
-550
-fado 27 
-do 6 
-carmo 6 
-carlos 5 
-amalia 5 
-
-20937
-10
-317
-fédération 7 
-francis 7 
-delattre 7 
-sports 5 
-ministère 5 
-ffe 5 
-serge 5 
-lecomte 5 
-député 4 
-équestres 4 
-
-20038
-9
-666
-personnes 11 
-virus 11 
-vaccination 10 
-grippe 9 
-aviaire 8 
-contre 6 
-65 4 
-ans 4 
-notamment 4 
-
-21474
-10
-665
-france 19 
-coupe 8 
-équipe 7 
-monde 7 
-2006 6 
-match 6 
-groupe 6 
-bleus 5 
-irlande 5 
-élimination 4 
-
-25031
-10
-515
-maïs 9 
-contamination 5 
-2004 5 
-région 5 
-être 5 
-ogm 4 
-2003 4 
-mexique 4 
-variétés 4 
-transgéniques 4 
-
-23265
-10
-477
-athlètes 7 
-aux 6 
-été 6 
-saut 5 
-décanation 4 
-leurs 4 
-être 4 
-équipe 4 
-france 4 
-000 4 
-
-27820
-6
-399
-the 8 
-sufjan 5 
-stevens 5 
-illinois 4 
-disque 4 
-feel 4 
-
-21821
-10
-446
-patrimoine 8 
-prague 6 
-journées 5 
-septembre 5 
-culture 5 
-france 5 
-tchèque 5 
-mois 4 
-historiques 4 
-18 4 
-
-27576
-5
-215
-visa 6 
-été 5 
-or 4 
-festival 4 
-prix 4 
-
-28682
-6
-314
-can 8 
-sacd 8 
-musique 5 
-groupe 5 
-landed 5 
-quatre 4 
-
-27762
+26587
 0
-797
+63
 
-23316
-10
-805
-mclaren 12 
-renault 10 
-pilotes 7 
-juan 6 
-pablo 6 
-montoya 6 
-grand 6 
-prix 6 
-monde 6 
-alonso 6 
-
-21624
-10
-595
-vih 12 
-circoncision 11 
-infection 8 
-étude 7 
-risque 5 
-sida 5 
-sud 5 
-virus 4 
-protection 4 
-anrs 4 
-
-28852
-8
-448
-mètres 7 
-néry 6 
-monde 6 
-guillaume 5 
-record 5 
-français 4 
-était 4 
-dont 4 
-
-26546
-10
-423
-jean 6 
-christophe 6 
-bette 5 
-bateau 5 
-quatre 4 
-ans 4 
-était 4 
-été 4 
-monde 4 
-dès 4 
-
-23956
-1
-274
-étude 5 
-
-26213
-4
-251
-abidjan 5 
-victoire 5 
-rêve 4 
-pays 4 
-
-29879
-2
-272
-comportement 4 
-hôte 4 
-
-22790
-7
-331
-cellules 21 
-souches 10 
-chercheurs 6 
-souris 5 
-musculaires 5 
-adultes 5 
-institut 4 
-
-27689
-1
-262
-angleterre 4 
-
-21981
+26085
 3
 285
 deux 4 
 jules 4 
 scène 4 
 
-28193
+29789
 10
 618
 carbone 16 
@@ -933,13 +689,13 @@ régions 5
 zones 5 
 également 5 
 
-26448
+26743
 2
 272
 paysagiste 5 
 archives 4 
 
-25666
+20496
 10
 612
 été 11 
@@ -953,7 +709,7 @@ mission 4
 violence 4 
 collision 4 
 
-23331
+23157
 5
 208
 france 6 
@@ -962,7 +718,7 @@ président 4
 demandé 4 
 joueurs 4 
 
-21426
+25400
 6
 550
 fado 27 
@@ -972,7 +728,7 @@ carmo 6
 carlos 5 
 amalia 5 
 
-25559
+24968
 10
 317
 fédération 7 
@@ -986,7 +742,11 @@ lecomte 5
 député 4 
 équestres 4 
 
-25409
+29175
+0
+23
+
+24523
 10
 666
 personnes 11 
@@ -1000,7 +760,7 @@ vaccinale 6
 dgs 5 
 être 5 
 
-28145
+24265
 10
 665
 france 19 
@@ -1014,7 +774,7 @@ deux 6
 matches 6 
 millions 6 
 
-24565
+22274
 10
 515
 maïs 9 
@@ -1028,7 +788,7 @@ chapela 5
 ogm 4 
 2003 4 
 
-23186
+25377
 10
 477
 athlètes 7 
@@ -1042,7 +802,7 @@ leurs 4
 équipe 4 
 france 4 
 
-26189
+27063
 6
 399
 the 8 
@@ -1052,7 +812,7 @@ illinois 4
 disque 4 
 feel 4 
 
-29539
+29396
 10
 446
 patrimoine 8 
@@ -1066,7 +826,7 @@ tchèque 5
 mois 4 
 historiques 4 
 
-29557
+29444
 5
 215
 visa 6 
@@ -1075,7 +835,7 @@ or 4
 festival 4 
 prix 4 
 
-22134
+26985
 6
 314
 can 8 
@@ -1085,7 +845,7 @@ groupe 5
 landed 5 
 quatre 4 
 
-26993
+20437
 10
 797
 théâtre 33 
@@ -1099,7 +859,7 @@ ans 5
 français 5 
 être 5 
 
-23113
+25430
 10
 805
 mclaren 12 
@@ -1113,7 +873,7 @@ montoya 6
 grand 6 
 prix 6 
 
-28823
+20599
 10
 595
 vih 12 
@@ -1127,7 +887,7 @@ sida 5
 sud 5 
 résultats 5 
 
-24130
+24237
 8
 448
 mètres 7 
@@ -1139,7 +899,7 @@ français 4
 était 4 
 dont 4 
 
-29536
+20302
 10
 423
 jean 6 
@@ -1153,12 +913,12 @@ ans 4
 monde 4 
 dès 4 
 
-23773
+24719
 1
 274
 étude 5 
 
-20073
+26338
 4
 251
 abidjan 5 
@@ -1166,579 +926,13 @@ victoire 5
 rêve 4 
 pays 4 
 
-20966
+24823
 2
 272
 comportement 4 
 hôte 4 
 
-20419
-7
-331
-cellules 21 
-souches 10 
-chercheurs 6 
-souris 5 
-musculaires 5 
-adultes 5 
-institut 4 
-
-22919
-10
-423
-jean 6 
-christophe 6 
-bette 5 
-bateau 5 
-quatre 4 
-ans 4 
-était 4 
-été 4 
-monde 4 
-dès 4 
-
-23152
-1
-262
-angleterre 4 
-
-27528
-3
-285
-deux 4 
-jules 4 
-scène 4 
-
-28424
-10
-618
-carbone 16 
-sols 12 
-effet 9 
-réchauffement 5 
-chercheurs 5 
-climatique 5 
-pays 5 
-régions 5 
-zones 5 
-également 5 
-
-25275
-2
-272
-paysagiste 5 
-archives 4 
-
-28757
-10
-612
-été 11 
-comète 9 
-impact 8 
-tempel 8 
-sonde 6 
-deep 5 
-très 5 
-mission 4 
-violence 4 
-collision 4 
-
-23062
-5
-208
-france 6 
-équipe 4 
-président 4 
-demandé 4 
-joueurs 4 
-
-20676
-6
-550
-fado 27 
-été 8 
-do 6 
-carmo 6 
-carlos 5 
-amalia 5 
-
-27899
-10
-317
-fédération 7 
-francis 7 
-delattre 7 
-sports 5 
-ministère 5 
-ffe 5 
-serge 5 
-lecomte 5 
-député 4 
-équestres 4 
-
-20634
-10
-666
-personnes 11 
-virus 11 
-vaccination 10 
-grippe 9 
-aviaire 8 
-contre 6 
-couverture 6 
-vaccinale 6 
-dgs 5 
-être 5 
-
-24217
-10
-665
-france 19 
-coupe 8 
-équipe 7 
-monde 7 
-2006 6 
-match 6 
-groupe 6 
-deux 6 
-matches 6 
-millions 6 
-
-29259
-10
-515
-maïs 9 
-transgènes 6 
-été 6 
-contamination 5 
-2004 5 
-région 5 
-être 5 
-chapela 5 
-ogm 4 
-2003 4 
-
-25432
-10
-477
-athlètes 7 
-aux 6 
-été 6 
-saut 5 
-euros 5 
-décanation 4 
-leurs 4 
-être 4 
-équipe 4 
-france 4 
-
-25636
-6
-399
-the 8 
-sufjan 5 
-stevens 5 
-illinois 4 
-disque 4 
-feel 4 
-
-25075
-10
-446
-patrimoine 8 
-prague 6 
-palais 6 
-journées 5 
-septembre 5 
-culture 5 
-france 5 
-tchèque 5 
-mois 4 
-historiques 4 
-
-23413
-5
-215
-visa 6 
-été 5 
-or 4 
-festival 4 
-prix 4 
-
-24470
-6
-314
-can 8 
-sacd 8 
-musique 5 
-groupe 5 
-landed 5 
-quatre 4 
-
-22334
-10
-797
-théâtre 33 
-public 15 
-avignon 11 
-festival 10 
-art 6 
-deux 5 
-années 5 
-ans 5 
-français 5 
-être 5 
-
-21132
-10
-805
-mclaren 12 
-renault 10 
-points 9 
-pilotes 7 
-kimi 7 
-juan 6 
-pablo 6 
-montoya 6 
-grand 6 
-prix 6 
-
-24576
-10
-595
-vih 12 
-circoncision 11 
-hommes 9 
-circoncis 9 
-infection 8 
-étude 7 
-risque 5 
-sida 5 
-sud 5 
-résultats 5 
-
-21806
-8
-448
-mètres 7 
-néry 6 
-monde 6 
-guillaume 5 
-record 5 
-français 4 
-était 4 
-dont 4 
-
-27211
-10
-423
-jean 6 
-christophe 6 
-bette 5 
-bateau 5 
-quatre 4 
-ans 4 
-était 4 
-été 4 
-monde 4 
-dès 4 
-
-27102
-1
-274
-étude 5 
-
-25598
-4
-251
-abidjan 5 
-victoire 5 
-rêve 4 
-pays 4 
-
-28604
-2
-272
-comportement 4 
-hôte 4 
-
-21390
-7
-331
-cellules 21 
-souches 10 
-chercheurs 6 
-souris 5 
-musculaires 5 
-adultes 5 
-institut 4 
-
-24258
-1
-262
-angleterre 4 
-
-29007
-3
-285
-deux 4 
-jules 4 
-scène 4 
-
-20326
-10
-618
-carbone 16 
-sols 12 
-effet 9 
-réchauffement 5 
-chercheurs 5 
-climatique 5 
-pays 5 
-régions 5 
-zones 5 
-également 5 
-
-24091
-2
-272
-paysagiste 5 
-archives 4 
-
-24087
-10
-612
-été 11 
-comète 9 
-impact 8 
-tempel 8 
-sonde 6 
-deep 5 
-très 5 
-mission 4 
-violence 4 
-collision 4 
-
-21123
-5
-208
-france 6 
-équipe 4 
-président 4 
-demandé 4 
-joueurs 4 
-
-27600
-6
-550
-fado 27 
-été 8 
-do 6 
-carmo 6 
-carlos 5 
-amalia 5 
-
-28932
-10
-317
-fédération 7 
-francis 7 
-delattre 7 
-sports 5 
-ministère 5 
-ffe 5 
-serge 5 
-lecomte 5 
-député 4 
-équestres 4 
-
-26056
-10
-666
-personnes 11 
-virus 11 
-vaccination 10 
-grippe 9 
-aviaire 8 
-contre 6 
-couverture 6 
-vaccinale 6 
-dgs 5 
-être 5 
-
-24815
-10
-665
-france 19 
-coupe 8 
-équipe 7 
-monde 7 
-2006 6 
-match 6 
-groupe 6 
-deux 6 
-matches 6 
-millions 6 
-
-21298
-10
-515
-maïs 9 
-transgènes 6 
-été 6 
-contamination 5 
-2004 5 
-région 5 
-être 5 
-chapela 5 
-ogm 4 
-2003 4 
-
-25037
-10
-477
-athlètes 7 
-aux 6 
-été 6 
-saut 5 
-euros 5 
-décanation 4 
-leurs 4 
-être 4 
-équipe 4 
-france 4 
-
-29350
-6
-399
-the 8 
-sufjan 5 
-stevens 5 
-illinois 4 
-disque 4 
-feel 4 
-
-21080
-10
-446
-patrimoine 8 
-prague 6 
-palais 6 
-journées 5 
-septembre 5 
-culture 5 
-france 5 
-tchèque 5 
-mois 4 
-historiques 4 
-
-24742
-5
-215
-visa 6 
-été 5 
-or 4 
-festival 4 
-prix 4 
-
-22356
-6
-314
-can 8 
-sacd 8 
-musique 5 
-groupe 5 
-landed 5 
-quatre 4 
-
-23369
-10
-797
-théâtre 33 
-public 15 
-avignon 11 
-festival 10 
-art 6 
-deux 5 
-années 5 
-ans 5 
-français 5 
-être 5 
-
-20448
-10
-805
-mclaren 12 
-renault 10 
-points 9 
-pilotes 7 
-kimi 7 
-juan 6 
-pablo 6 
-montoya 6 
-grand 6 
-prix 6 
-
-26768
-10
-595
-vih 12 
-circoncision 11 
-hommes 9 
-circoncis 9 
-infection 8 
-étude 7 
-risque 5 
-sida 5 
-sud 5 
-résultats 5 
-
-22602
-8
-448
-mètres 7 
-néry 6 
-monde 6 
-guillaume 5 
-record 5 
-français 4 
-était 4 
-dont 4 
-
-29560
-10
-423
-jean 6 
-christophe 6 
-bette 5 
-bateau 5 
-quatre 4 
-ans 4 
-était 4 
-été 4 
-monde 4 
-dès 4 
-
-24914
-1
-274
-étude 5 
-
-20495
-4
-251
-abidjan 5 
-victoire 5 
-rêve 4 
-pays 4 
-
-24059
-2
-272
-comportement 4 
-hôte 4 
-
-28809
+25916
 7
 331
 cellules 21 

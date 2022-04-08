@@ -59,7 +59,8 @@ public class ControlRequete implements PropertyChangeListener{
     }
 
     public boolean touteRequeteFinit(){
-        return nbRequeteFinit == listeRequete.size();
+        System.out.println("attente fin : " + nbRequeteFinit + " / " + listeRequete.size());
+        return nbRequeteFinit >= listeRequete.size();
     }
 
     /* ------------------- FONCTIONS SPECIFIQUES ------------------ */
@@ -131,12 +132,16 @@ public class ControlRequete implements PropertyChangeListener{
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         String message = (String) evt.getNewValue();
-        String mot = List.of(message.split(",")).get(0);
-        Requete requete = trouverRequeteViaMot(mot);
-        if (requete != null){
-            requete.setEtatRequete(EtatRequete.TERMINATED);
-            if (requete.getDestinataire().equals(TypeMoteur.BONGALA.name())) listeResultatBongala.add(message);
-            else listeResultatBingBong.add(message);
+        if (typeRequete == TypeRequete.INDEXATION){
+            System.out.println(message);
+        } else {
+            String mot = List.of(message.split(",")).get(0);
+            Requete requete = trouverRequeteViaMot(mot);
+            if (requete != null){
+                requete.setEtatRequete(EtatRequete.TERMINATED);
+                if (requete.getDestinataire().equals(TypeMoteur.BONGALA.name())) listeResultatBongala.add(message);
+                else listeResultatBingBong.add(message);
+            }
         }
         this.nbRequeteFinit++;
     }

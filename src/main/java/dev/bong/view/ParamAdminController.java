@@ -84,7 +84,7 @@ public class ParamAdminController implements Initializable {
             alert.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();
-            GestionAlerte.genererErreur("Ivy ERREUR","Echec de l'indexation automatique");
+            GestionAlerte.genererErreur("Ivy ERREUR","Echec de l'indexation automatique, connexion au moteur impossible");
         }
     }
     @FXML
