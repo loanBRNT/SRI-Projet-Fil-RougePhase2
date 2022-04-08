@@ -21,8 +21,6 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
     //Mode pour la recherche
     private boolean modeOuvert;
 
-    private TypeFichier typeFichier;
-
     //Permet d'initialiser la com + les listes de mots clés
     public ControlRechercheFichier(ProgressIndicator progressIndicator, ProgressBar progressBar,
                                    List<String> nomFicRecherche, List<String> nomFicBan, String extension,
@@ -63,7 +61,6 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
         progressBar.setProgress(progressBar.getProgress() + 0.1);
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
 
-        System.out.println("mode Ouvert : " + modeOuvert);
 
         if (modeOuvert){
             System.out.println("On indexe");
@@ -72,8 +69,6 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
 
         progressBar.setProgress(progressBar.getProgress() + 0.1);
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
-
-        System.out.println(nomFicRecherche.toString());
 
         // appel des fonctions de recherches
         if (!nomFicRecherche.toString().equals("[]")) {
@@ -91,7 +86,6 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
 
         // ajout des recherches a polarité positives et suppression des polarité négatives
         if (nomFicRecherche.toString().equals("[]")){
-
             try {
                 resTotal.addAll(Database.getListeFichier(TypeFichier.enumToString(typeFichier)));
             } catch (FileNotFoundException e) {
@@ -111,9 +105,6 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
 
         progressBar.setProgress(progressBar.getProgress() + 0.1);
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
-
-        // affichage du resultat total
-        System.out.println("resultat final : \n"+resTotal);
 
         //envoie resultats
         controlEnvoieResultat.receptionResultat(resTotal);
@@ -151,23 +142,34 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
     }
 
     protected List<String> sommeCleEtBan(List<Set<String>> resMotCle,List<Set<String>> resMotBan){
-        List<String> moteur1 = new ArrayList<>();
-        List<String> moteur2 = new ArrayList<>();
+        Set<String> moteur1 = new HashSet<>();
+        Set<String> moteur2 = new HashSet<>();
         Set<String> resTotal = new HashSet<>();
         List<String> resTotalList = new ArrayList<>();
         if(this.typeMoteur==TypeMoteur.BINGBONG || this.typeMoteur==TypeMoteur.BONGALA){
-            resTotal.addAll(resMotCle.get(0));
-            resTotal.removeAll(resMotBan.get(0));
+            if (typeFichier == TypeFichier.WAV){
+                resTotal = compareAudio(resTotal,resMotCle.get(0),resMotBan.get(0));
+            } else {
+                resTotal.addAll(resMotCle.get(0));
+                resTotal.removeAll(resMotBan.get(0));
+            }
         }
         else {
-            moteur1.addAll(resMotCle.get(0));
-            moteur1.removeAll(resMotBan.get(0));
-            moteur2.addAll(resMotCle.get(1));
-            moteur2.removeAll(resMotBan.get(1));
+            if (typeFichier == TypeFichier.WAV){
+                resTotal = compareAudio(resTotal,resMotCle.get(0),resMotBan.get(0));
+            } else {
+                moteur1.addAll(resMotCle.get(0));
+                moteur1.removeAll(resMotBan.get(0));
+            }
+            if (typeFichier == TypeFichier.WAV){
+                moteur2 = compareAudio(moteur2,resMotCle.get(1),resMotBan.get(1));
+            } else {
+                moteur2.addAll(resMotCle.get(1));
+                moteur2.removeAll(resMotBan.get(1));
+            }
             if (this.typeMoteur==TypeMoteur.UNION){
                 resTotal.addAll(moteur1);
                 resTotal.addAll(moteur2);
-
             }
             else {
                 resTotal.addAll(moteur1);
@@ -178,6 +180,19 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
         resTotalList.addAll(resTotal);
         return  resTotalList;
 
+    }
+
+    protected Set<String> compareAudio(Set<String> resTotal,Set<String> resRec, Set<String> resBan){
+
+        for (String fichierRecherche : resRec){
+            for (String fichierBan : resBan){
+                System.out.println(List.of(fichierRecherche.split(" : ")).get(0) + " | " + List.of(fichierBan.split(" : ")).get(0));
+                if (!List.of(fichierRecherche.split(" : ")).get(0).equals(List.of(fichierBan.split(" : ")).get(0))){
+                    resTotal.add(fichierRecherche);
+                }
+            }
+        }
+        return resTotal;
     }
 
     protected List<String> sommeCleSansBan(List<Set<String>> resMotCle){

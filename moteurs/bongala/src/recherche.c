@@ -384,7 +384,7 @@ PILE_DESCRIPTEUR_IMAGE rechercheImageParDescripteur(DESCRIPTEUR_IMAGE* ptr_descF
     while (pile != NULL){
         if (pile->Di.ID != ptr_descFic->ID){
             tauxAct = comparaisonFichiersImage(ptr_descFic,&(pile->Di));
-            if (tauxAct >= tauwSim){
+            if (tauxAct >= tauwSim-15){
                 pileSim = emPILE_Img(pileSim , pile->Di);
                 tabOcc[cpt]=tauxAct;
                 cpt++;
@@ -487,7 +487,7 @@ PILE_DESCRIPTEUR_TEXTE rechercheTexteParDescripteur(DESCRIPTEUR_TEXTE* ptr_descF
     while (pile != NULL){
         if (pile->Dt.ID != ptr_descFic->ID){
             tauxAct = comparaisonFichiersTexte(ptr_descFic,&(pile->Dt));
-            if (tauxAct >= tauwSim){
+            if (tauxAct >= tauwSim-15){
                 pileSim = emPILE_Texte(pileSim, pile->Dt);
             }
         }
@@ -523,8 +523,6 @@ int generationChaineCaracViaPileIMAGE(PILE_DESCRIPTEUR_IMAGE pile, DESCRIPTEUR_I
         strcat(chaine,chaine_nom);
         //strcat(chaine,"\n");
 
-        printf("\n%s",chaine_nom);
-
         sauv = pile;
         pile = pile->next;
         dePILE_Img_Sans_Sauvegarde(sauv);
@@ -547,8 +545,6 @@ int generationChaineCaracViaPileIMAGE(PILE_DESCRIPTEUR_IMAGE pile, DESCRIPTEUR_I
 int generationChaineCaracViaPileTexte(PILE_DESCRIPTEUR_TEXTE pile, DESCRIPTEUR_TEXTE* ptr_descFic,char* chaine){
     char chaine_nom[50];
 
-    int nbOcc;
-
     //recupNomDUFic(ptr_descFic->ID,1,chaine_nom);
 
     /* PHASE 1
@@ -566,11 +562,9 @@ int generationChaineCaracViaPileTexte(PILE_DESCRIPTEUR_TEXTE pile, DESCRIPTEUR_T
         //strcat(chaine,"- ");
         strcat(chaine,chaine_nom);
         //strcat(chaine, " : mots cle en commun : ");
-        nbOcc = nbMotCmmunFichierTexte(ptr_descFic, &(pile->Dt));
+        //nbOcc = nbMotCmmunFichierTexte(ptr_descFic, &(pile->Dt));
         //sprintf(chaine_occ,"%d",nbOcc);
         //strcat(chaine, chaine_occ);
-
-        printf("\n%s : %d",chaine_nom,nbOcc);
 
         /*
         if (nbOcc > occMax){

@@ -49,7 +49,6 @@ public class ControlRequete implements PropertyChangeListener{
 
         for (String s : motCle) {
             creerRequeteRecherche(s,destinataire);
-            System.out.println("motCle : " + motCle);
         }
 
         envoyerTouteRequete();
@@ -136,12 +135,10 @@ public class ControlRequete implements PropertyChangeListener{
         Requete requete = trouverRequeteViaMot(mot);
         if (requete != null){
             requete.setEtatRequete(EtatRequete.TERMINATED);
-            System.out.println("- " + requete.getDestinataire() + " : " + mot);
             if (requete.getDestinataire().equals(TypeMoteur.BONGALA.name())) listeResultatBongala.add(message);
             else listeResultatBingBong.add(message);
         }
         this.nbRequeteFinit++;
-        System.out.println(this + " -> " + nbRequeteFinit + " / " + listeRequete.size());
     }
 
     public void removePropertyChangeListener(){

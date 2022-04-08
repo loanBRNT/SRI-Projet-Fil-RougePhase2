@@ -1,6 +1,7 @@
 package dev.bong.control;
 
 import dev.bong.entity.TestCommunication;
+import dev.bong.entity.TypeFichier;
 import dev.bong.entity.TypeMoteur;
 import dev.bong.entity.TypeRequete;
 import dev.bong.view.RechercheController;
@@ -24,6 +25,8 @@ public abstract class ControlRecherche {
 
     protected TypeMoteur typeMoteur;
 
+    protected TypeFichier typeFichier;
+
     public ControlRecherche(ControlRequete controlRequete,ProgressIndicator progressIndicator, ProgressBar progressBar,TypeMoteur typeMoteur, RechercheController rechercheController) {
 
         this.typeMoteur = typeMoteur;
@@ -38,8 +41,8 @@ public abstract class ControlRecherche {
     //Récupère une String des résultats que l'on split en une liste de String (un élément pour un fichier)
     protected List<Set<String>> recherche(List<String> listeMot,TypeRequete typeRequete,boolean polarite){
         List<String> resBongala, resBingBong;
-        Set<String> resFinalBingBong = new HashSet<>();
-        Set<String> resFinalBongala = new HashSet<>();
+        Set<String> resFinalBingBong;
+        Set<String> resFinalBongala;
         List<Set<String>> listeResultat = new ArrayList<>();
 
         boolean requeteFinit = false;
@@ -72,24 +75,32 @@ public abstract class ControlRecherche {
         if (typeMoteur == TypeMoteur.INTERSECTION || typeMoteur == TypeMoteur.UNION){
             resBongala=controlRequete.getListeResultat(TypeMoteur.BONGALA.name());
             resBingBong=controlRequete.getListeResultat(TypeMoteur.BINGBONG.name());
-            resFinalBingBong=calculListeResultats(resBingBong,polarite,typeRequete);
-            resFinalBongala=calculListeResultats(resBongala,polarite,typeRequete);
+            if (typeFichier == TypeFichier.WAV){
+                resFinalBongala=triAudio(resBongala);
+                resFinalBingBong=triAudio(resBingBong);
+            } else {
+                resFinalBingBong=calculListeResultats(resBingBong,polarite,typeRequete);
+                resFinalBongala=calculListeResultats(resBongala,polarite,typeRequete);;
+            }
             listeResultat.add(resFinalBingBong);
             listeResultat.add(resFinalBongala);
-
         } else if (typeMoteur == TypeMoteur.BONGALA){
             resBongala=controlRequete.getListeResultat(TypeMoteur.BONGALA.name());
-            resFinalBongala=calculListeResultats(resBongala,polarite,typeRequete);
+            if (typeFichier == TypeFichier.WAV){
+                resFinalBongala=triAudio(resBongala);
+            } else {
+                resFinalBongala=calculListeResultats(resBongala,polarite,typeRequete);
+            }
             listeResultat.add(resFinalBongala);
-
         } else {
             resBingBong=controlRequete.getListeResultat(TypeMoteur.BINGBONG.name());
-            resFinalBingBong=calculListeResultats(resBingBong,polarite,typeRequete);
+            if (typeFichier == TypeFichier.WAV){
+                resFinalBingBong=triAudio(resBingBong);
+            } else {
+                resFinalBingBong=calculListeResultats(resBingBong,polarite,typeRequete);
+            }
             listeResultat.add(resFinalBingBong);
-
         }
-
-
 
         progressBar.setProgress(progressBar.getProgress() + 0.1);
         progressIndicator.setProgress(progressIndicator.getProgress() + 0.1);
@@ -157,10 +168,8 @@ public abstract class ControlRecherche {
     }
 
     protected Set<String> triAudio(List<String> res){
-        System.out.println("res : " + res);
         Set<String> resTotal = new HashSet<>();
         for (String listFichierTrouve : res) {
-            System.out.println("Petite String : " + listFichierTrouve);
             ArrayList<String> fichiersTrouvee = new ArrayList<>(List.of(listFichierTrouve.split(",")));
             fichiersTrouvee.remove(0);
             for (String listeRepSon : fichiersTrouvee){

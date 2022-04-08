@@ -320,7 +320,7 @@ int lanceRechercheViaMotCle(char* mot, char* chaine_resultat){
 
     FILE* f = fopen("./fic","r");
     if (f == NULL){
-        strcpy(chaine_resultat," ");
+        strcpy(chaine_resultat,"");
         return 0;
     }
 
@@ -330,7 +330,7 @@ int lanceRechercheViaMotCle(char* mot, char* chaine_resultat){
     strcat(chaine_resultat, "]:\n");
     */
 
-    strcpy(chaine_resultat," ");
+    strcpy(chaine_resultat,"");
 
     while (!feof(f)){
         fscanf(f,"%d %d ",&id,&num);
@@ -383,7 +383,7 @@ PILE_DESCRIPTEUR_IMAGE rechercheImageParDescripteur(DESCRIPTEUR_IMAGE* ptr_descF
     while (pile != NULL){
         if (pile->Di.ID != ptr_descFic->ID){
             tauxAct = comparaisonFichiersImage(ptr_descFic,&(pile->Di));
-            if (tauxAct >= tauwSim){
+            if (tauxAct >= tauwSim + 10){
                 pileSim = emPILE_Img(pileSim , pile->Di);
                 tabOcc[cpt]=tauxAct;
                 cpt++;
@@ -486,8 +486,7 @@ PILE_DESCRIPTEUR_TEXTE rechercheTexteParDescripteur(DESCRIPTEUR_TEXTE* ptr_descF
     while (pile != NULL){
         if (pile->Dt.ID != ptr_descFic->ID){
             tauxAct = comparaisonFichiersTexte(ptr_descFic,&(pile->Dt));
-            printf("- %d : %d\n",pile->Dt.ID,tauxAct);
-            if (tauxAct >= tauwSim){
+            if (tauxAct >= tauwSim + 30){ //facteur d'instance
                 pileSim = emPILE_Texte(pileSim, pile->Dt);
             }
         }
@@ -559,8 +558,6 @@ int generationChaineCaracViaPileTexte(PILE_DESCRIPTEUR_TEXTE pile, DESCRIPTEUR_T
 
     while (pile != NULL){
         recupNomDUFic(pile->Dt.ID,1,chaine_nom);
-
-        printf("-%d\n",pile->Dt.ID);
 
         //strcat(chaine,"- ");
         strcat(chaine,chaine_nom);

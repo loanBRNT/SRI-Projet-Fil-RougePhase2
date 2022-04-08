@@ -69,9 +69,9 @@ int comparaisonFichiersAudio(DESCRIPTEUR_AUDIO* jingle, DESCRIPTEUR_AUDIO* corpu
 
         taux = calculSimHisto(jingle->histo,ptr_CorpusHisto);
 
-        if (taux >= tauxSim){
+        if (taux >= tauxSim-10){
             taux = verifierSim(jingle->histo,ptr_CorpusHisto,jingle->taille);
-            if (taux > tauxSim){
+            if (taux > tauxSim-10){
                  s = calculSeconde(i);
                  sprintf(tab,"%f",s);
                  strcat(chaine_resultat,tab);
