@@ -65,6 +65,11 @@ public class ControlRechercheFichier extends ControlRecherche implements Runnabl
         if (modeOuvert){
             System.out.println("On indexe");
             ControlIndexation.IndexationDuModeOuvert();
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         progressBar.setProgress(progressBar.getProgress() + 0.1);
