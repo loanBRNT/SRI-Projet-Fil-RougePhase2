@@ -10,9 +10,9 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.bong.view.RechercheController">
     <children>
-        <Button id="Button" fx:id="buttonSearch" layoutX="692.0" layoutY="261.0" onAction="#onClickFicSearch" prefHeight="40.0" prefWidth="77.0" text="Search" />
+        <Button id="Button" fx:id="buttonSearch" layoutX="692.0" layoutY="261.0" onAction="#onClickFicSearch" prefHeight="40.0" prefWidth="77.0" text="Recherche" />
         <TextField fx:id="textFieldSearch" layoutX="74.0" layoutY="267.0" onAction="#onEnterFic" prefHeight="28.0" prefWidth="605.0" promptText="Que souhaitez-vous rechercher ?" />
-        <ToggleButton id="Button" fx:id="banWordsButton" layoutX="74.0" layoutY="303.0" mnemonicParsing="false" onAction="#onBanWords" prefHeight="26.0" prefWidth="83.0" text="+ Ban words" />
+        <ToggleButton id="Button" fx:id="banWordsButton" layoutX="74.0" layoutY="303.0" mnemonicParsing="false" onAction="#onBanWords" prefHeight="26.0" prefWidth="83.0" text="+ Mots ban" />
         <TextField fx:id="textFieldBanWords" layoutX="174.0" layoutY="309.0" prefHeight="28.0" prefWidth="505.0" promptText="Saisir les noms à enlever" visible="false" />
         <ImageView fx:id="param" fitHeight="50.0" fitWidth="68.0" layoutX="24.0" layoutY="373.0" onMouseClicked="#onClickParam" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -45,7 +45,7 @@
             </opaqueInsets>
         </ProgressBar>
         <ProgressIndicator fx:id="progressIndicator" layoutX="444.0" layoutY="313.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="50.0" progress="0.0" visible="false" />
-        <Label fx:id="labelInProgress" layoutX="329.0" layoutY="323.0" text="In Progress . . ." visible="false">
+        <Label fx:id="labelInProgress" layoutX="329.0" layoutY="323.0" text="Chargement . . ." visible="false">
             <font>
                 <Font size="15.0" />
             </font>

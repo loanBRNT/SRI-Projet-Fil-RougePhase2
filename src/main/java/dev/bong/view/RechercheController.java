@@ -170,11 +170,11 @@ public class RechercheController implements Initializable {
         if (!this.banWordsButtonActivate) {
             textFieldBanWords.setVisible(true);
             this.banWordsButtonActivate=true;
-            this.banWordsButton.setText("- Ban words");
+            this.banWordsButton.setText("- Mots ban");
         }else{
             textFieldBanWords.setVisible(false);
             this.banWordsButtonActivate=false;
-            this.banWordsButton.setText("+ Ban words");
+            this.banWordsButton.setText("+ Mots ban");
         }
     }
 

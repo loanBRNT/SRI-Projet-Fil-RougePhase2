@@ -1,0 +1,6 @@
+13/04/2022 15:37:59 - rechercheMotCle : motCle : [GT],motBan : [];[ ]
+13/04/2022 15:38:10 - rechercheMotCle : motCle : [jean],motBan : [];[ ]
+13/04/2022 15:38:24 - rechercheMotCle : motCle : [christophe],motBan : [];[ ]
+13/04/2022 15:38:38 - rechercheFichier : motCle : [jean.xml],motBan : [];[ ]
+13/04/2022 15:39:02 - rechercheMotCle : motCle : [jean],motBan : [];[ ]
+13/04/2022 15:44:00 - rechercheCouleur : motCle : 0xffffffff,motBan : [];[51.bmp]
