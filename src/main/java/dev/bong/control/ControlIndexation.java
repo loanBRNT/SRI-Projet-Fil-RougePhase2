@@ -1,12 +1,11 @@
 package dev.bong.control;
 
 import dev.bong.entity.Requete;
-import dev.bong.entity.TestCommunication;
 import dev.bong.entity.TypeRequete;
 
 public class ControlIndexation {
     private static ControlRequete controlRequete = new ControlRequete(TypeRequete.INDEXATION);
-    private static TestCommunication testCommunication = TestCommunication.getInstance();
+    private static ControlTestCommunication testCommunication = ControlTestCommunication.getInstance();
 
     public static void indexationForcee() throws Exception {
         boolean requeteFinit = false;

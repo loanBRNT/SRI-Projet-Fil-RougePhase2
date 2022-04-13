@@ -1,6 +1,5 @@
 package dev.bong.control;
 
-import dev.bong.entity.TestCommunication;
 import dev.bong.entity.TypeFichier;
 import dev.bong.entity.TypeMoteur;
 import dev.bong.entity.TypeRequete;
@@ -21,7 +20,7 @@ public abstract class ControlRecherche {
     //Création d'un controlleur associé à la recherche.
     protected ControlRequete controlRequete;
     protected ControlEnvoieResultat controlEnvoieResultat = ControlEnvoieResultat.getInstance();
-    protected TestCommunication testCommunication = TestCommunication.getInstance();
+    protected ControlTestCommunication testCommunication = ControlTestCommunication.getInstance();
 
     protected TypeMoteur typeMoteur;
 

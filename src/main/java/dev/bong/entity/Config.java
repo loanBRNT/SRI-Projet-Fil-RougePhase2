@@ -1,6 +1,7 @@
 package dev.bong.entity;
 
 import dev.bong.control.ControlIndexation;
+import dev.bong.control.ControlTestCommunication;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class  Config {
     }
 
     public void majConfig(List<Integer> listeValeur) throws Exception {
-        TestCommunication.fermerCommunication();
+        ControlTestCommunication.fermerCommunication();
         for (String config : listeDesConfig) {
                 File f = new File(config);
                 f.createNewFile();

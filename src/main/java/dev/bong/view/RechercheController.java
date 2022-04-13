@@ -122,10 +122,15 @@ public class RechercheController implements Initializable {
                 banWord ="";
             }
 
-            loadingScreenFic = new ControlRechercheFichier(progressIndicator,progressBar,List.of(motcle.split("/")),List.of(banWord.split("/")),(String) choiceType.getValue(), Config.getInstance().getMode(),config.getTypeMoteur(),this);
-            Thread thread = new Thread(loadingScreenFic);
-            thread.setDaemon(true);
-            thread.start();
+            if(verifSaisie(motcle,banWord)){
+                GestionAlerte.genererAlertChangeFenetre("Saisie incorrecte",Alert.AlertType.ERROR,"La saisie contient des caracteres non autorisés","hello-view.fxml");
+            }else {
+                loadingScreenFic = new ControlRechercheFichier(progressIndicator, progressBar, List.of(motcle.split("/")), List.of(banWord.split("/")), (String) choiceType.getValue(), Config.getInstance().getMode(), config.getTypeMoteur(), this);
+                Thread thread = new Thread(loadingScreenFic);
+                thread.setDaemon(true);
+                thread.start();
+            }
+
 
         } catch (IvyException e) {
             e.printStackTrace();
@@ -254,11 +259,22 @@ public class RechercheController implements Initializable {
 
     public boolean verifSaisie(String motcle ,String banword){
         CharSequence[] banChar={"$","£","@","#","&","?","§","*","¤","+","=","{","}","(",")","~","°", "\"","'"};
+        CharSequence[] seqVoyelle={"a","e","i","o","u","y","A","E","Y","O","U","I"};
         boolean erreur =false;
+
         for(CharSequence caractere : banChar){
             if(motcle.contains(caractere) || banword.contains(caractere))
                 erreur=true;
         }
+
+        if (!erreur){
+            erreur = true;
+            for (CharSequence voyelle : seqVoyelle){
+                if(motcle.contains(voyelle) || banword.contains(voyelle))
+                    erreur=false;
+            }
+        }
+
         return erreur;
 
     }

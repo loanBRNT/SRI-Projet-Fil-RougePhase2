@@ -1,5 +1,6 @@
 package dev.bong.entity;
 
+import dev.bong.control.ControlTestCommunication;
 import dev.bong.view.RechercheApplication;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -8,7 +9,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 public class GestionAlerte {
-    private static TestCommunication testCommunication = TestCommunication.getInstance();
+    private static ControlTestCommunication testCommunication = ControlTestCommunication.getInstance();
 
     public static void genererWarning(String titre, String message){
         testCommunication.fermerCommunication();
