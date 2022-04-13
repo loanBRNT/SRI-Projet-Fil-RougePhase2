@@ -1,0 +1,12 @@
+ 
+27938
+7
+331
+cellules 21 
+souches 10 
+chercheurs 6 
+souris 5 
+musculaires 5 
+adultes 5 
+institut 4 
+

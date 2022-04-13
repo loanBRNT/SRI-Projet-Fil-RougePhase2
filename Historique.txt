@@ -4,3 +4,4 @@
 13/04/2022 15:38:38 - rechercheFichier : motCle : [jean.xml],motBan : [];[ ]
 13/04/2022 15:39:02 - rechercheMotCle : motCle : [jean],motBan : [];[ ]
 13/04/2022 15:44:00 - rechercheCouleur : motCle : 0xffffffff,motBan : [];[51.bmp]
+13/04/2022 16:06:37 - rechercheCouleur : motCle : 0xffffffff,motBan : [];[51.bmp]

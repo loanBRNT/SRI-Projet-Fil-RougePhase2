@@ -1,0 +1,21 @@
+cellules
+27938 21 
+
+souches
+27938 10 
+
+chercheurs
+27938 6 
+
+souris
+27938 5 
+
+musculaires
+27938 5 
+
+adultes
+27938 5 
+
+institut
+27938 4 
+
