@@ -7,3 +7,7 @@
 13/04/2022 16:06:37 - rechercheCouleur : motCle : 0xffffffff,motBan : [];[51.bmp]
 13/04/2022 16:55:07 - rechercheFichier : motCle : [],motBan : [];[03-Des_chercheurs_parviennent_a_regenerer.xml]
 13/04/2022 16:55:51 - rechercheFichier : motCle : [yo.xml],motBan : [];[ ]
+14/04/2022 08:41:25 - rechercheFichier : motCle : [05-Jean-Christophe_Bette_a_du_attendre.xml],motBan : [];[ ]
+14/04/2022 08:46:26 - rechercheFichier : motCle : [51.bmp],motBan : [];[ ]
+14/04/2022 08:46:46 - rechercheFichier : motCle : [51.bmp],motBan : [];[52.bmp]
+14/04/2022 08:54:23 - rechercheMotCle : motCle : [monde],motBan : [];[05-Jean-Christophe_Bette_a_du_attendre.xml]

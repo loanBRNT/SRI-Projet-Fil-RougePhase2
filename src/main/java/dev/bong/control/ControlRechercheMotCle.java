@@ -103,6 +103,7 @@ public class ControlRechercheMotCle extends ControlRecherche implements Runnable
         List<String> moteur2 = new ArrayList<>();
         Set<String> resTotal = new HashSet<>();
         List<String> resTotalList = new ArrayList<>();
+
         if(this.typeMoteur==TypeMoteur.BINGBONG || this.typeMoteur==TypeMoteur.BONGALA){
             resTotal.addAll(resMotCle.get(0));
             resTotal.removeAll(resMotBan.get(0));
@@ -123,30 +124,6 @@ public class ControlRechercheMotCle extends ControlRecherche implements Runnable
             }
 
             }
-        resTotalList.addAll(resTotal);
-        return  resTotalList;
-
-    }
-    protected List<String> sommeCleSansBan(List<Set<String>> resMotCle){
-        List<String> moteur1 = new ArrayList<>();
-        List<String> moteur2 = new ArrayList<>();
-        Set<String> resTotal = new HashSet<>();
-        List<String> resTotalList = new ArrayList<>();
-        if(this.typeMoteur==TypeMoteur.BINGBONG || this.typeMoteur==TypeMoteur.BONGALA){
-            resTotal.addAll(resMotCle.get(0));
-        }
-        else {
-            moteur1.addAll(resMotCle.get(0));
-            moteur2.addAll(resMotCle.get(1));
-            if (this.typeMoteur==TypeMoteur.UNION){
-                resTotal.addAll(moteur1);
-                resTotal.addAll(moteur2);
-            }
-            else {
-                resTotal.addAll(moteur1);
-                resTotal.retainAll(moteur2);
-            }
-        }
         resTotalList.addAll(resTotal);
         return  resTotalList;
 

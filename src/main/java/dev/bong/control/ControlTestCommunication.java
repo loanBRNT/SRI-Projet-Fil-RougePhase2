@@ -45,8 +45,11 @@ public class ControlTestCommunication implements PropertyChangeListener {
         communicationIvy.removePropertyChangeListener(ListenerPropriete.TEST.toString(),this);
 
         if (tick >= 2000){
+            System.out.println("Protocole : Test de connexion au moteur --> Echoue");
             throw new Exception();
         }
+
+        System.out.println("Protocole : Test de connexion au moteur --> réussi");
     }
 
     @Override

@@ -47,11 +47,11 @@ public class Requete{
         try {
             nbAgentReceveur = communicationIvy.envoieMessage("Interface destinataire=" + destinataire + " message=" + requete.toString() + " source=" + mot);
             if (nbAgentReceveur > 0){
-                System.out.println(mot + " envoyé à " + nbAgentReceveur + " agents");
+                System.out.println("Protocole d'envoie de : " + mot + " --> envoyé à " + nbAgentReceveur + " agents");
                 setEtatRequete(EtatRequete.RUNNABLE);
             }
             else {
-                System.out.println("Impossible d'envoyer le mot : " + mot);
+                System.out.println("Protocole d'envoie de : " + mot + " --> Erreur d'envoie");
                 setEtatRequete(EtatRequete.ERROR);
             }
         } catch (IvyException e) {

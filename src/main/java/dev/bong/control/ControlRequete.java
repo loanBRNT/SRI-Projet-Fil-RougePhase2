@@ -59,7 +59,7 @@ public class ControlRequete implements PropertyChangeListener{
     }
 
     public boolean touteRequeteFinit(){
-        System.out.println("attente fin : " + nbRequeteFinit + " / " + listeRequete.size());
+        System.out.println("Nombre de requête reçu : " + nbRequeteFinit + " / " + listeRequete.size());
         return nbRequeteFinit >= listeRequete.size();
     }
 

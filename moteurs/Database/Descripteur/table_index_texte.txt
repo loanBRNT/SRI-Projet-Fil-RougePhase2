@@ -1,21 +1,51 @@
+jean
+28778 6 
+
+christophe
+28778 6 
+
+bette
+28778 5 
+
+bateau
+28778 5 
+
+quatre
+28778 4 
+
+ans
+28778 4 
+
+était
+28778 4 
+
+été
+28778 4 
+
+monde
+28778 4 
+
+dès
+28778 4 
+
 cellules
-27938 21 
+23340 21 
 
 souches
-27938 10 
+23340 10 
 
 chercheurs
-27938 6 
+23340 6 
 
 souris
-27938 5 
+23340 5 
 
 musculaires
-27938 5 
+23340 5 
 
 adultes
-27938 5 
+23340 5 
 
 institut
-27938 4 
+23340 4 
 
